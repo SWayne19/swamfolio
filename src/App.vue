@@ -15,7 +15,10 @@
 
     <div class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
       <!-- Navbar -->
-      <header ref="headerRef" class="mb-14 flex flex-col items-center justify-center gap-6">
+      <header
+        ref="headerRef"
+        class="mb-14 flex flex-col items-center justify-center gap-6 mb-[100px]"
+      >
         <!-- Profile Section -->
         <div class="flex flex-col items-center gap-4">
           <!-- Circular Profile Picture -->
@@ -28,68 +31,52 @@
           </div>
           <!-- Name and Title -->
           <div class="text-center">
-            <h1 class="text-4xl font-semibold text-slate-50">Swam Pyae Paing</h1>
+            <h1 class="text-4xl font-semibold text-slate-50">
+              Swam Pyae Paing
+            </h1>
             <p class="mt-2 text-md font-medium text-blue-200/80">
               Junior Web Developer
             </p>
           </div>
         </div>
-        
+
         <!-- Navigation Links -->
         <nav
           ref="navRef"
-          :class="[
-            'flex flex-wrap items-center justify-center gap-4 text-sm text-slate-200/80 sm:gap-6 transition-all duration-300 ease-in-out will-change-[transform,opacity,background-color]',
-            isSticky 
-              ? 'fixed top-0 left-0 right-0 z-50 py-4 bg-slate-950/80 backdrop-blur-md shadow-lg shadow-slate-950/50' 
-              : ''
-          ]"
+          class="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-200/80 sm:gap-6 transition-all duration-300 ease-in-out will-change-[transform,opacity,background-color]"
         >
-          <RouterLink 
-            to="/" 
-            class="transition-all duration-200 ease-in-out hover:text-white"
+          <RouterLink
+            to="/"
+            class="transition-all duration-200 ease-in-out hover:text-white text-lg"
             active-class="text-white font-medium"
           >
             Home
           </RouterLink>
-          <RouterLink 
-            to="/about" 
-            class="transition-all duration-200 ease-in-out hover:text-white"
+          <RouterLink
+            to="/about"
+            class="transition-all duration-200 ease-in-out hover:text-white text-lg"
             active-class="text-white font-medium"
           >
             About
           </RouterLink>
-          <RouterLink 
-            to="/skill" 
-            class="transition-all duration-200 ease-in-out hover:text-white"
-            active-class="text-white font-medium"
-          >
-            Skills
-          </RouterLink>
-          <RouterLink 
-            to="/experience" 
-            class="transition-all duration-200 ease-in-out hover:text-white"
+          <RouterLink
+            to="/experienceAndSkills"
+            class="transition-all duration-200 ease-in-out hover:text-white text-lg"
             active-class="text-white font-medium"
           >
             Experiences
-          </RouterLink>
-          <RouterLink
-            to="/contact"
-            class="rounded-full bg-white/10 px-4 py-2 text-white shadow-lg shadow-indigo-900/30 transition-all duration-200 ease-in-out hover:bg-white/20"
-            active-class="bg-white/20"
-          >
-            Contact
           </RouterLink>
         </nav>
       </header>
 
       <router-view></router-view>
-
     </div>
 
     <!-- Footer -->
     <footer class="mt-20 border-t border-white/5 py-8">
-      <div class="mx-auto max-w-6xl px-4 text-center text-sm text-slate-400/60 sm:px-6 lg:px-8">
+      <div
+        class="mx-auto max-w-6xl px-4 text-center text-sm text-slate-400/60 sm:px-6 lg:px-8"
+      >
         <p>swamfolio © {{ currentYear }}</p>
       </div>
     </footer>
@@ -97,37 +84,35 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { provide, ref } from "vue";
 
-const headerRef = ref(null)
-const navRef = ref(null)
-const isSticky = ref(false)
-const currentYear = new Date().getFullYear()
+const headerRef = ref(null);
+const navRef = ref(null);
+const currentYear = new Date().getFullYear();
 
-let ticking = false
+const projects = ref([
+  {
+    id: 1,
+    title: "Insight Dashboard",
+    description:
+      "Responsive analytics dashboard with Vue + Tailwind cards, filters, and chart-ready layouts.",
+    tags: ["Vue", "Tailwind", "Charts-ready", "Dark mode"],
+  },
+  {
+    id: 2,
+    title: "Team Kanban",
+    description:
+      "Drag-and-drop kanban concepts with smooth micro-interactions and keyboard-friendly controls.",
+    tags: ["Vue", "DnD UX", "Accessibility", "State mgmt"],
+  },
+  {
+    id: 3,
+    title: "Landing Refresh",
+    description:
+      "Conversion-focused landing page with gradients, scroll cues, and mobile-first typography.",
+    tags: ["Vite", "Tailwind", "Animation", "SEO basics"],
+  },
+]);
 
-const handleScroll = () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      if (headerRef.value && navRef.value) {
-        const headerBottom = headerRef.value.offsetTop + headerRef.value.offsetHeight
-        const scrollPosition = window.scrollY + window.innerHeight * 0.1
-        
-        isSticky.value = window.scrollY > headerBottom - navRef.value.offsetHeight
-      }
-      ticking = false
-    })
-    ticking = true
-  }
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll() // Check initial state
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+provide('projects', projects)
 </script>
-

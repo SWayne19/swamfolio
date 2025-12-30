@@ -6,9 +6,8 @@ import { createRouter, createWebHistory } from "vue-router";
 // lazy-loaded pages
 const Home = () => import("./pages/Home.vue");
 const About = () => import("./pages/About.vue");
-const Skill = () => import("./pages/Skill.vue");
-const Experience = () => import("./pages/Experience.vue");
-const Contact = () => import("./pages/Contact.vue");
+const ExperienceAndSkills = () => import("./pages/ExperienceAndSkills.vue");
+const Project = () => import("./pages/Project.vue");
 
 // routes
 const routes = [
@@ -21,16 +20,12 @@ const routes = [
     component: About,
   },
   {
-    path: "/skill",
-    component: Skill,
+    path: "/experienceAndSkills",
+    component: ExperienceAndSkills,
   },
   {
-    path: "/experience",
-    component: Experience,
-  },
-    {
-    path: "/contact",
-    component: Contact,
+    path: "/experienceAndSkills/projects/:id",
+    component: Project,
   },
 ];
 

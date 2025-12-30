@@ -14,23 +14,30 @@
         More details available on request.
       </p>
     </div>
+
     <div class="grid gap-6 lg:grid-cols-3">
-      <div
+      <router-link
         v-for="project in projects"
-        :key="project.title"
-        class="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:border-white/20"
+        :key="project.id"
+        :to="`/experienceAndSkills/projects/${project.id}`"
+        class="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:border-white/20 block"
       >
         <div
           class="absolute inset-0 bg-linear-to-br from-white/5 via-transparent to-indigo-600/10 opacity-0 transition group-hover:opacity-100"
         />
+
         <div class="relative flex h-full flex-col gap-4">
           <div
             class="h-36 rounded-2xl bg-linear-to-br from-blue-600/50 via-indigo-600/40 to-slate-800/60 shadow-inner shadow-black/40"
           />
+
           <h4 class="text-xl font-semibold text-white">
             {{ project.title }}
           </h4>
-          <p class="text-sm text-slate-200/80">{{ project.description }}</p>
+          <p class="text-sm text-slate-200/80">
+            {{ project.description }}
+          </p>
+
           <div
             class="mt-auto inline-flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-100/80"
           >
@@ -43,7 +50,7 @@
             </span>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </section>
 
@@ -78,29 +85,12 @@
       </div>
     </div>
   </section>
+
+  <Skill />
 </template>
 <script setup>
-import { ref } from "vue";
-const projects = ref([
-  {
-    title: "Insight Dashboard",
-    description:
-      "Responsive analytics dashboard with Vue + Tailwind cards, filters, and chart-ready layouts.",
-    tags: ["Vue", "Tailwind", "Charts-ready", "Dark mode"],
-  },
-  {
-    title: "Team Kanban",
-    description:
-      "Drag-and-drop kanban concepts with smooth micro-interactions and keyboard-friendly controls.",
-    tags: ["Vue", "DnD UX", "Accessibility", "State mgmt"],
-  },
-  {
-    title: "Landing Refresh",
-    description:
-      "Conversion-focused landing page with gradients, scroll cues, and mobile-first typography.",
-    tags: ["Vite", "Tailwind", "Animation", "SEO basics"],
-  },
-]);
+import { inject, ref } from "vue";
+
 
 const experiences = ref([
   {
@@ -118,4 +108,7 @@ const experiences = ref([
       "Implemented UI tickets, improved accessibility on forms, and documented reusable patterns.",
   },
 ]);
+
+
+const projects = inject('projects')
 </script>

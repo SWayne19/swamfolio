@@ -28,7 +28,7 @@
       <div class="flex flex-wrap items-center gap-4">
         <a
           class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-blue-500 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/40 transition hover:-translate-y-0.5"
-          href="#projects"
+          href="/experienceAndSkills"
         >
           View Projects
           <svg
@@ -44,24 +44,6 @@
             <path d="M12 5l7 7-7 7" />
           </svg>
         </a>
-        <a
-          class="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-          href="#contact"
-        >
-          Contact Me
-        </a>
-      </div>
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <div
-          v-for="stat in stats"
-          :key="stat.label"
-          class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 shadow shadow-slate-950/40"
-        >
-          <p class="text-sm text-slate-200/70">{{ stat.label }}</p>
-          <p class="mt-2 text-xl font-semibold text-white">
-            {{ stat.value }}
-          </p>
-        </div>
       </div>
     </div>
 
@@ -117,16 +99,13 @@
       </div>
     </div>
   </section>
+
+  <Contact />
 </template>
 
 <script setup>
 import { ref } from "vue";
-const stats = ref([
-  { label: "Years Experience", value: "1+" },
-  { label: "Projects Delivered", value: "6" },
-  { label: "Tech Stack", value: "Vue • Tailwind • Vite" },
-  { label: "Based In", value: "Yangon, MM" },
-]);
+import Contact from "./Contact.vue";
 
 const highlightItems = ref([
   { title: "Animations", value: "Smooth page + scroll cues" },

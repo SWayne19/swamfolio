@@ -15,7 +15,7 @@
         >1 Year</span
       >
     </div>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
       <div
         v-for="skill in skills"
         :key="skill.title"
