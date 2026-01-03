@@ -8,6 +8,9 @@ const Home = () => import("./pages/Home.vue");
 const About = () => import("./pages/About.vue");
 const ExperienceAndSkills = () => import("./pages/ExperienceAndSkills.vue");
 const Project = () => import("./pages/Project.vue");
+const Overview = () => import("./pages/Overview.vue");
+const FrontEnd = () => import("./pages/FrontEnd.vue");
+const BackEnd = () => import("./pages/BackEnd.vue");
 
 // routes
 const routes = [
@@ -26,6 +29,20 @@ const routes = [
   {
     path: "/experienceAndSkills/projects/:id",
     component: Project,
+    children: [
+      {
+        path : '',
+        component : Overview,
+      },
+      {
+        path : 'frontEnd',
+        component : FrontEnd,
+      },
+      {
+        path : 'backEnd',
+        component : BackEnd,
+      }
+    ]
   },
 ];
 
