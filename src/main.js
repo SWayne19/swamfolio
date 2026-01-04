@@ -16,30 +16,40 @@ const BackEnd = () => import("./pages/BackEnd.vue");
 const routes = [
   {
     path: "/",
+    name: "home",
     component: Home,
   },
   {
     path: "/about",
+    name: "about",
     component: About,
   },
   {
     path: "/experienceAndSkills",
+    name: "experienceAndSkills",
     component: ExperienceAndSkills,
   },
   {
     path: "/experienceAndSkills/projects/:id",
+    name: "project",
     component: Project,
+    redirect: to => {
+      return {name : 'overView', params: {id : to.params.id}}
+    },
     children: [
       {
         path : '',
+        name : "overView",
         component : Overview,
       },
       {
         path : 'frontEnd',
+        name : "frontEnd",
         component : FrontEnd,
       },
       {
         path : 'backEnd',
+        name : "backEnd",
         component : BackEnd,
       }
     ]
