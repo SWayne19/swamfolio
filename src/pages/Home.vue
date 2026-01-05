@@ -30,9 +30,9 @@
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-4" data-aos="fade-up" data-aos-delay="400">
-        <a
+        <router-link
+          :to="{ name: 'experienceAndSkills' }"
           class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-blue-500 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/40 transition hover:-translate-y-0.5"
-          href="/experienceAndSkills"
           data-aos="zoom-in"
           data-aos-delay="500"
         >
@@ -49,7 +49,7 @@
             <path d="M5 12h14" />
             <path d="M12 5l7 7-7 7" />
           </svg>
-        </a>
+        </router-link>
       </div>
     </div>
 
