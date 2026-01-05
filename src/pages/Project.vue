@@ -62,10 +62,46 @@
         </span>
       </div>
 
+      <!-- Nested Navigation Tabs -->
+      <div class="mb-10 group/nav flex justify-center">
+        <nav
+          class="inline-flex p-1.5 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-white/5 shadow-inner"
+        >
+          <router-link
+            :to="{ name : 'overView' , params : {id : project.id} }"
+            exact-active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow-lg"
+            class="px-6 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+            Overview
+          </router-link>
+
+          <router-link
+            :to="{ name : 'frontEnd' , params : {id : project.id} }"
+            active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow-lg"
+            class="px-6 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+            Front End
+          </router-link>
+
+          <router-link
+            :to="{ name : 'backEnd' , params : {id : project.id} }"
+            active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow-lg"
+            class="px-6 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+            Back End
+          </router-link>
+        </nav>
+      </div>
+
+      <router-view></router-view>
+
       <!-- Modern CTA / Back Button -->
       <div class="flex items-center gap-4 mt-10">
         <router-link
-          to="/experienceAndSkills"
+          :to="{name : 'experienceAndSkills'}"
           class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/90 to-indigo-400/70 hover:from-blue-400 hover:to-indigo-300 transition text-white px-5 py-2 rounded-full font-semibold shadow shadow-blue-900/40 ring-1 ring-blue-400/20 hover:scale-105 active:scale-95 focus:outline-none"
         >
           <svg
@@ -107,7 +143,7 @@
     </svg>
     <p class="text-lg font-medium text-slate-200/80">Project not found.</p>
     <router-link
-      to="/experienceAndSkills"
+      :to="{name : 'experienceAndSkills'}"
       class="mt-4 inline-block bg-blue-600/70 px-5 py-2 rounded-full text-white font-semibold shadow-lg hover:bg-blue-500 transition"
     >
       View All Projects

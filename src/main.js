@@ -8,24 +8,51 @@ const Home = () => import("./pages/Home.vue");
 const About = () => import("./pages/About.vue");
 const ExperienceAndSkills = () => import("./pages/ExperienceAndSkills.vue");
 const Project = () => import("./pages/Project.vue");
+const Overview = () => import("./pages/Overview.vue");
+const FrontEnd = () => import("./pages/FrontEnd.vue");
+const BackEnd = () => import("./pages/BackEnd.vue");
 
 // routes
 const routes = [
   {
     path: "/",
+    name: "home",
     component: Home,
   },
   {
     path: "/about",
+    name: "about",
     component: About,
   },
   {
     path: "/experienceAndSkills",
+    name: "experienceAndSkills",
     component: ExperienceAndSkills,
   },
   {
     path: "/experienceAndSkills/projects/:id",
+    name: "project",
     component: Project,
+    redirect: to => {
+      return {name : 'overView', params: {id : to.params.id}}
+    },
+    children: [
+      {
+        path : '',
+        name : "overView",
+        component : Overview,
+      },
+      {
+        path : 'frontEnd',
+        name : "frontEnd",
+        component : FrontEnd,
+      },
+      {
+        path : 'backEnd',
+        name : "backEnd",
+        component : BackEnd,
+      }
+    ]
   },
 ];
 

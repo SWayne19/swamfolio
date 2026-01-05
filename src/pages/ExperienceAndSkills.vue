@@ -19,7 +19,7 @@
       <router-link
         v-for="project in projects"
         :key="project.id"
-        :to="`/experienceAndSkills/projects/${project.id}`"
+        :to="{ name : 'project' , params : {id : project.id} }"
         class="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:border-white/20 block"
       >
         <div
