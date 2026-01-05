@@ -1,10 +1,16 @@
-<template lang="">
+<template>
   <!-- stat cards -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
     <div
-      v-for="stat in stats"
+      v-for="(stat, idx) in stats"
       :key="stat.label"
       class="flex items-center gap-4 border-l-2 border-blue-500/30 pl-6 py-2 transition-all hover:border-blue-400"
+      :data-aos="'fade-up'"
+      :data-aos-delay="150 + idx * 60"
     >
       <div class="flex flex-col">
         <span class="text-3xl font-bold text-white tracking-tighter">{{
@@ -19,29 +25,50 @@
   </div>
 
   <!-- About: Full Width -->
-  <section id="about" class="mt-14 flex flex-col gap-10">
+  <section
+    id="about"
+    class="mt-14 flex flex-col gap-10"
+    data-aos="fade-in"
+    data-aos-delay="250"
+  >
     <!-- Main About Info & Badges (Full Width) -->
     <div
       class="flex flex-col gap-8 rounded-3xl border border-white/5 bg-slate-900/60 p-8 shadow-xl shadow-blue-950/30"
+      data-aos="zoom-in"
+      data-aos-delay="300"
     >
       <div>
         <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60 mb-1">
           About
         </p>
-        <h3 class="text-3xl font-semibold text-white leading-snug">
+        <h3
+          class="text-3xl font-semibold text-white leading-snug"
+          data-aos="fade-right"
+          data-aos-delay="350"
+        >
           I enjoy designing experiences that feel calm and intentional.
         </h3>
-        <p class="mt-5 text-slate-200/80 max-w-2xl">
+        <p
+          class="mt-5 text-slate-200/80 max-w-2xl"
+          data-aos="fade-right"
+          data-aos-delay="370"
+        >
           I build Vue-driven frontends that focus on clarity, readable code, and
           fast feedback loops. I care about aligning UI decisions with user
           goals, iterating quickly with Tailwind + Vite to keep momentum high.
         </p>
       </div>
-      <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-2">
+      <div
+        class="grid gap-4 sm:grid-cols-2 md:grid-cols-2"
+        data-aos="fade-up"
+        data-aos-delay="420"
+      >
         <div
-          v-for="badge in badges"
+          v-for="(badge, i) in badges"
           :key="badge.title"
           class="rounded-2xl border border-white/5 bg-white/5 p-4 flex flex-col gap-1"
+          :data-aos="'fade-up'"
+          :data-aos-delay="440 + i * 60"
         >
           <p class="text-xs uppercase tracking-[0.2em] text-blue-100/60">
             {{ badge.title }}
@@ -58,6 +85,8 @@
         :key="card.title"
         class="flex"
         :class="i % 2 === 0 ? 'justify-start' : 'justify-end'"
+        :data-aos="i % 2 === 0 ? 'fade-right' : 'fade-left'"
+        :data-aos-delay="530 + i * 100"
       >
         <div
           class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 flex flex-col h-full rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg shadow-slate-950/30 transition-transform"
@@ -119,4 +148,4 @@ const stats = ref([
   { label: "Based In", value: "Yangon, MM" },
 ]);
 </script>
-<style lang=""></style>
+<style></style>
