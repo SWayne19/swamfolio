@@ -6,15 +6,17 @@
       data-aos-delay="100"
     >
       <!-- Project Title + Icon -->
-      <div class="flex items-center justify-between mb-6" data-aos="fade-right" data-aos-delay="150">
+      <div
+        class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+        data-aos="fade-right"
+      >
         <div class="flex items-center gap-3">
           <div
-            class="h-14 w-14 bg-gradient-to-tr from-blue-600/70 via-indigo-500/80 to-blue-400/60 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-800/40"
+            class="h-11 w-11 sm:h-14 sm:w-14 bg-gradient-to-tr from-blue-600/70 via-indigo-500/80 to-blue-400/60 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-blue-800/40"
             data-aos="zoom-in"
-            data-aos-delay="180"
           >
             <svg
-              class="w-8 h-8 text-white/80"
+              class="h-6 w-6 sm:h-8 sm:w-8 text-white/80"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -28,22 +30,20 @@
               />
             </svg>
           </div>
+
           <h1
-            class="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-blue-300 to-indigo-400 bg-clip-text text-transparent tracking-tight drop-shadow-sm"
-            data-aos="fade-right"
-            data-aos-delay="200"
+            class="text-2xl sm:text-4xl font-extrabold bg-gradient-to-r from-blue-300 to-indigo-400 bg-clip-text text-transparent tracking-tight"
           >
             {{ project.title }}
           </h1>
         </div>
+
         <router-link
           :to="{ name: 'experienceAndSkills' }"
-          class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/90 to-indigo-400/70 hover:from-blue-400 hover:to-indigo-300 transition text-white px-5 py-2 rounded-full font-semibold shadow shadow-blue-900/40 ring-1 ring-blue-400/20 hover:scale-105 active:scale-95 focus:outline-none"
-          data-aos="fade-left"
-          data-aos-delay="200"
+          class="self-start sm:self-auto inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/90 to-indigo-400/70 text-white px-4 py-2 rounded-full text-sm font-semibold shadow shadow-blue-900/40 ring-1 ring-blue-400/20 hover:scale-105 active:scale-95 transition"
         >
           <svg
-            class="w-4 h-4"
+            class="h-4 w-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -51,7 +51,7 @@
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2.1"
+              stroke-width="2"
               d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
@@ -60,7 +60,7 @@
       </div>
 
       <!-- Description Section -->
-      <p 
+      <p
         class="text-lg sm:text-xl text-slate-200/90 mb-6 leading-relaxed"
         data-aos="fade-up"
         data-aos-delay="270"
@@ -69,7 +69,11 @@
       </p>
 
       <!-- Modern Tag Chips -->
-      <div class="flex flex-wrap gap-3 mb-8" data-aos="zoom-in" data-aos-delay="350">
+      <div
+        class="flex flex-wrap gap-3 mb-8"
+        data-aos="zoom-in"
+        data-aos-delay="350"
+      >
         <span
           v-for="(tag, idx) in project.tags"
           :key="tag"
@@ -88,17 +92,14 @@
         </span>
       </div>
 
-      <!-- Nested Navigation Tabs -->
-      <div class="mb-10 group/nav flex justify-center" data-aos="fade-up" data-aos-delay="430">
+      <div class="mb-10 flex justify-center" data-aos="fade-up">
         <nav
-          class="inline-flex p-1.5 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-white/5 shadow-inner"
+          class="flex w-full max-w-full overflow-x-auto scrollbar-hide gap-1.5 p-1.5 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-white/5 shadow-inner sm:justify-center"
         >
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"
-            exact-active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow-lg"
-            class="px-6 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
-            data-aos="fade-right"
-            data-aos-delay="440"
+            exact-active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow"
+            class="shrink-0 px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
             Overview
@@ -106,10 +107,8 @@
 
           <router-link
             :to="{ name: 'frontEnd', params: { id: project.id } }"
-            active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow-lg"
-            class="px-6 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
-            data-aos="fade-up"
-            data-aos-delay="470"
+            active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow"
+            class="shrink-0 px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
             Front End
@@ -117,10 +116,8 @@
 
           <router-link
             :to="{ name: 'backEnd', params: { id: project.id } }"
-            active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow-lg"
-            class="px-6 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
-            data-aos="fade-left"
-            data-aos-delay="500"
+            active-class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-white/10 text-blue-300 shadow"
+            class="shrink-0 px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all border border-transparent hover:text-white flex items-center gap-2 text-slate-400"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
             Back End
@@ -154,7 +151,13 @@
         d="M15 9l-6 6m0-6l6 6"
       />
     </svg>
-    <p class="text-lg font-medium text-slate-200/80" data-aos="fade-up" data-aos-delay="250">Project not found.</p>
+    <p
+      class="text-lg font-medium text-slate-200/80"
+      data-aos="fade-up"
+      data-aos-delay="250"
+    >
+      Project not found.
+    </p>
     <router-link
       :to="{ name: 'experienceAndSkills' }"
       class="mt-4 inline-block bg-blue-600/70 px-5 py-2 rounded-full text-white font-semibold shadow-lg hover:bg-blue-500 transition"
