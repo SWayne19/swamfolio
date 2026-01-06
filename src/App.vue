@@ -46,21 +46,21 @@
           class="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-200/80 sm:gap-6 transition-all duration-300 ease-in-out will-change-[transform,opacity,background-color]"
         >
           <RouterLink
-            :to="{ name : 'home' }"
+            :to="{ name: 'home' }"
             class="transition-all duration-200 ease-in-out hover:text-white text-lg"
             active-class="text-white font-medium"
           >
             Home
           </RouterLink>
           <RouterLink
-            :to="{ name : 'about' }"
+            :to="{ name: 'about' }"
             class="transition-all duration-200 ease-in-out hover:text-white text-lg"
             active-class="text-white font-medium"
           >
             About
           </RouterLink>
           <RouterLink
-            :to="{ name : 'experienceAndSkills' }"
+            :to="{ name: 'experienceAndSkills' }"
             class="transition-all duration-200 ease-in-out hover:text-white text-lg"
             active-class="text-white font-medium"
           >
@@ -114,5 +114,5 @@ const projects = ref([
   },
 ]);
 
-provide('projects', projects)
+provide("projects", projects);
 </script>
