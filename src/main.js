@@ -3,6 +3,9 @@ import "./style.css";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 // lazy-loaded pages
 const Home = () => import("./pages/Home.vue");
 const About = () => import("./pages/About.vue");
@@ -33,26 +36,27 @@ const routes = [
     path: "/experienceAndSkills/projects/:id",
     name: "project",
     component: Project,
-    redirect: to => {
-      return {name : 'overView', params: {id : to.params.id}}
-    },
+    redirect: (to) => ({
+      name: "overView",
+      params: { id: to.params.id },
+    }),
     children: [
       {
-        path : '',
-        name : "overView",
-        component : Overview,
+        path: "",
+        name: "overView",
+        component: Overview,
       },
       {
-        path : 'frontEnd',
-        name : "frontEnd",
-        component : FrontEnd,
+        path: "frontEnd",
+        name: "frontEnd",
+        component: FrontEnd,
       },
       {
-        path : 'backEnd',
-        name : "backEnd",
-        component : BackEnd,
-      }
-    ]
+        path: "backEnd",
+        name: "backEnd",
+        component: BackEnd,
+      },
+    ],
   },
 ];
 
@@ -62,5 +66,21 @@ const router = createRouter({
   routes,
 });
 
-// IMPORTANT: use(router) BEFORE mount
-createApp(App).use(router).mount("#app");
+//  VERY IMPORTANT: Refresh AOS on every route change
+router.afterEach(() => {
+  AOS.refreshHard();
+});
+
+const app = createApp(App);
+
+app.use(router);
+
+// Initialize AOS ONCE
+AOS.init({
+  duration: 800,
+  easing: "ease-out-cubic",
+  once: true,
+  offset: 120,
+});
+
+app.mount("#app");

@@ -1,8 +1,10 @@
 <template lang="">
   <!-- Projects -->
-  <section id="projects" class="mt-14">
+  <section id="projects" class="mt-14" data-aos="fade-up" data-aos-delay="100">
     <div
       class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"
+      data-aos="fade-down"
+      data-aos-delay="120"
     >
       <div>
         <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60">
@@ -17,10 +19,12 @@
 
     <div class="grid gap-6 lg:grid-cols-3">
       <router-link
-        v-for="project in projects"
+        v-for="(project, idx) in projects"
         :key="project.id"
         :to="{ name : 'project' , params : {id : project.id} }"
         class="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:border-white/20 block"
+        :data-aos="'fade-up'"
+        :data-aos-delay="180 + idx * 80"
       >
         <div
           class="absolute inset-0 bg-linear-to-br from-white/5 via-transparent to-indigo-600/10 opacity-0 transition group-hover:opacity-100"
@@ -29,6 +33,8 @@
         <div class="relative flex h-full flex-col gap-4">
           <div
             class="h-36 rounded-2xl bg-linear-to-br from-blue-600/50 via-indigo-600/40 to-slate-800/60 shadow-inner shadow-black/40"
+            data-aos="zoom-in"
+            :data-aos-delay="200 + idx * 60"
           />
 
           <h4 class="text-xl font-semibold text-white">
@@ -55,8 +61,8 @@
   </section>
 
   <!-- Experience -->
-  <section id="experience" class="mt-14">
-    <div class="mb-6">
+  <section id="experience" class="mt-14" data-aos="fade-in" data-aos-delay="400">
+    <div class="mb-6" data-aos="fade-down" data-aos-delay="420">
       <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60">
         Experience
       </p>
@@ -66,9 +72,11 @@
     </div>
     <div class="space-y-4">
       <div
-        v-for="experience in experiences"
+        v-for="(experience, i) in experiences"
         :key="experience.role"
         class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-900/60 p-5 shadow-lg shadow-slate-950/30 sm:flex-row sm:items-start sm:justify-between"
+        :data-aos="'fade-up'"
+        :data-aos-delay="450 + i * 120"
       >
         <div>
           <p class="text-sm uppercase tracking-[0.2em] text-blue-100/60">
@@ -86,7 +94,7 @@
     </div>
   </section>
 
-  <Skill />
+  <Skill data-aos="fade-up" data-aos-delay="900" />
 </template>
 <script setup>
 import { inject, ref } from "vue";
