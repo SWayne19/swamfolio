@@ -160,37 +160,81 @@
   <section
     id="experience"
     class="mt-14"
-    data-aos="fade-in"
+    data-aos="fade-up"
     data-aos-delay="200"
   >
-    <div class="mb-6" data-aos="fade-down" data-aos-delay="420">
-      <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60">
-        Experience
-      </p>
-      <h3 class="mt-2 text-3xl font-semibold text-white">
-        Early-career milestones
-      </h3>
+    <div
+      class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"
+      data-aos="fade-down"
+      data-aos-delay="220"
+    >
+      <div>
+        <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60">
+          Experience
+        </p>
+        <h3 class="text-3xl font-semibold text-white">
+          Early-career Milestones
+        </h3>
+      </div>
     </div>
-    <div class="space-y-4">
+    <!-- Timeline Modern Layout -->
+    <div class="relative mx-auto max-w-3xl">
+      <div
+        class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600/50 via-indigo-500/40 to-transparent rounded-full pointer-events-none hidden sm:block"
+      ></div>
       <div
         v-for="(experience, i) in experiences"
         :key="experience.role"
-        class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-900/60 p-5 shadow-lg shadow-slate-950/30 sm:flex-row sm:items-start sm:justify-between"
+        class="relative flex sm:items-center gap-6 sm:gap-8 mb-10 last:mb-0 group"
         :data-aos="'fade-up'"
-        :data-aos-delay="450 + i * 120"
+        :data-aos-delay="240 + i * 100"
       >
-        <div>
-          <p class="text-sm uppercase tracking-[0.2em] text-blue-100/60">
-            {{ experience.period }}
-          </p>
-          <h4 class="text-xl font-semibold text-white">
-            {{ experience.role }}
-          </h4>
-          <p class="text-sm text-slate-200/75">{{ experience.company }}</p>
+        <!-- Timeline Dot & Connector -->
+        <div class="hidden sm:flex flex-col items-center z-10 shrink-0">
+          <div
+            class="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 via-indigo-500 to-blue-400 border-4 border-slate-900 shadow-xl shadow-blue-500/30 transition-all duration-300 group-hover:scale-125 group-hover:shadow-blue-400/50"
+          ></div>
+          <div
+            class="flex-1 w-px bg-gradient-to-b from-indigo-400/30 to-transparent mt-1.5"
+          ></div>
         </div>
-        <p class="max-w-xl text-sm text-slate-200/80">
-          {{ experience.highlights }}
-        </p>
+        <div class="sm:ml-6 flex-1">
+          <!-- Period and Company Header -->
+          <div
+            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3"
+          >
+            <span
+              class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-200 bg-blue-600/10 border border-blue-500/20 rounded-full px-3 py-1.5 inline-block w-fit shadow-sm"
+            >
+              {{ experience.period }}
+            </span>
+            <span
+              class="text-xs sm:text-sm text-blue-100/70 font-mono tracking-tight sm:text-right"
+            >
+              {{ experience.company }}
+            </span>
+          </div>
+          <!-- Experience Card -->
+          <div
+            class="relative overflow-hidden border border-white/10 bg-slate-900/60 shadow-xl shadow-indigo-950/30 rounded-2xl p-5 sm:p-6 transition-all duration-300 ease-out group-hover:border-white/30 group-hover:bg-slate-900/80 group-hover:shadow-blue-700/20"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-indigo-600/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+            ></div>
+            <div class="relative">
+              <h4
+                class="text-xl sm:text-2xl font-semibold text-white mb-2 transition-colors duration-300 group-hover:text-blue-200"
+              >
+                {{ experience.role }}
+              </h4>
+              <p
+                class="text-sm sm:text-base text-slate-200/80 leading-relaxed transition-colors duration-300 group-hover:text-slate-200"
+              >
+                {{ experience.highlights }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -208,7 +252,7 @@ const slideProjects = (direction) => {
 
   const container = carouselRef.value;
 
-  const scrollAmount = 340; 
+  const scrollAmount = 340;
 
   container.scrollBy({
     left: direction === "right" ? scrollAmount : -scrollAmount,
@@ -218,18 +262,25 @@ const slideProjects = (direction) => {
 
 const experiences = ref([
   {
-    role: "Junior Frontend Developer",
-    company: "Freelance / Personal",
-    period: "2024 — Present",
+    role: "Intern Programmer",
+    company: "KMD Group of Company Limited (SoftComm Technology)",
+    period: "Jan — Feb 2025",
     highlights:
-      "Built Vue SPA prototypes, iterated with Tailwind, collaborated with designers on component libraries.",
+      "Assisted with frontend development tasks, participated in team meetings, and supported ongoing project implementations as an intern.",
   },
   {
-    role: "Intern Frontend Developer",
-    company: "Local Studio",
-    period: "2023 — 2024",
+    role: "Trainee Programmer",
+    company: "KMD Group of Company Limited (SoftComm Technology)",
+    period: "Mar — Apr 2025",
     highlights:
-      "Implemented UI tickets, improved accessibility on forms, and documented reusable patterns.",
+      "Received hands-on training in Vue.js and modern JavaScript, contributed bug fixes, and collaborated with senior developers as a trainee.",
+  },
+  {
+    role: "Junior Programmer",
+    company: "KMD Group of Company Limited (SoftComm Technology)",
+    period: "May 2025 — Present",
+    highlights:
+      "Promoted to Junior Programmer; actively developing and maintaining web applications, building UI components, and optimizing user experiences alongside a cross-functional team.",
   },
 ]);
 
