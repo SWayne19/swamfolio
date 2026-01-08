@@ -12,21 +12,22 @@
         data-aos-delay="300"
       >
         <span class="h-2 w-2 rounded-full bg-emerald-400" />
-        Open to Frontend Roles
+        Open to Full Stack Roles
       </div>
       <div data-aos="fade-right" data-aos-delay="350">
         <p class="text-sm uppercase tracking-[0.24em] text-blue-100/60">
-          Junior Frontend Developer
+          Junior Full Stack Developer
         </p>
         <h2
           class="mt-3 text-4xl font-bold leading-tight text-white sm:text-5xl"
         >
-          Designing crisp, fast, and human-centered web experiences.
+          Building robust, scalable, and intuitive full stack applications.
         </h2>
         <p class="mt-4 max-w-2xl text-lg text-slate-200/80">
-          I craft clean UIs with Vue, Tailwind, and modern tooling. With 1 year
-          of hands-on experience, I focus on shipping thoughtful interfaces that
-          feel effortless to use.
+          I build full stack web apps with Vue and Laravel, focusing on creating
+          seamless, secure, and reliable user experiences. My passion lies in
+          crafting solutions that are both performant and easy to use, from the
+          database to the UI.
         </p>
       </div>
       <div
@@ -75,21 +76,21 @@
               data-aos="fade-in"
               data-aos-delay="500"
             >
-              Currently improving
+              Currently working with
             </p>
             <h3
               class="text-xl font-semibold text-white"
               data-aos="fade-in"
               data-aos-delay="520"
             >
-              Micro-interactions
+              Vue.js &amp; Laravel
             </h3>
           </div>
           <span
-            class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200"
+            class="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-semibold text-blue-200"
             data-aos="zoom-in"
             data-aos-delay="540"
-            >Focus</span
+            >Stack</span
           >
         </div>
         <div class="mt-6 flex flex-col gap-4">
@@ -119,12 +120,24 @@
           data-aos-delay="900"
         >
           <span
-            class="h-10 w-10 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600"
-          />
+            class="h-10 w-10 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center"
+          >
+            <!-- Modernized "full stack" logo using Heroicons-inspired style -->
+            <svg
+              class="h-6 w-6 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
           <div>
-            <p class="font-semibold text-white">Latest sprint</p>
+            <p class="font-semibold text-white">Latest full stack update</p>
             <p class="text-slate-200/70">
-              Refining dashboard charts and responsive tables.
+              Built with the Laravel + Vue Starter Kit: robust scaffolding, hot
+              reloads, API-ready, and ideal for modern full stack projects.
             </p>
           </div>
         </div>
@@ -140,8 +153,8 @@ import { ref } from "vue";
 import Contact from "./Contact.vue";
 
 const highlightItems = ref([
-  { title: "Animations", value: "Smooth page + scroll cues" },
-  { title: "Accessibility", value: "Semantic HTML, contrast, focus" },
-  { title: "Performance", value: "Lighthouse minded builds" },
+  { title: "Full Stack", value: "Built with Vue 3 & Laravel" },
+  { title: "Developer Experience", value: "Hot reloads, API ready" },
+  { title: "Modern Stack", value: "Open source and production ready" },
 ]);
 </script>

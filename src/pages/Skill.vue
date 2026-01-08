@@ -1,7 +1,16 @@
 <template lang="">
   <!-- Skills -->
-  <section id="skills" class="mt-14">
-    <div class="mb-6 flex items-center justify-between">
+  <section
+    id="skills"
+    class="mt-14"
+    data-aos="fade-up"
+    data-aos-delay="400"
+  >
+    <div
+      class="mb-6 flex items-center justify-between"
+      data-aos="fade-down"
+      data-aos-delay="420"
+    >
       <div>
         <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60">
           Skills
@@ -12,14 +21,16 @@
       </div>
       <span
         class="rounded-full bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200/70"
-        >1 Year</span
+        >Full Stack</span
       >
     </div>
     <div class="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
       <div
-        v-for="skill in skills"
+        v-for="(skill, i) in skills"
         :key="skill.title"
         class="rounded-2xl border border-white/5 bg-white/5 p-5 shadow-sm shadow-slate-950/30"
+        :data-aos="'fade-up'"
+        :data-aos-delay="440 + i * 70"
       >
         <p class="text-xs uppercase tracking-[0.2em] text-blue-100/60">
           {{ skill.title }}
@@ -31,44 +42,19 @@
 </template>
 <script setup>
 import { ref } from 'vue';
-const badges = ref([
-  { title: "Frontend craft", text: "Vue 3, Tailwind, modern state mgmt" },
-  {
-    title: "Team habits",
-    text: "Lightweight docs, PR hygiene, design handoff",
-  },
-  { title: "Quality", text: "Lighthouse checks, keyboard flows, error states" },
-  {
-    title: "Learning",
-    text: "Motion design, testing with Vitest & Playwright",
-  },
-]);
-
-const infoCards = ref([
-  {
-    title: "What I’m practicing",
-    detail: "Micro animations, a11y-first patterns, responsive data visuals.",
-  },
-  {
-    title: "How I work",
-    detail:
-      "Small, frequent commits, open feedback loops, pairing on tricky UI.",
-  },
-  {
-    title: "Toolbox",
-    detail: "VS Code, Figma, Vite, Tailwind, GitHub, Netlify/Vercel.",
-  },
-  {
-    title: "Hobbies",
-    detail:
-      "Documenting UI patterns, reading product design blogs, coffee walks.",
-  },
-]);
 
 const skills = ref([
   {
     title: "Frontend",
-    items: "Vue 3, Composition API, Vite, Vue Router, Pinia",
+    items: "Vue 3, Composition API, Vue Router, Pinia, Vite, Blade, Inertia.js",
+  },
+  {
+    title: "Backend",
+    items: "Laravel, RESTful APIs, Sanctum, authentication & validation, Eloquent ORM",
+  },
+  {
+    title: "Databases",
+    items: "PostgreSQL, MySQL, migrations, query optimization",
   },
   {
     title: "Styling",
@@ -76,19 +62,19 @@ const skills = ref([
   },
   {
     title: "Quality",
-    items: "Responsive layout, a11y, structured PRs, linting",
+    items: "Testing (Vitest, Playwright), Lighthouse, a11y, linting, code review",
   },
   {
     title: "Integration",
-    items: "REST APIs, basic auth flows, form validation",
+    items: "API integration, OAuth, third-party services (Mail, S3, Pusher)",
   },
   {
     title: "Performance",
-    items: "Bundle awareness, lazy loading, image optimization",
+    items: "Bundle awareness, lazy loading, caching, queue jobs, image optimization",
   },
   {
     title: "Collaboration",
-    items: "Figma handoff, Jira/Notion, async updates",
+    items: "Figma handoff, Git/GitHub, Jira/Notion, async updates, code reviews",
   },
 ]);
 </script>

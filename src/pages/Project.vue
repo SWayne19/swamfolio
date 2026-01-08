@@ -5,7 +5,6 @@
       data-aos="fade-up"
       data-aos-delay="100"
     >
-      <!-- Project Title + Icon -->
       <div
         class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
         data-aos="fade-right"
@@ -30,7 +29,6 @@
               />
             </svg>
           </div>
-
           <h1
             class="text-2xl sm:text-4xl font-extrabold bg-gradient-to-r from-blue-300 to-indigo-400 bg-clip-text text-transparent tracking-tight"
           >
@@ -38,25 +36,60 @@
           </h1>
         </div>
 
-        <router-link
-          :to="{ name: 'experienceAndSkills' }"
-          class="self-start sm:self-auto inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/90 to-indigo-400/70 text-white px-4 py-2 rounded-full text-sm font-semibold shadow shadow-blue-900/40 ring-1 ring-blue-400/20 hover:scale-105 active:scale-95 transition"
-        >
-          <svg
-            class="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <div class="flex gap-2 items-center">
+          <a
+            v-if="project.url"
+            :href="project.url"
+            target="_blank"
+            rel="noopener"
+            class="self-start sm:self-auto inline-flex items-center gap-2 bg-gradient-to-r from-green-400/80 to-blue-500/80 text-white px-4 py-2 rounded-full text-sm font-semibold shadow shadow-blue-900/40 ring-1 ring-blue-400/20 hover:scale-105 active:scale-95 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-          Back
-        </router-link>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12.25 4.75h3a.75.75 0 01.75.75v9a.75.75 0 01-.75.75h-11a.75.75 0 01-.75-.75v-9a.75.75 0 01.75-.75h3M8 7l2-2 2 2m-2-2v7"
+              />
+            </svg>
+            Live&nbsp;Demo
+          </a>
+          <button
+            v-else
+            disabled
+            class="self-start sm:self-auto inline-flex items-center gap-2 bg-gradient-to-r from-slate-400/40 to-indigo-400/40 text-slate-200/80 px-4 py-2 rounded-full text-sm font-semibold shadow shadow-blue-900/30 ring-1 ring-slate-300/20 opacity-70 cursor-not-allowed"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12.25 4.75h3a.75.75 0 01.75.75v9a.75.75 0 01-.75.75h-11a.75.75 0 01-.75-.75v-9a.75.75 0 01.75-.75h3M8 7l2-2 2 2m-2-2v7"
+              />
+            </svg>
+            Demo (Coming Soon)
+          </button>
+
+          <router-link
+            :to="{ name: 'experienceAndSkills' }"
+            class="self-start sm:self-auto inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/90 to-indigo-400/70 text-white px-4 py-2 rounded-full text-sm font-semibold shadow shadow-blue-900/40 ring-1 ring-blue-400/20 hover:scale-105 active:scale-95 transition"
+          >
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+            Back
+          </router-link>
+        </div>
       </div>
 
       <!-- Description Section -->

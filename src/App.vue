@@ -27,7 +27,7 @@
             <h1 class="text-4xl font-semibold text-slate-50">
               Swam Pyae Paing
             </h1>
-            <p class="mt-2 text-md font-medium text-blue-200/80">
+            <p class="mt-4 text-md font-medium text-blue-200/80">
               Junior Web Developer
             </p>
           </div>
@@ -85,141 +85,191 @@ const currentYear = new Date().getFullYear();
 const projects = ref([
   {
     id: 1,
-    title: "Insight Dashboard",
+    title: "Cyclist",
     description:
-      "A modern analytics dashboard designed for business insights with real-time metrics, filters, and responsive charts.",
-    tags: ["Vue 3", "Tailwind", "Charts", "Dashboard"],
-
+      "Cyclist is a static website project for showcasing and selling sport bicycles, featuring a clean, responsive design and easy product browsing.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    image: "/src/assets/images/cyclist.png",
+    url: "https://cyclist-rho.vercel.app/",
     overview: {
-      goal: "Help teams visualize KPIs and track performance through clean, interactive dashboards.",
+      goal: "Create a modern, visually attractive landing page for bicycles using only static HTML, CSS, and JavaScript.",
       highlights: [
-        "Real-time metric updates",
-        "Dark mode & responsive layout",
-        "Reusable chart components",
+        "Fully static site - no front-end frameworks or backend",
+        "Responsive grid layout and CSS-only tabs for product details",
+        "Optimized, lightweight images and minimal JS for quick page loads",
       ],
       challenges:
-        "Managing component reactivity and keeping chart performance smooth.",
-      outcome: "Improved data visibility and faster decision-making for users.",
+        "Delivering interactivity and a polished user experience without any framework or backend features.",
+      outcome:
+        "Elegant and fast-loading website, easy to host or deploy on any platform, providing clear product discovery for visitors.",
     },
 
     frontend: {
-      stack: ["Vue 3", "Tailwind CSS", "Vue Router", "Chart.js"],
+      stack: ["HTML", "CSS", "JavaScript"],
       architecture: [
-        "Component-based layout",
-        "Composable chart hooks",
-        "Centralized state handling",
+        "Responsive layout using flex and grid",
+        "Organized HTML structure with reusable sections",
+        "Separation of concerns for styles and scripts",
       ],
       features: [
-        "Dynamic filters and date ranges",
-        "Animated stat cards",
-        "Accessible color contrast",
-        "Skeleton loaders",
+        "Clean landing page design",
+        "Responsive product grid",
+        "Fast page load with minimal JS",
       ],
-      ui: "Glassmorphism cards, gradient accents, subtle hover animations.",
+      ui: "Modern, clean look with sports-inspired visuals and smooth CSS interactions.",
     },
 
     backend: {
-      stack: ["Laravel 10", "REST API", "MySQL"],
-      features: [
-        "KPI data aggregation",
-        "Token-based authentication",
-        "API resource transformers",
-      ],
-      database: ["Users", "Metrics", "Metric_logs"],
-      security: "Sanctum authentication with role-based access.",
+      stack: [],
+      features: ["No backend implemented – static frontend only"],
+      database: [],
+      security: "",
     },
   },
 
   {
     id: 2,
-    title: "Team Kanban",
+    title: "TailNet",
     description:
-      "A collaborative kanban board for managing tasks with drag-and-drop and real-time updates.",
-    tags: ["Vue", "Drag & Drop", "Productivity"],
-
+      "A single page static website for a modern internet provider, featuring service highlights, pricing, and support—all styled with Tailwind CSS.",
+    tags: ["Tailwind", "Landing Page"],
+    image: "/src/assets/images/tailnet.png",
+    url: "https://tail-net.vercel.app/",
     overview: {
-      goal: "Provide teams with a simple, intuitive way to manage tasks and workflows.",
+      goal: "Build a clean, informative, and visually appealing landing site for TailNet internet services using only Tailwind CSS.",
       highlights: [
-        "Drag-and-drop columns",
-        "Keyboard-friendly interactions",
-        "Team collaboration features",
+        "Responsive layout for all device sizes",
+        "Clear showcase of packages and offerings",
+        "Simple navigation and focused content",
       ],
-      challenges: "Ensuring state consistency during drag operations.",
+      challenges:
+        "Conveying trust and tech-savvy service without any backend features or login.",
       outcome:
-        "Boosted team productivity and reduced task management overhead.",
+        "A lightning-fast landing page that serves as an effective gateway for users to learn about TailNet services and initiate contact.",
     },
 
     frontend: {
-      stack: ["Vue 3", "Tailwind CSS", "Vue Router", "Vue Draggable"],
+      stack: ["HTML", "Tailwind CSS"],
       architecture: [
-        "Column-based board system",
-        "Reusable task cards",
-        "Optimistic UI updates",
+        "Single page layout with clear sectioning",
+        "Reusable Tailwind utility patterns",
+        "No frameworks or backend dependency",
       ],
       features: [
-        "Drag & drop tasks",
-        "Inline task editing",
-        "Task priority labels",
-        "Smooth micro-interactions",
+        "Pricing cards and feature highlights",
+        "Mobile-first responsive design",
+        "Integrated contact and support call-to-action",
+        "Modern hero section and clear CTAs",
       ],
-      ui: "Minimalist layout with focus-based highlights and motion feedback.",
+      ui: "Bright, trustworthy branding with gradients, icons, and focused typography.",
     },
 
     backend: {
-      stack: ["Laravel", "REST API", "MySQL"],
-      features: [
-        "Task CRUD operations",
-        "Board and column management",
-        "User collaboration",
-      ],
-      database: ["Boards", "Columns", "Tasks", "Users"],
-      security: "Role-based permissions using Spatie.",
+      stack: [],
+      features: ["No backend implemented – static frontend only"],
+      database: [],
+      security: "",
     },
   },
 
   {
     id: 3,
-    title: "Landing Refresh",
+    title: "WebLibra",
     description:
-      "A conversion-focused marketing landing page optimized for speed, SEO, and mobile users.",
-    tags: ["SEO", "Animation", "Tailwind", "Vite"],
-
+      "A full-featured library management system built with Laravel on the server side and styled using Bootstrap CSS.",
+    tags: ["Bootstrap", "Library Management", "Laravel", "PostgresSQL"],
+    image: "/src/assets/images/weblibra.png",
+    url: "",
     overview: {
-      goal: "Increase user engagement and conversion rates through modern UI and optimized UX.",
+      goal: "Streamline and digitize all aspects of library management including book inventory, member tracking, and loan transactions.",
       highlights: [
-        "Fast page load",
-        "Scroll-based animations",
-        "SEO best practices",
+        "Intuitive book catalog and search",
+        "Role-based access for admins and members",
+        "Fast, responsive Bootstrap UI",
       ],
-      challenges: "Balancing animations with performance and accessibility.",
-      outcome: "Improved conversion rate and reduced bounce rate.",
+      challenges:
+        "Ensuring smooth integration of all features with robust backend logic while keeping the interface user-friendly.",
+      outcome:
+        "Modern, maintainable library software that reduces manual work and improves accessibility for both staff and patrons.",
     },
 
     frontend: {
-      stack: ["Vue 3", "Vite", "Tailwind CSS"],
+      stack: ["Blade Templating", "Bootstrap CSS", "JavaScript"],
       architecture: [
-        "Section-based layout",
-        "Reusable CTA components",
-        "Animation composables",
+        "Blade-driven server-rendered views",
+        "Reusable Bootstrap components",
+        "Clear separation of UI and server logic",
       ],
       features: [
-        "Scroll-triggered animations",
-        "Responsive typography",
-        "Optimized images",
-        "Dark/light contrast tuning",
+        "Book listings and filtering",
+        "Member login and registration",
+        "Responsive layouts for desktop and mobile",
+        "Admin dashboard with statistics and controls",
       ],
-      ui: "Bold typography, soft gradients, and strong visual hierarchy.",
+      ui: "Clean, familiar Bootstrap design with focus on usability and clarity.",
     },
 
     backend: {
-      stack: ["Laravel", "Form Handling", "MySQL"],
+      stack: ["Laravel", "PostgresSQL"],
       features: [
-        "Contact form submission",
-        "Email notifications",
-        "Admin lead dashboard",
+        "Book, member, and Stock management",
+        "Role-based permissions",
+        "CRUD for all library assets",
+        "Search and filtering APIs",
       ],
-      database: ["Leads", "Contact_messages"],
-      security: "Form validation and spam protection.",
+      database: ["Books", "Users", "Balances", "Borrows", "Returns"],
+      security: "Authentication, Authorization , Input validation.",
+    },
+  },
+
+  {
+    id: 4,
+    title: "ForumZone",
+    description:
+      "A community-driven forum platform built with Vue, Laravel, and PostgreSQL, supporting rich discussions and user engagement.",
+    tags: ["Vue", "Laravel", "Postgres", "Forum", "Comments"],
+    image: "/src/assets/images/forumzone.png",
+    url: "",
+    overview: {
+      goal: "Create a modern, easy-to-use forum where users can create threads, share ideas, and participate in discussions.",
+      highlights: [
+        "Dynamic thread and category organization",
+        "User-focused, interactive commenting",
+        "Fast, mobile-friendly Vue SPA frontend",
+      ],
+      challenges:
+        "Implementing scalable real-time discussions while maintaining robust data relationships between users, threads, comments, and categories.",
+      outcome:
+        "A maintainable and extensible forum platform enabling community interaction, with a clean and intuitive UI.",
+    },
+
+    frontend: {
+      stack: ["Vue 3", "JavaScript", "Tailwind CSS"],
+      architecture: [
+        "Vue SPA for seamless in-app navigation",
+        "Component-driven UI design",
+        "Dynamic thread and comment rendering",
+      ],
+      features: [
+        "User registration, authentication, and profiles",
+        "Create, view, and reply to threads",
+        "Organize discussions by category",
+        "Live updating conversations",
+      ],
+      ui: "Modern, minimal design with category and thread navigation, responsive layouts for desktop and mobile.",
+    },
+
+    backend: {
+      stack: ["Laravel", "Postgres"],
+      features: [
+        "CRUD for threads, comments, users, and categories",
+        "User roles and moderation",
+        "Thread/category organization",
+        "REST APIs for all main entities",
+      ],
+      database: ["Users", "Threads", "Categories", "Comments"],
+      security:
+        "Secure authentication, input validation, and permission checks.",
     },
   },
 ]);
@@ -228,7 +278,6 @@ provide("projects", projects);
 </script>
 
 <style>
-
 .tech-bg {
   background: radial-gradient(circle at top, #020617 0%, #020617 100%);
 }
