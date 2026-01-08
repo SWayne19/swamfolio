@@ -89,7 +89,7 @@ const projects = ref([
     description:
       "Cyclist is a static website project for showcasing and selling sport bicycles, featuring a clean, responsive design and easy product browsing.",
     tags: ["HTML", "CSS", "JavaScript"],
-    image: "/src/assets/images/cyclist.png",
+    image: "/public/images/cyclist.png",
     url: "https://cyclist-rho.vercel.app/",
     overview: {
       goal: "Create a modern, visually attractive landing page for bicycles using only static HTML, CSS, and JavaScript.",
@@ -133,7 +133,7 @@ const projects = ref([
     description:
       "A single page static website for a modern internet provider, featuring service highlights, pricing, and support—all styled with Tailwind CSS.",
     tags: ["Tailwind", "Landing Page"],
-    image: "/src/assets/images/tailnet.png",
+    image: "/public/images/tailnet.png",
     url: "https://tail-net.vercel.app/",
     overview: {
       goal: "Build a clean, informative, and visually appealing landing site for TailNet internet services using only Tailwind CSS.",
@@ -178,7 +178,7 @@ const projects = ref([
     description:
       "A full-featured library management system built with Laravel on the server side and styled using Bootstrap CSS.",
     tags: ["Bootstrap", "Library Management", "Laravel", "PostgresSQL"],
-    image: "/src/assets/images/weblibra.png",
+    image: "/public/images/weblibra.png",
     url: "",
     overview: {
       goal: "Streamline and digitize all aspects of library management including book inventory, member tracking, and loan transactions.",
@@ -228,7 +228,7 @@ const projects = ref([
     description:
       "A community-driven forum platform built with Vue, Laravel, and PostgreSQL, supporting rich discussions and user engagement.",
     tags: ["Vue", "Laravel", "Postgres", "Forum", "Comments"],
-    image: "/src/assets/images/forumzone.png",
+    image: "/public/images/forumzone.png",
     url: "",
     overview: {
       goal: "Create a modern, easy-to-use forum where users can create threads, share ideas, and participate in discussions.",
