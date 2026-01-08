@@ -1,6 +1,5 @@
 <template>
   <div class="min-h-screen relative overflow-hidden">
-    <!-- 🔮 Animated Tech Background -->
     <div
       class="tech-bg pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
@@ -126,7 +125,7 @@ const projects = ref([
         "Token-based authentication",
         "API resource transformers",
       ],
-      database: ["users", "metrics", "metric_logs"],
+      database: ["Users", "Metrics", "Metric_logs"],
       security: "Sanctum authentication with role-based access.",
     },
   },
@@ -173,7 +172,7 @@ const projects = ref([
         "Board and column management",
         "User collaboration",
       ],
-      database: ["boards", "columns", "tasks", "users"],
+      database: ["Boards", "Columns", "Tasks", "Users"],
       security: "Role-based permissions using Spatie.",
     },
   },
@@ -219,7 +218,7 @@ const projects = ref([
         "Email notifications",
         "Admin lead dashboard",
       ],
-      database: ["leads", "contact_messages"],
+      database: ["Leads", "Contact_messages"],
       security: "Form validation and spam protection.",
     },
   },
@@ -229,9 +228,6 @@ provide("projects", projects);
 </script>
 
 <style>
-/* ============================
-   TECH ANIMATED BACKGROUND
-============================ */
 
 .tech-bg {
   background: radial-gradient(circle at top, #020617 0%, #020617 100%);
