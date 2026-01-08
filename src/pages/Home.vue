@@ -29,7 +29,11 @@
           feel effortless to use.
         </p>
       </div>
-      <div class="flex flex-wrap items-center gap-4" data-aos="fade-up" data-aos-delay="400">
+      <div
+        class="flex flex-wrap items-center gap-4"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
         <router-link
           :to="{ name: 'experienceAndSkills' }"
           class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-blue-500 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/40 transition hover:-translate-y-0.5"
@@ -66,8 +70,20 @@
       >
         <div class="flex items-center justify-between gap-3">
           <div>
-            <p class="text-sm text-slate-200/70" data-aos="fade-in" data-aos-delay="500">Currently improving</p>
-            <h3 class="text-xl font-semibold text-white" data-aos="fade-in" data-aos-delay="520">Micro-interactions</h3>
+            <p
+              class="text-sm text-slate-200/70"
+              data-aos="fade-in"
+              data-aos-delay="500"
+            >
+              Currently improving
+            </p>
+            <h3
+              class="text-xl font-semibold text-white"
+              data-aos="fade-in"
+              data-aos-delay="520"
+            >
+              Micro-interactions
+            </h3>
           </div>
           <span
             class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200"
