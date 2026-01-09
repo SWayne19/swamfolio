@@ -66,6 +66,19 @@
       <router-view />
     </div>
 
+    <!-- Scroll To Top Button -->
+    <button
+      v-show="showScrollTop"
+      @click="scrollToTop"
+      class="scroll-top-btn group"
+      :class="{ 'scroll-top-visible': showScrollTop }"
+      aria-label="Scroll to top"
+    >
+      <span class="scroll-top-inner">
+        <span class="scroll-top-icon"> ▲ </span>
+      </span>
+    </button>
+
     <!-- Footer -->
     <footer class="border-t border-white/5 py-8">
       <div class="mx-auto max-w-6xl px-4 text-center text-sm text-slate-400/60">
@@ -76,11 +89,33 @@
 </template>
 
 <script setup>
-import { provide, ref } from "vue";
+import { onMounted, onUnmounted, provide, ref } from "vue";
 
 const headerRef = ref(null);
 const navRef = ref(null);
 const currentYear = new Date().getFullYear();
+
+// Scroll to top button state
+const showScrollTop = ref(false);
+
+const handleScroll = () => {
+  showScrollTop.value = window.scrollY > 200;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll, { passive: true });
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 
 const projects = ref([
   {
@@ -155,20 +190,22 @@ const projects = ref([
         "Single page layout split into hero, plans, and FAQ sections",
         "Vue components for pricing cards and collapsible FAQ accordions",
         "Tailwind utility classes for quick styling, transitions, and effects",
-        "No backend — all interactivity handled on the client side"
+        "No backend — all interactivity handled on the client side",
       ],
       features: [
         "Interactive plan selection with price highlight (Vue reactive state)",
         "FAQ section using accordion (Vue v-for, v-show/toggle)",
         "Hover, focus, and transition effects for calls-to-action and cards",
-        "Mobile-first responsive design flows using Tailwind flex/grid"
+        "Mobile-first responsive design flows using Tailwind flex/grid",
       ],
       ui: "Bright, trustworthy look with Tailwind gradients, subtle motion, and clear Vue-driven interactivity: hover glows, animated accordions, and context-driven plan details.",
     },
 
     backend: {
       stack: [],
-      features: ["No backend — all data and behavior handled on the frontend via Vue reactive state."],
+      features: [
+        "No backend — all data and behavior handled on the frontend via Vue reactive state.",
+      ],
       database: [],
       security: "",
     },
@@ -361,6 +398,99 @@ provide("projects", projects);
   }
   to {
     background-position-y: 100%;
+  }
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  right: 1.75rem;
+  bottom: 1.75rem;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out,
+    box-shadow 0.25s ease-out;
+}
+
+.scroll-top-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 10% 0%,
+    #38bdf8 0%,
+    #4f46e5 60%,
+    #020617 100%
+  );
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9),
+    0 0 0 1px rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+
+.scroll-top-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 0%,
+    rgba(248, 250, 252, 0.3),
+    transparent 60%
+  );
+  opacity: 0.75;
+  mix-blend-mode: screen;
+  transition: opacity 0.2s ease-out;
+}
+
+.scroll-top-btn:hover .scroll-top-inner::before {
+  opacity: 1;
+}
+
+.scroll-top-icon {
+  position: relative;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  text-shadow: 0 0 12px rgba(248, 250, 252, 0.8);
+  transition: transform 0.22s ease-out, color 0.22s ease-out;
+}
+
+.scroll-top-btn:hover .scroll-top-icon {
+  transform: translateY(-2px);
+  color: #f9fafb;
+}
+
+.scroll-top-btn:active .scroll-top-inner {
+  transform: scale(0.96);
+}
+
+@media (max-width: 640px) {
+  .scroll-top-btn {
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
+
+  .scroll-top-inner {
+    width: 2.75rem;
+    height: 2.75rem;
   }
 }
 </style>

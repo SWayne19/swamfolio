@@ -129,8 +129,22 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2"/>
-              <path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="4"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <path
+                d="M7 12h10M12 7v10"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </span>
           <div>
