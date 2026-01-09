@@ -131,42 +131,44 @@ const projects = ref([
     id: 2,
     title: "TailNet",
     description:
-      "A single page static website for a modern internet provider, featuring service highlights, pricing, and support—all styled with Tailwind CSS.",
-    tags: ["Tailwind", "Landing Page"],
+      "A modern, responsive landing page demo for an internet provider—built with Tailwind CSS and enhanced with Vue for interactive features like plan selection and real-time FAQs.",
+    tags: ["Tailwind", "Vue", "Interactive", "Landing Page"],
     image: "/images/tailnet.png",
     url: "https://tail-net.vercel.app/",
     overview: {
-      goal: "Build a clean, informative, and visually appealing landing site for TailNet internet services using only Tailwind CSS.",
+      goal: "Create an engaging, interactive landing site for TailNet internet services using Tailwind CSS for styling and Vue for user-driven elements.",
       highlights: [
-        "Responsive layout for all device sizes",
-        "Clear showcase of packages and offerings",
-        "Simple navigation and focused content",
+        "Responsive, utility-class-driven layout for all devices",
+        "Vue-powered interactive pricing selector for service packages",
+        "Collapsible FAQs for quick answers",
+        "Animated transitions and hover interactions with Tailwind",
       ],
       challenges:
-        "Conveying trust and tech-savvy service without any backend features or login.",
+        "Blending minimal static content with Vue-based reactivity while keeping load times fast — achieving interactivity without backend complexity.",
       outcome:
-        "A lightning-fast landing page that serves as an effective gateway for users to learn about TailNet services and initiate contact.",
+        "A visually polished, interactive front page that lets users compare plans, open FAQs, and quickly access CTA areas, showcasing what can be done with Tailwind and Vue.",
     },
 
     frontend: {
-      stack: ["HTML", "Tailwind CSS"],
+      stack: ["HTML", "Tailwind CSS", "Vue 3", "Composition API"],
       architecture: [
-        "Single page layout with clear sectioning",
-        "Reusable Tailwind utility patterns",
-        "No frameworks or backend dependency",
+        "Single page layout split into hero, plans, and FAQ sections",
+        "Vue components for pricing cards and collapsible FAQ accordions",
+        "Tailwind utility classes for quick styling, transitions, and effects",
+        "No backend — all interactivity handled on the client side"
       ],
       features: [
-        "Pricing cards and feature highlights",
-        "Mobile-first responsive design",
-        "Integrated contact and support call-to-action",
-        "Modern hero section and clear CTAs",
+        "Interactive plan selection with price highlight (Vue reactive state)",
+        "FAQ section using accordion (Vue v-for, v-show/toggle)",
+        "Hover, focus, and transition effects for calls-to-action and cards",
+        "Mobile-first responsive design flows using Tailwind flex/grid"
       ],
-      ui: "Bright, trustworthy branding with gradients, icons, and focused typography.",
+      ui: "Bright, trustworthy look with Tailwind gradients, subtle motion, and clear Vue-driven interactivity: hover glows, animated accordions, and context-driven plan details.",
     },
 
     backend: {
       stack: [],
-      features: ["No backend implemented – static frontend only"],
+      features: ["No backend — all data and behavior handled on the frontend via Vue reactive state."],
       database: [],
       security: "",
     },
