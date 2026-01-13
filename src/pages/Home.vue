@@ -122,30 +122,7 @@
           <span
             class="h-10 w-10 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center"
           >
-            <!-- Modernized "full stack" logo using Heroicons-inspired style -->
-            <svg
-              class="h-6 w-6 text-white"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="4"
-                stroke="currentColor"
-                stroke-width="2"
-              />
-              <path
-                d="M7 12h10M12 7v10"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <!-- Modernized "full stack" logo background (icon removed) -->
           </span>
           <div>
             <p class="font-semibold text-white">Latest full stack update</p>
