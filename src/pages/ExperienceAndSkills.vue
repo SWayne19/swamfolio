@@ -1,10 +1,8 @@
 <template lang="">
   <!-- Projects -->
-  <section id="projects" class="mt-14" data-aos="fade-up" data-aos-delay="100">
+  <section id="projects" class="mt-14" data-aos="fade-up">
     <div
       class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"
-      data-aos="fade-down"
-      data-aos-delay="120"
     >
       <div>
         <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60">
@@ -51,9 +49,6 @@
           :key="project.id"
           :to="{ name: 'project', params: { id: project.id } }"
           class="group min-w-[310px] max-w-sm w-80 flex-shrink-0 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-xl shadow-indigo-950/30 transition-all duration-300 ease-out hover:border-white/30 block snap-center"
-          :data-aos="'fade-up'"
-          :data-aos-delay="180 + idx * 80"
-          style="will-change: transform, border-color, box-shadow"
         >
           <div
             class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-indigo-600/10 opacity-0 transition-all duration-300 pointer-events-none"
@@ -63,9 +58,6 @@
             <!-- Image Box -->
             <div
               class="h-36 w-full flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600/60 via-indigo-600/40 to-slate-900/70 shadow-inner shadow-black/30 mb-2 transition-all duration-300 ease-out"
-              data-aos="zoom-in"
-              :data-aos-delay="200 + idx * 60"
-              style="will-change: transform"
             >
               <template v-if="project.image">
                 <img
@@ -161,12 +153,9 @@
     id="experience"
     class="mt-14"
     data-aos="fade-up"
-    data-aos-delay="200"
   >
     <div
       class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"
-      data-aos="fade-down"
-      data-aos-delay="220"
     >
       <div>
         <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60">
@@ -186,8 +175,6 @@
         v-for="(experience, i) in experiences"
         :key="experience.role"
         class="relative flex sm:items-center gap-6 sm:gap-8 mb-10 last:mb-0 group"
-        :data-aos="'fade-up'"
-        :data-aos-delay="240 + i * 100"
       >
         <!-- Timeline Dot & Connector -->
         <div class="hidden sm:flex flex-col items-center z-10 shrink-0">
@@ -239,7 +226,7 @@
     </div>
   </section>
 
-  <Skill data-aos="fade-up" data-aos-delay="400" />
+  <Skill />
 </template>
 <script setup>
 import { inject, ref } from "vue";

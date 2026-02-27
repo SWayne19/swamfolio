@@ -91,8 +91,6 @@
 <script setup>
 import { onMounted, onUnmounted, provide, ref } from "vue";
 
-const headerRef = ref(null);
-const navRef = ref(null);
 const currentYear = new Date().getFullYear();
 
 // Scroll to top button state

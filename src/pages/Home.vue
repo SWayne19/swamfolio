@@ -3,18 +3,15 @@
   <section
     class="grid gap-10 rounded-3xl border border-white/5 bg-white/5 p-8 shadow-xl shadow-blue-950/20 backdrop-blur md:grid-cols-[1.3fr_1fr] md:p-12"
     data-aos="fade-up"
-    data-aos-delay="100"
   >
-    <div class="flex flex-col gap-8" data-aos="fade-right" data-aos-delay="200">
+    <div class="flex flex-col gap-8">
       <div
         class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-blue-100/80 ring-1 ring-white/15"
-        data-aos="fade-in"
-        data-aos-delay="300"
       >
         <span class="h-2 w-2 rounded-full bg-emerald-400" />
         Open to Full Stack Roles
       </div>
-      <div data-aos="fade-right" data-aos-delay="350">
+      <div>
         <p class="text-sm uppercase tracking-[0.24em] text-blue-100/60">
           Junior Full Stack Developer
         </p>
@@ -32,14 +29,10 @@
       </div>
       <div
         class="flex flex-wrap items-center gap-4"
-        data-aos="fade-up"
-        data-aos-delay="400"
       >
         <router-link
           :to="{ name: 'experienceAndSkills' }"
           class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-blue-500 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/40 transition hover:-translate-y-0.5"
-          data-aos="zoom-in"
-          data-aos-delay="500"
         >
           View Projects
           <svg
@@ -58,48 +51,33 @@
       </div>
     </div>
 
-    <div class="relative" data-aos="fade-left" data-aos-delay="300">
+    <div class="relative">
       <div
         class="absolute -left-6 -top-6 h-24 w-24 rounded-3xl bg-linear-to-br from-cyan-400 to-blue-600 blur-3xl opacity-40"
-        data-aos="zoom-in"
-        data-aos-delay="400"
       />
       <div
         class="relative rounded-[28px] border border-white/10 bg-slate-900/60 p-6 shadow-2xl shadow-indigo-900/30 backdrop-blur"
-        data-aos="fade-left"
-        data-aos-delay="450"
       >
         <div class="flex items-center justify-between gap-3">
           <div>
-            <p
-              class="text-sm text-slate-200/70"
-              data-aos="fade-in"
-              data-aos-delay="500"
-            >
+            <p class="text-sm text-slate-200/70">
               Currently working with
             </p>
             <h3
               class="text-xl font-semibold text-white"
-              data-aos="fade-in"
-              data-aos-delay="520"
             >
               Vue.js &amp; Laravel
             </h3>
           </div>
           <span
             class="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-semibold text-blue-200"
-            data-aos="zoom-in"
-            data-aos-delay="540"
-            >Stack</span
-          >
+          >Stack</span>
         </div>
         <div class="mt-6 flex flex-col gap-4">
           <div
             v-for="(item, idx) in highlightItems"
             :key="item.title"
             class="flex items-center justify-between rounded-xl border border-white/5 bg-white/5 px-4 py-3"
-            :data-aos="'fade-left'"
-            :data-aos-delay="600 + idx * 80"
           >
             <div>
               <p class="text-xs uppercase tracking-[0.2em] text-blue-100/60">
@@ -116,8 +94,6 @@
         </div>
         <div
           class="mt-6 flex items-center gap-3 rounded-2xl bg-white/5 px-4 py-3 text-sm text-slate-200/80"
-          data-aos="fade-up"
-          data-aos-delay="900"
         >
           <span
             class="h-10 w-10 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center"
@@ -136,7 +112,7 @@
     </div>
   </section>
 
-  <Contact data-aos="fade-up" data-aos-delay="300" />
+  <Contact />
 </template>
 
 <script setup>

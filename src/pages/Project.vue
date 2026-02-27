@@ -2,17 +2,13 @@
   <div v-if="project" class="relative p-0 sm:p-0">
     <div
       class="max-w-3xl mx-auto bg-slate-900/80 rounded-3xl shadow-2xl shadow-blue-950/50 overflow-hidden border border-white/10 backdrop-blur-md px-6 py-10"
-      data-aos="fade-up"
-      data-aos-delay="100"
     >
       <div
         class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
-        data-aos="fade-right"
       >
         <div class="flex items-center gap-3">
           <div
             class="h-11 w-11 sm:h-14 sm:w-14 bg-gradient-to-tr from-blue-600/70 via-indigo-500/80 to-blue-400/60 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-blue-800/40"
-            data-aos="zoom-in"
           >
             <svg
               class="h-6 w-6 sm:h-8 sm:w-8 text-white/80"
@@ -95,8 +91,6 @@
       <!-- Description Section -->
       <p
         class="text-lg sm:text-xl text-slate-200/90 mb-6 leading-relaxed"
-        data-aos="fade-up"
-        data-aos-delay="270"
       >
         {{ project.description }}
       </p>
@@ -104,15 +98,11 @@
       <!-- Modern Tag Chips -->
       <div
         class="flex flex-wrap gap-3 mb-8"
-        data-aos="zoom-in"
-        data-aos-delay="350"
       >
         <span
           v-for="(tag, idx) in project.tags"
           :key="tag"
           class="inline-flex items-center gap-1 rounded-full bg-gradient-to-br from-blue-700/40 to-indigo-600/30 border border-blue-400/30 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-blue-100 shadow-sm shadow-blue-900/20 hover:scale-105 transition"
-          :data-aos="'fade-left'"
-          :data-aos-delay="360 + idx * 50"
         >
           <svg
             class="w-2.5 h-2.5 text-blue-200/80"
@@ -125,7 +115,7 @@
         </span>
       </div>
 
-      <div class="mb-10 flex justify-center" data-aos="fade-up">
+      <div class="mb-10 flex justify-center">
         <nav
           class="flex w-full max-w-full overflow-x-auto scrollbar-hide gap-1.5 p-1.5 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-white/5 shadow-inner sm:justify-center"
         >
@@ -158,23 +148,19 @@
         </nav>
       </div>
 
-      <router-view data-aos="fade-up" data-aos-delay="530"></router-view>
+      <router-view></router-view>
     </div>
   </div>
 
   <div
     v-else
     class="flex flex-col items-center justify-center min-h-[350px] text-white"
-    data-aos="fade-in"
-    data-aos-delay="150"
   >
     <svg
       class="w-16 h-16 mb-2 text-blue-700/50"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      data-aos="zoom-in"
-      data-aos-delay="200"
     >
       <circle cx="12" cy="12" r="9" stroke-width="2.5" />
       <path
@@ -186,16 +172,12 @@
     </svg>
     <p
       class="text-lg font-medium text-slate-200/80"
-      data-aos="fade-up"
-      data-aos-delay="250"
     >
       Project not found.
     </p>
     <router-link
       :to="{ name: 'experienceAndSkills' }"
       class="mt-4 inline-block bg-blue-600/70 px-5 py-2 rounded-full text-white font-semibold shadow-lg hover:bg-blue-500 transition"
-      data-aos="fade-up"
-      data-aos-delay="280"
     >
       View All Projects
     </router-link>
