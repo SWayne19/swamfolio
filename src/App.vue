@@ -28,7 +28,7 @@
               Swam Pyae Paing
             </h1>
             <p class="mt-4 text-md font-medium text-blue-200/80">
-              Junior Web Developer
+              Web Developer
             </p>
           </div>
         </div>
