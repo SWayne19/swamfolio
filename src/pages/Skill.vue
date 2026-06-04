@@ -17,7 +17,7 @@
       <div
         v-for="skill in skills"
         :key="skill.title"
-        class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 dark:border-slate-800 dark:bg-slate-900/60"
         data-aos="fade-up"
       >
         <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">

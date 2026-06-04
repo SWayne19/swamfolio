@@ -36,10 +36,10 @@
           v-for="project in projects"
           :key="project.id"
           :to="{ name: 'project', params: { id: project.id } }"
-          class="group block w-[80vw] max-w-xs flex-shrink-0 snap-start overflow-hidden rounded-xl border border-gray-100 bg-white p-5 transition-all duration-200 hover:border-primary-200 hover:shadow-md sm:w-72 dark:border-slate-800 dark:bg-slate-900/60 dark:hover:border-slate-600"
+          class="group block w-[80vw] max-w-xs flex-shrink-0 snap-start overflow-hidden rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 transition-all duration-200 hover:border-primary-200 hover:shadow-md sm:w-72 dark:border-slate-800 dark:bg-slate-900/60 dark:hover:border-slate-600"
         >
           <div class="flex h-full flex-col gap-3">
-            <div class="flex h-32 w-full items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800">
+            <div class="flex h-32 w-full items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-800">
               <template v-if="project.image">
                 <img
                   :src="project.image"
@@ -128,7 +128,7 @@
           </div>
 
           <!-- Card -->
-          <div class="flex flex-1 flex-col rounded-xl border border-gray-100 bg-white p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
+          <div class="flex flex-1 flex-col rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
             <p class="text-[11px] font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
               {{ experience.company }}
             </p>

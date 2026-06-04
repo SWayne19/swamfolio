@@ -45,7 +45,7 @@
     <div
       v-for="item in highlightItems"
       :key="item.title"
-      class="flex items-start gap-4 rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/60"
+      class="flex items-start gap-4 rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 dark:border-slate-800 dark:bg-slate-900/60"
     >
       <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@
 
   <!-- Currently Working With -->
   <section
-    class="mb-16 rounded-xl border border-gray-100 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60"
+    class="mb-16 rounded-xl border border-gray-200/80 bg-white shadow-sm p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60"
     data-aos="fade-up"
   >
     <div class="flex items-center justify-between">
@@ -73,7 +73,7 @@
         Stack
       </span>
     </div>
-    <div class="mt-5 flex items-start gap-3 rounded-lg bg-gray-50 p-4 dark:bg-slate-800/60">
+    <div class="mt-5 flex items-start gap-3 rounded-lg border border-gray-200/80 bg-gray-100/50 p-4 dark:border-slate-700 dark:bg-slate-800/60">
       <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 text-white">
         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />

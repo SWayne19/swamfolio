@@ -65,7 +65,7 @@
 
       <!-- Tab Navigation -->
       <div class="mb-8">
-        <nav class="flex gap-1 rounded-lg border border-gray-100 bg-gray-50 p-1 dark:border-slate-800 dark:bg-slate-800/60">
+        <nav class="flex gap-1 rounded-lg border border-gray-200/80 bg-gray-100/60 p-1 dark:border-slate-800 dark:bg-slate-800/60">
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"
             exact-active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"

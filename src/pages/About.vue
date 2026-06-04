@@ -4,7 +4,7 @@
     <div
       v-for="stat in stats"
       :key="stat.label"
-      class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/60"
+      class="rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 dark:border-slate-800 dark:bg-slate-900/60"
     >
       <p class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
         {{ stat.value }}
@@ -17,7 +17,7 @@
 
   <!-- About -->
   <section id="about" class="mt-12 flex flex-col gap-8" data-aos="fade-up">
-    <div class="rounded-xl border border-gray-100 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60">
+    <div class="rounded-xl border border-gray-200/80 bg-white shadow-sm p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60">
       <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">About</p>
       <h3 class="mt-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
         Blending Full Stack Vue & Laravel with AI-Powered Development
@@ -52,7 +52,7 @@
       <div
         v-for="badge in badges"
         :key="badge.title"
-        class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 dark:border-slate-800 dark:bg-slate-900/60"
       >
         <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
           {{ badge.title }}
@@ -66,7 +66,7 @@
       <div
         v-for="card in infoCards"
         :key="card.title"
-        class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 dark:border-slate-800 dark:bg-slate-900/60"
       >
         <h4 class="text-sm font-semibold text-gray-900 dark:text-white">{{ card.title }}</h4>
         <p class="mt-2 text-sm text-gray-500 dark:text-slate-400">{{ card.detail }}</p>
