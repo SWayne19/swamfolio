@@ -2,86 +2,50 @@
   <div
     class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100"
   >
-    <div class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <header class="mb-20 flex flex-col items-center justify-center gap-6">
-        <!-- Profile -->
-        <div class="flex flex-col items-center gap-4">
-          <img
-            src="/src/assets/images/swampyaepaing.jpg"
-            alt="Profile"
-            class="h-44 w-44 rounded-full object-cover ring-4 ring-gray-200 shadow-lg dark:ring-slate-700 dark:shadow-blue-900/20"
-          />
-          <div class="text-center">
-            <h1 class="text-4xl font-semibold text-gray-900 dark:text-white">
-              Swam Pyae Paing
-            </h1>
-            <p class="mt-3 text-md font-medium text-primary-600 dark:text-primary-300">
-              Web Developer
-            </p>
-          </div>
-        </div>
+    <!-- Top Nav Bar -->
+    <nav
+      class="sticky top-0 z-50 border-b border-gray-200/80 bg-gray-50/80 backdrop-blur-lg dark:border-slate-800/80 dark:bg-slate-950/80"
+    >
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <!-- Logo / Name with typing animation -->
+        <RouterLink :to="{ name: 'home' }" class="flex items-center">
+          <span class="text-2xl font-semibold text-gray-900 dark:text-white">
+            <span>{{ displayedName }}</span>
+            <span class="inline-block w-[2px] h-[1.1em] align-middle ml-[1px] bg-primary-500 typewriter-cursor"></span>
+          </span>
+        </RouterLink>
 
-        <!-- Navigation -->
-        <nav
-          class="flex flex-wrap items-center justify-center gap-6 text-lg text-gray-500 dark:text-slate-400"
-        >
+        <!-- Navigation Links -->
+        <div class="flex items-center gap-1">
           <RouterLink
-            :to="{ name: 'home' }"
-            class="transition hover:text-gray-900 dark:hover:text-white"
-            active-class="text-gray-900 dark:text-white font-medium"
+            v-for="link in navLinks"
+            :key="link.name"
+            :to="{ name: link.route }"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10"
           >
-            Home
-          </RouterLink>
-          <RouterLink
-            :to="{ name: 'about' }"
-            class="transition hover:text-gray-900 dark:hover:text-white"
-            active-class="text-gray-900 dark:text-white font-medium"
-          >
-            About
-          </RouterLink>
-          <RouterLink
-            :to="{ name: 'experienceAndSkills' }"
-            class="transition hover:text-gray-900 dark:hover:text-white"
-            active-class="text-gray-900 dark:text-white font-medium"
-          >
-            Experiences
+            {{ link.name }}
           </RouterLink>
 
           <!-- Theme Toggle -->
           <button
             @click="toggleTheme"
-            class="ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition hover:bg-gray-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+            class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
             :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           >
-            <!-- Sun icon (shown in dark mode) -->
-            <svg
-              v-if="isDark"
-              class="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="5" />
               <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
             </svg>
-            <!-- Moon icon (shown in light mode) -->
-            <svg
-              v-else
-              class="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg v-else class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
           </button>
-        </nav>
-      </header>
+        </div>
+      </div>
+    </nav>
 
-      <!-- Page Content -->
+    <div class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
       <router-view />
     </div>
 
@@ -89,18 +53,18 @@
     <button
       v-show="showScrollTop"
       @click="scrollToTop"
-      class="fixed right-7 bottom-7 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-lg transition-all hover:bg-gray-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 sm:right-5 sm:bottom-5"
+      class="fixed right-6 bottom-6 z-40 flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 shadow-lg transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
       :class="showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'"
       aria-label="Scroll to top"
     >
-      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
       </svg>
     </button>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-200 py-8 dark:border-slate-800">
-      <div class="mx-auto max-w-6xl px-4 text-center text-sm text-gray-400 dark:text-slate-500">
+    <footer class="border-t border-gray-100 py-6 dark:border-slate-800/50">
+      <div class="mx-auto max-w-6xl px-4 text-center text-xs text-gray-400 dark:text-slate-600">
         <p>swamfolio &copy; {{ currentYear }}</p>
       </div>
     </footer>
@@ -111,6 +75,55 @@
 import { onMounted, onUnmounted, provide, ref } from "vue";
 
 const currentYear = new Date().getFullYear();
+
+// Typing animation
+const phrases = ["Swam Pyae Paing", "Full Stack Developer", "Vue & Laravel"];
+const displayedName = ref("");
+let typingTimeout = null;
+let cancelled = false;
+
+const sleep = (ms) =>
+  new Promise((resolve) => {
+    typingTimeout = setTimeout(resolve, ms);
+  });
+
+const typeLoop = async () => {
+  let index = 0;
+  while (!cancelled) {
+    const text = phrases[index];
+
+    // Type forward
+    for (let i = 0; i <= text.length; i++) {
+      if (cancelled) return;
+      displayedName.value = text.slice(0, i);
+      await sleep(80);
+    }
+
+    // Pause at full text
+    if (cancelled) return;
+    await sleep(2000);
+
+    // Delete backward
+    for (let i = text.length; i >= 0; i--) {
+      if (cancelled) return;
+      displayedName.value = text.slice(0, i);
+      await sleep(40);
+    }
+
+    // Pause before next phrase
+    if (cancelled) return;
+    await sleep(500);
+
+    index = (index + 1) % phrases.length;
+  }
+};
+
+// Navigation
+const navLinks = [
+  { name: "Home", route: "home" },
+  { name: "About", route: "about" },
+  { name: "Experiences", route: "experienceAndSkills" },
+];
 
 // Dark mode
 const isDark = ref(document.documentElement.classList.contains("dark"));
@@ -133,10 +146,13 @@ const scrollToTop = () => {
 };
 
 onMounted(() => {
+  typeLoop();
   window.addEventListener("scroll", handleScroll, { passive: true });
 });
 
 onUnmounted(() => {
+  cancelled = true;
+  if (typingTimeout) clearTimeout(typingTimeout);
   window.removeEventListener("scroll", handleScroll);
 });
 
@@ -186,7 +202,7 @@ const projects = ref([
     id: 2,
     title: "TailNet",
     description:
-      "A modern, responsive landing page demo for an internet provider—built with Tailwind CSS and enhanced with Vue for interactive features like plan selection and real-time FAQs.",
+      "A modern, responsive landing page demo for an internet provider -- built with Tailwind CSS and enhanced with Vue for interactive features like plan selection and real-time FAQs.",
     tags: ["Tailwind", "Vue", "Interactive", "Landing Page"],
     image: "/images/tailnet.png",
     url: "https://tail-net.vercel.app/",
@@ -199,7 +215,7 @@ const projects = ref([
         "Animated transitions and hover interactions with Tailwind",
       ],
       challenges:
-        "Blending minimal static content with Vue-based reactivity while keeping load times fast — achieving interactivity without backend complexity.",
+        "Blending minimal static content with Vue-based reactivity while keeping load times fast -- achieving interactivity without backend complexity.",
       outcome:
         "A visually polished, interactive front page that lets users compare plans, open FAQs, and quickly access CTA areas, showcasing what can be done with Tailwind and Vue.",
     },
@@ -209,7 +225,7 @@ const projects = ref([
         "Single page layout split into hero, plans, and FAQ sections",
         "Vue components for pricing cards and collapsible FAQ accordions",
         "Tailwind utility classes for quick styling, transitions, and effects",
-        "No backend — all interactivity handled on the client side",
+        "No backend -- all interactivity handled on the client side",
       ],
       features: [
         "Interactive plan selection with price highlight (Vue reactive state)",
@@ -217,12 +233,12 @@ const projects = ref([
         "Hover, focus, and transition effects for calls-to-action and cards",
         "Mobile-first responsive design flows using Tailwind flex/grid",
       ],
-      ui: "Bright, trustworthy look with Tailwind gradients, subtle motion, and clear Vue-driven interactivity: hover glows, animated accordions, and context-driven plan details.",
+      ui: "Bright, trustworthy look with Tailwind gradients, subtle motion, and clear Vue-driven interactivity.",
     },
     backend: {
       stack: [],
       features: [
-        "No backend — all data and behavior handled on the frontend via Vue reactive state.",
+        "No backend -- all data and behavior handled on the frontend via Vue reactive state.",
       ],
       database: [],
       security: "",
@@ -272,7 +288,7 @@ const projects = ref([
         "Search and filtering APIs",
       ],
       database: ["Books", "Users", "Balances", "Borrows", "Returns"],
-      security: "Authentication, Authorization , Input validation.",
+      security: "Authentication, Authorization, Input validation.",
     },
   },
   {
@@ -327,3 +343,13 @@ const projects = ref([
 
 provide("projects", projects);
 </script>
+
+<style>
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typewriter-cursor {
+  animation: blink 0.8s step-end infinite;
+}
+</style>
