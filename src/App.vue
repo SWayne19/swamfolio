@@ -2,6 +2,13 @@
   <div
     class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100"
   >
+    <!-- Progress Bar -->
+    <div
+      v-if="isLoading"
+      class="fixed top-0 left-0 z-[100] h-[3px] bg-primary-500 transition-all duration-200 ease-out"
+      :style="{ width: loadingProgress + '%' }"
+    ></div>
+
     <!-- Top Nav Bar -->
     <nav
       class="sticky top-0 z-50 border-b border-gray-200/80 bg-gray-50/80 backdrop-blur-lg dark:border-slate-800/80 dark:bg-slate-950/80"
@@ -73,8 +80,34 @@
 
 <script setup>
 import { onMounted, onUnmounted, provide, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const currentYear = new Date().getFullYear();
+
+// Progress bar
+const router = useRouter();
+const isLoading = ref(false);
+const loadingProgress = ref(0);
+let progressInterval = null;
+
+router.beforeEach(() => {
+  isLoading.value = true;
+  loadingProgress.value = 0;
+  progressInterval = setInterval(() => {
+    if (loadingProgress.value < 90) {
+      loadingProgress.value += Math.random() * 15;
+    }
+  }, 100);
+});
+
+router.afterEach(() => {
+  loadingProgress.value = 100;
+  setTimeout(() => {
+    isLoading.value = false;
+    loadingProgress.value = 0;
+    if (progressInterval) clearInterval(progressInterval);
+  }, 300);
+});
 
 // Typing animation
 const phrases = ["Swam Pyae Paing", "Full Stack Developer", "Vue & Laravel"];

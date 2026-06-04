@@ -66,8 +66,9 @@ const router = createRouter({
   routes,
 });
 
-// Refresh AOS on every route change
+// Scroll to top and refresh AOS on every route change
 router.afterEach(() => {
+  window.scrollTo({ top: 0, behavior: 'instant' });
   AOS.refreshHard();
 });
 
