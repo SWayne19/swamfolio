@@ -66,7 +66,7 @@ const router = createRouter({
   routes,
 });
 
-//  VERY IMPORTANT: Refresh AOS on every route change
+// Refresh AOS on every route change
 router.afterEach(() => {
   AOS.refreshHard();
 });
@@ -75,12 +75,12 @@ const app = createApp(App);
 
 app.use(router);
 
-// Initialize AOS ONCE
+// Initialize AOS with performance-optimized settings
 AOS.init({
-  duration: 500,
+  duration: 400,
   easing: "ease-out-cubic",
-  once: false,       
-  offset: 80,      
+  once: true,
+  offset: 60,
   delay: 0,
 });
 

@@ -1,97 +1,74 @@
 <template>
   <!-- stat cards -->
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-    data-aos="fade-up"
-  >
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" data-aos="fade-up">
     <div
-      v-for="(stat, idx) in stats"
+      v-for="stat in stats"
       :key="stat.label"
-      class="flex items-center gap-4 border-l-2 border-blue-500/30 pl-6 py-2 transition-all hover:border-blue-400"
+      class="flex items-center gap-4 border-l-2 border-primary-400/40 py-2 pl-6 transition-all hover:border-primary-500 dark:border-primary-500/30 dark:hover:border-primary-400"
     >
       <div class="flex flex-col">
-        <span class="text-3xl font-bold text-white tracking-tighter">{{
-          stat.value
-        }}</span>
-        <span
-          class="text-xs font-medium uppercase text-slate-400 tracking-wider"
-          >{{ stat.label }}</span
-        >
+        <span class="text-3xl font-bold tracking-tighter text-gray-900 dark:text-white">
+          {{ stat.value }}
+        </span>
+        <span class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
+          {{ stat.label }}
+        </span>
       </div>
     </div>
   </div>
 
   <!-- About -->
-  <section
-    id="about"
-    class="mt-14 flex flex-col gap-10"
-    data-aos="fade-in"
-  >
-    <!-- Main About -->
+  <section id="about" class="mt-14 flex flex-col gap-10" data-aos="fade-up">
     <div
-      class="flex flex-col gap-8 rounded-3xl border border-white/5 bg-slate-900/60 p-8 shadow-xl shadow-blue-950/30"
+      class="flex flex-col gap-8 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/60 dark:shadow-none"
     >
       <div>
-        <p class="text-sm uppercase tracking-[0.25em] text-blue-100/60 mb-1">
+        <p class="mb-1 text-sm uppercase tracking-[0.25em] text-gray-400 dark:text-slate-500">
           About
         </p>
-        <h3
-          class="text-3xl font-semibold text-white leading-snug"
-        >
+        <h3 class="text-3xl font-semibold leading-snug text-gray-900 dark:text-white">
           Blending Full Stack Vue & Laravel with AI-Powered Development
         </h3>
-        <!-- Paragraphs -->
-        <div class="flex flex-col gap-8 mt-5">
-          <p
-            class="text-slate-200/80"
-          >
+        <div class="mt-5 flex flex-col gap-8">
+          <p class="text-gray-600 dark:text-slate-300">
             I craft robust, end-to-end applications by leveraging the power of
-            <span class="text-blue-300 font-semibold">Vue</span> for dynamic
+            <span class="font-semibold text-primary-600 dark:text-primary-400">Vue</span> for dynamic
             frontends and
-            <span class="text-blue-300 font-semibold">Laravel</span> for
+            <span class="font-semibold text-primary-600 dark:text-primary-400">Laravel</span> for
             API-driven backends. My workflow is designed for clarity, developer
-            happiness, and rapid iteration—using Vite and Tailwind for seamless
-            UI work.
+            happiness, and rapid iteration—using Vite and Tailwind for seamless UI work.
           </p>
-          <p
-            class="text-slate-200/80 self-end text-right"
-          >
+          <p class="self-end text-right text-gray-600 dark:text-slate-300">
             Recently, I've been actively integrating
-            <span class="text-blue-300 font-semibold">AI-powered tools</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">AI-powered tools</span>
             and workflows into my development process. From code generation and
             AI-assisted debugging to using LLMs for smarter backend and frontend
             features, I aim to build apps that are not just interactive but also
-            intelligent. AI augmentation enables me to ship faster, automate
-            mundane tasks, and experiment with new ways to solve old problems.
+            intelligent.
           </p>
-          <p
-            class="text-slate-200/80"
-          >
-            Whether it’s building full-stack Vue + Laravel apps or enhancing
+          <p class="text-gray-600 dark:text-slate-300">
+            Whether it's building full-stack Vue + Laravel apps or enhancing
             user experience with AI, my focus is always on creating solutions
             that feel intuitive and intentional.
           </p>
         </div>
       </div>
-      <div
-        class="grid gap-4 sm:grid-cols-2 md:grid-cols-2"
-        data-aos="fade-up"
-      >
+      <div class="grid gap-4 sm:grid-cols-2" data-aos="fade-up">
         <div
-          v-for="(badge, i) in badges"
+          v-for="badge in badges"
           :key="badge.title"
-          class="rounded-2xl border border-white/5 bg-white/5 p-4 flex flex-col gap-1"
+          class="flex flex-col gap-1 rounded-xl border border-gray-100 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-800/60"
         >
-          <p class="text-xs uppercase tracking-[0.2em] text-blue-100/60">
+          <p class="text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-slate-500">
             {{ badge.title }}
           </p>
-          <p class="mt-2 text-sm text-slate-200/80">{{ badge.text }}</p>
+          <p class="mt-2 text-sm text-gray-600 dark:text-slate-300">{{ badge.text }}</p>
         </div>
       </div>
     </div>
 
     <!-- Info Cards -->
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-3">
       <div
         v-for="(card, i) in infoCards"
         :key="card.title"
@@ -99,44 +76,25 @@
         :class="i % 2 === 0 ? 'justify-start' : 'justify-end'"
       >
         <div
-          class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 flex flex-col h-full rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg shadow-slate-950/30 transition-transform"
-          :class="[
-            i % 2 === 0
-              ? 'origin-left -translate-x-2 sm:translate-x-0 animate-slide-left'
-              : 'origin-right translate-x-2 sm:translate-x-0 animate-slide-right',
-          ]"
+          class="flex h-full w-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:w-3/4 md:w-2/3 lg:w-1/2 dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-none"
         >
-          <h4 class="text-lg font-semibold text-white">{{ card.title }}</h4>
-          <p class="mt-2 text-sm text-slate-200/75">{{ card.detail }}</p>
+          <h4 class="text-lg font-semibold text-gray-900 dark:text-white">{{ card.title }}</h4>
+          <p class="mt-2 text-sm text-gray-500 dark:text-slate-400">{{ card.detail }}</p>
         </div>
       </div>
+
       <!-- AI & Full Stack -->
-      <div
-        class="flex justify-center mt-4"
-        data-aos="fade-up"
-      >
+      <div class="mt-4 flex justify-center" data-aos="fade-up">
         <div
-          class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 flex flex-col h-full rounded-3xl border border-emerald-500/20 bg-slate-900/80 p-6 shadow-xl shadow-emerald-900/20 transition-transform"
+          class="flex h-full w-full flex-col rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm sm:w-3/4 md:w-2/3 lg:w-1/2 dark:border-emerald-500/20 dark:bg-slate-900/80 dark:shadow-none"
         >
-          <h4
-            class="text-lg font-semibold text-emerald-300 flex items-center gap-2"
-          >
-            <svg
-              class="h-5 w-5 text-emerald-300"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 16h-1v-4h-1m4 1h6m-6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2v-9a2 2 0 012-2h2l1-2h4a2 2 0 012 2v2h-2"
-              />
+          <h4 class="flex items-center gap-2 text-lg font-semibold text-emerald-700 dark:text-emerald-300">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
             AI + Full Stack Advantage
           </h4>
-          <p class="mt-2 text-sm text-emerald-100/90">
+          <p class="mt-2 text-sm text-emerald-800 dark:text-emerald-100/90">
             Combining full stack expertise with AI tools results in apps that
             are not only functional and robust, but also smarter and more
             responsive to user needs. I leverage LLMs and automation for code
@@ -154,38 +112,16 @@ import { ref } from "vue";
 
 const badges = ref([
   { title: "Frontend & Backend", text: "Vue 3, Laravel, PostgreSQL & MySQL" },
-  {
-    title: "Soft Skills",
-    text: "Clear communication, adaptability, empathy, and strong collaboration",
-  },
-  {
-    title: "Team habits",
-    text: "Lightweight docs, PR hygiene, design handoff",
-  },
+  { title: "Soft Skills", text: "Clear communication, adaptability, empathy, and strong collaboration" },
+  { title: "Team habits", text: "Lightweight docs, PR hygiene, design handoff" },
   { title: "Quality", text: "Lighthouse checks, keyboard flows, error states" },
 ]);
 
 const infoCards = ref([
-  {
-    title: "What I’m practicing",
-    detail:
-      "Integrating backend APIs, auth, and scalable data (PostgreSQL, MySQL) with polished UIs and micro animations.",
-  },
-  {
-    title: "How I work",
-    detail:
-      "Small, frequent commits, open feedback loops, pairing on tricky UI and API design, always learning.",
-  },
-  {
-    title: "Toolbox",
-    detail:
-      "VS Code, Figma, Vite, Tailwind, GitHub, Netlify/Vercel, Postman, Insomnia.",
-  },
-  {
-    title: "Hobbies",
-    detail:
-      "Documenting UI & backend patterns, reading product design blogs, coffee walks.",
-  },
+  { title: "What I'm practicing", detail: "Integrating backend APIs, auth, and scalable data (PostgreSQL, MySQL) with polished UIs and micro animations." },
+  { title: "How I work", detail: "Small, frequent commits, open feedback loops, pairing on tricky UI and API design, always learning." },
+  { title: "Toolbox", detail: "VS Code, Figma, Vite, Tailwind, GitHub, Netlify/Vercel, Postman, Insomnia." },
+  { title: "Hobbies", detail: "Documenting UI & backend patterns, reading product design blogs, coffee walks." },
 ]);
 
 const stats = ref([
@@ -195,4 +131,3 @@ const stats = ref([
   { label: "Based In", value: "Yangon, MM" },
 ]);
 </script>
-<style></style>

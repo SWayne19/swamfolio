@@ -1,33 +1,22 @@
 <template>
-  <div class="min-h-screen relative overflow-hidden">
-    <div
-      class="tech-bg pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-    >
-      <div class="tech-grid"></div>
-      <div class="tech-glow glow-1"></div>
-      <div class="tech-glow glow-2"></div>
-      <div class="scan-lines"></div>
-    </div>
-
+  <div
+    class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100"
+  >
     <div class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
-      <!-- Navbar / Header -->
-      <header
-        ref="headerRef"
-        class="mb-[100px] flex flex-col items-center justify-center gap-6"
-      >
+      <!-- Header -->
+      <header class="mb-20 flex flex-col items-center justify-center gap-6">
         <!-- Profile -->
         <div class="flex flex-col items-center gap-4">
           <img
             src="/src/assets/images/swampyaepaing.jpg"
             alt="Profile"
-            class="h-52 w-52 rounded-full object-cover ring-4 ring-slate-800/50 shadow-lg shadow-blue-900/30"
+            class="h-44 w-44 rounded-full object-cover ring-4 ring-gray-200 shadow-lg dark:ring-slate-700 dark:shadow-blue-900/20"
           />
-
           <div class="text-center">
-            <h1 class="text-4xl font-semibold text-slate-50">
+            <h1 class="text-4xl font-semibold text-gray-900 dark:text-white">
               Swam Pyae Paing
             </h1>
-            <p class="mt-4 text-md font-medium text-blue-200/80">
+            <p class="mt-3 text-md font-medium text-primary-600 dark:text-primary-300">
               Web Developer
             </p>
           </div>
@@ -35,30 +24,60 @@
 
         <!-- Navigation -->
         <nav
-          ref="navRef"
-          class="flex flex-wrap items-center justify-center gap-6 text-lg text-slate-200/80 transition-all"
+          class="flex flex-wrap items-center justify-center gap-6 text-lg text-gray-500 dark:text-slate-400"
         >
           <RouterLink
             :to="{ name: 'home' }"
-            class="hover:text-white transition"
-            active-class="text-white font-medium"
+            class="transition hover:text-gray-900 dark:hover:text-white"
+            active-class="text-gray-900 dark:text-white font-medium"
           >
             Home
           </RouterLink>
           <RouterLink
             :to="{ name: 'about' }"
-            class="hover:text-white transition"
-            active-class="text-white font-medium"
+            class="transition hover:text-gray-900 dark:hover:text-white"
+            active-class="text-gray-900 dark:text-white font-medium"
           >
             About
           </RouterLink>
           <RouterLink
             :to="{ name: 'experienceAndSkills' }"
-            class="hover:text-white transition"
-            active-class="text-white font-medium"
+            class="transition hover:text-gray-900 dark:hover:text-white"
+            active-class="text-gray-900 dark:text-white font-medium"
           >
             Experiences
           </RouterLink>
+
+          <!-- Theme Toggle -->
+          <button
+            @click="toggleTheme"
+            class="ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition hover:bg-gray-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+          >
+            <!-- Sun icon (shown in dark mode) -->
+            <svg
+              v-if="isDark"
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+            <!-- Moon icon (shown in light mode) -->
+            <svg
+              v-else
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
         </nav>
       </header>
 
@@ -70,19 +89,19 @@
     <button
       v-show="showScrollTop"
       @click="scrollToTop"
-      class="scroll-top-btn group"
-      :class="{ 'scroll-top-visible': showScrollTop }"
+      class="fixed right-7 bottom-7 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-lg transition-all hover:bg-gray-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 sm:right-5 sm:bottom-5"
+      :class="showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'"
       aria-label="Scroll to top"
     >
-      <span class="scroll-top-inner">
-        <span class="scroll-top-icon"> ▲ </span>
-      </span>
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
     </button>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 py-8">
-      <div class="mx-auto max-w-6xl px-4 text-center text-sm text-slate-400/60">
-        <p>swamfolio © {{ currentYear }}</p>
+    <footer class="border-t border-gray-200 py-8 dark:border-slate-800">
+      <div class="mx-auto max-w-6xl px-4 text-center text-sm text-gray-400 dark:text-slate-500">
+        <p>swamfolio &copy; {{ currentYear }}</p>
       </div>
     </footer>
   </div>
@@ -93,7 +112,16 @@ import { onMounted, onUnmounted, provide, ref } from "vue";
 
 const currentYear = new Date().getFullYear();
 
-// Scroll to top button state
+// Dark mode
+const isDark = ref(document.documentElement.classList.contains("dark"));
+
+const toggleTheme = () => {
+  isDark.value = !isDark.value;
+  document.documentElement.classList.toggle("dark", isDark.value);
+  localStorage.setItem("theme", isDark.value ? "dark" : "light");
+};
+
+// Scroll to top
 const showScrollTop = ref(false);
 
 const handleScroll = () => {
@@ -101,10 +129,7 @@ const handleScroll = () => {
 };
 
 const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 onMounted(() => {
@@ -136,7 +161,6 @@ const projects = ref([
       outcome:
         "Elegant and fast-loading website, easy to host or deploy on any platform, providing clear product discovery for visitors.",
     },
-
     frontend: {
       stack: ["HTML", "CSS", "JavaScript"],
       architecture: [
@@ -151,15 +175,13 @@ const projects = ref([
       ],
       ui: "Modern, clean look with sports-inspired visuals and smooth CSS interactions.",
     },
-
     backend: {
       stack: [],
-      features: ["No backend implemented – static frontend only"],
+      features: ["No backend implemented - static frontend only"],
       database: [],
       security: "",
     },
   },
-
   {
     id: 2,
     title: "TailNet",
@@ -181,7 +203,6 @@ const projects = ref([
       outcome:
         "A visually polished, interactive front page that lets users compare plans, open FAQs, and quickly access CTA areas, showcasing what can be done with Tailwind and Vue.",
     },
-
     frontend: {
       stack: ["HTML", "Tailwind CSS", "Vue 3", "Composition API"],
       architecture: [
@@ -198,7 +219,6 @@ const projects = ref([
       ],
       ui: "Bright, trustworthy look with Tailwind gradients, subtle motion, and clear Vue-driven interactivity: hover glows, animated accordions, and context-driven plan details.",
     },
-
     backend: {
       stack: [],
       features: [
@@ -208,7 +228,6 @@ const projects = ref([
       security: "",
     },
   },
-
   {
     id: 3,
     title: "WebLibra",
@@ -229,7 +248,6 @@ const projects = ref([
       outcome:
         "Modern, maintainable library software that reduces manual work and improves accessibility for both staff and patrons.",
     },
-
     frontend: {
       stack: ["Blade Templating", "Bootstrap CSS", "JavaScript"],
       architecture: [
@@ -245,7 +263,6 @@ const projects = ref([
       ],
       ui: "Clean, familiar Bootstrap design with focus on usability and clarity.",
     },
-
     backend: {
       stack: ["Laravel", "PostgresSQL"],
       features: [
@@ -258,7 +275,6 @@ const projects = ref([
       security: "Authentication, Authorization , Input validation.",
     },
   },
-
   {
     id: 4,
     title: "ForumZone",
@@ -279,7 +295,6 @@ const projects = ref([
       outcome:
         "A maintainable and extensible forum platform enabling community interaction, with a clean and intuitive UI.",
     },
-
     frontend: {
       stack: ["Vue 3", "JavaScript", "Tailwind CSS"],
       architecture: [
@@ -295,7 +310,6 @@ const projects = ref([
       ],
       ui: "Modern, minimal design with category and thread navigation, responsive layouts for desktop and mobile.",
     },
-
     backend: {
       stack: ["Laravel", "Postgres"],
       features: [
@@ -313,182 +327,3 @@ const projects = ref([
 
 provide("projects", projects);
 </script>
-
-<style>
-.tech-bg {
-  background: radial-gradient(circle at top, #020617 0%, #020617 100%);
-}
-
-/* Grid */
-.tech-grid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
-      rgba(99, 102, 241, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: gridMove 30s linear infinite;
-  mask-image: radial-gradient(circle at center, black 45%, transparent 80%);
-}
-
-@keyframes gridMove {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(60px);
-  }
-}
-
-/* Glow orbs */
-.tech-glow {
-  position: absolute;
-  width: 480px;
-  height: 480px;
-  border-radius: 50%;
-  filter: blur(160px);
-  opacity: 0.35;
-  animation: floatGlow 20s ease-in-out infinite alternate;
-}
-
-.glow-1 {
-  background: #3b82f6;
-  top: -120px;
-  left: -120px;
-}
-
-.glow-2 {
-  background: #22d3ee;
-  bottom: -160px;
-  right: -120px;
-  animation-delay: 4s;
-}
-
-@keyframes floatGlow {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(60px, 40px);
-  }
-}
-
-/* Scan lines */
-.scan-lines {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(255, 255, 255, 0.03) 50%,
-    transparent 100%
-  );
-  background-size: 100% 6px;
-  animation: scanMove 8s linear infinite;
-  opacity: 0.25;
-}
-
-@keyframes scanMove {
-  from {
-    background-position-y: 0;
-  }
-  to {
-    background-position-y: 100%;
-  }
-}
-
-/* Scroll to Top Button */
-.scroll-top-btn {
-  position: fixed;
-  right: 1.75rem;
-  bottom: 1.75rem;
-  z-index: 40;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  transition: opacity 0.25s ease-out, transform 0.25s ease-out,
-    box-shadow 0.25s ease-out;
-}
-
-.scroll-top-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.scroll-top-inner {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 9999px;
-  background: radial-gradient(
-    circle at 10% 0%,
-    #38bdf8 0%,
-    #4f46e5 60%,
-    #020617 100%
-  );
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9),
-    0 0 0 1px rgba(148, 163, 184, 0.25);
-  overflow: hidden;
-}
-
-.scroll-top-inner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 30% 0%,
-    rgba(248, 250, 252, 0.3),
-    transparent 60%
-  );
-  opacity: 0.75;
-  mix-blend-mode: screen;
-  transition: opacity 0.2s ease-out;
-}
-
-.scroll-top-btn:hover .scroll-top-inner::before {
-  opacity: 1;
-}
-
-.scroll-top-icon {
-  position: relative;
-  font-size: 1.1rem;
-  color: #e5e7eb;
-  text-shadow: 0 0 12px rgba(248, 250, 252, 0.8);
-  transition: transform 0.22s ease-out, color 0.22s ease-out;
-}
-
-.scroll-top-btn:hover .scroll-top-icon {
-  transform: translateY(-2px);
-  color: #f9fafb;
-}
-
-.scroll-top-btn:active .scroll-top-inner {
-  transform: scale(0.96);
-}
-
-@media (max-width: 640px) {
-  .scroll-top-btn {
-    right: 1.25rem;
-    bottom: 1.25rem;
-  }
-
-  .scroll-top-inner {
-    width: 2.75rem;
-    height: 2.75rem;
-  }
-}
-</style>
