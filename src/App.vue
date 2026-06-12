@@ -20,7 +20,7 @@
     <nav
       class="sticky top-0 z-50 border-b border-gray-200 bg-gray-50/80 shadow-sm backdrop-blur-lg dark:border-slate-800/80 dark:bg-slate-950/80 dark:shadow-none"
     >
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
         <!-- Logo / Name with typing animation -->
         <RouterLink :to="{ name: 'home' }" class="mr-2 min-w-0 flex-shrink items-center truncate">
           <span class="text-lg font-semibold text-gray-900 sm:text-xl md:text-2xl dark:text-white">
@@ -88,12 +88,36 @@
       </div>
     </nav>
 
+    <!-- Mobile Menu Backdrop (click to close) -->
+    <Transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div
+        v-show="mobileMenuOpen"
+        class="fixed inset-0 top-[57px] z-30 sm:hidden"
+        @click="mobileMenuOpen = false"
+      ></div>
+    </Transition>
+
     <!-- Mobile Menu Dropdown -->
+    <Transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0 -translate-y-2"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-2"
+    >
     <div
       v-show="mobileMenuOpen"
       class="fixed inset-x-0 top-[57px] z-40 border-b border-gray-200 bg-gray-50/95 shadow-lg backdrop-blur-lg sm:hidden dark:border-slate-800/80 dark:bg-slate-950/95 dark:shadow-none"
     >
-      <div class="flex flex-col px-4 py-3">
+      <div class="flex flex-col px-3 py-2">
         <RouterLink
           v-for="link in navLinks"
           :key="link.name"
@@ -106,8 +130,9 @@
         </RouterLink>
       </div>
     </div>
+    </Transition>
 
-    <div class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-6xl px-4 pb-12 pt-6 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8">
       <router-view />
     </div>
 
@@ -115,7 +140,7 @@
     <button
       v-show="showScrollTop"
       @click="scrollToTop"
-      class="fixed right-6 bottom-6 z-40 flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 shadow-lg transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+      class="fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6 flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 shadow-lg transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
       :class="showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'"
       aria-label="Scroll to top"
     >
@@ -125,7 +150,7 @@
     </button>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-200 py-6 dark:border-slate-800/50">
+    <footer class="border-t border-gray-200 py-4 sm:py-6 dark:border-slate-800/50">
       <div class="mx-auto max-w-6xl px-4 text-center text-xs text-gray-500 dark:text-slate-600">
         <p>swamfolio &copy; {{ currentYear }}</p>
       </div>

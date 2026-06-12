@@ -1,7 +1,7 @@
 <template>
   <section
     id="contact"
-    class="mt-16 rounded-xl border border-primary-200 bg-primary-50 shadow p-6 sm:p-8 dark:border-primary-500/15 dark:bg-primary-500/5 dark:shadow-none"
+    class="mt-10 rounded-xl border border-primary-200 bg-primary-50 shadow p-4 sm:mt-16 sm:p-6 md:p-8 dark:border-primary-500/15 dark:bg-primary-500/5 dark:shadow-none"
   >
     <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
       <div>
@@ -11,7 +11,7 @@
         <h3 class="mt-2 text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
           Let's build something thoughtful.
         </h3>
-        <p class="mt-1 text-sm text-gray-600 dark:text-slate-300">
+        <p class="mt-1 text-pretty text-sm text-gray-600 dark:text-slate-300">
           Available for junior developer roles, internships, or collaboration.
         </p>
       </div>

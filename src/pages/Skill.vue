@@ -1,5 +1,5 @@
 <template>
-  <section id="skills" class="mt-16" data-aos="fade-up">
+  <section id="skills" class="mt-10 sm:mt-16" data-aos="fade-up">
     <div class="mb-6 flex items-center justify-between">
       <div>
         <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">Skills</p>
@@ -17,7 +17,7 @@
       <div
         v-for="skill in skills"
         :key="skill.title"
-        class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60"
         data-aos="fade-up"
       >
         <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">

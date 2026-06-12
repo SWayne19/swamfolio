@@ -1,10 +1,10 @@
 <template>
   <!-- Stats -->
-  <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4" data-aos="fade-up">
+  <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-4" data-aos="fade-up">
     <div
       v-for="stat in stats"
       :key="stat.label"
-      class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
+      class="rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60"
     >
       <p class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
         {{ stat.value }}
@@ -16,13 +16,13 @@
   </div>
 
   <!-- About -->
-  <section id="about" class="mt-12 flex flex-col gap-8" data-aos="fade-up">
-    <div class="rounded-xl border border-gray-200 bg-white shadow p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60">
+  <section id="about" class="mt-8 flex flex-col gap-5 sm:mt-12 sm:gap-8" data-aos="fade-up">
+    <div class="rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-6 md:p-8 dark:border-slate-800 dark:bg-slate-900/60">
       <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">About</p>
       <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">
         Blending Full Stack Vue & Laravel with AI-Powered Development
       </h3>
-      <div class="mt-6 space-y-5 text-sm leading-relaxed text-gray-600 sm:text-[15px] dark:text-slate-300">
+      <div class="mt-6 space-y-5 text-pretty text-sm leading-relaxed text-gray-600 sm:text-[15px] dark:text-slate-300">
         <p>
           I craft robust, end-to-end applications by leveraging the power of
           <span class="font-semibold text-primary-600 dark:text-primary-400">Vue</span> for dynamic
@@ -52,7 +52,7 @@
       <div
         v-for="badge in badges"
         :key="badge.title"
-        class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60"
       >
         <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
           {{ badge.title }}
@@ -66,7 +66,7 @@
       <div
         v-for="card in infoCards"
         :key="card.title"
-        class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60"
       >
         <h4 class="text-sm font-semibold text-gray-900 dark:text-white">{{ card.title }}</h4>
         <p class="mt-2 text-sm text-gray-600 dark:text-slate-400">{{ card.detail }}</p>
@@ -75,7 +75,7 @@
 
     <!-- AI + Full Stack Card -->
     <div
-      class="rounded-xl border border-emerald-200 bg-emerald-50 shadow p-6 dark:border-emerald-500/20 dark:bg-emerald-500/5 dark:shadow-none"
+      class="rounded-xl border border-emerald-200 bg-emerald-50 shadow p-4 sm:p-6 dark:border-emerald-500/20 dark:bg-emerald-500/5 dark:shadow-none"
       data-aos="fade-up"
     >
       <h4 class="flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
@@ -84,7 +84,7 @@
         </svg>
         AI + Full Stack Advantage
       </h4>
-      <p class="mt-3 text-sm leading-relaxed text-emerald-800 dark:text-emerald-200/80">
+      <p class="mt-3 text-pretty text-sm leading-relaxed text-emerald-800 dark:text-emerald-200/80">
         Combining full stack expertise with AI tools results in apps that
         are not only functional and robust, but also smarter and more
         responsive to user needs. I leverage LLMs and automation for code

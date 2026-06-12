@@ -59,7 +59,7 @@
             <h4 class="text-base font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
               {{ project.title }}
             </h4>
-            <p class="line-clamp-2 text-sm text-gray-600 dark:text-slate-400">
+            <p class="line-clamp-2 text-pretty text-sm text-gray-600 dark:text-slate-400">
               {{ project.description }}
             </p>
 
@@ -92,7 +92,7 @@
   </section>
 
   <!-- Experience Section - Horizontal Scroll -->
-  <section id="experience" class="mt-16" data-aos="fade-up">
+  <section id="experience" class="mt-10 sm:mt-16" data-aos="fade-up">
     <div class="mb-6">
       <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
         Experience
@@ -103,19 +103,32 @@
     </div>
 
     <!-- Horizontal Timeline -->
-    <div class="relative">
+    <div class="group/slider relative">
       <!-- Timeline line -->
       <div class="absolute top-[52px] left-0 right-0 h-px bg-gray-200 dark:bg-slate-800"></div>
+
+      <button
+        @click="slideExp('left')"
+        :class="[
+          'absolute -left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          canExpScrollLeft ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
+        ]"
+        aria-label="Previous experience"
+      >
+        <svg class="h-4 w-4 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
 
       <div
         ref="expCarouselRef"
         @scroll="checkExpScroll"
-        class="no-scrollbar flex gap-6 overflow-x-auto scroll-smooth pb-4 pt-2"
+        class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 pt-2"
       >
         <div
           v-for="(experience, i) in experiences"
           :key="experience.role"
-          class="group relative flex w-[75vw] max-w-sm flex-shrink-0 flex-col sm:w-80"
+          class="group relative flex w-[75vw] max-w-sm flex-shrink-0 snap-start flex-col sm:w-80"
         >
           <!-- Timeline dot + connector -->
           <div class="flex items-center gap-3 pb-6">
@@ -128,47 +141,32 @@
           </div>
 
           <!-- Card -->
-          <div class="flex flex-1 flex-col rounded-xl border border-gray-200 bg-white shadow p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
+          <div class="flex flex-1 flex-col rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
             <p class="text-[11px] font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
               {{ experience.company }}
             </p>
             <h4 class="mt-2 text-base font-semibold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
               {{ experience.role }}
             </h4>
-            <p class="mt-3 text-sm leading-relaxed text-gray-600 dark:text-slate-400">
+            <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-600 dark:text-slate-400">
               {{ experience.highlights }}
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Horizontal scroll arrows for experience -->
-      <div class="mt-3 flex items-center justify-end gap-2">
-        <button
-          @click="slideExp('left')"
-          :class="[
-            'flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 bg-white transition hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
-            canExpScrollLeft ? 'opacity-100' : 'pointer-events-none opacity-30',
-          ]"
-          aria-label="Previous experience"
-        >
-          <svg class="h-3.5 w-3.5 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-        </button>
-        <button
-          @click="slideExp('right')"
-          :class="[
-            'flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 bg-white transition hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
-            canExpScrollRight ? 'opacity-100' : 'pointer-events-none opacity-30',
-          ]"
-          aria-label="Next experience"
-        >
-          <svg class="h-3.5 w-3.5 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
-        </button>
-      </div>
+      <button
+        @click="slideExp('right')"
+        :class="[
+          'absolute -right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          canExpScrollRight ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
+        ]"
+        aria-label="Next experience"
+      >
+        <svg class="h-4 w-4 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
     </div>
   </section>
 
@@ -219,7 +217,7 @@ const slideExp = (direction) => {
   if (!expCarouselRef.value) return;
   const container = expCarouselRef.value;
   const itemWidth = container.firstElementChild?.offsetWidth || 320;
-  const gap = 24;
+  const gap = 16;
   const scrollAmount = itemWidth + gap;
   const rawTarget = container.scrollLeft + (direction === "right" ? scrollAmount : -scrollAmount);
   const maxScroll = container.scrollWidth - container.clientWidth;

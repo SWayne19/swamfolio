@@ -2,7 +2,7 @@
   <div v-if="project">
     <div class="mx-auto max-w-3xl">
       <!-- Header -->
-      <div class="mb-8 flex flex-col gap-4">
+      <div class="mb-5 flex flex-col gap-4 sm:mb-8">
         <div class="flex items-center gap-3 min-w-0">
           <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-600 sm:h-12 sm:w-12">
             <svg class="h-5 w-5 text-white sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -48,12 +48,12 @@
       </div>
 
       <!-- Description -->
-      <p class="mb-6 text-sm leading-relaxed text-gray-600 sm:text-[15px] dark:text-slate-300">
+      <p class="mb-4 text-pretty text-sm leading-relaxed text-gray-600 sm:mb-6 sm:text-[15px] dark:text-slate-300">
         {{ project.description }}
       </p>
 
       <!-- Tags -->
-      <div class="mb-8 flex flex-wrap gap-2">
+      <div class="mb-5 flex flex-wrap gap-2 sm:mb-8">
         <span
           v-for="tag in project.tags"
           :key="tag"
@@ -64,7 +64,7 @@
       </div>
 
       <!-- Tab Navigation -->
-      <div class="mb-8 overflow-x-auto">
+      <div class="mb-5 overflow-x-auto sm:mb-8">
         <nav class="flex min-w-0 gap-1 rounded-lg border border-gray-200 bg-gray-100 shadow-sm p-1 dark:border-slate-800 dark:bg-slate-800/60 dark:shadow-none">
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"

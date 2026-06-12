@@ -1,8 +1,8 @@
 <template>
-  <section v-if="project" class="space-y-4">
+  <section v-if="project" class="space-y-3 sm:space-y-4">
     <h2 class="text-base font-bold text-gray-900 sm:text-lg dark:text-white">Frontend Implementation</h2>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60">
+    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
       <h3 class="mb-3 text-sm font-semibold text-gray-900 dark:text-white">Tech Stack</h3>
       <div class="flex flex-wrap gap-2">
         <span
@@ -15,23 +15,23 @@
       </div>
     </div>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60">
+    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
       <h3 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Architecture</h3>
       <ul class="list-inside list-disc space-y-1 text-sm text-gray-600 dark:text-slate-300">
         <li v-for="item in project.frontend.architecture" :key="item">{{ item }}</li>
       </ul>
     </div>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60">
+    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
       <h3 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Key Features</h3>
       <ul class="list-inside list-disc space-y-1 text-sm text-gray-600 dark:text-slate-300">
         <li v-for="feature in project.frontend.features" :key="feature">{{ feature }}</li>
       </ul>
     </div>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60">
+    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
       <h3 class="text-sm font-semibold text-gray-900 dark:text-white">UI / UX</h3>
-      <p class="mt-2 text-sm text-gray-600 dark:text-slate-300">{{ project.frontend.ui }}</p>
+      <p class="mt-2 text-pretty text-sm text-gray-600 dark:text-slate-300">{{ project.frontend.ui }}</p>
     </div>
   </section>
 

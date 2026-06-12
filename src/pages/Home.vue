@@ -1,7 +1,7 @@
 <template>
   <!-- Hero Section -->
-  <section class="mb-16" data-aos="fade-up">
-    <div class="flex flex-col-reverse items-center gap-8 py-8 sm:py-16 md:flex-row md:items-start md:justify-between md:gap-12">
+  <section class="mb-10 sm:mb-16" data-aos="fade-up">
+    <div class="flex flex-col-reverse items-center gap-6 py-6 sm:gap-8 sm:py-16 md:flex-row md:items-start md:justify-between md:gap-12">
       <!-- Text content -->
       <div class="flex flex-1 flex-col gap-6 text-center md:text-left">
         <div
@@ -17,7 +17,7 @@
           applications.
         </h1>
 
-        <p class="text-base leading-relaxed text-gray-600 sm:text-lg dark:text-slate-400">
+        <p class="text-pretty text-base leading-relaxed text-gray-600 sm:text-lg dark:text-slate-400">
           I build web apps with Vue and Laravel, focusing on creating seamless, secure,
           and reliable user experiences from the database to the UI.
         </p>
@@ -59,11 +59,11 @@
   </section>
 
   <!-- Stack Overview -->
-  <section class="mb-16 grid gap-4 grid-cols-1 sm:grid-cols-3" data-aos="fade-up">
+  <section class="mb-10 grid gap-3 grid-cols-1 sm:mb-16 sm:gap-4 sm:grid-cols-3" data-aos="fade-up">
     <div
       v-for="item in highlightItems"
       :key="item.title"
-      class="flex items-start gap-4 rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
+      class="flex items-start gap-4 rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60"
     >
       <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -79,7 +79,7 @@
 
   <!-- Currently Working With -->
   <section
-    class="mb-16 rounded-xl border border-gray-200 bg-white shadow p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60"
+    class="mb-10 rounded-xl border border-gray-200 bg-white shadow p-4 sm:mb-16 sm:p-6 md:p-8 dark:border-slate-800 dark:bg-slate-900/60"
     data-aos="fade-up"
   >
     <div class="flex flex-wrap items-center justify-between gap-2">
@@ -91,7 +91,7 @@
         Stack
       </span>
     </div>
-    <div class="mt-5 flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-100 p-4 dark:border-slate-700 dark:bg-slate-800/60">
+    <div class="mt-4 flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-100 p-3 sm:mt-5 sm:p-4 dark:border-slate-700 dark:bg-slate-800/60">
       <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 text-white">
         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -99,7 +99,7 @@
       </span>
       <div>
         <p class="text-sm font-medium text-gray-900 dark:text-white">Latest full stack update</p>
-        <p class="mt-0.5 text-sm text-gray-600 dark:text-slate-400">
+        <p class="mt-0.5 text-pretty text-sm text-gray-600 dark:text-slate-400">
           Built with the Laravel + Vue Starter Kit: robust scaffolding, hot reloads,
           API-ready, and ideal for modern full stack projects.
         </p>
