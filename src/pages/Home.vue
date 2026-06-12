@@ -7,7 +7,11 @@
         <div
           class="inline-flex w-fit items-center gap-2 self-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 md:self-start dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-100"></span>
+            <span class="absolute inline-flex h-full w-full animate-pulse rounded-full bg-emerald-400 opacity-60"></span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.6)]"></span>
+          </span>
           Open to Full Stack Roles
         </div>
 
