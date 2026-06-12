@@ -262,7 +262,7 @@ const experiences = ref([
     role: "Mid Programmer",
     company: "KMD Group of Company Limited (SoftComm Technology)",
     period: "May 2026 -- Present",
-    highlights: "Promoted to Mid Programmer; leading development of the KMD Inventory Project featuring comprehensive finance modules (invoicing, expense tracking, revenue reports) and auditory features (audit trails, stock reconciliation, activity logs), along with full inventory management, role-based access control, and real-time dashboard analytics.",
+    highlights: "Promoted to Mid Programmer; leading the KMD Inventory Project with finance modules, audit trails, role-based access, and real-time dashboard analytics.",
   },
 ]);
 
