@@ -15,9 +15,96 @@
   --color-primary-900: #1e3a5f;
 }
 
-/* Base transitions for theme switching */
+/* Base background — lives on html so animated orbs can layer on top */
 html {
+  background-color: #f9fafb; /* gray-50 */
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+html:where(.dark) {
+  background-color: #020617; /* slate-950 */
+}
+
+/* Prevent horizontal overflow on mobile — use clip to avoid creating a second scroll container */
+body {
+  overflow-x: clip;
+}
+
+/* Animated background orbs
+   Performance: only animate transform (GPU-composited), filter/opacity are static per-mode.
+   Each orb is a single layer promoted via will-change + translate3d. */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+:where(.dark) .bg-orb {
+  opacity: 0.2;
+  filter: blur(70px);
+}
+
+.bg-orb-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, #3b82f6 0%, #6366f1 70%, transparent 100%);
+  top: -15%;
+  left: -10%;
+  animation: orb-drift-1 14s ease-in-out infinite;
+}
+
+.bg-orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #06b6d4 0%, #3b82f6 70%, transparent 100%);
+  top: 35%;
+  right: -12%;
+  animation: orb-drift-2 16s ease-in-out infinite;
+}
+
+.bg-orb-3 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #8b5cf6 0%, #ec4899 70%, transparent 100%);
+  bottom: -10%;
+  left: 25%;
+  animation: orb-drift-3 18s ease-in-out infinite;
+}
+
+@keyframes orb-drift-1 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  20%  { transform: translate3d(120px, 60px, 0) scale(1.15); }
+  40%  { transform: translate3d(40px, 140px, 0) scale(0.9); }
+  60%  { transform: translate3d(-100px, 80px, 0) scale(1.1); }
+  80%  { transform: translate3d(-60px, -40px, 0) scale(0.92); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes orb-drift-2 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  20%  { transform: translate3d(-90px, -70px, 0) scale(1.12); }
+  40%  { transform: translate3d(-140px, 30px, 0) scale(0.88); }
+  60%  { transform: translate3d(60px, -100px, 0) scale(1.15); }
+  80%  { transform: translate3d(100px, 40px, 0) scale(0.93); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes orb-drift-3 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  20%  { transform: translate3d(80px, -90px, 0) scale(1.18); }
+  40%  { transform: translate3d(-50px, -130px, 0) scale(0.87); }
+  60%  { transform: translate3d(-120px, 40px, 0) scale(1.1); }
+  80%  { transform: translate3d(50px, 80px, 0) scale(0.95); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb {
+    animation: none !important;
+  }
 }
 
 /* Scrollbar styling */

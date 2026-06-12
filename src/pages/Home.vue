@@ -9,7 +9,7 @@
         Open to Full Stack Roles
       </div>
 
-      <h1 class="max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+      <h1 class="max-w-3xl text-3xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-4xl md:text-6xl dark:text-white">
         Building robust, scalable
         <span class="text-primary-600 dark:text-primary-400">full stack</span>
         applications.
@@ -41,11 +41,11 @@
   </section>
 
   <!-- Stack Overview -->
-  <section class="mb-16 grid gap-4 sm:grid-cols-3" data-aos="fade-up">
+  <section class="mb-16 grid gap-4 grid-cols-1 sm:grid-cols-3" data-aos="fade-up">
     <div
       v-for="item in highlightItems"
       :key="item.title"
-      class="flex items-start gap-4 rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 dark:border-slate-800 dark:bg-slate-900/60"
+      class="flex items-start gap-4 rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
     >
       <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -61,19 +61,19 @@
 
   <!-- Currently Working With -->
   <section
-    class="mb-16 rounded-xl border border-gray-200/80 bg-white shadow-sm p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60"
+    class="mb-16 rounded-xl border border-gray-200 bg-white shadow p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60"
     data-aos="fade-up"
   >
-    <div class="flex items-center justify-between">
+    <div class="flex flex-wrap items-center justify-between gap-2">
       <div>
         <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">Currently working with</p>
         <h3 class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">Vue.js &amp; Laravel</h3>
       </div>
-      <span class="rounded-md bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
+      <span class="rounded-md border border-primary-200 bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-600 dark:border-primary-500/20 dark:bg-primary-500/10 dark:text-primary-400">
         Stack
       </span>
     </div>
-    <div class="mt-5 flex items-start gap-3 rounded-lg border border-gray-200/80 bg-gray-100/50 p-4 dark:border-slate-700 dark:bg-slate-800/60">
+    <div class="mt-5 flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-100 p-4 dark:border-slate-700 dark:bg-slate-800/60">
       <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 text-white">
         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />

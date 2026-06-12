@@ -17,8 +17,8 @@
       <button
         @click="slideProjects('left')"
         :class="[
-          'absolute -left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
-          canScrollLeft ? 'opacity-100' : 'pointer-events-none opacity-0',
+          'absolute -left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          canScrollLeft ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
         ]"
         aria-label="Previous projects"
       >
@@ -36,7 +36,7 @@
           v-for="project in projects"
           :key="project.id"
           :to="{ name: 'project', params: { id: project.id } }"
-          class="group block w-[80vw] max-w-xs flex-shrink-0 snap-start overflow-hidden rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 transition-all duration-200 hover:border-primary-200 hover:shadow-md sm:w-72 dark:border-slate-800 dark:bg-slate-900/60 dark:hover:border-slate-600"
+          class="group block w-[75vw] max-w-xs flex-shrink-0 snap-start overflow-hidden rounded-xl border border-gray-200 bg-white shadow p-4 transition-all duration-200 hover:border-primary-200 hover:shadow-md sm:w-72 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60 dark:hover:border-slate-600"
         >
           <div class="flex h-full flex-col gap-3">
             <div class="flex h-32 w-full items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-800">
@@ -67,7 +67,7 @@
               <span
                 v-for="tag in project.tags"
                 :key="tag"
-                class="rounded-md bg-gray-50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gray-500 dark:bg-slate-800 dark:text-slate-400"
+                class="rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gray-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
               >
                 {{ tag }}
               </span>
@@ -79,8 +79,8 @@
       <button
         @click="slideProjects('right')"
         :class="[
-          'absolute -right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
-          canScrollRight ? 'opacity-100' : 'pointer-events-none opacity-0',
+          'absolute -right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          canScrollRight ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
         ]"
         aria-label="Next projects"
       >
@@ -97,8 +97,8 @@
       <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
         Experience
       </p>
-      <h3 class="mt-1 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-        Early-career Milestones
+      <h3 class="mt-1 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">
+        Career Milestones
       </h3>
     </div>
 
@@ -115,11 +115,11 @@
         <div
           v-for="(experience, i) in experiences"
           :key="experience.role"
-          class="group relative flex w-[85vw] max-w-sm flex-shrink-0 flex-col sm:w-80"
+          class="group relative flex w-[75vw] max-w-sm flex-shrink-0 flex-col sm:w-80"
         >
           <!-- Timeline dot + connector -->
           <div class="flex items-center gap-3 pb-6">
-            <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-[3px] border-white bg-primary-500 shadow-sm transition-transform group-hover:scale-110 dark:border-slate-950">
+            <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-[3px] border-white bg-primary-500 shadow-md ring-2 ring-primary-100 transition-transform group-hover:scale-110 dark:border-slate-950 dark:ring-primary-500/20">
               <span class="text-[10px] font-bold text-white">{{ i + 1 }}</span>
             </div>
             <span class="text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400">
@@ -128,7 +128,7 @@
           </div>
 
           <!-- Card -->
-          <div class="flex flex-1 flex-col rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
+          <div class="flex flex-1 flex-col rounded-xl border border-gray-200 bg-white shadow p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
             <p class="text-[11px] font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
               {{ experience.company }}
             </p>
@@ -259,6 +259,12 @@ const experiences = ref([
     company: "KMD Group of Company Limited (SoftComm Technology)",
     period: "May 2025 -- Present",
     highlights: "Promoted to Junior Programmer; actively developing and maintaining web applications, building UI components, and optimizing user experiences alongside a cross-functional team.",
+  },
+  {
+    role: "Mid Programmer",
+    company: "KMD Group of Company Limited (SoftComm Technology)",
+    period: "May 2026 -- Present",
+    highlights: "Promoted to Mid Programmer; leading development of the KMD Inventory Project featuring comprehensive finance modules (invoicing, expense tracking, revenue reports) and auditory features (audit trails, stock reconciliation, activity logs), along with full inventory management, role-based access control, and real-time dashboard analytics.",
   },
 ]);
 

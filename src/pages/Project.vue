@@ -2,20 +2,20 @@
   <div v-if="project">
     <div class="mx-auto max-w-3xl">
       <!-- Header -->
-      <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex items-center gap-3">
-          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600 sm:h-12 sm:w-12">
+      <div class="mb-8 flex flex-col gap-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-600 sm:h-12 sm:w-12">
             <svg class="h-5 w-5 text-white sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="9" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M8 12l2 2 4-4" />
             </svg>
           </div>
-          <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
+          <h1 class="truncate text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
             {{ project.title }}
           </h1>
         </div>
 
-        <div class="flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
           <a
             v-if="project.url"
             :href="project.url"
@@ -57,33 +57,33 @@
         <span
           v-for="tag in project.tags"
           :key="tag"
-          class="rounded-md bg-primary-50 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-primary-600 dark:bg-primary-500/10 dark:text-primary-400"
+          class="rounded-md border border-primary-200 bg-primary-50 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-primary-600 dark:border-primary-500/20 dark:bg-primary-500/10 dark:text-primary-400"
         >
           {{ tag }}
         </span>
       </div>
 
       <!-- Tab Navigation -->
-      <div class="mb-8">
-        <nav class="flex gap-1 rounded-lg border border-gray-200/80 bg-gray-100/60 p-1 dark:border-slate-800 dark:bg-slate-800/60">
+      <div class="mb-8 overflow-x-auto">
+        <nav class="flex min-w-0 gap-1 rounded-lg border border-gray-200 bg-gray-100 shadow-sm p-1 dark:border-slate-800 dark:bg-slate-800/60 dark:shadow-none">
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"
             exact-active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 rounded-md px-4 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 dark:text-slate-500 dark:hover:text-slate-300"
+            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Overview
           </router-link>
           <router-link
             :to="{ name: 'frontEnd', params: { id: project.id } }"
             active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 rounded-md px-4 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 dark:text-slate-500 dark:hover:text-slate-300"
+            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Front End
           </router-link>
           <router-link
             :to="{ name: 'backEnd', params: { id: project.id } }"
             active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 rounded-md px-4 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 dark:text-slate-500 dark:hover:text-slate-300"
+            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Back End
           </router-link>

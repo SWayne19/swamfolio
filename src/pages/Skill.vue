@@ -8,7 +8,7 @@
         </h3>
       </div>
       <span
-        class="rounded-md bg-gray-50 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-gray-500 dark:bg-slate-800 dark:text-slate-400"
+        class="rounded-md border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-gray-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
       >
         Full Stack
       </span>
@@ -17,7 +17,7 @@
       <div
         v-for="skill in skills"
         :key="skill.title"
-        class="rounded-xl border border-gray-200/80 bg-white shadow-sm p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
         data-aos="fade-up"
       >
         <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">

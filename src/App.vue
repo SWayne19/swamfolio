@@ -1,6 +1,13 @@
 <template>
+  <!-- Animated Background Orbs — sits on top of html bg, behind all content -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+  </div>
+
   <div
-    class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100"
+    class="relative z-10 min-h-screen text-gray-900 transition-colors duration-300 dark:text-gray-100"
   >
     <!-- Progress Bar -->
     <div
@@ -11,7 +18,7 @@
 
     <!-- Top Nav Bar -->
     <nav
-      class="sticky top-0 z-50 border-b border-gray-200/80 bg-gray-50/80 backdrop-blur-lg dark:border-slate-800/80 dark:bg-slate-950/80"
+      class="sticky top-0 z-50 border-b border-gray-200 bg-gray-50/80 shadow-sm backdrop-blur-lg dark:border-slate-800/80 dark:bg-slate-950/80 dark:shadow-none"
     >
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <!-- Logo / Name with typing animation -->
@@ -22,8 +29,8 @@
           </span>
         </RouterLink>
 
-        <!-- Navigation Links -->
-        <div class="flex items-center gap-1">
+        <!-- Desktop Navigation Links -->
+        <div class="hidden items-center gap-1 sm:flex">
           <RouterLink
             v-for="link in navLinks"
             :key="link.name"
@@ -49,8 +56,56 @@
             </svg>
           </button>
         </div>
+
+        <!-- Mobile: Theme Toggle + Hamburger -->
+        <div class="flex items-center gap-1 sm:hidden">
+          <button
+            @click="toggleTheme"
+            class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+          >
+            <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+            <svg v-else class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            aria-label="Toggle menu"
+          >
+            <svg v-if="!mobileMenuOpen" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg v-else class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
     </nav>
+
+    <!-- Mobile Menu Dropdown -->
+    <div
+      v-show="mobileMenuOpen"
+      class="fixed inset-x-0 top-[57px] z-40 border-b border-gray-200 bg-gray-50/95 shadow-lg backdrop-blur-lg sm:hidden dark:border-slate-800/80 dark:bg-slate-950/95 dark:shadow-none"
+    >
+      <div class="flex flex-col px-4 py-3">
+        <RouterLink
+          v-for="link in navLinks"
+          :key="link.name"
+          :to="{ name: link.route }"
+          class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+          active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10"
+          @click="mobileMenuOpen = false"
+        >
+          {{ link.name }}
+        </RouterLink>
+      </div>
+    </div>
 
     <div class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
       <router-view />
@@ -70,7 +125,7 @@
     </button>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-100 py-6 dark:border-slate-800/50">
+    <footer class="border-t border-gray-200 py-6 dark:border-slate-800/50">
       <div class="mx-auto max-w-6xl px-4 text-center text-xs text-gray-400 dark:text-slate-600">
         <p>swamfolio &copy; {{ currentYear }}</p>
       </div>
@@ -84,6 +139,9 @@ import { useRouter } from "vue-router";
 
 const currentYear = new Date().getFullYear();
 
+// Mobile menu
+const mobileMenuOpen = ref(false);
+
 // Progress bar
 const router = useRouter();
 const isLoading = ref(false);
@@ -91,6 +149,7 @@ const loadingProgress = ref(0);
 let progressInterval = null;
 
 router.beforeEach(() => {
+  mobileMenuOpen.value = false;
   isLoading.value = true;
   loadingProgress.value = 0;
   progressInterval = setInterval(() => {
@@ -110,7 +169,7 @@ router.afterEach(() => {
 });
 
 // Typing animation
-const phrases = ["Swam Pyae Paing", "Full Stack Developer", "Vue & Laravel"];
+const phrases = ["Swam Pyae Paing", "Full Stack Developer"];
 const displayedName = ref("");
 let typingTimeout = null;
 let cancelled = false;
