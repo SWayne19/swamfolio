@@ -22,8 +22,8 @@
     >
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <!-- Logo / Name with typing animation -->
-        <RouterLink :to="{ name: 'home' }" class="flex items-center">
-          <span class="text-2xl font-semibold text-gray-900 dark:text-white">
+        <RouterLink :to="{ name: 'home' }" class="mr-2 min-w-0 flex-shrink items-center truncate">
+          <span class="text-lg font-semibold text-gray-900 sm:text-xl md:text-2xl dark:text-white">
             <span>{{ displayedName }}</span>
             <span class="inline-block w-[2px] h-[1.1em] align-middle ml-[1px] bg-primary-500 typewriter-cursor"></span>
           </span>
@@ -126,7 +126,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-200 py-6 dark:border-slate-800/50">
-      <div class="mx-auto max-w-6xl px-4 text-center text-xs text-gray-400 dark:text-slate-600">
+      <div class="mx-auto max-w-6xl px-4 text-center text-xs text-gray-500 dark:text-slate-600">
         <p>swamfolio &copy; {{ currentYear }}</p>
       </div>
     </footer>

@@ -6,10 +6,10 @@
       :key="stat.label"
       class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
     >
-      <p class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <p class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
         {{ stat.value }}
       </p>
-      <p class="mt-1 text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
+      <p class="mt-1 text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
         {{ stat.label }}
       </p>
     </div>
@@ -18,11 +18,11 @@
   <!-- About -->
   <section id="about" class="mt-12 flex flex-col gap-8" data-aos="fade-up">
     <div class="rounded-xl border border-gray-200 bg-white shadow p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/60">
-      <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">About</p>
+      <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">About</p>
       <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">
         Blending Full Stack Vue & Laravel with AI-Powered Development
       </h3>
-      <div class="mt-6 space-y-5 text-[15px] leading-relaxed text-gray-600 dark:text-slate-300">
+      <div class="mt-6 space-y-5 text-sm leading-relaxed text-gray-600 sm:text-[15px] dark:text-slate-300">
         <p>
           I craft robust, end-to-end applications by leveraging the power of
           <span class="font-semibold text-primary-600 dark:text-primary-400">Vue</span> for dynamic
@@ -54,7 +54,7 @@
         :key="badge.title"
         class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
       >
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
+        <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
           {{ badge.title }}
         </p>
         <p class="mt-2 text-sm text-gray-600 dark:text-slate-300">{{ badge.text }}</p>
@@ -69,7 +69,7 @@
         class="rounded-xl border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60"
       >
         <h4 class="text-sm font-semibold text-gray-900 dark:text-white">{{ card.title }}</h4>
-        <p class="mt-2 text-sm text-gray-500 dark:text-slate-400">{{ card.detail }}</p>
+        <p class="mt-2 text-sm text-gray-600 dark:text-slate-400">{{ card.detail }}</p>
       </div>
     </div>
 

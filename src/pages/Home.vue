@@ -1,41 +1,59 @@
 <template>
   <!-- Hero Section -->
   <section class="mb-16" data-aos="fade-up">
-    <div class="flex flex-col gap-6 py-8 sm:py-16">
-      <div
-        class="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-        Open to Full Stack Roles
+    <div class="flex flex-col-reverse items-center gap-8 py-8 sm:py-16 md:flex-row md:items-start md:justify-between md:gap-12">
+      <!-- Text content -->
+      <div class="flex flex-1 flex-col gap-6 text-center md:text-left">
+        <div
+          class="inline-flex w-fit items-center gap-2 self-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 md:self-start dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          Open to Full Stack Roles
+        </div>
+
+        <h1 class="text-3xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
+          Building robust, scalable
+          <span class="text-primary-600 dark:text-primary-400">full stack</span>
+          applications.
+        </h1>
+
+        <p class="text-base leading-relaxed text-gray-600 sm:text-lg dark:text-slate-400">
+          I build web apps with Vue and Laravel, focusing on creating seamless, secure,
+          and reliable user experiences from the database to the UI.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2 md:justify-start">
+          <router-link
+            :to="{ name: 'experienceAndSkills' }"
+            class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-primary-700"
+          >
+            View Projects
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </router-link>
+          <router-link
+            :to="{ name: 'about' }"
+            class="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+          >
+            About Me
+          </router-link>
+        </div>
       </div>
 
-      <h1 class="max-w-3xl text-3xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-4xl md:text-6xl dark:text-white">
-        Building robust, scalable
-        <span class="text-primary-600 dark:text-primary-400">full stack</span>
-        applications.
-      </h1>
-
-      <p class="max-w-2xl text-lg leading-relaxed text-gray-500 dark:text-slate-400">
-        I build web apps with Vue and Laravel, focusing on creating seamless, secure,
-        and reliable user experiences from the database to the UI.
-      </p>
-
-      <div class="flex flex-wrap items-center gap-3 pt-2">
-        <router-link
-          :to="{ name: 'experienceAndSkills' }"
-          class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-primary-700"
-        >
-          View Projects
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </router-link>
-        <router-link
-          :to="{ name: 'about' }"
-          class="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
-        >
-          About Me
-        </router-link>
+      <!-- Profile photo -->
+      <div class="shrink-0" data-aos="fade-left">
+        <div class="profile-ring relative h-40 w-40 rounded-full p-1 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
+          <img
+            src="/images/profile.jpg"
+            alt="Swam Pyae Paing"
+            class="h-full w-full rounded-full border-4 border-white object-cover shadow-lg dark:border-slate-900"
+            width="256"
+            height="256"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -54,7 +72,7 @@
       </div>
       <div>
         <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ item.title }}</p>
-        <p class="mt-1 text-sm text-gray-500 dark:text-slate-400">{{ item.value }}</p>
+        <p class="mt-1 text-sm text-gray-600 dark:text-slate-400">{{ item.value }}</p>
       </div>
     </div>
   </section>
@@ -66,8 +84,8 @@
   >
     <div class="flex flex-wrap items-center justify-between gap-2">
       <div>
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">Currently working with</p>
-        <h3 class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">Vue.js &amp; Laravel</h3>
+        <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">Currently working with</p>
+        <h3 class="mt-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white">Vue.js &amp; Laravel</h3>
       </div>
       <span class="rounded-md border border-primary-200 bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-600 dark:border-primary-500/20 dark:bg-primary-500/10 dark:text-primary-400">
         Stack
@@ -81,7 +99,7 @@
       </span>
       <div>
         <p class="text-sm font-medium text-gray-900 dark:text-white">Latest full stack update</p>
-        <p class="mt-0.5 text-sm text-gray-500 dark:text-slate-400">
+        <p class="mt-0.5 text-sm text-gray-600 dark:text-slate-400">
           Built with the Laravel + Vue Starter Kit: robust scaffolding, hot reloads,
           API-ready, and ideal for modern full stack projects.
         </p>

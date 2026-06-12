@@ -3,12 +3,12 @@
   <section id="projects" data-aos="fade-up">
     <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
+        <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
           Projects
         </p>
-        <h3 class="mt-1 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">Selected work</h3>
+        <h3 class="mt-1 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">Selected work</h3>
       </div>
-      <p class="text-sm text-gray-400 dark:text-slate-500">
+      <p class="text-sm text-gray-500 dark:text-slate-500">
         More details available on request.
       </p>
     </div>
@@ -59,7 +59,7 @@
             <h4 class="text-base font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
               {{ project.title }}
             </h4>
-            <p class="line-clamp-2 text-sm text-gray-500 dark:text-slate-400">
+            <p class="line-clamp-2 text-sm text-gray-600 dark:text-slate-400">
               {{ project.description }}
             </p>
 
@@ -67,7 +67,7 @@
               <span
                 v-for="tag in project.tags"
                 :key="tag"
-                class="rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gray-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
+                class="rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
               >
                 {{ tag }}
               </span>
@@ -94,7 +94,7 @@
   <!-- Experience Section - Horizontal Scroll -->
   <section id="experience" class="mt-16" data-aos="fade-up">
     <div class="mb-6">
-      <p class="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
+      <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
         Experience
       </p>
       <h3 class="mt-1 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">
@@ -129,13 +129,13 @@
 
           <!-- Card -->
           <div class="flex flex-1 flex-col rounded-xl border border-gray-200 bg-white shadow p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
-            <p class="text-[11px] font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500">
+            <p class="text-[11px] font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
               {{ experience.company }}
             </p>
-            <h4 class="mt-2 text-lg font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+            <h4 class="mt-2 text-base font-semibold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
               {{ experience.role }}
             </h4>
-            <p class="mt-3 text-sm leading-relaxed text-gray-500 dark:text-slate-400">
+            <p class="mt-3 text-sm leading-relaxed text-gray-600 dark:text-slate-400">
               {{ experience.highlights }}
             </p>
           </div>

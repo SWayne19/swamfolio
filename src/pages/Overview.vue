@@ -1,6 +1,6 @@
 <template>
   <section v-if="project" class="space-y-4">
-    <h2 class="text-lg font-bold text-gray-900 dark:text-white">Project Overview</h2>
+    <h2 class="text-base font-bold text-gray-900 sm:text-lg dark:text-white">Project Overview</h2>
 
     <div class="rounded-lg border border-gray-200 bg-white shadow p-5 dark:border-slate-800 dark:bg-slate-900/60">
       <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Goal</h3>
@@ -25,7 +25,7 @@
     </div>
   </section>
 
-  <p v-else class="text-sm text-gray-400 dark:text-slate-500">Project not found.</p>
+  <p v-else class="text-sm text-gray-500 dark:text-slate-500">Project not found.</p>
 </template>
 
 <script setup>

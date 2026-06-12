@@ -10,7 +10,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M8 12l2 2 4-4" />
             </svg>
           </div>
-          <h1 class="truncate text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
+          <h1 class="truncate text-xl font-bold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
             {{ project.title }}
           </h1>
         </div>
@@ -30,7 +30,7 @@
           </a>
           <span
             v-else
-            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2 text-sm font-medium text-gray-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-500"
+            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2 text-sm font-medium text-gray-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-500"
           >
             Coming Soon
           </span>
@@ -48,7 +48,7 @@
       </div>
 
       <!-- Description -->
-      <p class="mb-6 text-[15px] leading-relaxed text-gray-600 dark:text-slate-300">
+      <p class="mb-6 text-sm leading-relaxed text-gray-600 sm:text-[15px] dark:text-slate-300">
         {{ project.description }}
       </p>
 
@@ -69,21 +69,21 @@
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"
             exact-active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
+            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-500 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Overview
           </router-link>
           <router-link
             :to="{ name: 'frontEnd', params: { id: project.id } }"
             active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
+            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-500 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Front End
           </router-link>
           <router-link
             :to="{ name: 'backEnd', params: { id: project.id } }"
             active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-400 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
+            class="flex-1 whitespace-nowrap rounded-md px-3 py-2 text-center text-sm font-medium text-gray-500 transition hover:text-gray-700 sm:px-4 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Back End
           </router-link>
@@ -96,7 +96,7 @@
 
   <!-- Not Found -->
   <div v-else class="flex min-h-[300px] flex-col items-center justify-center text-center">
-    <p class="text-lg text-gray-400 dark:text-slate-500">Project not found.</p>
+    <p class="text-base text-gray-500 sm:text-lg dark:text-slate-500">Project not found.</p>
     <router-link
       :to="{ name: 'experienceAndSkills' }"
       class="mt-4 rounded-lg bg-primary-600 px-5 py-2 text-sm font-medium text-white transition hover:bg-primary-700"

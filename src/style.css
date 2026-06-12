@@ -107,6 +107,18 @@ body {
   }
 }
 
+/* Profile photo gradient ring — static, no animation */
+.profile-ring {
+  background: conic-gradient(
+    from 0deg,
+    #3b82f6,
+    #6366f1,
+    #8b5cf6,
+    #ec4899,
+    #3b82f6
+  );
+}
+
 /* Scrollbar styling */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

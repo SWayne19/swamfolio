@@ -8,7 +8,7 @@
         <p class="text-xs font-medium uppercase tracking-wider text-primary-600 dark:text-primary-400">
           Contact
         </p>
-        <h3 class="mt-2 text-2xl font-bold text-gray-900 dark:text-white">
+        <h3 class="mt-2 text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
           Let's build something thoughtful.
         </h3>
         <p class="mt-1 text-sm text-gray-600 dark:text-slate-300">
