@@ -11,11 +11,15 @@
           Open to Full Stack Roles
         </div>
 
+        <p class="text-sm font-medium text-gray-500 sm:text-base dark:text-slate-400">Hi, I'm</p>
         <h1 class="text-3xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
+          Swam Pyae Paing<span class="text-primary-600 dark:text-primary-400">.</span>
+        </h1>
+        <p class="text-lg font-medium text-gray-700 sm:text-xl dark:text-slate-300">
           Building robust, scalable
           <span class="text-primary-600 dark:text-primary-400">full stack</span>
           applications.
-        </h1>
+        </p>
 
         <p class="text-pretty text-base leading-relaxed text-gray-600 sm:text-lg dark:text-slate-400">
           I build web apps with Vue and Laravel, focusing on creating seamless, secure,
