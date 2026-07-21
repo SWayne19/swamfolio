@@ -2,7 +2,7 @@
   <!-- Hero Section -->
   <section class="mb-10 sm:mb-16" data-aos="fade-up">
     <div
-      class="flex flex-col-reverse items-center gap-6 py-6 sm:gap-8 sm:py-16 md:flex-row md:items-start md:justify-between md:gap-12">
+      class="flex flex-col-reverse items-center gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
       <!-- Text content -->
       <div class="flex flex-1 flex-col gap-6 text-center md:text-left">
         <p class="text-sm font-medium text-gray-500 sm:text-base dark:text-slate-400">Hi, I'm</p>
