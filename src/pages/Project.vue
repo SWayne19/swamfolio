@@ -1,15 +1,9 @@
 <template>
   <div v-if="project">
-    <div class="mx-auto max-w-3xl">
+    <div>
       <!-- Header -->
       <div class="mb-6 flex flex-col gap-5 sm:mb-10">
         <div class="flex items-center gap-4 min-w-0">
-          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/20 sm:h-13 sm:w-13">
-            <svg class="h-5 w-5 text-white sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="9" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12l2 2 4-4" />
-            </svg>
-          </div>
           <h1 class="truncate text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
             {{ project.title }}
           </h1>
