@@ -454,6 +454,55 @@ const projects = ref([
         "Secure authentication, input validation, and permission checks.",
     },
   },
+  {
+    id: 5,
+    title: "YummyShare",
+    description:
+      "A recipe sharing platform with an admin panel for managing recipe categories and configurations, and a user panel where anyone can share recipes globally with the community.",
+    tags: ["Laravel", "Vue 3", "Inertia.js", "Tailwind CSS", "PostgreSQL"],
+    image: "/images/YummyShare.png",
+    url: "",
+    overview: {
+      goal: "Build a recipe sharing platform with admin-managed categories and a user panel for sharing recipes globally, powered by Laravel, Vue, and Inertia.js.",
+      highlights: [
+        "Admin panel for recipe category configuration and content management",
+        "User panel for creating and sharing recipes with the global community",
+        "Full SPA experience powered by Inertia.js without a separate API layer",
+        "Role-based access separating admin and user functionalities",
+      ],
+      challenges:
+        "Balancing admin control over categories and configurations with a smooth, open user experience for recipe sharing, while maintaining clean role-based access.",
+      outcome:
+        "A full-featured recipe platform where admins manage categories and settings, and users freely share and discover recipes from a global community.",
+    },
+    frontend: {
+      stack: ["Vue 3", "Inertia.js", "Tailwind CSS", "Composition API"],
+      architecture: [
+        "Inertia.js-driven SPA with server-side routing",
+        "Vue 3 components with Composition API for reactive UI",
+        "Tailwind CSS utility-first styling with responsive layouts",
+        "Shared layouts and reusable form components",
+      ],
+      features: [
+        "Admin dashboard for category and recipe configuration",
+        "User panel for creating and sharing recipes globally",
+        "Browse and search recipes with admin-managed category filters",
+        "User profile with published and saved recipes",
+      ],
+      ui: "Warm, appetizing design with clean typography, card-based layouts, and smooth Inertia page transitions.",
+    },
+    backend: {
+      stack: ["Laravel", "PostgreSQL", "Inertia.js"],
+      features: [
+        "Admin panel with recipe category CRUD and configuration",
+        "User recipe CRUD with image storage",
+        "Role-based access control for admin and user panels",
+        "Global recipe feed with search and filtering",
+      ],
+      database: ["Users", "Recipes", "Categories", "Tags", "Favorites"],
+      security: "Sanctum authentication, authorization policies, input validation, and file upload sanitization.",
+    },
+  },
 ]);
 
 provide("projects", projects);
