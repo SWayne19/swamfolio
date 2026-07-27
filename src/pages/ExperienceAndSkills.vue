@@ -30,7 +30,7 @@
         class="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth py-2"
       >
         <router-link
-          v-for="project in projects"
+          v-for="project in [...projects].reverse()"
           :key="project.id"
           :to="{ name: 'project', params: { id: project.id } }"
           class="glass-card group block w-[78vw] max-w-xs flex-shrink-0 snap-start overflow-hidden p-5 sm:w-72 sm:p-6"
@@ -123,15 +123,13 @@
         class="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 pt-2"
       >
         <div
-          v-for="(experience, i) in experiences"
+          v-for="experience in [...experiences].reverse()"
           :key="experience.role"
           class="group relative flex w-[78vw] max-w-sm flex-shrink-0 snap-start flex-col sm:w-80"
         >
           <!-- Timeline dot -->
           <div class="flex items-center gap-3 pb-6">
-            <div class="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/20 ring-4 ring-white transition-transform group-hover:scale-110 dark:ring-slate-950">
-              <span class="text-[11px] font-bold text-white">{{ i + 1 }}</span>
-            </div>
+            <div class="relative z-10 h-3.5 w-3.5 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 shadow-md shadow-primary-500/20 ring-4 ring-white transition-transform group-hover:scale-125 dark:ring-slate-950"></div>
             <span class="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
               {{ experience.period }}
             </span>
