@@ -1,14 +1,14 @@
 <template>
   <!-- Projects Section -->
   <section id="projects" data-aos="fade-up">
-    <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+    <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
           Projects
         </p>
-        <h3 class="mt-1 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">Selected work</h3>
+        <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">Selected work</h3>
       </div>
-      <p class="text-sm text-gray-500 dark:text-slate-500">
+      <p class="text-sm text-gray-400 dark:text-slate-500">
         More details available on request.
       </p>
     </div>
@@ -17,12 +17,12 @@
       <button
         @click="slideProjects('left')"
         :class="[
-          'absolute -left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          'absolute -left-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white focus:outline-none sm:flex dark:border-slate-700/60 dark:bg-slate-800/80 dark:hover:bg-slate-800',
           canScrollLeft ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
         ]"
         aria-label="Previous projects"
       >
-        <svg class="h-4 w-4 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
@@ -30,21 +30,21 @@
       <div
         ref="carouselRef"
         @scroll="checkScroll"
-        class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth py-2"
+        class="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth py-2"
       >
         <router-link
           v-for="project in projects"
           :key="project.id"
           :to="{ name: 'project', params: { id: project.id } }"
-          class="group block w-[75vw] max-w-xs flex-shrink-0 snap-start overflow-hidden rounded-xl border border-gray-200 bg-white shadow p-4 transition-all duration-200 hover:border-primary-200 hover:shadow-md sm:w-72 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60 dark:hover:border-slate-600"
+          class="glass-card group block w-[78vw] max-w-xs flex-shrink-0 snap-start overflow-hidden p-5 sm:w-72 sm:p-6"
         >
-          <div class="flex h-full flex-col gap-3">
-            <div class="flex h-32 w-full items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-800">
+          <div class="flex h-full flex-col gap-3.5">
+            <div class="flex h-36 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-800/60">
               <template v-if="project.image">
                 <img
                   :src="project.image"
                   :alt="`${project.title} cover`"
-                  class="h-full w-full rounded-lg object-contain"
+                  class="h-full w-full rounded-xl object-contain transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
               </template>
@@ -56,10 +56,10 @@
               </template>
             </div>
 
-            <h4 class="text-base font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+            <h4 class="text-base font-bold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
               {{ project.title }}
             </h4>
-            <p class="line-clamp-2 text-pretty text-sm text-gray-600 dark:text-slate-400">
+            <p class="line-clamp-2 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">
               {{ project.description }}
             </p>
 
@@ -67,7 +67,7 @@
               <span
                 v-for="tag in project.tags"
                 :key="tag"
-                class="rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
+                class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:bg-slate-800 dark:text-slate-400"
               >
                 {{ tag }}
               </span>
@@ -79,25 +79,25 @@
       <button
         @click="slideProjects('right')"
         :class="[
-          'absolute -right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          'absolute -right-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white focus:outline-none sm:flex dark:border-slate-700/60 dark:bg-slate-800/80 dark:hover:bg-slate-800',
           canScrollRight ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
         ]"
         aria-label="Next projects"
       >
-        <svg class="h-4 w-4 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
     </div>
   </section>
 
-  <!-- Experience Section - Horizontal Scroll -->
-  <section id="experience" class="mt-10 sm:mt-16" data-aos="fade-up">
-    <div class="mb-6">
-      <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
+  <!-- Experience Section -->
+  <section id="experience" class="mt-12 sm:mt-20" data-aos="fade-up">
+    <div class="mb-8">
+      <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
         Experience
       </p>
-      <h3 class="mt-1 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">
+      <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
         Career Milestones
       </h3>
     </div>
@@ -105,17 +105,17 @@
     <!-- Horizontal Timeline -->
     <div class="group/slider relative">
       <!-- Timeline line -->
-      <div class="absolute top-[52px] left-0 right-0 h-px bg-gray-200 dark:bg-slate-800"></div>
+      <div class="absolute top-[52px] left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-200 to-transparent dark:via-slate-800"></div>
 
       <button
         @click="slideExp('left')"
         :class="[
-          'absolute -left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          'absolute -left-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white focus:outline-none sm:flex dark:border-slate-700/60 dark:bg-slate-800/80 dark:hover:bg-slate-800',
           canExpScrollLeft ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
         ]"
         aria-label="Previous experience"
       >
-        <svg class="h-4 w-4 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
@@ -123,32 +123,32 @@
       <div
         ref="expCarouselRef"
         @scroll="checkExpScroll"
-        class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 pt-2"
+        class="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 pt-2"
       >
         <div
           v-for="(experience, i) in experiences"
           :key="experience.role"
-          class="group relative flex w-[75vw] max-w-sm flex-shrink-0 snap-start flex-col sm:w-80"
+          class="group relative flex w-[78vw] max-w-sm flex-shrink-0 snap-start flex-col sm:w-80"
         >
-          <!-- Timeline dot + connector -->
+          <!-- Timeline dot -->
           <div class="flex items-center gap-3 pb-6">
-            <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-[3px] border-white bg-primary-500 shadow-md ring-2 ring-primary-100 transition-transform group-hover:scale-110 dark:border-slate-950 dark:ring-primary-500/20">
-              <span class="text-[10px] font-bold text-white">{{ i + 1 }}</span>
+            <div class="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/20 ring-4 ring-white transition-transform group-hover:scale-110 dark:ring-slate-950">
+              <span class="text-[11px] font-bold text-white">{{ i + 1 }}</span>
             </div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
               {{ experience.period }}
             </span>
           </div>
 
           <!-- Card -->
-          <div class="flex flex-1 flex-col rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 transition-all duration-200 group-hover:border-primary-200 group-hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60 dark:group-hover:border-slate-600">
-            <p class="text-[11px] font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
+          <div class="glass-card flex flex-1 flex-col p-5 sm:p-6">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
               {{ experience.company }}
             </p>
-            <h4 class="mt-2 text-base font-semibold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
+            <h4 class="mt-2.5 text-base font-bold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
               {{ experience.role }}
             </h4>
-            <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-600 dark:text-slate-400">
+            <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">
               {{ experience.highlights }}
             </p>
           </div>
@@ -158,12 +158,12 @@
       <button
         @click="slideExp('right')"
         :class="[
-          'absolute -right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:bg-gray-50 focus:outline-none sm:flex dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700',
+          'absolute -right-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white focus:outline-none sm:flex dark:border-slate-700/60 dark:bg-slate-800/80 dark:hover:bg-slate-800',
           canExpScrollRight ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
         ]"
         aria-label="Next experience"
       >
-        <svg class="h-4 w-4 text-gray-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
@@ -193,7 +193,7 @@ const slideProjects = (direction) => {
   if (!carouselRef.value) return;
   const container = carouselRef.value;
   const itemWidth = container.firstElementChild?.offsetWidth || 288;
-  const gap = 16;
+  const gap = 20;
   const scrollAmount = itemWidth + gap;
   const rawTarget = container.scrollLeft + (direction === "right" ? scrollAmount : -scrollAmount);
   const maxScroll = container.scrollWidth - container.clientWidth;
@@ -217,7 +217,7 @@ const slideExp = (direction) => {
   if (!expCarouselRef.value) return;
   const container = expCarouselRef.value;
   const itemWidth = container.firstElementChild?.offsetWidth || 320;
-  const gap = 16;
+  const gap = 20;
   const scrollAmount = itemWidth + gap;
   const rawTarget = container.scrollLeft + (direction === "right" ? scrollAmount : -scrollAmount);
   const maxScroll = container.scrollWidth - container.clientWidth;

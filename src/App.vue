@@ -1,5 +1,5 @@
 <template>
-  <!-- Animated Background Orbs — sits on top of html bg, behind all content -->
+  <!-- Animated Background Orbs -->
   <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
@@ -12,30 +12,30 @@
     <!-- Progress Bar -->
     <div
       v-if="isLoading"
-      class="fixed top-0 left-0 z-[100] h-[3px] bg-primary-500 transition-all duration-200 ease-out"
+      class="fixed top-0 left-0 z-[100] h-[3px] bg-gradient-to-r from-primary-500 via-primary-400 to-sky-500 transition-all duration-200 ease-out"
       :style="{ width: loadingProgress + '%' }"
     ></div>
 
     <!-- Top Nav Bar -->
     <nav
-      class="sticky top-0 z-50 border-b border-gray-200 bg-gray-50/80 shadow-sm backdrop-blur-lg dark:border-slate-800/80 dark:bg-slate-950/80 dark:shadow-none"
+      class="sticky top-0 z-50 border-b border-slate-200/60 bg-white/70 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70 dark:shadow-none"
     >
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4 lg:px-10">
         <!-- Logo / Name with typing animation -->
         <RouterLink :to="{ name: 'home' }" class="mr-2 min-w-0 flex-shrink items-center truncate">
-          <span class="text-lg font-semibold text-gray-900 sm:text-xl md:text-2xl dark:text-white">
+          <span class="text-lg font-bold tracking-tight text-gray-900 sm:text-xl md:text-2xl dark:text-white">
             <span>{{ displayedName }}</span>
-            <span class="inline-block w-[2px] h-[1.1em] align-middle ml-[1px] bg-primary-500 typewriter-cursor"></span>
+            <span class="typewriter-cursor ml-[1px] inline-block h-[1.1em] w-[2px] align-middle bg-primary-500"></span>
           </span>
         </RouterLink>
 
         <!-- Desktop Navigation Links -->
-        <div class="hidden items-center gap-1 sm:flex">
+        <div class="hidden items-center gap-1.5 sm:flex">
           <RouterLink
             v-for="link in navLinks"
             :key="link.name"
             :to="{ name: link.route }"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            class="rounded-lg px-3.5 py-2 text-[13px] font-medium text-gray-500 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-primary-500/10 dark:hover:text-primary-300"
             active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10"
           >
             {{ link.name }}
@@ -44,7 +44,7 @@
           <!-- Theme Toggle -->
           <button
             @click="toggleTheme"
-            class="ml-1 flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            class="ml-2 flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-all hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
             :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           >
             <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@
         <div class="flex items-center gap-1 sm:hidden">
           <button
             @click="toggleTheme"
-            class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-all hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
             :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           >
             <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@
           </button>
           <button
             @click="mobileMenuOpen = !mobileMenuOpen"
-            class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-all hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
             aria-label="Toggle menu"
           >
             <svg v-if="!mobileMenuOpen" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu Backdrop (click to close) -->
+    <!-- Mobile Menu Backdrop -->
     <Transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="opacity-0"
@@ -99,7 +99,7 @@
     >
       <div
         v-show="mobileMenuOpen"
-        class="fixed inset-0 top-[57px] z-30 sm:hidden"
+        class="fixed inset-0 top-[57px] z-30 bg-black/20 backdrop-blur-sm sm:hidden dark:bg-black/40"
         @click="mobileMenuOpen = false"
       ></div>
     </Transition>
@@ -115,14 +115,14 @@
     >
     <div
       v-show="mobileMenuOpen"
-      class="fixed inset-x-0 top-[57px] z-40 border-b border-gray-200 bg-gray-50/95 shadow-lg backdrop-blur-lg sm:hidden dark:border-slate-800/80 dark:bg-slate-950/95 dark:shadow-none"
+      class="fixed inset-x-0 top-[57px] z-40 border-b border-slate-200/60 bg-white/95 shadow-lg backdrop-blur-xl sm:hidden dark:border-slate-800/60 dark:bg-slate-950/95 dark:shadow-none"
     >
-      <div class="flex flex-col px-3 py-2">
+      <div class="flex flex-col px-4 py-3">
         <RouterLink
           v-for="link in navLinks"
           :key="link.name"
           :to="{ name: link.route }"
-          class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+          class="rounded-lg px-4 py-3 text-sm font-medium text-gray-500 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-primary-500/10 dark:hover:text-primary-300"
           active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10"
           @click="mobileMenuOpen = false"
         >
@@ -132,7 +132,7 @@
     </div>
     </Transition>
 
-    <div class="mx-auto max-w-6xl px-4 pb-12 pt-6 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8">
+    <div class="mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12 lg:px-10">
       <router-view />
     </div>
 
@@ -140,19 +140,21 @@
     <button
       v-show="showScrollTop"
       @click="scrollToTop"
-      class="fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6 flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 shadow-lg transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+      class="fixed right-5 bottom-5 z-40 flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 text-gray-500 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white hover:text-primary-600 hover:shadow-xl sm:right-8 sm:bottom-8 dark:border-slate-700/60 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-primary-400"
       :class="showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'"
       aria-label="Scroll to top"
     >
-      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
       </svg>
     </button>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-200 py-4 sm:py-6 dark:border-slate-800/50">
-      <div class="mx-auto max-w-6xl px-4 text-center text-xs text-gray-500 dark:text-slate-600">
-        <p>swamfolio &copy; {{ currentYear }}</p>
+    <footer class="border-t border-slate-200/60 py-6 sm:py-8 dark:border-slate-800/40">
+      <div class="mx-auto max-w-6xl px-5 text-center sm:px-8 lg:px-10">
+        <p class="text-xs font-medium tracking-wide text-gray-400 dark:text-slate-600">
+          swamfolio &copy; {{ currentYear }}
+        </p>
       </div>
     </footer>
   </div>
@@ -209,25 +211,21 @@ const typeLoop = async () => {
   while (!cancelled) {
     const text = phrases[index];
 
-    // Type forward
     for (let i = 0; i <= text.length; i++) {
       if (cancelled) return;
       displayedName.value = text.slice(0, i);
       await sleep(80);
     }
 
-    // Pause at full text
     if (cancelled) return;
     await sleep(2000);
 
-    // Delete backward
     for (let i = text.length; i >= 0; i--) {
       if (cancelled) return;
       displayedName.value = text.slice(0, i);
       await sleep(40);
     }
 
-    // Pause before next phrase
     if (cancelled) return;
     await sleep(500);
 

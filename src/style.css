@@ -16,41 +16,70 @@
   --color-primary-900: #1e3a5f;
 }
 
-/* Base background — lives on html so animated orbs can layer on top */
+/* Base background */
 html {
-  background-color: #f9fafb; /* gray-50 */
+  background-color: #f8fafc;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 html:where(.dark) {
-  background-color: #020617; /* slate-950 */
+  background-color: #0b0f1a;
 }
 
-/* Prevent horizontal overflow on mobile — use clip to avoid creating a second scroll container */
 body {
   overflow-x: clip;
 }
 
-/* Animated background orbs
-   Performance: only animate transform (GPU-composited), filter/opacity are static per-mode.
-   Each orb is a single layer promoted via will-change + translate3d. */
+/* Reusable glass card */
+.glass-card {
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow:
+    0 2px 8px rgba(59, 130, 246, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+}
+:where(.dark) .glass-card {
+  border-color: rgba(51, 65, 85, 0.5);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+:where(.dark) .glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow:
+    0 2px 8px rgba(59, 130, 246, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated background orbs */
 .bg-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.35;
+  filter: blur(70px);
+  opacity: 0.18;
   will-change: transform;
   transform: translate3d(0, 0, 0);
 }
 
 :where(.dark) .bg-orb {
-  opacity: 0.2;
-  filter: blur(70px);
+  opacity: 0.15;
+  filter: blur(80px);
 }
 
 .bg-orb-1 {
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, #3b82f6 0%, #6366f1 70%, transparent 100%);
+  background: radial-gradient(circle, #3b82f6 0%, #2563eb 50%, transparent 100%);
   top: -15%;
   left: -10%;
   animation: orb-drift-1 14s ease-in-out infinite;
@@ -59,7 +88,7 @@ body {
 .bg-orb-2 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, #06b6d4 0%, #3b82f6 70%, transparent 100%);
+  background: radial-gradient(circle, #06b6d4 0%, #3b82f6 60%, transparent 100%);
   top: 35%;
   right: -12%;
   animation: orb-drift-2 16s ease-in-out infinite;
@@ -68,7 +97,7 @@ body {
 .bg-orb-3 {
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, #8b5cf6 0%, #ec4899 70%, transparent 100%);
+  background: radial-gradient(circle, #60a5fa 0%, #0ea5e9 60%, transparent 100%);
   bottom: -10%;
   left: 25%;
   animation: orb-drift-3 18s ease-in-out infinite;
@@ -101,21 +130,20 @@ body {
   100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .bg-orb {
     animation: none !important;
   }
 }
 
-/* Profile photo gradient ring — static, no animation */
+/* Profile photo gradient ring */
 .profile-ring {
   background: conic-gradient(
     from 0deg,
     #3b82f6,
-    #6366f1,
-    #8b5cf6,
-    #ec4899,
+    #2563eb,
+    #0ea5e9,
+    #06b6d4,
     #3b82f6
   );
 }
@@ -127,4 +155,21 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Gradient text helper */
+.gradient-text {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+}
+:where(.dark) .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
 }

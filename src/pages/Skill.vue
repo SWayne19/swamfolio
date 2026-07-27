@@ -1,29 +1,29 @@
 <template>
-  <section id="skills" class="mt-10 sm:mt-16" data-aos="fade-up">
-    <div class="mb-6 flex items-center justify-between">
+  <section id="skills" class="mt-12 sm:mt-20" data-aos="fade-up">
+    <div class="mb-8 flex items-center justify-between">
       <div>
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">Skills</p>
-        <h3 class="mt-1 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl md:text-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">Skills</p>
+        <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
           Tools I ship with
         </h3>
       </div>
       <span
-        class="rounded-md border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
+        class="rounded-lg bg-gray-100 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-gray-500 dark:bg-slate-800 dark:text-slate-400"
       >
         Full Stack
       </span>
     </div>
-    <div class="grid gap-3 sm:grid-cols-2">
+    <div class="grid gap-4 sm:grid-cols-2">
       <div
         v-for="skill in skills"
         :key="skill.title"
-        class="rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60"
+        class="glass-card p-5 sm:p-6"
         data-aos="fade-up"
       >
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
           {{ skill.title }}
         </p>
-        <p class="mt-2 text-sm text-gray-600 dark:text-slate-300">{{ skill.items }}</p>
+        <p class="mt-2.5 text-sm leading-relaxed text-gray-600 dark:text-slate-300">{{ skill.items }}</p>
       </div>
     </div>
   </section>

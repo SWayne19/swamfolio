@@ -1,39 +1,38 @@
 <template>
   <!-- Hero Section -->
-  <section class="mb-10 sm:mb-16" data-aos="fade-up">
-    <div class="flex flex-col-reverse items-center gap-6 py-6 sm:gap-8 sm:py-16 md:flex-row md:items-start md:justify-between md:gap-12">
+  <section class="mb-12 sm:mb-20" data-aos="fade-up">
+    <div class="flex flex-col-reverse items-center gap-8 py-4 sm:gap-10 sm:py-16 md:flex-row md:items-center md:justify-between md:gap-16">
       <!-- Text content -->
-      <div class="flex flex-1 flex-col gap-6 text-center md:text-left">
+      <div class="flex flex-1 flex-col gap-5 text-center md:text-left">
         <div
-          class="inline-flex w-fit items-center gap-2 self-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 md:self-start dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
+          class="inline-flex w-fit items-center gap-2 self-center rounded-full border border-emerald-200/60 bg-emerald-50/80 px-3.5 py-1.5 text-xs font-medium text-emerald-700 backdrop-blur-sm md:self-start dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
         >
-          <span class="relative flex h-2.5 w-2.5">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-100"></span>
-            <span class="absolute inline-flex h-full w-full animate-pulse rounded-full bg-emerald-400 opacity-60"></span>
-            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.6)]"></span>
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
           </span>
           Open to Full Stack Roles
         </div>
 
-        <p class="text-sm font-medium text-gray-500 sm:text-base dark:text-slate-400">Hi, I'm</p>
-        <h1 class="text-3xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
-          Swam Pyae Paing<span class="text-primary-600 dark:text-primary-400">.</span>
+        <p class="text-sm font-medium text-gray-400 sm:text-base dark:text-slate-500">Hi, I'm</p>
+        <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
+          Swam Pyae Paing<span class="gradient-text">.</span>
         </h1>
-        <p class="text-lg font-medium text-gray-700 sm:text-xl dark:text-slate-300">
+        <p class="text-lg font-medium text-gray-600 sm:text-xl dark:text-slate-300">
           Building robust, scalable
-          <span class="text-primary-600 dark:text-primary-400">full stack</span>
+          <span class="gradient-text font-semibold">full stack</span>
           applications.
         </p>
 
-        <p class="text-pretty text-base leading-relaxed text-gray-600 sm:text-lg dark:text-slate-400">
+        <p class="max-w-lg text-pretty text-base leading-relaxed text-gray-500 sm:text-lg dark:text-slate-400">
           I build web apps with Vue and Laravel, focusing on creating seamless, secure,
           and reliable user experiences from the database to the UI.
         </p>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 pt-2 md:justify-start">
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start">
           <router-link
             :to="{ name: 'experienceAndSkills' }"
-            class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-primary-700"
+            class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-500/30 active:translate-y-0"
           >
             View Projects
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -42,7 +41,7 @@
           </router-link>
           <router-link
             :to="{ name: 'about' }"
-            class="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+            class="glass-card inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-gray-700 dark:text-slate-300"
           >
             About Me
           </router-link>
@@ -51,11 +50,11 @@
 
       <!-- Profile photo -->
       <div class="shrink-0" data-aos="fade-left">
-        <div class="profile-ring relative h-40 w-40 rounded-full p-1 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
+        <div class="profile-ring relative h-40 w-40 rounded-full p-1 shadow-xl shadow-primary-500/15 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
           <img
             src="/images/profile.jpg"
             alt="Swam Pyae Paing"
-            class="h-full w-full rounded-full border-4 border-white object-cover shadow-lg dark:border-slate-900"
+            class="h-full w-full rounded-full border-4 border-white object-cover dark:border-slate-900"
             width="256"
             height="256"
             loading="eager"
@@ -67,47 +66,47 @@
   </section>
 
   <!-- Stack Overview -->
-  <section class="mb-10 grid gap-3 grid-cols-1 sm:mb-16 sm:gap-4 sm:grid-cols-3" data-aos="fade-up">
+  <section class="mb-12 grid grid-cols-1 gap-4 sm:mb-20 sm:grid-cols-3 sm:gap-5" data-aos="fade-up">
     <div
       v-for="item in highlightItems"
       :key="item.title"
-      class="flex items-start gap-4 rounded-xl border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60"
+      class="glass-card flex items-start gap-4 p-5 sm:p-6"
     >
-      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
+      <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-md shadow-primary-500/20">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" :d="item.icon" />
         </svg>
       </div>
       <div>
         <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ item.title }}</p>
-        <p class="mt-1 text-sm text-gray-600 dark:text-slate-400">{{ item.value }}</p>
+        <p class="mt-1.5 text-sm text-gray-500 dark:text-slate-400">{{ item.value }}</p>
       </div>
     </div>
   </section>
 
   <!-- Currently Working With -->
   <section
-    class="mb-10 rounded-xl border border-gray-200 bg-white shadow p-4 sm:mb-16 sm:p-6 md:p-8 dark:border-slate-800 dark:bg-slate-900/60"
+    class="glass-card mb-12 p-5 sm:mb-20 sm:p-7 md:p-8"
     data-aos="fade-up"
   >
-    <div class="flex flex-wrap items-center justify-between gap-2">
+    <div class="flex flex-wrap items-center justify-between gap-3">
       <div>
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-slate-500">Currently working with</p>
-        <h3 class="mt-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white">Vue.js &amp; Laravel</h3>
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">Currently working with</p>
+        <h3 class="mt-1.5 text-lg font-bold text-gray-900 sm:text-xl dark:text-white">Vue.js &amp; Laravel</h3>
       </div>
-      <span class="rounded-md border border-primary-200 bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-600 dark:border-primary-500/20 dark:bg-primary-500/10 dark:text-primary-400">
+      <span class="rounded-lg bg-gradient-to-r from-primary-500/10 to-sky-500/10 px-3 py-1.5 text-xs font-semibold text-primary-600 dark:text-primary-400">
         Stack
       </span>
     </div>
-    <div class="mt-4 flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-100 p-3 sm:mt-5 sm:p-4 dark:border-slate-700 dark:bg-slate-800/60">
-      <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 text-white">
+    <div class="mt-5 flex items-start gap-4 rounded-xl border border-gray-100 bg-gray-50/80 p-4 sm:mt-6 sm:p-5 dark:border-slate-800/60 dark:bg-slate-800/40">
+      <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-500 text-white shadow-md shadow-primary-500/20">
         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       </span>
       <div>
-        <p class="text-sm font-medium text-gray-900 dark:text-white">Latest full stack update</p>
-        <p class="mt-0.5 text-pretty text-sm text-gray-600 dark:text-slate-400">
+        <p class="text-sm font-semibold text-gray-900 dark:text-white">Latest full stack update</p>
+        <p class="mt-1 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">
           Built with the Laravel + Vue Starter Kit: robust scaffolding, hot reloads,
           API-ready, and ideal for modern full stack projects.
         </p>

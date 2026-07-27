@@ -1,41 +1,41 @@
 <template>
-  <section v-if="project" class="space-y-3 sm:space-y-4">
-    <h2 class="text-base font-bold text-gray-900 sm:text-lg dark:text-white">Backend Implementation</h2>
+  <section v-if="project" class="space-y-4 sm:space-y-5">
+    <h2 class="text-lg font-extrabold tracking-tight text-gray-900 sm:text-xl dark:text-white">Backend Implementation</h2>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
-      <h3 class="mb-3 text-sm font-semibold text-gray-900 dark:text-white">Tech Stack</h3>
+    <div class="glass-card p-5 sm:p-6">
+      <h3 class="mb-3 text-sm font-bold text-gray-900 dark:text-white">Tech Stack</h3>
       <div class="flex flex-wrap gap-2">
         <span
           v-for="tech in project.backend.stack"
           :key="tech"
-          class="rounded-md border border-indigo-200 bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-600 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400"
+          class="rounded-lg bg-gradient-to-r from-primary-500/10 to-sky-500/10 px-3 py-1 text-xs font-semibold text-primary-600 dark:text-primary-400"
         >
           {{ tech }}
         </span>
       </div>
     </div>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
-      <h3 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Core Features</h3>
-      <ul class="list-inside list-disc space-y-1 text-sm text-gray-600 dark:text-slate-300">
+    <div class="glass-card p-5 sm:p-6">
+      <h3 class="mb-3 text-sm font-bold text-gray-900 dark:text-white">Core Features</h3>
+      <ul class="list-inside list-disc space-y-2 text-sm leading-relaxed text-gray-500 dark:text-slate-400">
         <li v-for="feature in project.backend.features" :key="feature">{{ feature }}</li>
       </ul>
     </div>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
-      <h3 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Database Design</h3>
-      <ul class="list-inside list-disc space-y-1 text-sm text-gray-600 dark:text-slate-300">
+    <div class="glass-card p-5 sm:p-6">
+      <h3 class="mb-3 text-sm font-bold text-gray-900 dark:text-white">Database Design</h3>
+      <ul class="list-inside list-disc space-y-2 text-sm leading-relaxed text-gray-500 dark:text-slate-400">
         <li v-for="table in project.backend.database" :key="table">{{ table }}</li>
       </ul>
     </div>
 
-    <div class="rounded-lg border border-gray-200 bg-white shadow p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900/60">
-      <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Security</h3>
-      <p class="mt-2 text-pretty text-sm text-gray-600 dark:text-slate-300">{{ project.backend.security }}</p>
+    <div class="glass-card p-5 sm:p-6">
+      <h3 class="text-sm font-bold text-gray-900 dark:text-white">Security</h3>
+      <p class="mt-2.5 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">{{ project.backend.security }}</p>
     </div>
   </section>
 
-  <p v-else class="text-sm text-gray-500 dark:text-slate-500">Project not found.</p>
+  <p v-else class="text-sm text-gray-400 dark:text-slate-500">Project not found.</p>
 </template>
 
 <script setup>
