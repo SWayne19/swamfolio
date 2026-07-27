@@ -4,16 +4,6 @@
     <div class="flex flex-col-reverse items-center gap-8 py-4 sm:gap-10 sm:py-16 md:flex-row md:items-center md:justify-between md:gap-16">
       <!-- Text content -->
       <div class="flex flex-1 flex-col gap-5 text-center md:text-left">
-        <div
-          class="inline-flex w-fit items-center gap-2 self-center rounded-full border border-emerald-200/60 bg-emerald-50/80 px-3.5 py-1.5 text-xs font-medium text-emerald-700 backdrop-blur-sm md:self-start dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
-        >
-          <span class="relative flex h-2 w-2">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-          </span>
-          Open to Full Stack Roles
-        </div>
-
         <p class="text-sm font-medium text-gray-400 sm:text-base dark:text-slate-500">Hi, I'm</p>
         <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
           Swam Pyae Paing<span class="gradient-text">.</span>
