@@ -250,7 +250,7 @@ const experiences = ref([
   {
     role: "Junior Programmer",
     company: "KMD Group of Company Limited (SoftComm Technology)",
-    period: "May 2025 -- Present",
+    period: "May 2025 -- May 2026",
     highlights: "Promoted to Junior Programmer; actively developing and maintaining web applications, building UI components, and optimizing user experiences alongside a cross-functional team.",
   },
   {
