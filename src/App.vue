@@ -318,7 +318,7 @@ const projects = ref([
     title: "TailNet",
     description:
       "A modern, responsive landing page demo for an internet provider -- built with Tailwind CSS and enhanced with Vue for interactive features like plan selection and real-time FAQs.",
-    tags: ["Tailwind CSS", "Vue 3", "Interactive", "Landing Page"],
+    tags: ["Vue 3", "Vue Router", "Tailwind CSS"],
     image: "/images/tailnet.png",
     url: "https://tail-net.vercel.app/",
     overview: {
@@ -335,7 +335,7 @@ const projects = ref([
         "A visually polished, interactive front page that lets users compare plans, open FAQs, and quickly access CTA areas, showcasing what can be done with Tailwind and Vue.",
     },
     frontend: {
-      stack: ["HTML", "Tailwind CSS", "Vue 3", "Composition API"],
+      stack: ["Vue 3", "Vue Router", "Tailwind CSS"],
       architecture: [
         "Single page layout split into hero, plans, and FAQ sections",
         "Vue components for pricing cards and collapsible FAQ accordions",
@@ -364,7 +364,7 @@ const projects = ref([
     title: "WebLibra",
     description:
       "A full-featured library management system built with Laravel on the server side and styled using Bootstrap CSS.",
-    tags: ["Bootstrap", "Library Management", "Laravel", "PostgreSQL"],
+    tags: ["Laravel", "Bootstrap", "PostgreSQL"],
     image: "/images/weblibra.png",
     url: "",
     overview: {
@@ -380,7 +380,7 @@ const projects = ref([
         "Modern, maintainable library software that reduces manual work and improves accessibility for both staff and patrons.",
     },
     frontend: {
-      stack: ["Blade", "Bootstrap", "JavaScript"],
+      stack: ["Bootstrap", "Blade"],
       architecture: [
         "Blade-driven server-rendered views",
         "Reusable Bootstrap components",
