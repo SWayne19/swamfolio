@@ -411,7 +411,7 @@ const projects = ref([
     title: "ForumZone",
     description:
       "A community-driven forum platform built with Vue, Laravel, and PostgreSQL, supporting rich discussions and user engagement.",
-    tags: ["Vue 3", "Laravel", "PostgreSQL", "Forum", "Comments"],
+    tags: ["Laravel", "Vue 3", "Inertia.js", "Tailwind CSS", "PostgreSQL"],
     image: "/images/forumzone.png",
     url: "",
     overview: {
@@ -427,7 +427,7 @@ const projects = ref([
         "A maintainable and extensible forum platform enabling community interaction, with a clean and intuitive UI.",
     },
     frontend: {
-      stack: ["Vue 3", "JavaScript", "Tailwind CSS"],
+      stack: ["Vue 3", "Inertia.js", "Tailwind CSS", "Composition API"],
       architecture: [
         "Vue SPA for seamless in-app navigation",
         "Component-driven UI design",
@@ -442,12 +442,12 @@ const projects = ref([
       ui: "Modern, minimal design with category and thread navigation, responsive layouts for desktop and mobile.",
     },
     backend: {
-      stack: ["Laravel", "PostgreSQL"],
+      stack: ["Laravel", "PostgreSQL", "Inertia.js"],
       features: [
         "CRUD for threads, comments, users, and categories",
         "User roles and moderation",
         "Thread/category organization",
-        "REST APIs for all main entities",
+        "Inertia.js server-side routing with Vue frontend",
       ],
       database: ["Users", "Threads", "Categories", "Comments"],
       security:
