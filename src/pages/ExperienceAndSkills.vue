@@ -8,9 +8,6 @@
         </p>
         <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">Selected work</h3>
       </div>
-      <p class="text-sm text-gray-400 dark:text-slate-500">
-        More details available on request.
-      </p>
     </div>
 
     <div class="group/slider relative">

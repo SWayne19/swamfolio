@@ -51,7 +51,7 @@
         <span
           v-for="tag in project.tags"
           :key="tag"
-          class="rounded-lg bg-gradient-to-r from-primary-500/10 to-sky-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400"
+          class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:bg-slate-800 dark:text-slate-400"
         >
           {{ tag }}
         </span>

@@ -318,7 +318,7 @@ const projects = ref([
     title: "TailNet",
     description:
       "A modern, responsive landing page demo for an internet provider -- built with Tailwind CSS and enhanced with Vue for interactive features like plan selection and real-time FAQs.",
-    tags: ["Tailwind", "Vue", "Interactive", "Landing Page"],
+    tags: ["Tailwind CSS", "Vue 3", "Interactive", "Landing Page"],
     image: "/images/tailnet.png",
     url: "https://tail-net.vercel.app/",
     overview: {
@@ -364,7 +364,7 @@ const projects = ref([
     title: "WebLibra",
     description:
       "A full-featured library management system built with Laravel on the server side and styled using Bootstrap CSS.",
-    tags: ["Bootstrap", "Library Management", "Laravel", "PostgresSQL"],
+    tags: ["Bootstrap", "Library Management", "Laravel", "PostgreSQL"],
     image: "/images/weblibra.png",
     url: "",
     overview: {
@@ -380,7 +380,7 @@ const projects = ref([
         "Modern, maintainable library software that reduces manual work and improves accessibility for both staff and patrons.",
     },
     frontend: {
-      stack: ["Blade Templating", "Bootstrap CSS", "JavaScript"],
+      stack: ["Blade", "Bootstrap", "JavaScript"],
       architecture: [
         "Blade-driven server-rendered views",
         "Reusable Bootstrap components",
@@ -395,7 +395,7 @@ const projects = ref([
       ui: "Clean, familiar Bootstrap design with focus on usability and clarity.",
     },
     backend: {
-      stack: ["Laravel", "PostgresSQL"],
+      stack: ["Laravel", "PostgreSQL"],
       features: [
         "Book, member, and Stock management",
         "Role-based permissions",
@@ -411,7 +411,7 @@ const projects = ref([
     title: "ForumZone",
     description:
       "A community-driven forum platform built with Vue, Laravel, and PostgreSQL, supporting rich discussions and user engagement.",
-    tags: ["Vue", "Laravel", "Postgres", "Forum", "Comments"],
+    tags: ["Vue 3", "Laravel", "PostgreSQL", "Forum", "Comments"],
     image: "/images/forumzone.png",
     url: "",
     overview: {
@@ -442,7 +442,7 @@ const projects = ref([
       ui: "Modern, minimal design with category and thread navigation, responsive layouts for desktop and mobile.",
     },
     backend: {
-      stack: ["Laravel", "Postgres"],
+      stack: ["Laravel", "PostgreSQL"],
       features: [
         "CRUD for threads, comments, users, and categories",
         "User roles and moderation",

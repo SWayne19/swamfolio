@@ -23,7 +23,15 @@
         <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
           {{ skill.title }}
         </p>
-        <p class="mt-2.5 text-sm leading-relaxed text-gray-600 dark:text-slate-300">{{ skill.items }}</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span
+            v-for="item in skill.items"
+            :key="item"
+            class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:bg-slate-800 dark:text-slate-400"
+          >
+            {{ item }}
+          </span>
+        </div>
       </div>
     </div>
   </section>
@@ -33,13 +41,13 @@
 import { ref } from "vue";
 
 const skills = ref([
-  { title: "Frontend", items: "Vue 3, Composition API, Vue Router, Pinia, Vite, Blade, Inertia.js" },
-  { title: "Backend", items: "Laravel, RESTful APIs, Sanctum, authentication & validation, Eloquent ORM" },
-  { title: "Databases", items: "PostgreSQL, MySQL, migrations, query optimization" },
-  { title: "Styling", items: "Tailwind CSS, component systems, dark mode, motion" },
-  { title: "Quality", items: "Testing (Vitest, Playwright), Lighthouse, a11y, linting, code review" },
-  { title: "Integration", items: "API integration, OAuth, third-party services (Mail, S3, Pusher)" },
-  { title: "Performance", items: "Bundle awareness, lazy loading, caching, queue jobs, image optimization" },
-  { title: "Collaboration", items: "Figma handoff, Git/GitHub, Jira/Notion, async updates, code reviews" },
+  { title: "Frontend", items: ["Vue 3", "Composition API", "Vue Router", "Pinia", "Vite", "Blade", "Inertia.js"] },
+  { title: "Backend", items: ["Laravel", "RESTful APIs", "Sanctum", "Auth & Validation", "Eloquent ORM"] },
+  { title: "Databases", items: ["PostgreSQL", "MySQL", "Migrations", "Query Optimization"] },
+  { title: "Styling", items: ["Tailwind CSS", "Component Systems", "Dark Mode", "Motion"] },
+  { title: "Quality", items: ["Vitest", "Playwright", "Lighthouse", "A11y", "Linting", "Code Review"] },
+  { title: "Integration", items: ["API Integration", "OAuth", "Mail", "S3", "Pusher"] },
+  { title: "Performance", items: ["Bundle Awareness", "Lazy Loading", "Caching", "Queue Jobs", "Image Optimization"] },
+  { title: "Collaboration", items: ["Figma Handoff", "Git / GitHub", "Jira / Notion", "Async Updates", "Code Reviews"] },
 ]);
 </script>
