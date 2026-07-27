@@ -6,20 +6,15 @@
     <div class="bg-orb bg-orb-3"></div>
   </div>
 
-  <div
-    class="relative z-10 min-h-screen text-gray-900 transition-colors duration-300 dark:text-gray-100"
-  >
+  <div class="relative z-10 min-h-screen text-gray-900 transition-colors duration-300 dark:text-gray-100">
     <!-- Progress Bar -->
-    <div
-      v-if="isLoading"
+    <div v-if="isLoading"
       class="fixed top-0 left-0 z-[100] h-[3px] bg-gradient-to-r from-primary-500 via-primary-400 to-sky-500 transition-all duration-200 ease-out"
-      :style="{ width: loadingProgress + '%' }"
-    ></div>
+      :style="{ width: loadingProgress + '%' }"></div>
 
     <!-- Top Nav Bar -->
     <nav
-      class="sticky top-0 z-50 border-b border-slate-200/60 bg-white/70 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70 dark:shadow-none"
-    >
+      class="sticky top-0 z-50 border-b border-slate-200/60 bg-white/70 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70 dark:shadow-none">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4 lg:px-10">
         <!-- Logo / Name with typing animation -->
         <RouterLink :to="{ name: 'home' }" class="mr-2 min-w-0 flex-shrink items-center truncate">
@@ -31,27 +26,24 @@
 
         <!-- Desktop Navigation Links -->
         <div class="hidden items-center gap-1.5 sm:flex">
-          <RouterLink
-            v-for="link in navLinks"
-            :key="link.name"
-            :to="{ name: link.route }"
+          <RouterLink v-for="link in navLinks" :key="link.name" :to="{ name: link.route }"
             class="rounded-lg px-3.5 py-2 text-[13px] font-medium text-gray-500 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-primary-500/10 dark:hover:text-primary-300"
-            active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10"
-          >
+            active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10">
             {{ link.name }}
           </RouterLink>
 
           <!-- Theme Toggle -->
-          <button
-            @click="toggleTheme"
+          <button @click="toggleTheme"
             class="ml-2 flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-all hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          >
-            <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+            <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="5" />
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+              <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
             </svg>
-            <svg v-else class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg v-else class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
           </button>
@@ -59,25 +51,25 @@
 
         <!-- Mobile: Theme Toggle + Hamburger -->
         <div class="flex items-center gap-1 sm:hidden">
-          <button
-            @click="toggleTheme"
+          <button @click="toggleTheme"
             class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-all hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          >
-            <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+            <svg v-if="isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="5" />
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+              <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
             </svg>
-            <svg v-else class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg v-else class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
           </button>
-          <button
-            @click="mobileMenuOpen = !mobileMenuOpen"
+          <button @click="mobileMenuOpen = !mobileMenuOpen"
             class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-all hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-            aria-label="Toggle menu"
-          >
-            <svg v-if="!mobileMenuOpen" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            aria-label="Toggle menu">
+            <svg v-if="!mobileMenuOpen" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
             <svg v-else class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -89,47 +81,29 @@
     </nav>
 
     <!-- Mobile Menu Backdrop -->
-    <Transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
-    >
-      <div
-        v-show="mobileMenuOpen"
+    <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0"
+      enter-to-class="opacity-100" leave-active-class="transition duration-150 ease-in" leave-from-class="opacity-100"
+      leave-to-class="opacity-0">
+      <div v-show="mobileMenuOpen"
         class="fixed inset-0 top-[57px] z-30 bg-black/20 backdrop-blur-sm sm:hidden dark:bg-black/40"
-        @click="mobileMenuOpen = false"
-      ></div>
+        @click="mobileMenuOpen = false"></div>
     </Transition>
 
     <!-- Mobile Menu Dropdown -->
-    <Transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0 -translate-y-2"
-      enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 -translate-y-2"
-    >
-    <div
-      v-show="mobileMenuOpen"
-      class="fixed inset-x-0 top-[57px] z-40 border-b border-slate-200/60 bg-white/95 shadow-lg backdrop-blur-xl sm:hidden dark:border-slate-800/60 dark:bg-slate-950/95 dark:shadow-none"
-    >
-      <div class="flex flex-col px-4 py-3">
-        <RouterLink
-          v-for="link in navLinks"
-          :key="link.name"
-          :to="{ name: link.route }"
-          class="rounded-lg px-4 py-3 text-sm font-medium text-gray-500 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-primary-500/10 dark:hover:text-primary-300"
-          active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10"
-          @click="mobileMenuOpen = false"
-        >
-          {{ link.name }}
-        </RouterLink>
+    <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 -translate-y-2"
+      enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-2">
+      <div v-show="mobileMenuOpen"
+        class="fixed inset-x-0 top-[57px] z-40 border-b border-slate-200/60 bg-white/95 shadow-lg backdrop-blur-xl sm:hidden dark:border-slate-800/60 dark:bg-slate-950/95 dark:shadow-none">
+        <div class="flex flex-col px-4 py-3">
+          <RouterLink v-for="link in navLinks" :key="link.name" :to="{ name: link.route }"
+            class="rounded-lg px-4 py-3 text-sm font-medium text-gray-500 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-primary-500/10 dark:hover:text-primary-300"
+            active-class="!text-primary-600 !bg-primary-50 dark:!text-primary-400 dark:!bg-primary-500/10"
+            @click="mobileMenuOpen = false">
+            {{ link.name }}
+          </RouterLink>
+        </div>
       </div>
-    </div>
     </Transition>
 
     <div class="mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12 lg:px-10">
@@ -137,13 +111,10 @@
     </div>
 
     <!-- Scroll To Top Button -->
-    <button
-      v-show="showScrollTop"
-      @click="scrollToTop"
+    <button v-show="showScrollTop" @click="scrollToTop"
       class="fixed right-5 bottom-5 z-40 flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 text-gray-500 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white hover:text-primary-600 hover:shadow-xl sm:right-8 sm:bottom-8 dark:border-slate-700/60 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-primary-400"
       :class="showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'"
-      aria-label="Scroll to top"
-    >
+      aria-label="Scroll to top">
       <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
       </svg>
@@ -318,7 +289,7 @@ const projects = ref([
     title: "TailNet",
     description:
       "A modern, responsive landing page demo for an internet provider -- built with Tailwind CSS and enhanced with Vue for interactive features like plan selection and real-time FAQs.",
-    tags: ["Vue 3", "Vue Router", "Tailwind CSS"],
+    tags: ["Tailwind CSS", "Vue 3", "Interactive", "Landing Page"],
     image: "/images/tailnet.png",
     url: "https://tail-net.vercel.app/",
     overview: {
@@ -335,7 +306,7 @@ const projects = ref([
         "A visually polished, interactive front page that lets users compare plans, open FAQs, and quickly access CTA areas, showcasing what can be done with Tailwind and Vue.",
     },
     frontend: {
-      stack: ["Vue 3", "Vue Router", "Tailwind CSS"],
+      stack: ["HTML", "Tailwind CSS", "Vue 3", "Composition API"],
       architecture: [
         "Single page layout split into hero, plans, and FAQ sections",
         "Vue components for pricing cards and collapsible FAQ accordions",
@@ -364,7 +335,7 @@ const projects = ref([
     title: "WebLibra",
     description:
       "A full-featured library management system built with Laravel on the server side and styled using Bootstrap CSS.",
-    tags: ["Laravel", "Bootstrap", "PostgreSQL"],
+    tags: ["Bootstrap", "Library Management", "Laravel", "PostgreSQL"],
     image: "/images/weblibra.png",
     url: "",
     overview: {
@@ -380,7 +351,7 @@ const projects = ref([
         "Modern, maintainable library software that reduces manual work and improves accessibility for both staff and patrons.",
     },
     frontend: {
-      stack: ["Bootstrap", "Blade"],
+      stack: ["Blade", "Bootstrap", "JavaScript"],
       architecture: [
         "Blade-driven server-rendered views",
         "Reusable Bootstrap components",
@@ -411,7 +382,7 @@ const projects = ref([
     title: "ForumZone",
     description:
       "A community-driven forum platform built with Vue, Laravel, and PostgreSQL, supporting rich discussions and user engagement.",
-    tags: ["Laravel", "Vue 3", "Inertia.js", "Tailwind CSS", "PostgreSQL"],
+    tags: ["Vue 3", "Laravel", "PostgreSQL", "Forum", "Comments"],
     image: "/images/forumzone.png",
     url: "",
     overview: {
@@ -427,7 +398,7 @@ const projects = ref([
         "A maintainable and extensible forum platform enabling community interaction, with a clean and intuitive UI.",
     },
     frontend: {
-      stack: ["Vue 3", "Inertia.js", "Tailwind CSS", "Composition API"],
+      stack: ["Vue 3", "JavaScript", "Tailwind CSS"],
       architecture: [
         "Vue SPA for seamless in-app navigation",
         "Component-driven UI design",
@@ -442,12 +413,12 @@ const projects = ref([
       ui: "Modern, minimal design with category and thread navigation, responsive layouts for desktop and mobile.",
     },
     backend: {
-      stack: ["Laravel", "PostgreSQL", "Inertia.js"],
+      stack: ["Laravel", "PostgreSQL"],
       features: [
         "CRUD for threads, comments, users, and categories",
         "User roles and moderation",
         "Thread/category organization",
-        "Inertia.js server-side routing with Vue frontend",
+        "REST APIs for all main entities",
       ],
       database: ["Users", "Threads", "Categories", "Comments"],
       security:
@@ -484,20 +455,20 @@ const projects = ref([
         "Shared layouts and reusable form components",
       ],
       features: [
-        "Admin dashboard for category and recipe configuration",
-        "User panel for creating and sharing recipes globally",
-        "Browse and search recipes with admin-managed category filters",
-        "User profile with published and saved recipes",
+        "Recipe creation with image upload and step editor",
+        "Browse and search recipes with category filters",
+        "User dashboard with saved and published recipes",
+        "Interactive ingredient checklist and serving adjuster",
       ],
       ui: "Warm, appetizing design with clean typography, card-based layouts, and smooth Inertia page transitions.",
     },
     backend: {
       stack: ["Laravel", "PostgreSQL", "Inertia.js"],
       features: [
-        "Admin panel with recipe category CRUD and configuration",
-        "User recipe CRUD with image storage",
-        "Role-based access control for admin and user panels",
-        "Global recipe feed with search and filtering",
+        "Recipe CRUD with image storage",
+        "User authentication and profile management",
+        "Category and tag-based organization",
+        "Search and filtering with Eloquent scopes",
       ],
       database: ["Users", "Recipes", "Categories", "Tags", "Favorites"],
       security: "Sanctum authentication, authorization policies, input validation, and file upload sanitization.",
@@ -510,9 +481,17 @@ provide("projects", projects);
 
 <style>
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
+
 .typewriter-cursor {
   animation: blink 0.8s step-end infinite;
 }
