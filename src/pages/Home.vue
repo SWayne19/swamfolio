@@ -6,7 +6,7 @@
       <div class="flex flex-1 flex-col gap-5 text-center md:text-left">
         <p class="text-sm font-medium text-gray-400 sm:text-base dark:text-slate-500">Hi, I'm</p>
         <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
-          Swam Pyae Paing<span class="gradient-text">.</span>
+          Swam Pyae Paing
         </h1>
         <p class="text-lg font-medium text-gray-600 sm:text-xl dark:text-slate-300">
           Building robust, scalable
