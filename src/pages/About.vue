@@ -50,37 +50,44 @@
       </h3>
     </div>
 
-    <div class="relative pl-8 sm:pl-10">
+    <div class="relative">
       <!-- Vertical line -->
       <div
-        class="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 sm:left-[15px] dark:from-slate-700 dark:via-slate-600 dark:to-slate-700">
+        class="absolute top-2 bottom-2 left-[11px] w-px bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 md:left-1/2 md:-translate-x-1/2 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700">
       </div>
 
-      <div class="flex flex-col gap-8 sm:gap-10">
-        <div v-for="experience in [...experiences].reverse()" :key="experience.role" class="group relative">
+      <div class="flex flex-col gap-8 sm:gap-12">
+        <div
+          v-for="(experience, i) in [...experiences].reverse()"
+          :key="experience.role"
+          :class="[
+            'group relative md:flex',
+            i % 2 === 0 ? 'md:justify-start' : 'md:justify-end',
+          ]"
+        >
           <!-- Timeline dot -->
           <div
-            class="absolute -left-8 top-1.5 z-10 h-3.5 w-3.5 rounded-full bg-primary-500 shadow-md shadow-primary-500/15 ring-4 ring-[#f5f5f0] transition-transform group-hover:scale-125 sm:-left-10 dark:ring-[#141418]">
+            class="absolute left-[11px] top-1.5 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-primary-500 shadow-md shadow-primary-500/15 ring-4 ring-[#f5f5f0] transition-transform group-hover:scale-125 md:left-1/2 dark:ring-[#141418]">
           </div>
 
-          <!-- Period label -->
-          <span
-            class="mb-2 inline-block text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
-            {{ experience.period }}
-          </span>
-
           <!-- Card -->
-          <div class="glass-card p-5 sm:p-6">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
-              {{ experience.company }}
-            </p>
-            <h4
-              class="mt-2.5 text-base font-bold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
-              {{ experience.role }}
-            </h4>
-            <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-700 dark:text-slate-400">
-              {{ experience.highlights }}
-            </p>
+          <div class="w-full pl-8 md:w-[calc(50%-2.5rem)] md:pl-0">
+            <span
+              class="mb-2 inline-block text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+              {{ experience.period }}
+            </span>
+            <div class="glass-card p-5 sm:p-6">
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
+                {{ experience.company }}
+              </p>
+              <h4
+                class="mt-2.5 text-base font-bold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
+                {{ experience.role }}
+              </h4>
+              <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-700 dark:text-slate-400">
+                {{ experience.highlights }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
