@@ -80,6 +80,6 @@ router.beforeEach(() => {
 const navLinks = [
   { name: "Home", route: "home" },
   { name: "About", route: "about" },
-  { name: "Experiences", route: "experienceAndSkills" },
+  { name: "Projects", route: "projects" },
 ];
 </script>

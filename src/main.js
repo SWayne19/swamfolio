@@ -9,7 +9,7 @@ import "aos/dist/aos.css";
 // lazy-loaded pages
 const Home = () => import("./pages/Home.vue");
 const About = () => import("./pages/About.vue");
-const ExperienceAndSkills = () => import("./pages/ExperienceAndSkills.vue");
+const Projects = () => import("./pages/Projects.vue");
 const Project = () => import("./pages/Project.vue");
 const Overview = () => import("./pages/Overview.vue");
 const FrontEnd = () => import("./pages/FrontEnd.vue");
@@ -22,18 +22,31 @@ const routes = [
     name: "home",
     component: Home,
   },
+  // Legacy redirects
+  {
+    path: "/experienceAndSkills",
+    redirect: { name: "about" },
+  },
+  {
+    path: "/experienceAndSkills/projects/:id",
+    redirect: (to) => ({ name: "project", params: { id: to.params.id } }),
+  },
+  {
+    path: "/about/projects/:id",
+    redirect: (to) => ({ name: "project", params: { id: to.params.id } }),
+  },
   {
     path: "/about",
     name: "about",
     component: About,
   },
   {
-    path: "/experienceAndSkills",
-    name: "experienceAndSkills",
-    component: ExperienceAndSkills,
+    path: "/projects",
+    name: "projects",
+    component: Projects,
   },
   {
-    path: "/experienceAndSkills/projects/:id",
+    path: "/projects/:id",
     name: "project",
     component: Project,
     redirect: (to) => ({

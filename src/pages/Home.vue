@@ -21,7 +21,7 @@
 
         <div class="flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start">
           <router-link
-            :to="{ name: 'experienceAndSkills' }"
+            :to="{ name: 'projects' }"
             class="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/25 active:translate-y-0"
           >
             View Projects
