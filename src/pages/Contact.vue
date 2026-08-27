@@ -11,7 +11,7 @@
         <h3 class="mt-2.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl dark:text-white">
           Let's build something thoughtful.
         </h3>
-        <p class="mt-2 text-pretty text-sm text-gray-500 dark:text-slate-400">
+        <p class="mt-2 text-pretty text-sm text-gray-700 dark:text-slate-400">
           Available for junior developer roles, internships, or collaboration.
         </p>
       </div>

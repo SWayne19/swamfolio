@@ -3,7 +3,7 @@
   <section id="projects" data-aos="fade-up">
     <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
           Projects
         </p>
         <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">Selected work</h3>
@@ -19,7 +19,7 @@
         ]"
         aria-label="Previous projects"
       >
-        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg class="h-4 w-4 text-gray-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
@@ -56,7 +56,7 @@
             <h4 class="text-base font-bold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
               {{ project.title }}
             </h4>
-            <p class="line-clamp-2 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">
+            <p class="line-clamp-2 text-pretty text-sm leading-relaxed text-gray-700 dark:text-slate-400">
               {{ project.description }}
             </p>
 
@@ -64,7 +64,7 @@
               <span
                 v-for="tag in project.tags"
                 :key="tag"
-                class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:bg-slate-800 dark:text-slate-400"
+                class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-700 dark:bg-slate-800 dark:text-slate-400"
               >
                 {{ tag }}
               </span>
@@ -81,17 +81,17 @@
         ]"
         aria-label="Next projects"
       >
-        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg class="h-4 w-4 text-gray-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
     </div>
   </section>
 
-  <!-- Experience Section -->
+  <!-- Experience Section - Vertical Timeline -->
   <section id="experience" class="mt-12 sm:mt-20" data-aos="fade-up">
     <div class="mb-8">
-      <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
+      <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
         Experience
       </p>
       <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
@@ -99,69 +99,38 @@
       </h3>
     </div>
 
-    <!-- Horizontal Timeline -->
-    <div class="group/slider relative">
-      <!-- Timeline line -->
-      <div class="absolute top-[52px] left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-200 to-transparent dark:via-slate-800"></div>
+    <div class="relative pl-8 sm:pl-10">
+      <!-- Vertical line -->
+      <div class="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 sm:left-[15px] dark:from-slate-700 dark:via-slate-600 dark:to-slate-700"></div>
 
-      <button
-        @click="slideExp('left')"
-        :class="[
-          'absolute -left-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white focus:outline-none sm:flex dark:border-slate-700/60 dark:bg-slate-800/80 dark:hover:bg-slate-800',
-          canExpScrollLeft ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
-        ]"
-        aria-label="Previous experience"
-      >
-        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-      </button>
-
-      <div
-        ref="expCarouselRef"
-        @scroll="checkExpScroll"
-        class="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 pt-2"
-      >
+      <div class="flex flex-col gap-8 sm:gap-10">
         <div
           v-for="experience in [...experiences].reverse()"
           :key="experience.role"
-          class="group relative flex w-[78vw] max-w-sm flex-shrink-0 snap-start flex-col sm:w-80"
+          class="group relative"
         >
           <!-- Timeline dot -->
-          <div class="flex items-center gap-3 pb-6">
-            <div class="relative z-10 h-3.5 w-3.5 rounded-full bg-primary-500 shadow-md shadow-primary-500/15 ring-4 ring-white transition-transform group-hover:scale-125 dark:ring-slate-950"></div>
-            <span class="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
-              {{ experience.period }}
-            </span>
-          </div>
+          <div class="absolute -left-8 top-1.5 z-10 h-3.5 w-3.5 rounded-full bg-primary-500 shadow-md shadow-primary-500/15 ring-4 ring-[#f5f5f0] transition-transform group-hover:scale-125 sm:-left-10 dark:ring-[#141418]"></div>
+
+          <!-- Period label -->
+          <span class="mb-2 inline-block text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+            {{ experience.period }}
+          </span>
 
           <!-- Card -->
-          <div class="glass-card flex flex-1 flex-col p-5 sm:p-6">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
+          <div class="glass-card p-5 sm:p-6">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
               {{ experience.company }}
             </p>
             <h4 class="mt-2.5 text-base font-bold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
               {{ experience.role }}
             </h4>
-            <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">
+            <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-700 dark:text-slate-400">
               {{ experience.highlights }}
             </p>
           </div>
         </div>
       </div>
-
-      <button
-        @click="slideExp('right')"
-        :class="[
-          'absolute -right-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-xl border border-slate-200/60 bg-white/80 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white focus:outline-none sm:flex dark:border-slate-700/60 dark:bg-slate-800/80 dark:hover:bg-slate-800',
-          canExpScrollRight ? 'sm:opacity-100' : 'pointer-events-none opacity-0',
-        ]"
-        aria-label="Next experience"
-      >
-        <svg class="h-4 w-4 text-gray-500 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
-      </button>
     </div>
   </section>
 
@@ -196,42 +165,15 @@ const slideProjects = (direction) => {
   setTimeout(checkScroll, 350);
 };
 
-// Experience horizontal carousel
-const expCarouselRef = ref(null);
-const canExpScrollLeft = ref(false);
-const canExpScrollRight = ref(true);
-
-const checkExpScroll = () => {
-  if (!expCarouselRef.value) return;
-  const { scrollLeft, scrollWidth, clientWidth } = expCarouselRef.value;
-  canExpScrollLeft.value = scrollLeft > 0;
-  canExpScrollRight.value = Math.ceil(scrollLeft + clientWidth) < scrollWidth - 2;
-};
-
-const slideExp = (direction) => {
-  if (!expCarouselRef.value) return;
-  const container = expCarouselRef.value;
-  const itemWidth = container.firstElementChild?.offsetWidth || 320;
-  const gap = 20;
-  const scrollAmount = itemWidth + gap;
-  const rawTarget = container.scrollLeft + (direction === "right" ? scrollAmount : -scrollAmount);
-  const maxScroll = container.scrollWidth - container.clientWidth;
-  container.scrollTo({ left: Math.max(0, Math.min(rawTarget, maxScroll)), behavior: "smooth" });
-  setTimeout(checkExpScroll, 350);
-};
-
 onMounted(() => {
   nextTick(() => {
     checkScroll();
-    checkExpScroll();
   });
   window.addEventListener("resize", checkScroll);
-  window.addEventListener("resize", checkExpScroll);
 });
 
 onUnmounted(() => {
   window.removeEventListener("resize", checkScroll);
-  window.removeEventListener("resize", checkExpScroll);
 });
 
 const experiences = ref([

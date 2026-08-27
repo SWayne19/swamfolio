@@ -39,8 +39,8 @@ body {
 /* Reusable glass card */
 .glass-card {
   border-radius: 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(235, 235, 228, 0.65);
   backdrop-filter: blur(12px);
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.04),
@@ -129,4 +129,24 @@ body {
 }
 :where(.dark) .section-divider {
   background: linear-gradient(90deg, transparent, rgba(126, 146, 176, 0.15), transparent);
+}
+
+/* Skills ticker animation */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 20s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation-play-state: paused;
+  }
 }

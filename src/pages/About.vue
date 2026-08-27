@@ -9,7 +9,7 @@
       <p class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
         {{ stat.value }}
       </p>
-      <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
+      <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
         {{ stat.label }}
       </p>
     </div>
@@ -18,7 +18,7 @@
   <!-- About -->
   <section id="about" class="mt-10 flex flex-col gap-5 sm:mt-14 sm:gap-6" data-aos="fade-up">
     <div class="glass-card p-5 sm:p-7 md:p-8">
-      <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">About</p>
+      <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">About</p>
       <h3 class="mt-3 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
         Blending Full Stack Vue & Laravel with AI-Powered Development
       </h3>
@@ -54,7 +54,7 @@
         :key="badge.title"
         class="glass-card p-5 sm:p-6"
       >
-        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
           {{ badge.title }}
         </p>
         <p class="mt-2.5 text-sm leading-relaxed text-gray-600 dark:text-slate-300">{{ badge.text }}</p>
@@ -69,7 +69,7 @@
         class="glass-card p-5 sm:p-6"
       >
         <h4 class="text-sm font-bold text-gray-900 dark:text-white">{{ card.title }}</h4>
-        <p class="mt-2.5 text-sm leading-relaxed text-gray-500 dark:text-slate-400">{{ card.detail }}</p>
+        <p class="mt-2.5 text-sm leading-relaxed text-gray-700 dark:text-slate-400">{{ card.detail }}</p>
       </div>
     </div>
 

@@ -4,7 +4,7 @@
     <div class="flex flex-col-reverse items-center gap-8 py-4 sm:gap-10 sm:py-16 md:flex-row md:items-center md:justify-between md:gap-16">
       <!-- Text content -->
       <div class="flex flex-1 flex-col gap-5 text-center md:text-left">
-        <p class="text-sm font-medium text-gray-400 sm:text-base dark:text-slate-500">Hi, I'm</p>
+        <p class="text-sm font-medium text-gray-600 sm:text-base dark:text-slate-500">Hi, I'm</p>
         <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
           Swam Pyae Paing
         </h1>
@@ -69,7 +69,7 @@
       </div>
       <div>
         <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ item.title }}</p>
-        <p class="mt-1.5 text-sm text-gray-500 dark:text-slate-400">{{ item.value }}</p>
+        <p class="mt-1.5 text-sm text-gray-700 dark:text-slate-400">{{ item.value }}</p>
       </div>
     </div>
   </section>
@@ -81,7 +81,7 @@
   >
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div>
-        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">Currently working with</p>
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">Currently working with</p>
         <h3 class="mt-1.5 text-lg font-bold text-gray-900 sm:text-xl dark:text-white">Vue.js &amp; Laravel</h3>
       </div>
       <span class="rounded-lg bg-primary-50 px-3 py-1.5 text-xs font-semibold text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
@@ -96,7 +96,7 @@
       </span>
       <div>
         <p class="text-sm font-semibold text-gray-900 dark:text-white">Latest full stack update</p>
-        <p class="mt-1 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">
+        <p class="mt-1 text-pretty text-sm leading-relaxed text-gray-700 dark:text-slate-400">
           Built with the Laravel + Vue Starter Kit: robust scaffolding, hot reloads,
           API-ready, and ideal for modern full stack projects.
         </p>

@@ -17,25 +17,25 @@
 
     <div class="glass-card p-5 sm:p-6">
       <h3 class="mb-3 text-sm font-bold text-gray-900 dark:text-white">Architecture</h3>
-      <ul class="list-inside list-disc space-y-2 text-sm leading-relaxed text-gray-500 dark:text-slate-400">
+      <ul class="list-inside list-disc space-y-2 text-sm leading-relaxed text-gray-700 dark:text-slate-400">
         <li v-for="item in project.frontend.architecture" :key="item">{{ item }}</li>
       </ul>
     </div>
 
     <div class="glass-card p-5 sm:p-6">
       <h3 class="mb-3 text-sm font-bold text-gray-900 dark:text-white">Key Features</h3>
-      <ul class="list-inside list-disc space-y-2 text-sm leading-relaxed text-gray-500 dark:text-slate-400">
+      <ul class="list-inside list-disc space-y-2 text-sm leading-relaxed text-gray-700 dark:text-slate-400">
         <li v-for="feature in project.frontend.features" :key="feature">{{ feature }}</li>
       </ul>
     </div>
 
     <div class="glass-card p-5 sm:p-6">
       <h3 class="text-sm font-bold text-gray-900 dark:text-white">UI / UX</h3>
-      <p class="mt-2.5 text-pretty text-sm leading-relaxed text-gray-500 dark:text-slate-400">{{ project.frontend.ui }}</p>
+      <p class="mt-2.5 text-pretty text-sm leading-relaxed text-gray-700 dark:text-slate-400">{{ project.frontend.ui }}</p>
     </div>
   </section>
 
-  <p v-else class="text-sm text-gray-400 dark:text-slate-500">Project not found.</p>
+  <p v-else class="text-sm text-gray-600 dark:text-slate-500">Project not found.</p>
 </template>
 
 <script setup>
