@@ -8,7 +8,7 @@
         <span
           v-for="tech in project.backend.stack"
           :key="tech"
-          class="rounded-lg bg-gradient-to-r from-primary-500/10 to-sky-500/10 px-3 py-1 text-xs font-semibold text-primary-600 dark:text-primary-400"
+          class="rounded-lg bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-600 dark:bg-primary-500/10 dark:text-primary-400"
         >
           {{ tech }}
         </span>

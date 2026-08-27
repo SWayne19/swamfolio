@@ -129,7 +129,7 @@
         >
           <!-- Timeline dot -->
           <div class="flex items-center gap-3 pb-6">
-            <div class="relative z-10 h-3.5 w-3.5 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 shadow-md shadow-primary-500/20 ring-4 ring-white transition-transform group-hover:scale-125 dark:ring-slate-950"></div>
+            <div class="relative z-10 h-3.5 w-3.5 rounded-full bg-primary-500 shadow-md shadow-primary-500/15 ring-4 ring-white transition-transform group-hover:scale-125 dark:ring-slate-950"></div>
             <span class="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
               {{ experience.period }}
             </span>

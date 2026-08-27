@@ -75,16 +75,16 @@
 
     <!-- AI + Full Stack Card -->
     <div
-      class="rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-50 to-emerald-50/50 p-5 sm:p-7 dark:border-emerald-500/15 dark:from-emerald-500/5 dark:to-emerald-500/[0.02]"
+      class="rounded-2xl border border-primary-200/60 bg-gradient-to-br from-primary-50 to-primary-50/50 p-5 sm:p-7 dark:border-primary-500/15 dark:from-primary-500/5 dark:to-primary-500/[0.02]"
       data-aos="fade-up"
     >
-      <h4 class="flex items-center gap-2.5 text-sm font-bold text-emerald-700 dark:text-emerald-400">
+      <h4 class="flex items-center gap-2.5 text-sm font-bold text-primary-700 dark:text-primary-400">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
         AI + Full Stack Advantage
       </h4>
-      <p class="mt-3 text-pretty text-sm leading-relaxed text-emerald-700/80 dark:text-emerald-200/70">
+      <p class="mt-3 text-pretty text-sm leading-relaxed text-primary-700/80 dark:text-primary-200/70">
         Combining full stack expertise with AI tools results in apps that
         are not only functional and robust, but also smarter and more
         responsive to user needs. I leverage LLMs and automation for code

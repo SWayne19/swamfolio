@@ -22,7 +22,7 @@
         <div class="flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start">
           <router-link
             :to="{ name: 'experienceAndSkills' }"
-            class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-500/30 active:translate-y-0"
+            class="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/25 active:translate-y-0"
           >
             View Projects
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@
 
       <!-- Profile photo -->
       <div class="shrink-0" data-aos="fade-left">
-        <div class="profile-ring relative h-40 w-40 rounded-full p-1 shadow-xl shadow-primary-500/15 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
+        <div class="profile-ring relative h-40 w-40 rounded-full p-1 shadow-xl shadow-primary-600/10 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
           <img
             src="/images/profile.jpg"
             alt="Swam Pyae Paing"
@@ -62,7 +62,7 @@
       :key="item.title"
       class="glass-card flex items-start gap-4 p-5 sm:p-6"
     >
-      <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-md shadow-primary-500/20">
+      <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-600 text-white shadow-md shadow-primary-600/15">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" :d="item.icon" />
         </svg>
@@ -84,12 +84,12 @@
         <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500">Currently working with</p>
         <h3 class="mt-1.5 text-lg font-bold text-gray-900 sm:text-xl dark:text-white">Vue.js &amp; Laravel</h3>
       </div>
-      <span class="rounded-lg bg-gradient-to-r from-primary-500/10 to-sky-500/10 px-3 py-1.5 text-xs font-semibold text-primary-600 dark:text-primary-400">
+      <span class="rounded-lg bg-primary-50 px-3 py-1.5 text-xs font-semibold text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
         Stack
       </span>
     </div>
     <div class="mt-5 flex items-start gap-4 rounded-xl border border-gray-100 bg-gray-50/80 p-4 sm:mt-6 sm:p-5 dark:border-slate-800/60 dark:bg-slate-800/40">
-      <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-500 text-white shadow-md shadow-primary-500/20">
+      <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-600 text-white shadow-md shadow-primary-600/15">
         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>

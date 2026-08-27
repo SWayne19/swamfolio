@@ -1,16 +1,10 @@
 <template>
-  <!-- Animated Background Orbs -->
-  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
-  </div>
+  <!-- Floating Dot Grid Background -->
+  <div class="dot-grid-bg" aria-hidden="true"></div>
 
   <div class="relative z-10 min-h-screen text-gray-900 transition-colors duration-300 dark:text-gray-100">
-    <!-- Progress Bar -->
-    <div v-if="isLoading"
-      class="fixed top-0 left-0 z-[100] h-[3px] bg-gradient-to-r from-primary-500 via-primary-400 to-sky-500 transition-all duration-200 ease-out"
-      :style="{ width: loadingProgress + '%' }"></div>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" :style="{ width: scrollProgress + '%' }"></div>
 
     <!-- Top Nav Bar -->
     <nav
@@ -140,30 +134,10 @@ const currentYear = new Date().getFullYear();
 // Mobile menu
 const mobileMenuOpen = ref(false);
 
-// Progress bar
 const router = useRouter();
-const isLoading = ref(false);
-const loadingProgress = ref(0);
-let progressInterval = null;
 
 router.beforeEach(() => {
   mobileMenuOpen.value = false;
-  isLoading.value = true;
-  loadingProgress.value = 0;
-  progressInterval = setInterval(() => {
-    if (loadingProgress.value < 90) {
-      loadingProgress.value += Math.random() * 15;
-    }
-  }, 100);
-});
-
-router.afterEach(() => {
-  loadingProgress.value = 100;
-  setTimeout(() => {
-    isLoading.value = false;
-    loadingProgress.value = 0;
-    if (progressInterval) clearInterval(progressInterval);
-  }, 300);
 });
 
 // Typing animation
@@ -220,11 +194,15 @@ const toggleTheme = () => {
   localStorage.setItem("theme", isDark.value ? "dark" : "light");
 };
 
-// Scroll to top
+// Scroll progress + scroll to top
+const scrollProgress = ref(0);
 const showScrollTop = ref(false);
 
 const handleScroll = () => {
   showScrollTop.value = window.scrollY > 200;
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  const maxScroll = scrollHeight - clientHeight;
+  scrollProgress.value = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
 };
 
 const scrollToTop = () => {
