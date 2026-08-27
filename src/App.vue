@@ -1,6 +1,6 @@
 <template>
-  <!-- Floating Dot Grid Background -->
-  <div class="dot-grid-bg" aria-hidden="true"></div>
+  <!-- Floating Dots Background -->
+  <canvas ref="dotCanvas" class="dot-canvas" aria-hidden="true"></canvas>
 
   <div class="relative z-10 min-h-screen text-gray-900 transition-colors duration-300 dark:text-gray-100">
     <!-- Scroll Progress Bar -->
@@ -194,6 +194,59 @@ const toggleTheme = () => {
   localStorage.setItem("theme", isDark.value ? "dark" : "light");
 };
 
+// Floating dots canvas animation
+const dotCanvas = ref(null);
+let animFrameId = null;
+let dots = [];
+
+const initDots = () => {
+  const canvas = dotCanvas.value;
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+
+  const resize = () => {
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.scale(dpr, dpr);
+  };
+  resize();
+  window.addEventListener("resize", resize);
+
+  const COUNT = 20;
+  dots = Array.from({ length: COUNT }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: 2 + Math.random() * 3,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+  }));
+
+  const draw = () => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    ctx.clearRect(0, 0, w, h);
+
+    const dark = document.documentElement.classList.contains("dark");
+    ctx.fillStyle = dark ? "rgba(149, 165, 190, 0.55)" : "rgba(42, 53, 72, 0.7)";
+
+    for (const d of dots) {
+      d.x += d.vx;
+      d.y += d.vy;
+      if (d.x < -10) d.x = w + 10;
+      if (d.x > w + 10) d.x = -10;
+      if (d.y < -10) d.y = h + 10;
+      if (d.y > h + 10) d.y = -10;
+
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    animFrameId = requestAnimationFrame(draw);
+  };
+  draw();
+};
+
 // Scroll progress + scroll to top
 const scrollProgress = ref(0);
 const showScrollTop = ref(false);
@@ -211,12 +264,14 @@ const scrollToTop = () => {
 
 onMounted(() => {
   typeLoop();
+  initDots();
   window.addEventListener("scroll", handleScroll, { passive: true });
 });
 
 onUnmounted(() => {
   cancelled = true;
   if (typingTimeout) clearTimeout(typingTimeout);
+  if (animFrameId) cancelAnimationFrame(animFrameId);
   window.removeEventListener("scroll", handleScroll);
 });
 

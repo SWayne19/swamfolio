@@ -68,40 +68,15 @@ body {
     0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Floating dot grid background — multi-layer parallax */
-.dot-grid-bg {
+
+/* Floating dots canvas */
+.dot-canvas {
   position: fixed;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(86, 106, 143, 0.45) 1.5px, transparent 1.5px),
-    radial-gradient(circle, rgba(107, 127, 163, 0.25) 1px, transparent 1px);
-  background-size: 40px 40px, 24px 24px;
-  animation: dot-drift-slow 30s linear infinite, dot-drift-fast 18s linear infinite;
-  background-position: 0 0, 12px 12px;
-}
-
-:where(.dark) .dot-grid-bg {
-  background-image:
-    radial-gradient(circle, rgba(149, 165, 190, 0.35) 1.5px, transparent 1.5px),
-    radial-gradient(circle, rgba(126, 146, 176, 0.18) 1px, transparent 1px);
-}
-
-@keyframes dot-drift-slow {
-  0%   { background-position: 0 0, 12px 12px; }
-  100% { background-position: 40px 40px, 12px 12px; }
-}
-
-@keyframes dot-drift-fast {
-  0%   { background-position: 0 0, 12px 12px; }
-  100% { background-position: 0 0, -24px 24px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dot-grid-bg {
-    animation: none !important;
-  }
 }
 
 /* Scroll progress bar */

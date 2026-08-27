@@ -6,7 +6,9 @@
       "Bash(cd \"D:/spp Code/swamfolio\" && npm run build 2>&1 | tail -5)",
       "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm run build 2>&1 | tail -20)",
       "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm run build 2>&1 | tail -5)",
-      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm run build 2>&1 | tail -3)"
+      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm run build 2>&1 | tail -3)",
+      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm install @tsparticles/vue3 @tsparticles/slim 2>&1 | tail -5)",
+      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm uninstall @tsparticles/vue3 @tsparticles/slim 2>&1 | tail -3)"
     ]
   }
 }
