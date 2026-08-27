@@ -213,13 +213,13 @@ const initDots = () => {
   resize();
   window.addEventListener("resize", resize);
 
-  const COUNT = 20;
+  const COUNT = 60;
   dots = Array.from({ length: COUNT }, () => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
-    r: 2 + Math.random() * 3,
-    vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4,
+    r: 1 + Math.random() * 3,
+    vx: 0,
+    vy: 1.2 + Math.random() * 1.8,
   }));
 
   const draw = () => {
@@ -231,12 +231,11 @@ const initDots = () => {
     ctx.fillStyle = dark ? "rgba(149, 165, 190, 0.55)" : "rgba(42, 53, 72, 0.7)";
 
     for (const d of dots) {
-      d.x += d.vx;
       d.y += d.vy;
-      if (d.x < -10) d.x = w + 10;
-      if (d.x > w + 10) d.x = -10;
-      if (d.y < -10) d.y = h + 10;
-      if (d.y > h + 10) d.y = -10;
+      if (d.y > h + 10) {
+        d.y = -10;
+        d.x = Math.random() * w;
+      }
 
       ctx.beginPath();
       ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
