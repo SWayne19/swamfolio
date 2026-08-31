@@ -25,19 +25,22 @@ Personal portfolio website for Swam Pyae Paing — a full stack developer.
 ```
 src/
 ├── main.js              # App entry — router, AOS init
-├── App.vue              # Layout shell (nav, footer, orbs, theme, projects data)
-├── style.css            # Tailwind import, theme tokens, orb animations
+├── App.vue              # Layout shell (nav, footer, dots, projects provider)
+├── style.css            # Tailwind import, theme tokens, animations
+├── data/
+│   └── projects.js      # Portfolio project data (provided to pages)
+├── components/          # Reusable UI: NavBar, ThemeToggle, TypingName, etc.
 ├── assets/
 │   └── images/          # Project screenshots
 └── pages/
     ├── Home.vue              # Landing / hero section
-    ├── About.vue             # About me
-    ├── ExperienceAndSkills.vue # Skills and experience overview
+    ├── About.vue             # About me, skills, experience timeline
+    ├── Projects.vue          # Project listing (bento grid)
     ├── Project.vue           # Project detail layout (nested routes)
     ├── Overview.vue          # Project overview tab
     ├── FrontEnd.vue          # Frontend details tab
     ├── BackEnd.vue           # Backend details tab
-    ├── Skill.vue             # Skill detail component
+    ├── Skill.vue             # Skill ticker component
     └── Contact.vue           # Contact section
 ```
 
@@ -81,8 +84,9 @@ Configured for **Vercel** via `vercel.json` — all routes rewrite to `index.htm
 | Path | Page |
 |------|------|
 | `/` | Home |
-| `/about` | About |
-| `/experienceAndSkills` | Experience & Skills |
-| `/experienceAndSkills/projects/:id` | Project detail (redirects to overview) |
-| `/experienceAndSkills/projects/:id/frontEnd` | Frontend tab |
-| `/experienceAndSkills/projects/:id/backEnd` | Backend tab |
+| `/about` | About (skills, experience) |
+| `/projects` | Project listing grid |
+| `/projects/:id` | Project detail (redirects to overview) |
+| `/projects/:id/frontEnd` | Frontend tab |
+| `/projects/:id/backEnd` | Backend tab |
+| `/experienceAndSkills*`, `/about/projects/*` | Legacy — redirects |

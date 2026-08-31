@@ -12,7 +12,7 @@
           Let's build something thoughtful.
         </h3>
         <p class="mt-2 text-pretty text-sm text-gray-700 dark:text-slate-400">
-          Available for junior developer roles, internships, or collaboration.
+          Available for mid, junior developer roles or collaboration.
         </p>
       </div>
       <div class="grid w-full grid-cols-1 gap-2.5 xs:grid-cols-2 sm:w-auto sm:flex sm:flex-wrap">
