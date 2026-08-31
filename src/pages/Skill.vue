@@ -17,11 +17,12 @@
     <div class="glass-card overflow-hidden p-5 sm:p-6">
       <div class="ticker-track">
         <span
-          v-for="tool in [...tools, ...tools]"
-          :key="tool + Math.random()"
-          class="mx-3 inline-flex shrink-0 items-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold tracking-wide text-gray-700 sm:mx-4 sm:px-5 sm:py-2.5 sm:text-base dark:bg-slate-800 dark:text-slate-300"
+          v-for="(tool, index) in [...tools, ...tools]"
+          :key="tool.name + index"
+          class="mx-3 inline-flex shrink-0 items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold tracking-wide text-gray-700 sm:mx-4 sm:px-5 sm:py-2.5 sm:text-base dark:bg-slate-800 dark:text-slate-300"
         >
-          {{ tool }}
+          <img v-if="tool.icon" :src="tool.icon" :alt="tool.name" class="h-5 w-5 sm:h-6 sm:w-6" />
+          {{ tool.name }}
         </span>
       </div>
     </div>
@@ -30,18 +31,17 @@
 
 <script setup>
 const tools = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "PHP",
-  "Tailwind",
-  "Bootstrap",
-  "Vue",
-  "Inertia",
-  "Laravel",
-  "MySQL",
-  "PostgreSQL",
-  "Git",
-  "GitHub",
+  { name: "HTML", icon: "/images/tools/html.svg" },
+  { name: "CSS", icon: "/images/tools/css.svg" },
+  { name: "JavaScript", icon: "/images/tools/javascript.svg" },
+  { name: "PHP", icon: "/images/tools/php.svg" },
+  { name: "Tailwind", icon: "/images/tools/tailwind-css.svg" },
+  { name: "Bootstrap", icon: "/images/tools/bootstrap.svg" },
+  { name: "Vue", icon: "/images/tools/vue.svg" },
+  { name: "Inertia", icon: "/images/tools/inertia.svg" },
+  { name: "Laravel", icon: "/images/tools/laravel.svg" },
+  { name: "MySQL", icon: "/images/tools/mysql.svg" },
+  { name: "PostgreSQL", icon: "/images/tools/postgresql.svg" },
+  { name: "Git", icon: "/images/tools/git.svg" },
 ];
 </script>

@@ -37,7 +37,7 @@
       <div class="shrink-0">
         <div class="profile-ring relative h-40 w-40 rounded-full p-1 shadow-xl shadow-primary-600/10 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
           <img
-            src="/images/profile.jpg"
+            src="/images/profile/profile.jpg"
             alt="Swam Pyae Paing"
             class="h-full w-full rounded-full border-4 border-white object-cover dark:border-slate-900"
             width="256"
