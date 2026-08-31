@@ -1,6 +1,6 @@
 <template>
   <!-- Projects Section -->
-  <section id="projects" data-aos="fade-up">
+  <section id="projects">
     <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
@@ -89,7 +89,7 @@
   </section>
 
   <!-- Experience Section - Vertical Timeline -->
-  <section id="experience" class="mt-12 sm:mt-20" data-aos="fade-up">
+  <section id="experience" class="mt-12 sm:mt-20">
     <div class="mb-8">
       <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
         Experience

@@ -1,5 +1,5 @@
 <template>
-  <section id="skills" class="mt-12 sm:mt-20" data-aos="fade-up">
+  <section id="skills" class="mt-12 sm:mt-20">
     <div class="mb-8 flex items-center justify-between">
       <div>
         <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">Skills</p>

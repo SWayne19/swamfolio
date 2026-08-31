@@ -8,7 +8,10 @@
       "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm run build 2>&1 | tail -5)",
       "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm run build 2>&1 | tail -3)",
       "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm install @tsparticles/vue3 @tsparticles/slim 2>&1 | tail -5)",
-      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm uninstall @tsparticles/vue3 @tsparticles/slim 2>&1 | tail -3)"
+      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm uninstall @tsparticles/vue3 @tsparticles/slim 2>&1 | tail -3)",
+      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && npm uninstall aos && npm install vue3-loading-skeleton)",
+      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && node -e \"const m = require\\('./node_modules/vue3-loading-skeleton/dist/index.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(cd \"D:\\\\spp Code\\\\swamfolio\" && node -e \"\nconst fs = require\\('fs'\\);\nconst content = fs.readFileSync\\('./node_modules/vue3-loading-skeleton/dist/index.js', 'utf-8'\\);\nconst match = content.match\\(/props:\\\\s*\\\\{[\\\\s\\\\S]*?\\\\n  \\\\}/\\);\nif \\(match\\) console.log\\(match[0]\\);\n\")"
     ]
   }
 }

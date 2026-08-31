@@ -101,7 +101,14 @@
     </Transition>
 
     <div class="mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12 lg:px-10">
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <Suspense>
+          <component :is="Component" />
+          <template #fallback>
+            <PageSkeleton />
+          </template>
+        </Suspense>
+      </router-view>
     </div>
 
     <!-- Scroll To Top Button -->
@@ -128,6 +135,7 @@
 <script setup>
 import { onMounted, onUnmounted, provide, ref } from "vue";
 import { useRouter } from "vue-router";
+import PageSkeleton from "./components/PageSkeleton.vue";
 
 const currentYear = new Date().getFullYear();
 

@@ -3,9 +3,6 @@ import "./style.css";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 // lazy-loaded pages
 const Home = () => import("./pages/Home.vue");
 const About = () => import("./pages/About.vue");
@@ -66,23 +63,13 @@ const router = createRouter({
   routes,
 });
 
-// Scroll to top and refresh AOS on every route change
+// Scroll to top on every route change
 router.afterEach(() => {
   window.scrollTo({ top: 0, behavior: 'instant' });
-  AOS.refreshHard();
 });
 
 const app = createApp(App);
 
 app.use(router);
-
-// Initialize AOS with performance-optimized settings
-AOS.init({
-  duration: 400,
-  easing: "ease-out-cubic",
-  once: true,
-  offset: 60,
-  delay: 0,
-});
 
 app.mount("#app");

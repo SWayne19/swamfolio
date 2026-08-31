@@ -39,7 +39,7 @@
       </div>
 
       <!-- Profile photo -->
-      <div class="shrink-0" data-aos="fade-left">
+      <div class="shrink-0">
         <div class="profile-ring relative h-40 w-40 rounded-full p-1 shadow-xl shadow-primary-600/10 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
           <img
             src="/images/profile.jpg"
@@ -77,8 +77,7 @@
   <!-- Currently Working With -->
   <section
     class="glass-card mb-12 p-5 sm:mb-20 sm:p-7 md:p-8"
-    data-aos="fade-up"
-  >
+     >
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div>
         <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">Currently working with</p>

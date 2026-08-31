@@ -69,6 +69,16 @@ body {
 }
 
 
+/* Skeleton loading overrides */
+.vue3-loading-skeleton {
+  --base-color: #e2e2da !important;
+  --highlight-color: #ededdf !important;
+}
+:where(.dark) .vue3-loading-skeleton {
+  --base-color: #1e2330 !important;
+  --highlight-color: #2a3040 !important;
+}
+
 /* Floating dots canvas */
 .dot-canvas {
   position: fixed;
