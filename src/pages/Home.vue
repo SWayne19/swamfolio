@@ -1,6 +1,6 @@
 <template>
   <!-- Hero Section -->
-  <section class="mb-12 sm:mb-20" data-aos="fade-up">
+  <section class="mb-12 sm:mb-20">
     <div class="flex flex-col-reverse items-center gap-8 py-4 sm:gap-10 sm:py-16 md:flex-row md:items-center md:justify-between md:gap-16">
       <!-- Text content -->
       <div class="flex flex-1 flex-col gap-5 text-center md:text-left">

@@ -35,6 +35,7 @@ import ScrollProgress from "./components/ScrollProgress.vue";
 import NavBar from "./components/NavBar.vue";
 import ScrollToTop from "./components/ScrollToTop.vue";
 import AppFooter from "./components/AppFooter.vue";
+import PageSkeleton from "./components/PageSkeleton.vue";
 import { projects } from "./data/projects";
 
 provide("projects", projects);

@@ -1,6 +1,6 @@
 <template>
   <!-- Stats -->
-  <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5" data-aos="fade-up">
+  <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
     <div v-for="stat in stats" :key="stat.label" class="glass-card p-5 sm:p-6">
       <p class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
         {{ stat.value }}
@@ -12,7 +12,7 @@
   </div>
 
   <!-- About -->
-  <section id="about" class="mt-10 sm:mt-14" data-aos="fade-up">
+  <section id="about" class="mt-10 sm:mt-14">
     <div class="glass-card p-5 sm:p-7 md:p-8">
       <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">About</p>
       <h3 class="mt-3 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
@@ -40,7 +40,7 @@
   <Skill />
 
   <!-- Experience Section - Vertical Timeline -->
-  <section id="experience" class="mt-12 sm:mt-20" data-aos="fade-up">
+  <section id="experience" class="mt-12 sm:mt-20">
     <div class="mb-8">
       <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
         Experience
