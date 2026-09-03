@@ -1,17 +1,17 @@
 <template>
-  <canvas ref="dotCanvas" class="dot-canvas" aria-hidden="true"></canvas>
+  <canvas ref="rainCanvas" class="dot-canvas" aria-hidden="true"></canvas>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
 
-const dotCanvas = ref(null);
+const rainCanvas = ref(null);
 let animFrameId = null;
-let dots = [];
+let lines = [];
 let onResize = null;
 
-const initDots = () => {
-  const canvas = dotCanvas.value;
+const initRain = () => {
+  const canvas = rainCanvas.value;
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
   const dpr = window.devicePixelRatio || 1;
@@ -24,13 +24,21 @@ const initDots = () => {
   onResize();
   window.addEventListener("resize", onResize);
 
-  const COUNT = 60;
-  dots = Array.from({ length: COUNT }, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    r: 1 + Math.random() * 3,
-    vy: 1.2 + Math.random() * 1.8,
-  }));
+  const COUNT = 35;
+  lines = Array.from({ length: COUNT }, () => createLine());
+
+  function createLine() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      len: 15 + Math.random() * 30,
+      speed: 2 + Math.random() * 4,
+      opacity: 0.25 + Math.random() * 0.35,
+      width: 0.5 + Math.random() * 1,
+    };
+  }
 
   const draw = () => {
     const w = window.innerWidth;
@@ -38,25 +46,34 @@ const initDots = () => {
     ctx.clearRect(0, 0, w, h);
 
     const dark = document.documentElement.classList.contains("dark");
-    ctx.fillStyle = dark ? "rgba(149, 165, 190, 0.55)" : "rgba(42, 53, 72, 0.7)";
 
-    for (const d of dots) {
-      d.y += d.vy;
-      if (d.y > h + 10) {
-        d.y = -10;
-        d.x = Math.random() * w;
+    for (const l of lines) {
+      l.y += l.speed;
+
+      if (l.y > h + l.len) {
+        l.y = -l.len;
+        l.x = Math.random() * w;
       }
 
+      const color = dark
+        ? `rgba(149, 165, 190, ${l.opacity})`
+        : `rgba(42, 53, 72, ${l.opacity})`;
+
       ctx.beginPath();
-      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.moveTo(l.x, l.y);
+      ctx.lineTo(l.x, l.y + l.len);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = l.width;
+      ctx.lineCap = "round";
+      ctx.stroke();
     }
+
     animFrameId = requestAnimationFrame(draw);
   };
   draw();
 };
 
-onMounted(initDots);
+onMounted(initRain);
 
 onUnmounted(() => {
   if (animFrameId) cancelAnimationFrame(animFrameId);
