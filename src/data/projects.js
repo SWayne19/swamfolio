@@ -7,7 +7,7 @@ export const projects = ref([
     description:
       "Cyclist is a static website project for showcasing and selling sport bicycles, featuring a clean, responsive design and easy product browsing.",
     tags: ["HTML", "CSS", "JavaScript"],
-    image: "/images/cyclist.png",
+    image: "/images/projects/cyclist.png",
     url: "https://cyclist-rho.vercel.app/",
     overview: {
       goal: "Create a modern, visually attractive landing page for bicycles using only static HTML, CSS, and JavaScript.",
@@ -48,7 +48,7 @@ export const projects = ref([
     description:
       "A modern, responsive landing page demo for an internet provider -- built with Tailwind CSS and enhanced with Vue for interactive features like plan selection and real-time FAQs.",
     tags: ["Tailwind CSS", "Vue 3", "Interactive", "Landing Page"],
-    image: "/images/tailnet.png",
+    image: "/images/projects/tailnet.png",
     url: "https://tail-net.vercel.app/",
     overview: {
       goal: "Create an engaging, interactive landing site for TailNet internet services using Tailwind CSS for styling and Vue for user-driven elements.",
@@ -94,7 +94,7 @@ export const projects = ref([
     description:
       "A full-featured library management system built with Laravel on the server side and styled using Bootstrap CSS.",
     tags: ["Bootstrap", "Library Management", "Laravel", "PostgreSQL"],
-    image: "/images/weblibra.png",
+    image: "/images/projects/weblibra.png",
     url: "",
     overview: {
       goal: "Streamline and digitize all aspects of library management including book inventory, member tracking, and loan transactions.",
@@ -141,7 +141,7 @@ export const projects = ref([
     description:
       "A community-driven forum platform built with Vue, Laravel, and PostgreSQL, supporting rich discussions and user engagement.",
     tags: ["Vue 3", "Laravel", "PostgreSQL", "Forum", "Comments"],
-    image: "/images/forumzone.png",
+    image: "/images/projects/forumzone.png",
     url: "",
     overview: {
       goal: "Create a modern, easy-to-use forum where users can create threads, share ideas, and participate in discussions.",
@@ -189,7 +189,7 @@ export const projects = ref([
     description:
       "A recipe sharing platform with an admin panel for managing recipe categories and configurations, and a user panel where anyone can share recipes globally with the community.",
     tags: ["Laravel", "Vue 3", "Inertia.js", "Tailwind CSS", "PostgreSQL"],
-    image: "/images/YummyShare.png",
+    image: "/images/projects/YummyShare.png",
     url: "",
     overview: {
       goal: "Build a recipe sharing platform with admin-managed categories and a user panel for sharing recipes globally, powered by Laravel, Vue, and Inertia.js.",
