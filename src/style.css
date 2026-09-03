@@ -103,6 +103,23 @@ body {
   background: linear-gradient(90deg, #7e92b0, #95a5be);
 }
 
+/* Route loading dots */
+@keyframes route-bounce {
+  0%, 80%, 100% { transform: scale(0.4); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
+.route-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #566a8f;
+  animation: route-bounce 1s ease-in-out infinite;
+}
+:where(.dark) .route-dot {
+  background: #95a5be;
+}
+
 /* Profile photo gradient ring */
 .profile-ring {
   background: conic-gradient(

@@ -6,6 +6,9 @@
     <!-- Scroll Progress Bar -->
     <ScrollProgress />
 
+    <!-- Route Loading Bar -->
+    <RouteLoader />
+
     <!-- Top Nav Bar -->
     <NavBar />
 
@@ -32,6 +35,7 @@
 import { provide } from "vue";
 import FloatingDots from "./components/FloatingDots.vue";
 import ScrollProgress from "./components/ScrollProgress.vue";
+import RouteLoader from "./components/RouteLoader.vue";
 import NavBar from "./components/NavBar.vue";
 import ScrollToTop from "./components/ScrollToTop.vue";
 import AppFooter from "./components/AppFooter.vue";
