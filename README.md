@@ -8,7 +8,6 @@ Personal portfolio website for Swam Pyae Paing — a full stack developer.
 - **Vite 7** — Build tool and dev server
 - **Tailwind CSS v4** — Utility-first styling via `@tailwindcss/vite` plugin
 - **Vue Router 4** — Client-side routing with lazy-loaded pages
-- **vue3-loading-skeleton** — Skeleton loading placeholders
 
 ## Features
 
@@ -19,7 +18,7 @@ Personal portfolio website for Swam Pyae Paing — a full stack developer.
 - Scroll progress bar at the top of the page
 - Smooth scroll-to-top button with easing animation
 - Mobile-responsive navigation with hamburger menu
-- Lazy-loaded route components with Suspense and skeleton fallback
+- Lazy-loaded route components
 - Animated skills ticker carousel with SVG tool icons
 - Bento grid project gallery with varied card sizes
 - Tabbed project detail pages (Overview / Front End / Back End)
@@ -37,7 +36,7 @@ public/
 └── _redirects               # SPA redirect rules for deployment
 src/
 ├── main.js                  # App entry, router config, all route definitions
-├── App.vue                  # Layout shell (FloatingDots, NavBar, Suspense router-view, ScrollToTop, AppFooter)
+├── App.vue                  # Layout shell (FloatingDots, NavBar, router-view, ScrollToTop, AppFooter)
 ├── style.css                # Tailwind import, @theme tokens, glass-card, animations
 ├── data/
 │   └── projects.js          # Portfolio project data (reactive ref, provided via inject)
@@ -48,8 +47,7 @@ src/
 │   ├── FloatingDots.vue     # Canvas animated background dots
 │   ├── ScrollProgress.vue   # Horizontal scroll progress bar
 │   ├── ScrollToTop.vue      # Floating scroll-to-top button
-│   ├── AppFooter.vue        # Copyright footer
-│   └── PageSkeleton.vue     # Skeleton loading placeholder
+│   └── AppFooter.vue        # Copyright footer
 └── pages/
     ├── Home.vue             # Hero section with profile, intro, and Contact
     ├── About.vue            # Stats, bio, experience timeline, skills ticker
