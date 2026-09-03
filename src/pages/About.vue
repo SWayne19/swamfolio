@@ -1,11 +1,15 @@
 <template>
   <!-- Stats -->
   <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
-    <div v-for="stat in stats" :key="stat.label" class="glass-card p-5 sm:p-6">
-      <p class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+    <div v-for="stat in stats" :key="stat.label" class="glass-card p-4 sm:p-6"
+      :class="{ 'col-span-2 sm:col-span-1': stat.value.length > 5 }">
+      <p class="break-words font-extrabold tracking-tight text-gray-900 dark:text-white"
+        :class="stat.value.length > 5
+          ? 'text-base sm:text-lg md:text-xl lg:text-2xl'
+          : 'text-2xl sm:text-3xl md:text-4xl'">
         {{ stat.value }}
       </p>
-      <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
+      <p class="mt-2 text-[10px] font-semibold uppercase tracking-widest text-gray-600 sm:text-[11px] dark:text-slate-500">
         {{ stat.label }}
       </p>
     </div>
