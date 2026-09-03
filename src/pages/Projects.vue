@@ -31,7 +31,7 @@
           v-if="project.image"
           :src="project.image"
           :alt="`${project.title} cover`"
-          class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          class="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
         />
         <!-- No-image fallback -->
@@ -43,17 +43,9 @@
         </div>
 
         <!-- Gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/85 group-hover:via-black/45"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/15 dark:from-black/95 dark:via-black/70 dark:to-black/30"></div>
 
-        <!-- Featured badge -->
-        <span
-          v-if="i === 0"
-          class="absolute top-3 left-3 z-10 rounded-md bg-primary-600/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm"
-        >
-          Featured
-        </span>
-
-        <!-- Arrow icon -->
+<!-- Arrow icon -->
         <svg class="absolute top-3 right-3 z-10 h-4 w-4 -translate-x-1 text-white/60 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
           fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
