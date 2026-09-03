@@ -18,21 +18,7 @@ const handleScroll = () => {
   showScrollTop.value = window.scrollY > 200;
 };
 
-const smoothScrollTo = (target, duration = 1200) => {
-  const start = window.scrollY;
-  const distance = target - start;
-  let startTime = null;
-  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-  const step = (time) => {
-    if (!startTime) startTime = time;
-    const progress = Math.min((time - startTime) / duration, 1);
-    window.scrollTo(0, start + distance * ease(progress));
-    if (progress < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-};
-
-const scrollToTop = () => smoothScrollTo(0);
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
 onMounted(() => window.addEventListener("scroll", handleScroll, { passive: true }));
 onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
