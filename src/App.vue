@@ -13,14 +13,7 @@
     <NavBar />
 
     <div class="mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12 lg:px-10">
-      <router-view v-slot="{ Component }">
-        <Suspense>
-          <component :is="Component" />
-          <template #fallback>
-            <PageSkeleton />
-          </template>
-        </Suspense>
-      </router-view>
+      <router-view />
     </div>
 
     <!-- Scroll To Top Button -->
@@ -39,7 +32,6 @@ import RouteLoader from "./components/RouteLoader.vue";
 import NavBar from "./components/NavBar.vue";
 import ScrollToTop from "./components/ScrollToTop.vue";
 import AppFooter from "./components/AppFooter.vue";
-import PageSkeleton from "./components/PageSkeleton.vue";
 import { projects } from "./data/projects";
 
 provide("projects", projects);
