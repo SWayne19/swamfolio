@@ -5,8 +5,6 @@ import { createRouter, createWebHistory } from "vue-router";
 
 // lazy-loaded pages
 const Home = () => import("./pages/Home.vue");
-const About = () => import("./pages/About.vue");
-const Projects = () => import("./pages/Projects.vue");
 const Project = () => import("./pages/Project.vue");
 const Overview = () => import("./pages/Overview.vue");
 const FrontEnd = () => import("./pages/FrontEnd.vue");
@@ -22,7 +20,15 @@ const routes = [
   // Legacy redirects
   {
     path: "/experienceAndSkills",
-    redirect: { name: "about" },
+    redirect: "/",
+  },
+  {
+    path: "/about",
+    redirect: "/",
+  },
+  {
+    path: "/projects",
+    redirect: "/",
   },
   {
     path: "/experienceAndSkills/projects/:id",
@@ -31,16 +37,6 @@ const routes = [
   {
     path: "/about/projects/:id",
     redirect: (to) => ({ name: "project", params: { id: to.params.id } }),
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: About,
-  },
-  {
-    path: "/projects",
-    name: "projects",
-    component: Projects,
   },
   {
     path: "/projects/:id",
@@ -74,11 +70,12 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
-
-// Scroll to top on every route change
-router.afterEach(() => {
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  scrollBehavior(to) {
+    if (to.hash) {
+      return { el: to.hash, behavior: "smooth" };
+    }
+    return { top: 0, behavior: "instant" };
+  },
 });
 
 const app = createApp(App);

@@ -3,17 +3,26 @@
     class="sticky top-0 z-50 border-b border-slate-200/60 bg-[#ebebdf]/70 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70 dark:shadow-none">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4 lg:px-10">
       <!-- Logo / Name with typing animation -->
-      <RouterLink :to="{ name: 'home' }" class="mr-2 min-w-0 flex-shrink items-center truncate">
+      <a href="#hero" @click.prevent="scrollToSection('hero')" class="mr-2 min-w-0 flex-shrink items-center truncate cursor-pointer">
         <TypingName />
-      </RouterLink>
+      </a>
 
       <!-- Desktop Navigation Links -->
       <div class="hidden items-center gap-1.5 sm:flex">
-        <RouterLink v-for="link in navLinks" :key="link.name" :to="{ name: link.route }"
-          class="relative rounded-lg px-3.5 py-2 text-[13px] font-medium text-gray-700 transition-all after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:rounded-full after:bg-primary-600 after:transition-transform after:duration-200 hover:after:scale-x-100 hover:text-primary-700 dark:text-slate-400 dark:after:bg-primary-400 dark:hover:text-primary-300"
-          active-class="!text-primary-600 after:scale-x-100 dark:!text-primary-400">
-          {{ link.name }}
-        </RouterLink>
+        <template v-for="link in navLinks" :key="link.name">
+          <!-- Section anchor links (home page) -->
+          <a v-if="link.section" :href="`#${link.section}`" @click.prevent="scrollToSection(link.section)"
+            class="relative rounded-lg px-3.5 py-2 text-[13px] font-medium text-gray-700 transition-all after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:rounded-full after:bg-primary-600 after:transition-transform after:duration-200 hover:after:scale-x-100 hover:text-primary-700 dark:text-slate-400 dark:after:bg-primary-400 dark:hover:text-primary-300"
+            :class="{ '!text-primary-600 after:scale-x-100 dark:!text-primary-400': activeSection === link.section }">
+            {{ link.name }}
+          </a>
+          <!-- Router links (project detail pages etc) -->
+          <RouterLink v-else :to="{ name: link.route }"
+            class="relative rounded-lg px-3.5 py-2 text-[13px] font-medium text-gray-700 transition-all after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:rounded-full after:bg-primary-600 after:transition-transform after:duration-200 hover:after:scale-x-100 hover:text-primary-700 dark:text-slate-400 dark:after:bg-primary-400 dark:hover:text-primary-300"
+            active-class="!text-primary-600 after:scale-x-100 dark:!text-primary-400">
+            {{ link.name }}
+          </RouterLink>
+        </template>
 
         <ThemeToggle class="ml-2" />
       </div>
@@ -66,12 +75,20 @@
 
       <!-- Nav links -->
       <div class="flex flex-1 flex-col gap-1 px-3 py-4">
-        <RouterLink v-for="link in navLinks" :key="link.name" :to="{ name: link.route }"
-          class="rounded-lg px-4 py-3 text-sm font-medium text-gray-700 transition-all hover:bg-gray-100/60 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-primary-300"
-          active-class="!bg-primary-50/60 !text-primary-600 dark:!bg-primary-900/20 dark:!text-primary-400"
-          @click="mobileMenuOpen = false">
-          {{ link.name }}
-        </RouterLink>
+        <template v-for="link in navLinks" :key="link.name">
+          <a v-if="link.section" :href="`#${link.section}`"
+            @click.prevent="scrollToSection(link.section); mobileMenuOpen = false"
+            class="rounded-lg px-4 py-3 text-sm font-medium text-gray-700 transition-all hover:bg-gray-100/60 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-primary-300"
+            :class="{ '!bg-primary-50/60 !text-primary-600 dark:!bg-primary-900/20 dark:!text-primary-400': activeSection === link.section }">
+            {{ link.name }}
+          </a>
+          <RouterLink v-else :to="{ name: link.route }"
+            class="rounded-lg px-4 py-3 text-sm font-medium text-gray-700 transition-all hover:bg-gray-100/60 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-primary-300"
+            active-class="!bg-primary-50/60 !text-primary-600 dark:!bg-primary-900/20 dark:!text-primary-400"
+            @click="mobileMenuOpen = false">
+            {{ link.name }}
+          </RouterLink>
+        </template>
       </div>
 
     </div>
@@ -79,30 +96,85 @@
 </template>
 
 <script setup>
-import { ref, watch, onBeforeUnmount } from "vue";
-import { useRouter } from "vue-router";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import TypingName from "./TypingName.vue";
 import ThemeToggle from "./ThemeToggle.vue";
 
 const mobileMenuOpen = ref(false);
+const activeSection = ref("hero");
 
 const router = useRouter();
+const route = useRoute();
 
 router.beforeEach(() => {
   mobileMenuOpen.value = false;
 });
 
 const navLinks = [
-  { name: "Home", route: "home" },
-  { name: "About", route: "about" },
-  { name: "Projects", route: "projects" },
+  { name: "Home", section: "hero" },
+  { name: "About", section: "about" },
+  { name: "Projects", section: "projects" },
+  { name: "Contact", section: "contact" },
 ];
 
-watch(mobileMenuOpen, (open) => {
-  document.body.style.overflow = open ? "hidden" : "";
+const scrollToSection = (sectionId) => {
+  // If not on home page, navigate there first
+  if (route.name !== "home") {
+    router.push({ name: "home" }).then(() => {
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    });
+    return;
+  }
+
+  const el = document.getElementById(sectionId);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
+
+// Track active section based on scroll position
+const sectionIds = ["hero", "about", "skills", "experience", "projects", "contact"];
+let rafId = null;
+
+const updateActiveSection = () => {
+  const scrollY = window.scrollY + 120;
+
+  for (let i = sectionIds.length - 1; i >= 0; i--) {
+    const el = document.getElementById(sectionIds[i]);
+    if (el && el.offsetTop <= scrollY) {
+      // Map skills/experience to "about" for nav highlight
+      const id = sectionIds[i];
+      if (id === "skills" || id === "experience") {
+        activeSection.value = "about";
+      } else {
+        activeSection.value = id;
+      }
+      break;
+    }
+  }
+};
+
+const onScroll = () => {
+  if (rafId) return;
+  rafId = requestAnimationFrame(() => {
+    updateActiveSection();
+    rafId = null;
+  });
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", onScroll, { passive: true });
 });
 
 onBeforeUnmount(() => {
+  window.removeEventListener("scroll", onScroll);
+  if (rafId) cancelAnimationFrame(rafId);
   document.body.style.overflow = "";
+});
+
+watch(mobileMenuOpen, (open) => {
+  document.body.style.overflow = open ? "hidden" : "";
 });
 </script>
