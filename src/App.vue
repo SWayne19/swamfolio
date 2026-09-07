@@ -15,11 +15,8 @@
     <!-- Top Nav Bar -->
     <NavBar />
 
-    <!-- Main content: parallax home gets full width, other pages get container -->
-    <div v-if="route.name === 'home'">
-      <router-view />
-    </div>
-    <div v-else class="mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12 lg:px-10">
+    <!-- Single router-view with conditional wrapper -->
+    <div :class="isHome ? '' : 'mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12 lg:px-10'">
       <router-view />
     </div>
 
@@ -32,7 +29,7 @@
 </template>
 
 <script setup>
-import { provide } from "vue";
+import { computed, provide } from "vue";
 import { useRoute } from "vue-router";
 import ScrollBackground from "./components/ScrollBackground.vue";
 import FloatingDots from "./components/FloatingDots.vue";
@@ -44,6 +41,7 @@ import AppFooter from "./components/AppFooter.vue";
 import { projects } from "./data/projects";
 
 const route = useRoute();
+const isHome = computed(() => route.name === "home");
 
 provide("projects", projects);
 </script>

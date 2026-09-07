@@ -287,60 +287,155 @@
     </section>
 
     <!-- ==================== CONTACT SECTION ==================== -->
-    <section id="contact" class="parallax-section relative py-20 sm:py-28">
+    <section id="contact" class="parallax-section relative overflow-hidden py-20 sm:py-28">
+      <div data-parallax="0.1"
+        class="pointer-events-none absolute -right-20 top-1/4 h-72 w-72 rounded-full bg-primary-300/8 blur-3xl dark:bg-primary-500/6">
+      </div>
+
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div data-reveal
-          class="rounded-2xl border border-primary-200/60 bg-gradient-to-br from-primary-50 to-primary-50/50 p-5 sm:p-7 md:p-8 dark:border-primary-500/15 dark:from-primary-500/5 dark:to-primary-500/[0.02]">
-          <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p class="text-[11px] font-semibold uppercase tracking-widest text-primary-500 dark:text-primary-400">
-                Contact
-              </p>
-              <h3 class="mt-2.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl dark:text-white">
-                Let's build something thoughtful.
-              </h3>
-              <p class="mt-2 text-pretty text-sm text-gray-700 dark:text-slate-400">
-                Available for mid, junior developer roles or collaboration.
-              </p>
-            </div>
-            <div class="grid w-full grid-cols-1 gap-2.5 xs:grid-cols-2 sm:w-auto sm:flex sm:flex-wrap">
-              <a href="mailto:swampyae330@gmail.com"
-                class="glass-card group inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-primary-500" fill="none" stroke="currentColor" stroke-width="2"
-                  viewBox="0 0 24 24">
-                  <rect x="4" y="6" width="16" height="12" rx="2" />
-                  <path d="m4 6 8 7 8-7" />
-                </svg>
-                <span class="truncate">swampyae330@gmail.com</span>
-              </a>
-              <a href="tel:09422150195"
-                class="glass-card group inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-primary-500" fill="none" stroke="currentColor" stroke-width="2"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.9.36 1.76.67 2.6a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.84.31 1.7.54 2.6.67A2 2 0 0 1 22 16.92z" />
-                </svg>
-                <span>09422150195</span>
-              </a>
-              <a href="https://www.linkedin.com/in/swam-pyae-88aa96369" target="_blank" rel="noreferrer"
-                class="glass-card group inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-primary-500" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.23 8.08h4.56V24H.23zM8.59 8.08h4.37v2.16h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 6.99V24h-4.56v-8.22c0-1.96-.03-4.48-2.73-4.48-2.73 0-3.15 2.13-3.15 4.33V24H8.59z" />
-                </svg>
-                <span>LinkedIn</span>
-              </a>
-              <a href="https://github.com/SWayne19" target="_blank" rel="noreferrer"
-                class="glass-card group inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-gray-600 dark:text-slate-300" fill="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M12 2C6.48 2 2 6.58 2 12.26c0 4.47 2.87 8.26 6.84 9.59.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.36-3.37-1.36-.46-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1.01.07 1.54 1.05 1.54 1.05.9 1.57 2.37 1.12 2.95.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.14 0-1.14.39-2.07 1.03-2.8-.1-.26-.45-1.32.1-2.74 0 0 .84-.27 2.75 1.03A9.25 9.25 0 0 1 12 6.58a9.23 9.23 0 0 1 2.5.34c1.9-1.3 2.74-1.03 2.74-1.03.55 1.42.2 2.48.1 2.74.64.73 1.03 1.66 1.03 2.8 0 4-2.34 4.87-4.57 5.13.36.32.68.95.68 1.92 0 1.39-.01 2.52-.01 2.87 0 .26.18.58.69.48C19.14 20.52 22 16.73 22 12.26 22 6.58 17.52 2 12 2z" />
-                </svg>
-                <span>GitHub</span>
-              </a>
-            </div>
+        <!-- Section header -->
+        <div data-reveal class="mb-10 sm:mb-14">
+          <div class="flex items-center gap-3">
+            <p class="text-[11px] font-semibold uppercase tracking-widest text-primary-500 dark:text-primary-400">
+              Contact
+            </p>
+            <span
+              class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
+              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500"></span>
+              Open to work
+            </span>
           </div>
+          <h3
+            class="mt-3 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
+            Let's build something<br class="hidden sm:block" /> thoughtful together.
+          </h3>
+          <p class="mt-3 max-w-lg text-pretty text-sm leading-relaxed text-gray-500 sm:text-[15px] dark:text-slate-400">
+            I'm always interested in new opportunities, collaborations, and connecting with fellow developers.
+            Feel free to reach out through any channel below.
+          </p>
+        </div>
+
+        <!-- Contact cards grid -->
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Email card -->
+          <a data-reveal href="mailto:swampyae330@gmail.com"
+            class="glass-card group flex flex-col gap-4 p-5 sm:p-6 transition-all hover:-translate-y-1">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100/80 text-primary-600 transition-colors group-hover:bg-primary-600 group-hover:text-white dark:bg-primary-500/15 dark:text-primary-400 dark:group-hover:bg-primary-500 dark:group-hover:text-white">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="4" y="6" width="16" height="12" rx="2" />
+                <path d="m4 6 8 7 8-7" />
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-500 dark:text-slate-500">Email</p>
+              <p class="mt-1 truncate text-sm font-semibold text-gray-900 dark:text-white">swampyae330@gmail.com</p>
+            </div>
+            <span
+              class="mt-auto inline-flex items-center gap-1 text-xs font-medium text-primary-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-400">
+              Send email
+              <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Phone card -->
+          <a data-reveal :style="{ transitionDelay: '80ms' }" href="tel:09422150195"
+            class="glass-card group flex flex-col gap-4 p-5 sm:p-6 transition-all hover:-translate-y-1">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100/80 text-primary-600 transition-colors group-hover:bg-primary-600 group-hover:text-white dark:bg-primary-500/15 dark:text-primary-400 dark:group-hover:bg-primary-500 dark:group-hover:text-white">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.9.36 1.76.67 2.6a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.84.31 1.7.54 2.6.67A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-500 dark:text-slate-500">Phone</p>
+              <p class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">09422150195</p>
+            </div>
+            <span
+              class="mt-auto inline-flex items-center gap-1 text-xs font-medium text-primary-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-400">
+              Call now
+              <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Location card -->
+          <div data-reveal :style="{ transitionDelay: '160ms' }"
+            class="glass-card flex flex-col gap-4 p-5 sm:p-6">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0 1 15 0Z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-500 dark:text-slate-500">Location
+              </p>
+              <p class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">Yangon, Myanmar</p>
+            </div>
+            <p class="mt-auto text-xs text-gray-500 dark:text-slate-500">UTC +6:30</p>
+          </div>
+
+          <!-- Response time card -->
+          <div data-reveal :style="{ transitionDelay: '240ms' }"
+            class="glass-card flex flex-col gap-4 p-5 sm:p-6">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-500 dark:text-slate-500">Response
+                Time</p>
+              <p class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">Within 24 hours</p>
+            </div>
+            <p class="mt-auto text-xs text-gray-500 dark:text-slate-500">Usually faster</p>
+          </div>
+        </div>
+
+        <!-- Social links + CTA row -->
+        <div data-reveal :style="{ transitionDelay: '200ms' }" class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <!-- Social icons -->
+          <div class="flex items-center gap-3">
+            <span class="mr-1 text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-600">Connect</span>
+            <a href="https://www.linkedin.com/in/swam-pyae-88aa96369" target="_blank" rel="noreferrer"
+              class="group flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200/60 bg-white/60 text-gray-500 transition-all hover:-translate-y-0.5 hover:border-[#0A66C2]/30 hover:bg-[#0A66C2] hover:text-white hover:shadow-lg hover:shadow-[#0A66C2]/20 dark:border-slate-700/60 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:border-[#0A66C2]/40">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.23 8.08h4.56V24H.23zM8.59 8.08h4.37v2.16h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 6.99V24h-4.56v-8.22c0-1.96-.03-4.48-2.73-4.48-2.73 0-3.15 2.13-3.15 4.33V24H8.59z" />
+              </svg>
+            </a>
+            <a href="https://github.com/SWayne19" target="_blank" rel="noreferrer"
+              class="group flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200/60 bg-white/60 text-gray-500 transition-all hover:-translate-y-0.5 hover:border-gray-700/30 hover:bg-gray-800 hover:text-white hover:shadow-lg hover:shadow-gray-800/20 dark:border-slate-700/60 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:border-slate-500/40 dark:hover:bg-slate-700">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.58 2 12.26c0 4.47 2.87 8.26 6.84 9.59.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.36-3.37-1.36-.46-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1.01.07 1.54 1.05 1.54 1.05.9 1.57 2.37 1.12 2.95.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.14 0-1.14.39-2.07 1.03-2.8-.1-.26-.45-1.32.1-2.74 0 0 .84-.27 2.75 1.03A9.25 9.25 0 0 1 12 6.58a9.23 9.23 0 0 1 2.5.34c1.9-1.3 2.74-1.03 2.74-1.03.55 1.42.2 2.48.1 2.74.64.73 1.03 1.66 1.03 2.8 0 4-2.34 4.87-4.57 5.13.36.32.68.95.68 1.92 0 1.39-.01 2.52-.01 2.87 0 .26.18.58.69.48C19.14 20.52 22 16.73 22 12.26 22 6.58 17.52 2 12 2z" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Email CTA -->
+          <a href="mailto:swampyae330@gmail.com"
+            class="group inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/25 active:translate-y-0">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="4" y="6" width="16" height="12" rx="2" />
+              <path d="m4 6 8 7 8-7" />
+            </svg>
+            Get in touch
+            <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
