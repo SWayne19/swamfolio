@@ -1,7 +1,7 @@
 <template>
   <nav
     class="sticky top-0 z-50 border-b border-slate-200/60 bg-[#ebebdf]/70 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70 dark:shadow-none">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4 lg:px-10">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10">
       <!-- Logo / Name with typing animation -->
       <a href="#hero" @click.prevent="scrollToSection('hero')" class="mr-2 min-w-0 flex-shrink items-center truncate cursor-pointer">
         <TypingName />

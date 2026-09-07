@@ -3,6 +3,11 @@ import "./style.css";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
+// Prevent browser from restoring scroll position on refresh
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 // lazy-loaded pages
 const Home = () => import("./pages/Home.vue");
 const Project = () => import("./pages/Project.vue");
@@ -70,10 +75,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to) {
-    if (to.hash) {
-      return { el: to.hash, behavior: "smooth" };
-    }
+  scrollBehavior() {
     return { top: 0, behavior: "instant" };
   },
 });

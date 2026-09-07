@@ -1,7 +1,7 @@
 <template>
   <div class="parallax-page">
     <!-- ==================== HERO SECTION ==================== -->
-    <section id="hero" class="parallax-section relative flex min-h-screen items-center overflow-hidden">
+    <section id="hero" class="parallax-section relative flex min-h-[calc(100vh-3rem)] items-center overflow-hidden">
       <!-- Decorative parallax shapes -->
       <div data-parallax="-0.15"
         class="pointer-events-none absolute top-24 -left-20 h-72 w-72 rounded-full bg-primary-400/10 blur-3xl dark:bg-primary-500/10">
@@ -10,9 +10,9 @@
         class="pointer-events-none absolute -right-16 bottom-32 h-96 w-96 rounded-full bg-primary-300/8 blur-3xl dark:bg-primary-400/8">
       </div>
 
-      <div class="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8 sm:py-12 lg:px-10">
+      <div class="mx-auto w-full max-w-6xl px-5 py-4 sm:px-8 sm:py-6 lg:px-10">
         <div
-          class="flex flex-col-reverse items-center gap-8 sm:gap-10 md:flex-row md:items-center md:justify-between md:gap-16">
+          class="flex flex-col-reverse items-center gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between md:gap-14">
           <!-- Text content -->
           <div data-reveal class="flex flex-1 flex-col gap-5 text-center md:text-left">
             <p class="text-sm font-medium text-gray-600 sm:text-base dark:text-slate-500">Hi, I'm</p>
