@@ -119,19 +119,24 @@ const navLinks = [
 ];
 
 const scrollToSection = (sectionId) => {
+  const doScroll = () => {
+    if (sectionId === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   // If not on home page, navigate there first
   if (route.name !== "home") {
     router.push({ name: "home" }).then(() => {
-      setTimeout(() => {
-        const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      setTimeout(doScroll, 100);
     });
     return;
   }
 
-  const el = document.getElementById(sectionId);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
+  doScroll();
 };
 
 // Track active section based on scroll position

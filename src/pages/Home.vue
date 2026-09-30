@@ -2,7 +2,7 @@
   <div>
     <!-- ==================== HERO SECTION ==================== -->
     <section id="hero" class="relative flex min-h-[calc(100vh-3rem)] items-center">
-      <div class="mx-auto w-full max-w-6xl px-5 py-4 sm:px-8 sm:py-6 lg:px-10">
+      <div class="mx-auto w-full max-w-6xl px-5 pb-4 sm:px-8 sm:pb-6 lg:px-10">
         <div
           class="flex flex-col-reverse items-center gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between md:gap-14">
           <!-- Text content -->

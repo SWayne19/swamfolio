@@ -36,6 +36,11 @@ body {
   overflow-x: clip;
 }
 
+/* Offset scroll targets for sticky navbar */
+section[id] {
+  scroll-margin-top: 3.5rem;
+}
+
 /* Reusable glass card */
 .glass-card {
   border: 1px solid rgba(148, 163, 184, 0.25);

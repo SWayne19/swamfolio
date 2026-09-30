@@ -10,7 +10,7 @@
     <NavBar />
 
     <!-- Single router-view with conditional wrapper -->
-    <div :class="isHome ? '' : 'mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12 lg:px-10'">
+    <div :class="isHome ? '' : 'mx-auto max-w-6xl px-5 pb-16 sm:px-8 sm:pb-24 lg:px-10'">
       <router-view />
     </div>
 
