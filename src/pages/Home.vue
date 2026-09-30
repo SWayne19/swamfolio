@@ -7,18 +7,18 @@
           class="flex flex-col-reverse items-center gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between md:gap-14">
           <!-- Text content -->
           <div class="flex flex-1 flex-col gap-5 text-center md:text-left">
-            <p class="word-reveal text-base font-medium text-gray-800 sm:text-lg dark:text-slate-500">Hi, I'm</p>
+            <p class="text-base font-medium text-gray-800 sm:text-lg dark:text-slate-500">Hi, I'm</p>
             <h1
               class="text-5xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl dark:text-white">
-              <span class="word-reveal">Swam</span> <span class="word-reveal">Pyae</span> <span class="word-reveal">Paing</span>
+              Swam Pyae Paing
             </h1>
-            <p class="word-reveal text-xl font-medium text-gray-800 sm:text-2xl dark:text-slate-300" style="transition-delay: 0.1s">
+            <p class="text-xl font-medium text-gray-800 sm:text-2xl dark:text-slate-300">
               Building robust, scalable
               <span class="font-semibold text-primary-600 dark:text-primary-400">full stack</span>
               applications.
             </p>
 
-            <div class="word-reveal flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start" style="transition-delay: 0.15s">
+            <div class="flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start">
               <a href="#projects"
                 class="inline-flex items-center gap-2 bg-primary-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary-700">
                 View Projects
@@ -34,7 +34,7 @@
           </div>
 
           <!-- Profile photo -->
-          <div class="shrink-0" data-parallax="0.06">
+          <div class="shrink-0">
             <div class="relative h-40 w-40 rounded-full border-2 border-primary-500/30 p-1 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
               <img src="/images/profile/profile.jpg" alt="Swam Pyae Paing"
                 class="h-full w-full rounded-full border-4 border-white object-cover dark:border-slate-900" width="256"
@@ -49,7 +49,7 @@
     <section id="about" class="relative py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <!-- Stats -->
-        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5" data-reveal data-reveal-delay="100">
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
           <div v-for="stat in stats" :key="stat.label" class="glass-card p-4 sm:p-6"
             :class="{ 'col-span-2 sm:col-span-1': stat.value.length > 5 }">
             <p class="break-words font-extrabold tracking-tight text-gray-900 dark:text-white"
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Bio -->
-        <div class="mt-10 sm:mt-14" data-reveal>
+        <div class="mt-10 sm:mt-14">
           <div class="glass-card p-5 sm:p-7 md:p-8">
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">About</p>
             <h3
@@ -98,7 +98,7 @@
     <!-- ==================== SKILLS SECTION ==================== -->
     <section id="skills" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div class="mb-8 flex items-center justify-between" data-parallax="0.03">
+        <div class="mb-8 flex items-center justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">Skills</p>
             <h3
@@ -112,7 +112,7 @@
           </span>
         </div>
 
-        <div class="glass-card overflow-hidden p-5 sm:p-6" data-reveal>
+        <div class="glass-card overflow-hidden p-5 sm:p-6">
           <div class="ticker-track">
             <span v-for="(tool, index) in [...tools, ...tools]" :key="tool.name + index"
               class="mx-3 inline-flex shrink-0 items-center gap-2 bg-gray-100 px-4 py-2 text-base font-semibold tracking-wide text-gray-900 sm:mx-4 sm:px-5 sm:py-2.5 sm:text-lg dark:bg-slate-800 dark:text-slate-300">
@@ -127,7 +127,7 @@
     <!-- ==================== EXPERIENCE SECTION ==================== -->
     <section id="experience" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div class="mb-8" data-parallax="0.03">
+        <div class="mb-8">
           <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
             Experience
           </p>
@@ -145,8 +145,6 @@
 
           <div class="flex flex-col gap-8 sm:gap-12">
             <div v-for="(experience, i) in [...experiences].reverse()" :key="experience.role"
-              data-reveal
-              :data-reveal-delay="i * 100"
               :class="[
                 'group relative md:flex',
                 i % 2 === 0 ? 'md:justify-start' : 'md:justify-end',
@@ -184,7 +182,7 @@
     <!-- ==================== PROJECTS SECTION ==================== -->
     <section id="projects" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between" data-parallax="0.03">
+        <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
               Projects
@@ -200,7 +198,7 @@
         </div>
 
         <!-- Bento grid -->
-        <div class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3" data-reveal>
+        <div class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
           <router-link v-for="(project, i) in projects" :key="project.id"
             :to="{ name: 'project', params: { id: project.id } }"
             :class="[
@@ -208,10 +206,9 @@
               layouts[i % layouts.length].minH,
               'group relative block overflow-hidden',
             ]">
-            <!-- Background image with parallax -->
+            <!-- Background image -->
             <img v-if="project.image" :src="project.image" :alt="`${project.title} cover`"
-              class="absolute inset-0 h-[110%] w-full object-cover"
-              data-parallax-img
+              class="absolute inset-0 h-full w-full object-cover"
               loading="lazy" />
             <!-- No-image fallback -->
             <div v-else class="absolute inset-0 flex items-center justify-center bg-slate-800">
@@ -273,7 +270,7 @@
         </div>
 
         <!-- Contact cards grid — non-linear layout -->
-        <div class="grid gap-4 sm:grid-cols-3" data-reveal>
+        <div class="grid gap-4 sm:grid-cols-3">
           <!-- Email card — wide -->
           <a href="mailto:swampyae330@gmail.com"
             class="glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
@@ -344,7 +341,7 @@
         </div>
 
         <!-- Social links + CTA row -->
-        <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between" data-reveal data-reveal-delay="200">
+        <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <!-- Social icons -->
           <div class="flex items-center gap-3">
             <span class="mr-1 text-sm font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-600">Connect</span>
@@ -380,30 +377,18 @@
 </template>
 
 <script setup>
-import { inject, nextTick, onMounted } from "vue";
-import { useScrollAnimation } from "../composables/useScrollAnimation";
+import { inject, onMounted } from "vue";
 
 const projects = inject("projects");
 
-useScrollAnimation();
-
 onMounted(() => {
-  nextTick(() => {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", (e) => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    });
-
-    // Staggered hero word reveal
-    document.querySelectorAll(".word-reveal").forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add("visible");
-      }, 200 + i * 120);
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     });
   });
 });

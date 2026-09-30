@@ -15,7 +15,7 @@
     </div>
 
     <!-- Bento grid with full-image overlay cards -->
-    <div class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3" data-reveal>
+    <div class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
       <router-link
         v-for="(project, i) in projects"
         :key="project.id"
@@ -26,13 +26,12 @@
           'group relative block overflow-hidden',
         ]"
       >
-        <!-- Background image with parallax -->
+        <!-- Background image -->
         <img
           v-if="project.image"
           :src="project.image"
           :alt="`${project.title} cover`"
-          class="absolute inset-0 h-[110%] w-full object-cover"
-          data-parallax-img
+          class="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
         />
         <!-- No-image fallback -->
@@ -72,11 +71,8 @@
 
 <script setup>
 import { inject } from "vue";
-import { useScrollAnimation } from "../composables/useScrollAnimation";
 
 const projects = inject("projects");
-
-useScrollAnimation();
 
 const layouts = [
   {

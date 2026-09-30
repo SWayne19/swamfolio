@@ -16,7 +16,11 @@
       "Bash(cd \"D:/spp Code/swamfolio\" && npm run build 2>&1 | tail -15)",
       "Bash(cd \"D:/spp Code/swamfolio\" && npm run build 2>&1 | tail -3)",
       "WebFetch(domain:www.jomor.design)",
-      "WebFetch(domain:keejo-bake003.webflow.io)"
+      "WebFetch(domain:keejo-bake003.webflow.io)",
+      "Bash(cd \"D:/spp Code/swamfolio\" && npm install gsap lenis 2>&1)",
+      "Bash(cd \"D:/spp Code/swamfolio\" && rm -rf node_modules/.vite && npm run build 2>&1 | tail -15)",
+      "Bash(cd \"D:/spp Code/swamfolio\" && rm -rf node_modules/.vite)",
+      "Bash(cd \"D:/spp Code/swamfolio\" && npm uninstall gsap lenis 2>&1)"
     ]
   }
 }
