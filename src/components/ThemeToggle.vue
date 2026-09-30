@@ -1,7 +1,7 @@
 <template>
   <div ref="toggleRef" class="relative">
     <button @click="dropdownOpen = !dropdownOpen"
-      class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
+      class="flex h-9 w-9 items-center justify-center text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
       aria-label="Theme settings">
       <!-- Sun icon (light effective) -->
       <svg v-if="!isDark" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="2"
@@ -20,7 +20,7 @@
       enter-to-class="scale-100 opacity-100" leave-active-class="transition duration-100 ease-in"
       leave-from-class="scale-100 opacity-100" leave-to-class="scale-95 opacity-0">
       <div v-show="dropdownOpen"
-        class="absolute right-0 mt-2 w-36 origin-top-right overflow-hidden rounded-xl border border-slate-200/60 bg-white/90 shadow-lg backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/90">
+        class="absolute right-0 mt-2 w-36 origin-top-right overflow-hidden border border-slate-200/60 bg-white/90 shadow-lg backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/90">
         <button v-for="option in options" :key="option.value" @click="selectTheme(option.value)"
           class="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-[13px] font-medium transition-colors"
           :class="themePreference === option.value

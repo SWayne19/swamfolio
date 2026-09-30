@@ -9,7 +9,7 @@
           : 'text-2xl sm:text-3xl md:text-4xl'">
         {{ stat.value }}
       </p>
-      <p class="mt-2 text-[10px] font-semibold uppercase tracking-widest text-gray-600 sm:text-[11px] dark:text-slate-500">
+      <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-gray-900 sm:text-sm dark:text-slate-500">
         {{ stat.label }}
       </p>
     </div>
@@ -18,11 +18,11 @@
   <!-- About -->
   <section id="about" class="mt-10 sm:mt-14">
     <div class="glass-card p-5 sm:p-7 md:p-8">
-      <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">About</p>
-      <h3 class="mt-3 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
+      <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">About</p>
+      <h3 class="mt-3 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
         Full Stack Vue &amp; Laravel developer
       </h3>
-      <div class="mt-6 space-y-4 text-pretty text-sm leading-relaxed text-gray-500 sm:text-[15px] dark:text-slate-400">
+      <div class="mt-6 space-y-4 text-pretty text-base leading-relaxed text-gray-800 sm:text-lg dark:text-slate-400">
         <p>
           I build web apps with
           <span class="font-semibold text-primary-600 dark:text-primary-400">Vue</span> and
@@ -34,7 +34,7 @@
       </div>
       <div class="mt-6 flex flex-wrap gap-2">
         <span v-for="chip in chips" :key="chip"
-          class="rounded-lg bg-gray-100 px-3 py-1.5 text-xs font-semibold text-gray-700 dark:bg-slate-800 dark:text-slate-300">
+          class="bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-900 dark:bg-slate-800 dark:text-slate-300">
           {{ chip }}
         </span>
       </div>
@@ -46,10 +46,10 @@
   <!-- Experience Section - Vertical Timeline -->
   <section id="experience" class="mt-12 sm:mt-20">
     <div class="mb-8">
-      <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
+      <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
         Experience
       </p>
-      <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
+      <h3 class="mt-1.5 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
         Career Milestones
       </h3>
     </div>
@@ -67,24 +67,24 @@
         ]">
           <!-- Timeline dot -->
           <div
-            class="absolute left-[11px] top-1.5 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-primary-500 shadow-md shadow-primary-500/15 ring-4 ring-[#f5f5f0] transition-transform group-hover:scale-125 md:left-1/2 dark:ring-[#141418]">
+            class="absolute left-[11px] top-1.5 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-primary-500 ring-4 ring-[#f5f5f0] md:left-1/2 dark:ring-[#141418]">
           </div>
 
           <!-- Card -->
           <div class="w-full pl-8 md:w-[calc(50%-2.5rem)] md:pl-0">
             <span
-              class="mb-2 inline-block text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+              class="mb-2 inline-block text-sm font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
               {{ experience.period }}
             </span>
             <div class="glass-card p-5 sm:p-6">
-              <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
+              <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
                 {{ experience.company }}
               </p>
               <h4
-                class="mt-2.5 text-base font-bold text-gray-900 transition-colors group-hover:text-primary-600 sm:text-lg dark:text-white dark:group-hover:text-primary-400">
+                class="mt-2.5 text-lg font-bold text-gray-900 sm:text-xl dark:text-white">
                 {{ experience.role }}
               </h4>
-              <p class="mt-3 text-pretty text-sm leading-relaxed text-gray-700 dark:text-slate-400">
+              <p class="mt-3 text-pretty text-base leading-relaxed text-gray-900 dark:text-slate-400">
                 {{ experience.highlights }}
               </p>
             </div>

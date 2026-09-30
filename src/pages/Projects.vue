@@ -2,20 +2,20 @@
   <section id="projects">
     <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-600 dark:text-slate-500">
+        <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
           Projects
         </p>
-        <h3 class="mt-1.5 text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
+        <h3 class="mt-1.5 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
           Selected work
         </h3>
       </div>
-      <p class="text-sm text-gray-500 dark:text-slate-400">
+      <p class="text-base text-gray-800 dark:text-slate-400">
         {{ projects.length }} projects, full stack to static.
       </p>
     </div>
 
     <!-- Bento grid with full-image overlay cards -->
-    <div class="grid auto-rows-fr gap-5 md:grid-cols-3 md:gap-6">
+    <div class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3" data-reveal>
       <router-link
         v-for="(project, i) in projects"
         :key="project.id"
@@ -23,15 +23,16 @@
         :class="[
           layouts[i % layouts.length].grid,
           layouts[i % layouts.length].minH,
-          'group relative block overflow-hidden rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
+          'group relative block overflow-hidden',
         ]"
       >
-        <!-- Background image -->
+        <!-- Background image with parallax -->
         <img
           v-if="project.image"
           :src="project.image"
           :alt="`${project.title} cover`"
-          class="absolute inset-0 h-full w-full object-cover"
+          class="absolute inset-0 h-[110%] w-full object-cover"
+          data-parallax-img
           loading="lazy"
         />
         <!-- No-image fallback -->
@@ -45,18 +46,12 @@
         <!-- Gradient overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/15 dark:from-black/95 dark:via-black/70 dark:to-black/30"></div>
 
-<!-- Arrow icon -->
-        <svg class="absolute top-3 right-3 z-10 h-4 w-4 -translate-x-1 text-white/60 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-          fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-
         <!-- Text content overlay -->
         <div class="absolute inset-x-0 bottom-0 z-10 p-5">
           <h4 :class="layouts[i % layouts.length].title" class="font-bold text-white">
             {{ project.title }}
           </h4>
-          <p :class="layouts[i % layouts.length].desc" class="mt-1.5 text-sm leading-relaxed text-white/80">
+          <p :class="layouts[i % layouts.length].desc" class="mt-1.5 text-base leading-relaxed text-white/90">
             {{ project.description }}
           </p>
 
@@ -64,7 +59,7 @@
             <span
               v-for="tag in project.tags"
               :key="tag"
-              class="rounded-md bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90 backdrop-blur-sm"
+              class="bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90"
             >
               {{ tag }}
             </span>
@@ -77,38 +72,41 @@
 
 <script setup>
 import { inject } from "vue";
+import { useScrollAnimation } from "../composables/useScrollAnimation";
 
 const projects = inject("projects");
+
+useScrollAnimation();
 
 const layouts = [
   {
     grid: "md:col-span-2 md:row-span-2",
     minH: "min-h-64 md:min-h-0",
-    title: "text-lg sm:text-xl",
+    title: "text-xl sm:text-2xl",
     desc: "line-clamp-3",
   },
   {
     grid: "md:col-span-1",
     minH: "min-h-56",
-    title: "text-base",
+    title: "text-lg",
     desc: "line-clamp-2",
   },
   {
     grid: "md:col-span-1 md:row-span-2",
     minH: "min-h-64 md:min-h-0",
-    title: "text-base",
+    title: "text-lg",
     desc: "line-clamp-3",
   },
   {
     grid: "md:col-span-1",
     minH: "min-h-52",
-    title: "text-base",
+    title: "text-lg",
     desc: "line-clamp-2",
   },
   {
     grid: "md:col-span-1",
     minH: "min-h-56",
-    title: "text-base",
+    title: "text-lg",
     desc: "line-clamp-2",
   },
 ];

@@ -1,28 +1,47 @@
 import { onMounted, onUnmounted } from "vue";
 
 /**
- * Composable for parallax transforms and scroll-reveal animations.
+ * Refined scroll animations inspired by jomor.design.
  *
- * - Elements with `data-parallax` attribute get translateY based on scroll.
- *   Value is the speed multiplier (e.g. "0.3" = 30% of scroll speed).
- *
- * - Elements with `data-reveal` attribute fade/slide in when they enter
- *   the viewport. Optional value: "left", "right", "scale" (default is "up").
+ * - `data-reveal`        — fades in + subtle translateY when entering viewport.
+ *   Optional values: "left", "right", "scale" (default is "up").
+ * - `data-reveal-delay`  — delay in ms before reveal starts (for staggering).
+ * - `data-parallax`      — subtle translateY based on scroll. Value is speed
+ *   multiplier (e.g. "0.08" = 8% of scroll offset).
  */
 export function useScrollAnimation() {
   let rafId = null;
   let observer = null;
 
+  // ── Parallax ──
   const applyParallax = () => {
-    const els = document.querySelectorAll("[data-parallax]");
     const scrollY = window.scrollY;
+    const viewH = window.innerHeight;
 
+    // Standard element parallax
+    const els = document.querySelectorAll("[data-parallax]");
     for (const el of els) {
-      const speed = parseFloat(el.dataset.parallax) || 0.3;
+      const speed = parseFloat(el.dataset.parallax) || 0.08;
       const rect = el.getBoundingClientRect();
       const center = rect.top + rect.height / 2 + scrollY;
-      const offset = (scrollY - center + window.innerHeight / 2) * speed;
-      el.style.transform = `translateY(${offset}px)`;
+      const offset = (scrollY - center + viewH / 2) * speed;
+      el.style.transform = `translate3d(0, ${offset}px, 0)`;
+      el.style.willChange = "transform";
+    }
+
+    // Image parallax — images taller than container shift within
+    const imgs = document.querySelectorAll("[data-parallax-img]");
+    for (const img of imgs) {
+      const parent = img.parentElement;
+      if (!parent) continue;
+      const rect = parent.getBoundingClientRect();
+      // How far through the viewport the element is (0 = top, 1 = bottom)
+      const progress = (viewH - rect.top) / (viewH + rect.height);
+      const clamped = Math.max(0, Math.min(1, progress));
+      // Shift image within its container (max ~5% of height)
+      const shift = (clamped - 0.5) * -10;
+      img.style.transform = `translate3d(0, ${shift}%, 0)`;
+      img.style.willChange = "transform";
     }
   };
 
@@ -34,21 +53,29 @@ export function useScrollAnimation() {
     });
   };
 
+  // ── Scroll reveal ──
   const setupReveal = () => {
     observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
+            const delay = parseInt(entry.target.dataset.revealDelay, 10) || 0;
+            if (delay > 0) {
+              setTimeout(() => {
+                entry.target.classList.add("revealed");
+              }, delay);
+            } else {
+              entry.target.classList.add("revealed");
+            }
             observer.unobserve(entry.target);
           }
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
     );
 
-    const revealEls = document.querySelectorAll("[data-reveal]");
-    for (const el of revealEls) {
+    const els = document.querySelectorAll("[data-reveal]");
+    for (const el of els) {
       observer.observe(el);
     }
   };

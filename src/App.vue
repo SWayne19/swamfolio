@@ -1,10 +1,4 @@
 <template>
-  <!-- Scroll-reactive background -->
-  <ScrollBackground />
-
-  <!-- Floating Dots Background -->
-  <FloatingDots />
-
   <div class="relative z-10 min-h-screen text-gray-900 transition-colors duration-300 dark:text-gray-100">
     <!-- Scroll Progress Bar -->
     <ScrollProgress />
@@ -31,8 +25,6 @@
 <script setup>
 import { computed, provide } from "vue";
 import { useRoute } from "vue-router";
-import ScrollBackground from "./components/ScrollBackground.vue";
-import FloatingDots from "./components/FloatingDots.vue";
 import ScrollProgress from "./components/ScrollProgress.vue";
 import RouteLoader from "./components/RouteLoader.vue";
 import NavBar from "./components/NavBar.vue";

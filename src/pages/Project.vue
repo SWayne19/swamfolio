@@ -15,7 +15,7 @@
             :href="project.url"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl"
+            class="inline-flex items-center gap-2 bg-primary-600 px-4 py-2.5 text-base font-semibold text-white transition-colors hover:bg-primary-700"
           >
             <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-4.5-6H18m0 0v4.5m0-4.5L10.5 13.5" />
@@ -24,14 +24,15 @@
           </a>
           <span
             v-else
-            class="inline-flex items-center gap-1.5 rounded-xl border border-gray-200/60 bg-gray-50/80 px-4 py-2.5 text-sm font-medium text-gray-600 dark:border-slate-700/60 dark:bg-slate-800/60 dark:text-slate-500"
+            class="inline-flex items-center gap-1.5 border border-gray-200/60 bg-gray-50/80 px-4 py-2.5 text-base font-medium text-gray-800 dark:border-slate-700/60 dark:bg-slate-800/60 dark:text-slate-500"
           >
             Coming Soon
           </span>
 
           <router-link
             :to="{ name: 'home' }"
-            class="glass-card inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-600 dark:text-slate-300"
+            class="glass-card inline-flex items-center gap-2 px-4 py-2.5 text-base font-semibold text-gray-900 dark:text-slate-300"
+
           >
             <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -42,7 +43,7 @@
       </div>
 
       <!-- Description -->
-      <p class="mb-5 text-pretty text-sm leading-relaxed text-gray-700 sm:mb-8 sm:text-[15px] dark:text-slate-400">
+      <p class="mb-5 text-pretty text-base leading-relaxed text-gray-900 sm:mb-8 sm:text-lg dark:text-slate-400">
         {{ project.description }}
       </p>
 
@@ -51,7 +52,7 @@
         <span
           v-for="tag in project.tags"
           :key="tag"
-          class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-700 dark:bg-slate-800 dark:text-slate-400"
+          class="bg-gray-100 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-gray-900 dark:bg-slate-800 dark:text-slate-400"
         >
           {{ tag }}
         </span>
@@ -59,25 +60,25 @@
 
       <!-- Tab Navigation -->
       <div class="mb-6 overflow-x-auto sm:mb-10">
-        <nav class="flex min-w-0 gap-1.5 rounded-xl border border-gray-200/60 bg-gray-100/80 p-1.5 backdrop-blur-sm dark:border-slate-800/60 dark:bg-slate-800/40">
+        <nav class="flex min-w-0 gap-1.5 border border-gray-200/60 bg-gray-100/80 p-1.5 dark:border-slate-800/60 dark:bg-slate-800/40">
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"
-            exact-active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 whitespace-nowrap rounded-lg px-4 py-2.5 text-center text-sm font-semibold text-gray-600 transition-all hover:text-gray-800 dark:text-slate-500 dark:hover:text-slate-300"
+            exact-active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300"
+            class="flex-1 whitespace-nowrap px-4 py-2.5 text-center text-base font-semibold text-gray-800 transition-colors hover:text-gray-900 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Overview
           </router-link>
           <router-link
             :to="{ name: 'frontEnd', params: { id: project.id } }"
-            active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 whitespace-nowrap rounded-lg px-4 py-2.5 text-center text-sm font-semibold text-gray-600 transition-all hover:text-gray-800 dark:text-slate-500 dark:hover:text-slate-300"
+            active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300"
+            class="flex-1 whitespace-nowrap px-4 py-2.5 text-center text-base font-semibold text-gray-800 transition-colors hover:text-gray-900 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Front End
           </router-link>
           <router-link
             :to="{ name: 'backEnd', params: { id: project.id } }"
-            active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300 shadow-sm"
-            class="flex-1 whitespace-nowrap rounded-lg px-4 py-2.5 text-center text-sm font-semibold text-gray-600 transition-all hover:text-gray-800 dark:text-slate-500 dark:hover:text-slate-300"
+            active-class="!bg-white dark:!bg-slate-700 !text-primary-600 dark:!text-primary-300"
+            class="flex-1 whitespace-nowrap px-4 py-2.5 text-center text-base font-semibold text-gray-800 transition-colors hover:text-gray-900 dark:text-slate-500 dark:hover:text-slate-300"
           >
             Back End
           </router-link>
@@ -90,10 +91,10 @@
 
   <!-- Not Found -->
   <div v-else class="flex min-h-[300px] flex-col items-center justify-center text-center">
-    <p class="text-base text-gray-600 sm:text-lg dark:text-slate-500">Project not found.</p>
+    <p class="text-lg text-gray-800 sm:text-xl dark:text-slate-500">Project not found.</p>
     <router-link
       :to="{ name: 'home' }"
-      class="mt-5 rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl"
+      class="mt-5 bg-primary-600 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-primary-700"
     >
       View All Projects
     </router-link>
