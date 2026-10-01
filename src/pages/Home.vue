@@ -7,18 +7,18 @@
           class="flex flex-col-reverse items-center gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between md:gap-14">
           <!-- Text content -->
           <div class="flex flex-1 flex-col gap-5 text-center md:text-left">
-            <p class="text-base font-medium text-gray-800 sm:text-lg dark:text-slate-500">Hi, I'm</p>
-            <h1
+            <p ref="heroGreeting" class="text-base font-medium text-gray-800 sm:text-lg dark:text-slate-500">Hi, I'm</p>
+            <h1 ref="heroName"
               class="text-5xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl dark:text-white">
               Swam Pyae Paing
             </h1>
-            <p class="text-xl font-medium text-gray-800 sm:text-2xl dark:text-slate-300">
+            <p ref="heroSubtitle" class="text-xl font-medium text-gray-800 sm:text-2xl dark:text-slate-300">
               Building robust, scalable
               <span class="font-semibold text-primary-600 dark:text-primary-400">full stack</span>
               applications.
             </p>
 
-            <div class="flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start">
+            <div ref="heroCta" class="flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start">
               <a href="#projects"
                 class="inline-flex items-center gap-2 bg-primary-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary-700">
                 View Projects
@@ -34,7 +34,7 @@
           </div>
 
           <!-- Profile photo -->
-          <div class="shrink-0">
+          <div ref="heroPhoto" class="shrink-0">
             <div class="relative h-40 w-40 rounded-full border-2 border-primary-500/30 p-1 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
               <img src="/images/profile/profile.jpg" alt="Swam Pyae Paing"
                 class="h-full w-full rounded-full border-4 border-white object-cover dark:border-slate-900" width="256"
@@ -49,8 +49,8 @@
     <section id="about" class="relative py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <!-- Stats -->
-        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
-          <div v-for="stat in stats" :key="stat.label" class="glass-card p-4 sm:p-6"
+        <div ref="statsGrid" class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
+          <div v-for="stat in stats" :key="stat.label" class="glass-card stat-card p-4 sm:p-6"
             :class="{ 'col-span-2 sm:col-span-1': stat.value.length > 5 }">
             <p class="break-words font-extrabold tracking-tight text-gray-900 dark:text-white"
               :class="stat.value.length > 5
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Bio -->
-        <div class="mt-10 sm:mt-14">
+        <div ref="bioCard" class="mt-10 sm:mt-14">
           <div class="glass-card p-5 sm:p-7 md:p-8">
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">About</p>
             <h3
@@ -84,9 +84,9 @@
                 learning continuously.
               </p>
             </div>
-            <div class="mt-6 flex flex-wrap gap-2">
+            <div ref="chipsContainer" class="mt-6 flex flex-wrap gap-2">
               <span v-for="chip in chips" :key="chip"
-                class="bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-900 dark:bg-slate-800 dark:text-slate-300">
+                class="chip-tag bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-900 dark:bg-slate-800 dark:text-slate-300">
                 {{ chip }}
               </span>
             </div>
@@ -98,7 +98,7 @@
     <!-- ==================== SKILLS SECTION ==================== -->
     <section id="skills" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div class="mb-8 flex items-center justify-between">
+        <div ref="skillsHeading" class="mb-8 flex items-center justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">Skills</p>
             <h3
@@ -112,7 +112,7 @@
           </span>
         </div>
 
-        <div class="glass-card overflow-hidden p-5 sm:p-6">
+        <div ref="skillsTicker" class="glass-card overflow-hidden p-5 sm:p-6">
           <div class="ticker-track">
             <span v-for="(tool, index) in [...tools, ...tools]" :key="tool.name + index"
               class="mx-3 inline-flex shrink-0 items-center gap-2 bg-gray-100 px-4 py-2 text-base font-semibold tracking-wide text-gray-900 sm:mx-4 sm:px-5 sm:py-2.5 sm:text-lg dark:bg-slate-800 dark:text-slate-300">
@@ -127,7 +127,7 @@
     <!-- ==================== EXPERIENCE SECTION ==================== -->
     <section id="experience" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div class="mb-8">
+        <div ref="experienceHeading" class="mb-8">
           <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
             Experience
           </p>
@@ -143,10 +143,10 @@
             class="absolute top-2 bottom-2 left-[11px] w-px bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 md:left-1/2 md:-translate-x-1/2 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700">
           </div>
 
-          <div class="flex flex-col gap-8 sm:gap-12">
+          <div ref="timelineContainer" class="flex flex-col gap-8 sm:gap-12">
             <div v-for="(experience, i) in [...experiences].reverse()" :key="experience.role"
               :class="[
-                'group relative md:flex',
+                'group relative md:flex timeline-card',
                 i % 2 === 0 ? 'md:justify-start' : 'md:justify-end',
               ]">
               <!-- Timeline dot -->
@@ -182,7 +182,7 @@
     <!-- ==================== PROJECTS SECTION ==================== -->
     <section id="projects" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div ref="projectsHeading" class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
               Projects
@@ -198,13 +198,13 @@
         </div>
 
         <!-- Bento grid -->
-        <div class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
+        <div ref="projectsGrid" class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
           <router-link v-for="(project, i) in projects" :key="project.id"
             :to="{ name: 'project', params: { id: project.id } }"
             :class="[
               layouts[i % layouts.length].grid,
               layouts[i % layouts.length].minH,
-              'group relative block overflow-hidden',
+              'project-card group relative block overflow-hidden',
             ]">
             <!-- Background image -->
             <img v-if="project.image" :src="project.image" :alt="`${project.title} cover`"
@@ -225,7 +225,7 @@
             </div>
 
             <!-- Text content overlay -->
-            <div class="absolute inset-x-0 bottom-0 z-10 p-5">
+            <div class="project-text absolute inset-x-0 bottom-0 z-10 p-5">
               <h4 :class="layouts[i % layouts.length].title" class="font-bold text-white">
                 {{ project.title }}
               </h4>
@@ -234,7 +234,7 @@
               </p>
               <div class="mt-3 flex flex-wrap items-center gap-1.5">
                 <span v-for="tag in project.tags" :key="tag"
-                  class="bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90">
+                  class="tag-pill bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90 transition-colors">
                   {{ tag }}
                 </span>
               </div>
@@ -248,7 +248,7 @@
     <section id="contact" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <!-- Section header -->
-        <div class="mb-10 sm:mb-14">
+        <div ref="contactHeading" class="mb-10 sm:mb-14">
           <div class="flex items-center gap-3">
             <p class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400">
               Contact
@@ -270,7 +270,7 @@
         </div>
 
         <!-- Contact cards grid — non-linear layout -->
-        <div class="grid gap-4 sm:grid-cols-3">
+        <div ref="contactCards" class="grid gap-4 sm:grid-cols-3">
           <!-- Email card — wide -->
           <a href="mailto:swampyae330@gmail.com"
             class="glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
@@ -341,7 +341,7 @@
         </div>
 
         <!-- Social links + CTA row -->
-        <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div ref="socialRow" class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <!-- Social icons -->
           <div class="flex items-center gap-3">
             <span class="mr-1 text-sm font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-600">Connect</span>
@@ -377,19 +377,106 @@
 </template>
 
 <script setup>
-import { inject, onMounted } from "vue";
+import { inject, ref, onMounted, nextTick } from "vue";
+import gsap from "gsap";
+import { useScrollReveal } from "../composables/useScrollReveal";
 
 const projects = inject("projects");
+const { revealUp, revealLeft, revealRight, revealScale, staggerReveal } = useScrollReveal();
+
+// Hero refs
+const heroPhoto = ref(null);
+const heroGreeting = ref(null);
+const heroName = ref(null);
+const heroSubtitle = ref(null);
+const heroCta = ref(null);
+
+// About refs
+const statsGrid = ref(null);
+const bioCard = ref(null);
+const chipsContainer = ref(null);
+
+// Skills refs
+const skillsHeading = ref(null);
+const skillsTicker = ref(null);
+
+// Experience refs
+const experienceHeading = ref(null);
+const timelineContainer = ref(null);
+
+// Projects refs
+const projectsHeading = ref(null);
+const projectsGrid = ref(null);
+
+// Contact refs
+const contactHeading = ref(null);
+const contactCards = ref(null);
+const socialRow = ref(null);
 
 onMounted(() => {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    });
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  nextTick(() => {
+    // Hero entrance timeline (page-load, not scroll-triggered)
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    heroTl
+      .from(heroPhoto.value, { scale: 0.9, opacity: 0, duration: 0.8 }, 0.1)
+      .from(heroGreeting.value, { y: 30, opacity: 0, duration: 0.6 }, 0.1)
+      .from(heroName.value, { y: 30, opacity: 0, duration: 0.6 }, 0.2)
+      .from(heroSubtitle.value, { y: 30, opacity: 0, duration: 0.6 }, 0.35)
+      .from(heroCta.value?.children ?? [], { y: 20, opacity: 0, duration: 0.5, stagger: 0.1 }, 0.45);
+
+    // About section — scroll-triggered
+    if (statsGrid.value) {
+      staggerReveal(statsGrid.value.querySelectorAll(".stat-card"), { trigger: statsGrid.value });
+    }
+    if (bioCard.value) {
+      revealUp(bioCard.value, { start: "top 85%" });
+    }
+    if (chipsContainer.value) {
+      staggerReveal(chipsContainer.value.querySelectorAll(".chip-tag"), {
+        trigger: chipsContainer.value,
+        stagger: 0.05,
+        y: 20,
+        start: "top 90%",
+      });
+    }
+
+    // Skills section
+    revealUp(skillsHeading.value);
+    revealUp(skillsTicker.value, { delay: 0.1 });
+
+    // Experience section
+    revealUp(experienceHeading.value);
+    if (timelineContainer.value) {
+      const cards = timelineContainer.value.querySelectorAll(".timeline-card");
+      const isMd = window.matchMedia("(min-width: 768px)").matches;
+      cards.forEach((card, i) => {
+        if (isMd) {
+          if (i % 2 === 0) {
+            revealLeft(card, { delay: i * 0.15 });
+          } else {
+            revealRight(card, { delay: i * 0.15 });
+          }
+        } else {
+          revealUp(card, { delay: i * 0.1 });
+        }
+      });
+    }
+
+    // Projects section
+    revealUp(projectsHeading.value);
+    if (projectsGrid.value) {
+      staggerReveal(projectsGrid.value.children, { trigger: projectsGrid.value });
+    }
+
+    // Contact section
+    revealUp(contactHeading.value);
+    if (contactCards.value) {
+      staggerReveal(contactCards.value.children, { trigger: contactCards.value });
+    }
+    revealUp(socialRow.value, { delay: 0.3 });
   });
 });
 

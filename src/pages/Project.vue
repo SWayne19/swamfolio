@@ -2,7 +2,7 @@
   <div v-if="project">
     <div>
       <!-- Header -->
-      <div class="mb-6 flex flex-col gap-5 sm:mb-10">
+      <div ref="headerBlock" class="mb-6 flex flex-col gap-5 sm:mb-10">
         <div class="flex items-center gap-4 min-w-0">
           <h1 class="truncate text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
             {{ project.title }}
@@ -43,12 +43,12 @@
       </div>
 
       <!-- Description -->
-      <p class="mb-5 text-pretty text-base leading-relaxed text-gray-900 sm:mb-8 sm:text-lg dark:text-slate-400">
+      <p ref="descBlock" class="mb-5 text-pretty text-base leading-relaxed text-gray-900 sm:mb-8 sm:text-lg dark:text-slate-400">
         {{ project.description }}
       </p>
 
       <!-- Tags -->
-      <div class="mb-6 flex flex-wrap gap-2 sm:mb-10">
+      <div ref="tagsBlock" class="mb-6 flex flex-wrap gap-2 sm:mb-10">
         <span
           v-for="tag in project.tags"
           :key="tag"
@@ -59,7 +59,7 @@
       </div>
 
       <!-- Tab Navigation -->
-      <div class="mb-6 overflow-x-auto sm:mb-10">
+      <div ref="tabNav" class="mb-6 overflow-x-auto sm:mb-10">
         <nav class="flex min-w-0 gap-1.5 border border-gray-200/60 bg-gray-100/80 p-1.5 dark:border-slate-800/60 dark:bg-slate-800/40">
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"
@@ -102,14 +102,31 @@
 </template>
 
 <script setup>
-import { computed, inject } from "vue";
+import { computed, inject, ref, onMounted, nextTick } from "vue";
 import { useRoute } from "vue-router";
+import gsap from "gsap";
 
 const route = useRoute();
 const projects = inject("projects");
 
+const headerBlock = ref(null);
+const descBlock = ref(null);
+const tagsBlock = ref(null);
+const tabNav = ref(null);
+
 const project = computed(() => {
   const projectId = parseInt(route.params.id);
   return projects.value.find((p) => p.id === projectId);
+});
+
+onMounted(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  nextTick(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.6 } });
+    tl.from(headerBlock.value, { y: 30, opacity: 0 }, 0.05)
+      .from(descBlock.value, { y: 25, opacity: 0 }, 0.15)
+      .from(tagsBlock.value, { y: 20, opacity: 0 }, 0.25)
+      .from(tabNav.value, { y: 20, opacity: 0 }, 0.35);
+  });
 });
 </script>

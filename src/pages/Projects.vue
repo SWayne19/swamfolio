@@ -1,6 +1,6 @@
 <template>
   <section id="projects">
-    <div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+    <div ref="heading" class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
           Projects
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Bento grid with full-image overlay cards -->
-    <div class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
+    <div ref="grid" class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
       <router-link
         v-for="(project, i) in projects"
         :key="project.id"
@@ -23,7 +23,7 @@
         :class="[
           layouts[i % layouts.length].grid,
           layouts[i % layouts.length].minH,
-          'group relative block overflow-hidden',
+          'project-card group relative block overflow-hidden',
         ]"
       >
         <!-- Background image -->
@@ -46,7 +46,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/15 dark:from-black/95 dark:via-black/70 dark:to-black/30"></div>
 
         <!-- Text content overlay -->
-        <div class="absolute inset-x-0 bottom-0 z-10 p-5">
+        <div class="project-text absolute inset-x-0 bottom-0 z-10 p-5">
           <h4 :class="layouts[i % layouts.length].title" class="font-bold text-white">
             {{ project.title }}
           </h4>
@@ -58,7 +58,7 @@
             <span
               v-for="tag in project.tags"
               :key="tag"
-              class="bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90"
+              class="tag-pill bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90 transition-colors"
             >
               {{ tag }}
             </span>
@@ -70,9 +70,23 @@
 </template>
 
 <script setup>
-import { inject } from "vue";
+import { inject, ref, onMounted, nextTick } from "vue";
+import { useScrollReveal } from "../composables/useScrollReveal";
 
 const projects = inject("projects");
+const { revealUp, staggerReveal } = useScrollReveal();
+
+const heading = ref(null);
+const grid = ref(null);
+
+onMounted(() => {
+  nextTick(() => {
+    revealUp(heading.value);
+    if (grid.value) {
+      staggerReveal(grid.value.children, { trigger: grid.value });
+    }
+  });
+});
 
 const layouts = [
   {

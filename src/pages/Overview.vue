@@ -1,25 +1,25 @@
 <template>
-  <section v-if="project" class="space-y-4 sm:space-y-5">
+  <section v-if="project" ref="section" class="space-y-4 sm:space-y-5">
     <h2 class="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl dark:text-white">Project Overview</h2>
 
-    <div class="glass-card p-5 sm:p-6">
+    <div class="glass-card reveal-card p-5 sm:p-6">
       <h3 class="text-base font-bold text-gray-900 dark:text-white">Goal</h3>
       <p class="mt-2.5 text-pretty text-base leading-relaxed text-gray-900 dark:text-slate-400">{{ project.overview.goal }}</p>
     </div>
 
-    <div class="glass-card p-5 sm:p-6">
+    <div class="glass-card reveal-card p-5 sm:p-6">
       <h3 class="mb-3 text-base font-bold text-gray-900 dark:text-white">Highlights</h3>
       <ul class="list-inside list-disc space-y-2 text-base leading-relaxed text-gray-900 dark:text-slate-400">
         <li v-for="item in project.overview.highlights" :key="item">{{ item }}</li>
       </ul>
     </div>
 
-    <div class="glass-card p-5 sm:p-6">
+    <div class="glass-card reveal-card p-5 sm:p-6">
       <h3 class="text-base font-bold text-gray-900 dark:text-white">Challenges</h3>
       <p class="mt-2.5 text-pretty text-base leading-relaxed text-gray-900 dark:text-slate-400">{{ project.overview.challenges }}</p>
     </div>
 
-    <div class="glass-card p-5 sm:p-6">
+    <div class="glass-card reveal-card p-5 sm:p-6">
       <h3 class="text-base font-bold text-gray-900 dark:text-white">Outcome</h3>
       <p class="mt-2.5 text-pretty text-base leading-relaxed text-gray-900 dark:text-slate-400">{{ project.overview.outcome }}</p>
     </div>
@@ -29,14 +29,30 @@
 </template>
 
 <script setup>
-import { computed, inject } from "vue";
+import { computed, inject, ref, onMounted, nextTick } from "vue";
 import { useRoute } from "vue-router";
+import { useScrollReveal } from "../composables/useScrollReveal";
 
 const route = useRoute();
 const projects = inject("projects");
+const { staggerReveal } = useScrollReveal();
+
+const section = ref(null);
 
 const project = computed(() => {
   const id = Number(route.params.id);
   return projects.value.find((p) => p.id === id);
+});
+
+onMounted(() => {
+  nextTick(() => {
+    if (section.value) {
+      staggerReveal(section.value.querySelectorAll(".reveal-card"), {
+        trigger: section.value,
+        stagger: 0.1,
+        start: "top 90%",
+      });
+    }
+  });
 });
 </script>

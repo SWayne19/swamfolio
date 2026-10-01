@@ -11,6 +11,7 @@
 
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
+import { getLenisInstance } from "../composables/useLenis";
 
 const showScrollTop = ref(false);
 
@@ -18,7 +19,14 @@ const handleScroll = () => {
   showScrollTop.value = window.scrollY > 200;
 };
 
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+const scrollToTop = () => {
+  const lenis = getLenisInstance();
+  if (lenis) {
+    lenis.scrollTo(0, { duration: 1.2 });
+  } else {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
 
 onMounted(() => window.addEventListener("scroll", handleScroll, { passive: true }));
 onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));

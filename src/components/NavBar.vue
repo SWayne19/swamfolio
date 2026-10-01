@@ -100,6 +100,7 @@ import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import TypingName from "./TypingName.vue";
 import ThemeToggle from "./ThemeToggle.vue";
+import { getLenisInstance } from "../composables/useLenis";
 
 const mobileMenuOpen = ref(false);
 const activeSection = ref("hero");
@@ -120,11 +121,22 @@ const navLinks = [
 
 const scrollToSection = (sectionId) => {
   const doScroll = () => {
+    const lenis = getLenisInstance();
     if (sectionId === "hero") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     } else {
       const el = document.getElementById(sectionId);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (el) {
+        if (lenis) {
+          lenis.scrollTo(el, { duration: 1.2 });
+        } else {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
     }
   };
 
