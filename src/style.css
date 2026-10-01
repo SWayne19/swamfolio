@@ -157,6 +157,86 @@ section[id] {
   background: rgba(255, 255, 255, 0.25);
 }
 
+/* ========== Parallax via CSS Scroll-Driven Animations ========== */
+@supports (animation-timeline: view()) {
+  /* Hero photo — drifts up slower than scroll, creating depth */
+  .parallax-hero-photo {
+    animation: parallax-hero-photo linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 60%;
+  }
+  @keyframes parallax-hero-photo {
+    from { transform: translateY(0); }
+    to   { transform: translateY(80px); }
+  }
+
+  /* Hero text — drifts up faster, separating from photo */
+  .parallax-hero-text {
+    animation: parallax-hero-text linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 50%;
+  }
+  @keyframes parallax-hero-text {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-40px); }
+  }
+
+  /* Section headings — subtle float-up as they scroll through viewport */
+  .parallax-heading {
+    animation: parallax-heading linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+  }
+  @keyframes parallax-heading {
+    from { transform: translateY(24px); }
+    to   { transform: translateY(0); }
+  }
+
+  /* Glass cards — slower parallax for depth layering */
+  .parallax-card {
+    animation: parallax-card linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 60%;
+  }
+  @keyframes parallax-card {
+    from { transform: translateY(32px); }
+    to   { transform: translateY(0); }
+  }
+
+  /* Timeline vertical line — grows/fades in as you scroll through it */
+  .parallax-timeline-line {
+    animation: parallax-timeline-line linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 80%;
+  }
+  @keyframes parallax-timeline-line {
+    from { opacity: 0; clip-path: inset(0 0 100% 0); }
+    to   { opacity: 1; clip-path: inset(0 0 0% 0); }
+  }
+
+  /* Contact icons — staggered float-up with slight scale */
+  .parallax-contact {
+    animation: parallax-contact linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+  }
+  @keyframes parallax-contact {
+    from { transform: translateY(20px) scale(0.98); }
+    to   { transform: translateY(0) scale(1); }
+  }
+
+  /* Skills ticker — subtle horizontal drift tied to scroll */
+  .parallax-ticker {
+    animation: parallax-ticker linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+  @keyframes parallax-ticker {
+    from { transform: translateX(30px); }
+    to   { transform: translateX(-30px); }
+  }
+}
+
 /* Reduced motion: disable all custom animations */
 @media (prefers-reduced-motion: reduce) {
   .page-enter-active,
@@ -172,5 +252,14 @@ section[id] {
   }
   .project-card:hover .project-text {
     transform: none;
+  }
+  .parallax-hero-photo,
+  .parallax-hero-text,
+  .parallax-heading,
+  .parallax-card,
+  .parallax-timeline-line,
+  .parallax-contact,
+  .parallax-ticker {
+    animation: none !important;
   }
 }

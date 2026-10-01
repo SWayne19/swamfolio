@@ -6,7 +6,7 @@
         <div
           class="flex flex-col-reverse items-center gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between md:gap-14">
           <!-- Text content -->
-          <div class="flex flex-1 flex-col gap-5 text-center md:text-left">
+          <div class="parallax-hero-text flex flex-1 flex-col gap-5 text-center md:text-left">
             <p ref="heroGreeting" class="text-base font-medium text-gray-800 sm:text-lg dark:text-slate-500">Hi, I'm</p>
             <h1 ref="heroName"
               class="text-5xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl dark:text-white">
@@ -34,7 +34,7 @@
           </div>
 
           <!-- Profile photo -->
-          <div ref="heroPhoto" class="shrink-0">
+          <div ref="heroPhoto" class="parallax-hero-photo shrink-0">
             <div class="relative h-40 w-40 rounded-full border-2 border-primary-500/30 p-1 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
               <img src="/images/profile/profile.jpg" alt="Swam Pyae Paing"
                 class="h-full w-full rounded-full border-4 border-white object-cover dark:border-slate-900" width="256"
@@ -50,7 +50,7 @@
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <!-- Stats -->
         <div ref="statsGrid" class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
-          <div v-for="stat in stats" :key="stat.label" class="glass-card stat-card p-4 sm:p-6"
+          <div v-for="stat in stats" :key="stat.label" class="glass-card stat-card parallax-card p-4 sm:p-6"
             :class="{ 'col-span-2 sm:col-span-1': stat.value.length > 5 }">
             <p class="break-words font-extrabold tracking-tight text-gray-900 dark:text-white"
               :class="stat.value.length > 5
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Bio -->
-        <div ref="bioCard" class="mt-10 sm:mt-14">
+        <div ref="bioCard" class="parallax-card mt-10 sm:mt-14">
           <div class="glass-card p-5 sm:p-7 md:p-8">
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">About</p>
             <h3
@@ -98,7 +98,7 @@
     <!-- ==================== SKILLS SECTION ==================== -->
     <section id="skills" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div ref="skillsHeading" class="mb-8 flex items-center justify-between">
+        <div ref="skillsHeading" class="parallax-heading mb-8 flex items-center justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">Skills</p>
             <h3
@@ -112,7 +112,7 @@
           </span>
         </div>
 
-        <div ref="skillsTicker" class="glass-card overflow-hidden p-5 sm:p-6">
+        <div ref="skillsTicker" class="parallax-ticker glass-card overflow-hidden p-5 sm:p-6">
           <div class="ticker-track">
             <span v-for="(tool, index) in [...tools, ...tools]" :key="tool.name + index"
               class="mx-3 inline-flex shrink-0 items-center gap-2 bg-gray-100 px-4 py-2 text-base font-semibold tracking-wide text-gray-900 sm:mx-4 sm:px-5 sm:py-2.5 sm:text-lg dark:bg-slate-800 dark:text-slate-300">
@@ -127,7 +127,7 @@
     <!-- ==================== EXPERIENCE SECTION ==================== -->
     <section id="experience" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div ref="experienceHeading" class="mb-8">
+        <div ref="experienceHeading" class="parallax-heading mb-8">
           <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
             Experience
           </p>
@@ -140,7 +140,7 @@
         <div class="relative">
           <!-- Vertical line -->
           <div
-            class="absolute top-2 bottom-2 left-[11px] w-px bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 md:left-1/2 md:-translate-x-1/2 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700">
+            class="parallax-timeline-line absolute top-2 bottom-2 left-[11px] w-px bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 md:left-1/2 md:-translate-x-1/2 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700">
           </div>
 
           <div ref="timelineContainer" class="flex flex-col gap-8 sm:gap-12">
@@ -182,7 +182,7 @@
     <!-- ==================== PROJECTS SECTION ==================== -->
     <section id="projects" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div ref="projectsHeading" class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div ref="projectsHeading" class="parallax-heading mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
               Projects
@@ -208,7 +208,7 @@
     <section id="contact" class="relative py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <!-- Section header -->
-        <div ref="contactHeading" class="mb-10 sm:mb-14">
+        <div ref="contactHeading" class="parallax-heading mb-10 sm:mb-14">
           <div class="flex items-center gap-3">
             <p class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400">
               Contact
@@ -233,7 +233,7 @@
         <div ref="contactCards" class="grid gap-4 sm:grid-cols-3">
           <!-- Email card — wide -->
           <a href="mailto:swampyae330@gmail.com"
-            class="glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
+            class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
             <div
               class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
               <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -249,7 +249,7 @@
 
           <!-- Phone card -->
           <a href="tel:09422150195"
-            class="glass-card flex flex-col gap-4 p-5 sm:p-6">
+            class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:p-6">
             <div
               class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
               <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -264,7 +264,7 @@
           </a>
 
           <!-- Location card -->
-          <div class="glass-card flex flex-col gap-4 p-5 sm:p-6">
+          <div class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:p-6">
             <div
               class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
               <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -283,7 +283,7 @@
           </div>
 
           <!-- Response time card — wide -->
-          <div class="glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
+          <div class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
             <div
               class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
               <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
