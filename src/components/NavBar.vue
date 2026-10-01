@@ -12,13 +12,13 @@
         <template v-for="link in navLinks" :key="link.name">
           <!-- Section anchor links (home page) -->
           <a v-if="link.section" :href="`#${link.section}`" @click.prevent="scrollToSection(link.section)"
-            class="relative px-3.5 py-2 text-sm font-medium text-gray-900 transition-colors after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:bg-primary-600 after:transition-transform after:duration-200 hover:after:scale-x-100 hover:text-primary-700 dark:text-slate-400 dark:after:bg-primary-400 dark:hover:text-primary-300"
+            class="relative px-3.5 py-2 text-sm font-medium text-gray-900 transition-colors after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:bg-primary-600 after:transition-transform after:duration-200 dark:text-slate-400 dark:after:bg-primary-400"
             :class="{ '!text-primary-600 after:scale-x-100 dark:!text-primary-400': activeSection === link.section }">
             {{ link.name }}
           </a>
           <!-- Router links (project detail pages etc) -->
           <RouterLink v-else :to="{ name: link.route }"
-            class="relative px-3.5 py-2 text-sm font-medium text-gray-900 transition-colors after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:bg-primary-600 after:transition-transform after:duration-200 hover:after:scale-x-100 hover:text-primary-700 dark:text-slate-400 dark:after:bg-primary-400 dark:hover:text-primary-300"
+            class="relative px-3.5 py-2 text-sm font-medium text-gray-900 transition-colors after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:bg-primary-600 after:transition-transform after:duration-200 dark:text-slate-400 dark:after:bg-primary-400"
             active-class="!text-primary-600 after:scale-x-100 dark:!text-primary-400">
             {{ link.name }}
           </RouterLink>
