@@ -117,7 +117,7 @@ import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 
 const props = defineProps({
   items: { type: Array, required: true },
-  interval: { type: Number, default: 5000 },
+  interval: { type: Number, default: 3000 },
 });
 
 const SLIDE_WIDTH = 84; // % of viewport width taken by the active slide
