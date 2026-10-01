@@ -117,7 +117,7 @@ import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 
 const props = defineProps({
   items: { type: Array, required: true },
-  interval: { type: Number, default: 3000 },
+  interval: { type: Number, default: 2000 },
 });
 
 const SLIDE_WIDTH = 84; // % of viewport width taken by the active slide
@@ -144,11 +144,26 @@ const trackStyle = computed(() => ({
   transform: `translateX(calc(${(100 - SLIDE_WIDTH) / 2}% - ${index.value} * (${SLIDE_WIDTH}% + ${GAP}px) + ${dragOffset.value}px))`,
 }));
 
+let moveTimeout = null;
+
 function move(to) {
   if (moving.value || count.value < 2 || to === index.value) return;
   moving.value = true;
   animate.value = true;
   index.value = to;
+  // Safety: if transitionend never fires, unblock after the transition duration + buffer
+  clearTimeout(moveTimeout);
+  moveTimeout = setTimeout(() => {
+    if (moving.value) {
+      moving.value = false;
+      // Also do the wrap-around check
+      if (index.value >= count.value * 2 || index.value < count.value) {
+        animate.value = false;
+        index.value = count.value + activeIndex.value;
+        requestAnimationFrame(() => requestAnimationFrame(() => (animate.value = true)));
+      }
+    }
+  }, 900);
 }
 
 const next = () => move(index.value + 1);
@@ -157,6 +172,7 @@ const goTo = (i) => move(count.value + i);
 
 function onTransitionEnd(e) {
   if (e.propertyName !== "transform") return;
+  clearTimeout(moveTimeout);
   moving.value = false;
   // Wrap back into the middle copy without animating.
   if (index.value >= count.value * 2 || index.value < count.value) {
@@ -226,7 +242,14 @@ watch(activeIndex, startTimer);
 
 // Recover if the track never fires transitionend (e.g. tab was hidden mid-slide).
 function onVisibilityChange() {
-  if (!document.hidden) moving.value = false;
+  if (!document.hidden) {
+    clearTimeout(moveTimeout);
+    moving.value = false;
+    // Re-center index to the middle copy to avoid drift
+    animate.value = false;
+    index.value = count.value + activeIndex.value;
+    requestAnimationFrame(() => requestAnimationFrame(() => (animate.value = true)));
+  }
 }
 
 onMounted(() => {
@@ -236,6 +259,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopTimer();
+  clearTimeout(moveTimeout);
   document.removeEventListener("visibilitychange", onVisibilityChange);
 });
 </script>
