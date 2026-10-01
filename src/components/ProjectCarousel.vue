@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative select-none"
+    class="relative mx-[calc(50%-50vw)] w-screen select-none"
     role="region"
     aria-roledescription="carousel"
     aria-label="Featured projects"
@@ -29,7 +29,7 @@
           :aria-hidden="i !== index"
           :tabindex="i === index ? 0 : -1"
           :style="{ flexBasis: `${SLIDE_WIDTH}%`, marginRight: `${GAP}px` }"
-          class="group relative block aspect-4/5 shrink-0 overflow-hidden rounded-2xl bg-slate-800 shadow-xl transition-[opacity,transform] duration-700 sm:aspect-video lg:aspect-21/9"
+          class="group relative block aspect-4/5 shrink-0 overflow-hidden rounded-2xl bg-slate-800 shadow-xl transition-[opacity,transform] duration-700 max-h-[80vh] sm:aspect-video lg:aspect-2/1"
           :class="i === index ? 'opacity-100' : 'scale-[0.97] opacity-50 hover:opacity-70'"
           draggable="false"
           @click="onSlideClick($event, i)"
@@ -48,19 +48,19 @@
 
           <!-- Title -->
           <h4
-            class="absolute right-5 top-5 max-w-[80%] text-right text-3xl font-black uppercase italic leading-none tracking-tight text-white drop-shadow-lg sm:right-8 sm:top-8 sm:text-5xl lg:text-6xl"
+            class="absolute right-5 top-5 max-w-[80%] text-right text-3xl font-black uppercase italic leading-none tracking-tight text-white drop-shadow-lg sm:right-10 sm:top-10 sm:text-6xl lg:text-7xl xl:text-8xl"
           >
             {{ slide.project.title }}
           </h4>
 
           <!-- Bottom bar: CTA + meta -->
-          <div class="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:gap-4 sm:p-8">
+          <div class="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:gap-4 sm:p-10">
             <span
-              class="w-fit shrink-0 rounded-full bg-white px-5 py-2 text-sm font-medium text-gray-900 shadow transition-colors group-hover:bg-white/90"
+              class="w-fit shrink-0 rounded-full bg-white px-5 py-2 text-sm font-medium sm:px-6 sm:py-2.5 sm:text-base text-gray-900 shadow transition-colors group-hover:bg-white/90"
             >
               View project
             </span>
-            <p class="line-clamp-2 text-sm text-white/90 sm:line-clamp-1 sm:text-base">
+            <p class="line-clamp-2 text-sm text-white/90 sm:line-clamp-1 sm:text-base lg:text-lg">
               <span class="font-bold text-white">{{ slide.project.tags?.[0] }}</span>
               <span class="mx-1.5">•</span>
               {{ slide.project.description }}
@@ -74,7 +74,7 @@
     <button
       type="button"
       aria-label="Previous project"
-      class="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2.5 text-white backdrop-blur transition hover:bg-black/60 sm:block"
+      class="absolute left-4 top-[calc(50%-1rem)] z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-3 text-white backdrop-blur transition hover:bg-black/60 sm:block"
       @click="prev"
     >
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -84,7 +84,7 @@
     <button
       type="button"
       aria-label="Next project"
-      class="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2.5 text-white backdrop-blur transition hover:bg-black/60 sm:block"
+      class="absolute right-4 top-[calc(50%-1rem)] z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-3 text-white backdrop-blur transition hover:bg-black/60 sm:block"
       @click="next"
     >
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
