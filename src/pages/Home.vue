@@ -198,53 +198,8 @@
         </div>
 
         <!-- Featured carousel -->
-        <div ref="projectsCarousel" class="mb-10">
+        <div ref="projectsCarousel">
           <ProjectCarousel :items="projects" />
-        </div>
-
-        <!-- Bento grid -->
-        <div ref="projectsGrid" class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
-          <router-link v-for="(project, i) in projects" :key="project.id"
-            :to="{ name: 'project', params: { id: project.id } }"
-            :class="[
-              layouts[i % layouts.length].grid,
-              layouts[i % layouts.length].minH,
-              'project-card group relative block overflow-hidden',
-            ]">
-            <!-- Background image -->
-            <img v-if="project.image" :src="project.image" :alt="`${project.title} cover`"
-              class="absolute inset-0 h-full w-full object-cover"
-              loading="lazy" />
-            <!-- No-image fallback -->
-            <div v-else class="absolute inset-0 flex items-center justify-center bg-slate-800">
-              <svg class="h-12 w-12 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="1.5">
-                <rect x="5" y="5" width="14" height="14" rx="4" />
-                <path d="M8 12h8M12 8v8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-
-            <!-- Gradient overlay -->
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/15 dark:from-black/95 dark:via-black/70 dark:to-black/30">
-            </div>
-
-            <!-- Text content overlay -->
-            <div class="project-text absolute inset-x-0 bottom-0 z-10 p-5">
-              <h4 :class="layouts[i % layouts.length].title" class="font-bold text-white">
-                {{ project.title }}
-              </h4>
-              <p :class="layouts[i % layouts.length].desc" class="mt-1.5 text-base leading-relaxed text-white/90">
-                {{ project.description }}
-              </p>
-              <div class="mt-3 flex flex-wrap items-center gap-1.5">
-                <span v-for="tag in project.tags" :key="tag"
-                  class="tag-pill bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90 transition-colors">
-                  {{ tag }}
-                </span>
-              </div>
-            </div>
-          </router-link>
         </div>
       </div>
     </section>
@@ -413,7 +368,6 @@ const timelineContainer = ref(null);
 // Projects refs
 const projectsHeading = ref(null);
 const projectsCarousel = ref(null);
-const projectsGrid = ref(null);
 
 // Contact refs
 const contactHeading = ref(null);
@@ -475,9 +429,6 @@ onMounted(() => {
     // Projects section
     revealUp(projectsHeading.value);
     revealUp(projectsCarousel.value, { delay: 0.1 });
-    if (projectsGrid.value) {
-      staggerReveal(projectsGrid.value.children, { trigger: projectsGrid.value });
-    }
 
     // Contact section
     revealUp(contactHeading.value);
@@ -542,36 +493,4 @@ const tools = [
   { name: "Git", icon: "/images/tools/git.svg" },
 ];
 
-const layouts = [
-  {
-    grid: "md:col-span-2 md:row-span-2",
-    minH: "min-h-64 md:min-h-0",
-    title: "text-xl sm:text-2xl",
-    desc: "line-clamp-3",
-  },
-  {
-    grid: "md:col-span-1",
-    minH: "min-h-56",
-    title: "text-lg",
-    desc: "line-clamp-2",
-  },
-  {
-    grid: "md:col-span-1 md:row-span-2",
-    minH: "min-h-64 md:min-h-0",
-    title: "text-lg",
-    desc: "line-clamp-3",
-  },
-  {
-    grid: "md:col-span-1",
-    minH: "min-h-52",
-    title: "text-lg",
-    desc: "line-clamp-2",
-  },
-  {
-    grid: "md:col-span-1",
-    minH: "min-h-56",
-    title: "text-lg",
-    desc: "line-clamp-2",
-  },
-];
 </script>

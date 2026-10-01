@@ -38,7 +38,7 @@
             v-if="slide.project.image"
             :src="slide.project.image"
             :alt="`${slide.project.title} cover`"
-            class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
+            class="absolute inset-0 h-full w-full object-cover object-top"
             draggable="false"
           />
 
