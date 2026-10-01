@@ -1,6 +1,6 @@
 <template>
   <section id="projects">
-    <div ref="heading" class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+    <div ref="heading" class="parallax-heading mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
           Projects
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Featured carousel -->
-    <div ref="carousel">
+    <div ref="carousel" class="parallax-card">
       <ProjectCarousel :items="projects" />
     </div>
   </section>

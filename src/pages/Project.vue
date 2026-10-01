@@ -2,7 +2,7 @@
   <div v-if="project">
     <div>
       <!-- Header -->
-      <div ref="headerBlock" class="mb-6 flex flex-col gap-5 sm:mb-10">
+      <div ref="headerBlock" class="parallax-heading mb-6 flex flex-col gap-5 sm:mb-10">
         <div class="flex items-center gap-4 min-w-0">
           <h1 class="truncate text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
             {{ project.title }}
@@ -43,12 +43,12 @@
       </div>
 
       <!-- Description -->
-      <p ref="descBlock" class="mb-5 text-pretty text-base leading-relaxed text-gray-900 sm:mb-8 sm:text-lg dark:text-slate-400">
+      <p ref="descBlock" class="parallax-card mb-5 text-pretty text-base leading-relaxed text-gray-900 sm:mb-8 sm:text-lg dark:text-slate-400">
         {{ project.description }}
       </p>
 
       <!-- Tags -->
-      <div ref="tagsBlock" class="mb-6 flex flex-wrap gap-2 sm:mb-10">
+      <div ref="tagsBlock" class="parallax-card mb-6 flex flex-wrap gap-2 sm:mb-10">
         <span
           v-for="tag in project.tags"
           :key="tag"
@@ -59,7 +59,7 @@
       </div>
 
       <!-- Tab Navigation -->
-      <div ref="tabNav" class="mb-6 overflow-x-auto sm:mb-10">
+      <div ref="tabNav" class="parallax-card mb-6 overflow-x-auto sm:mb-10">
         <nav class="flex min-w-0 gap-1.5 border border-gray-200/60 bg-gray-100/80 p-1.5 dark:border-slate-800/60 dark:bg-slate-800/40">
           <router-link
             :to="{ name: 'overView', params: { id: project.id } }"
