@@ -14,6 +14,11 @@
       </p>
     </div>
 
+    <!-- Featured carousel -->
+    <div ref="carousel" class="mb-10">
+      <ProjectCarousel :items="projects" />
+    </div>
+
     <!-- Bento grid with full-image overlay cards -->
     <div ref="grid" class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
       <router-link
@@ -72,16 +77,19 @@
 <script setup>
 import { inject, ref, onMounted, nextTick } from "vue";
 import { useScrollReveal } from "../composables/useScrollReveal";
+import ProjectCarousel from "../components/ProjectCarousel.vue";
 
 const projects = inject("projects");
 const { revealUp, staggerReveal } = useScrollReveal();
 
 const heading = ref(null);
+const carousel = ref(null);
 const grid = ref(null);
 
 onMounted(() => {
   nextTick(() => {
     revealUp(heading.value);
+    revealUp(carousel.value, { delay: 0.1 });
     if (grid.value) {
       staggerReveal(grid.value.children, { trigger: grid.value });
     }

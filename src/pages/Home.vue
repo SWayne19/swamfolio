@@ -197,6 +197,11 @@
           </p>
         </div>
 
+        <!-- Featured carousel -->
+        <div ref="projectsCarousel" class="mb-10">
+          <ProjectCarousel :items="projects" />
+        </div>
+
         <!-- Bento grid -->
         <div ref="projectsGrid" class="grid auto-rows-fr gap-2 md:grid-cols-3 md:gap-3">
           <router-link v-for="(project, i) in projects" :key="project.id"
@@ -380,6 +385,7 @@
 import { inject, ref, onMounted, nextTick } from "vue";
 import gsap from "gsap";
 import { useScrollReveal } from "../composables/useScrollReveal";
+import ProjectCarousel from "../components/ProjectCarousel.vue";
 
 const projects = inject("projects");
 const { revealUp, revealLeft, revealRight, revealScale, staggerReveal } = useScrollReveal();
@@ -406,6 +412,7 @@ const timelineContainer = ref(null);
 
 // Projects refs
 const projectsHeading = ref(null);
+const projectsCarousel = ref(null);
 const projectsGrid = ref(null);
 
 // Contact refs
@@ -467,6 +474,7 @@ onMounted(() => {
 
     // Projects section
     revealUp(projectsHeading.value);
+    revealUp(projectsCarousel.value, { delay: 0.1 });
     if (projectsGrid.value) {
       staggerReveal(projectsGrid.value.children, { trigger: projectsGrid.value });
     }
