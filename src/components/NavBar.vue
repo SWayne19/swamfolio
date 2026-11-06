@@ -68,8 +68,8 @@ import { profile } from "../data/profile";
 import { scrollToTarget, setScrollLocked } from "../composables/useLenis";
 
 const links = [
-  { name: "Work", id: "work" },
   { name: "About", id: "about" },
+  { name: "Work", id: "work" },
   { name: "Experience", id: "experience" },
   { name: "FAQ", id: "faq" },
 ];

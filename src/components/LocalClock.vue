@@ -2,7 +2,7 @@
   <div>
     <p class="text-sm text-muted">{{ date }}</p>
     <p class="mt-1 font-mono text-3xl tabular-nums tracking-tight sm:text-4xl">
-      <time :datetime="iso">{{ time }}</time>
+      <time :datetime="iso">{{ time }}<span class="ml-2 text-base text-muted sm:text-lg">{{ period }}</span></time>
     </p>
   </div>
 </template>
@@ -20,22 +20,26 @@ const dateFmt = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
   month: "long",
 });
-const timeFmt = new Intl.DateTimeFormat("en-GB", {
+const timeFmt = new Intl.DateTimeFormat("en-US", {
   timeZone: props.timeZone,
   hour: "2-digit",
   minute: "2-digit",
   second: "2-digit",
-  hour12: false,
+  hour12: true,
 });
 
 const date = ref("");
 const time = ref("");
+const period = ref("");
 const iso = ref("");
 
 function tick() {
   const now = new Date();
   date.value = dateFmt.format(now);
-  time.value = timeFmt.format(now);
+  const parts = timeFmt.formatToParts(now);
+  const get = (type) => parts.find((p) => p.type === type)?.value ?? "";
+  time.value = `${get("hour")}:${get("minute")}:${get("second")}`;
+  period.value = get("dayPeriod").toUpperCase();
   iso.value = now.toISOString();
 }
 

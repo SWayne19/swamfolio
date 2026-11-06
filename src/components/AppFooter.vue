@@ -1,13 +1,8 @@
 <template>
   <footer id="contact" class="shell pt-24 pb-6 sm:pt-32">
     <div ref="root" class="panel relative overflow-hidden p-6 sm:p-12 lg:p-16">
-      <div class="flex items-center gap-2 text-sm text-muted">
-        <span class="pulse-dot"></span>
-        Available for new opportunities
-      </div>
-
       <h2 data-reveal
-        class="mt-8 max-w-5xl text-balance text-[clamp(2.4rem,6.5vw,6rem)] font-medium leading-[0.95] tracking-[-0.045em]">
+        class="max-w-5xl text-balance text-[clamp(2.4rem,6.5vw,6rem)] font-medium leading-[0.95] tracking-[-0.045em]">
         It's time to build your next web app.
       </h2>
       <p data-reveal="0.1" class="mt-6 max-w-lg text-pretty text-lg text-muted">

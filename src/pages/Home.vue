@@ -4,11 +4,6 @@
     <section class="shell pt-2">
       <div class="grid gap-3 lg:grid-cols-12">
         <div class="panel flex min-h-[520px] flex-col justify-between p-6 sm:p-10 lg:col-span-7 lg:min-h-[680px] lg:p-12">
-          <div class="hero-in flex items-center gap-2 text-sm text-muted">
-            <span class="pulse-dot"></span>
-            {{ profile.currentTitle }} at {{ profile.company }}
-          </div>
-
           <div class="py-12">
             <h1 class="text-balance text-[clamp(2.75rem,6.4vw,6rem)] font-medium leading-[0.95] tracking-[-0.045em]">
               <span class="hero-line block">Crafted interfaces,</span>
@@ -45,12 +40,9 @@
             class="hero-img absolute inset-0 h-full w-full scale-110 object-cover object-top" width="718" height="856"
             loading="eager" fetchpriority="high" />
           <div class="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/60 to-transparent"></div>
-          <div class="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-white">
-            <div>
-              <p class="text-sm font-medium">{{ profile.name }}</p>
-              <p class="text-sm text-white/70">{{ profile.role }}</p>
-            </div>
-            <p class="font-mono text-xs uppercase tracking-wider text-white/70">{{ profile.location }}</p>
+          <div class="absolute inset-x-5 bottom-5 text-white">
+            <p class="text-sm font-medium">{{ profile.name }}</p>
+            <p class="text-sm text-white/70">{{ profile.role }}</p>
           </div>
         </div>
       </div>
@@ -138,10 +130,7 @@
           class="project-card panel group grid overflow-hidden md:sticky md:h-[min(560px,calc(100vh-7rem))] md:grid-cols-12"
           :style="{ top: `calc(5rem + ${i * 0.75}rem)` }">
           <div class="flex flex-col justify-between gap-8 p-6 sm:p-8 md:col-span-5 lg:p-10">
-            <div class="flex items-center justify-between">
-              <p class="text-sm font-medium">{{ project.title }}</p>
-              <p class="eyebrow">{{ String(i + 1).padStart(2, "0") }}</p>
-            </div>
+            <p class="text-sm font-medium">{{ project.title }}</p>
             <div>
               <p class="text-pretty text-xl leading-snug tracking-tight sm:text-2xl lg:text-[1.75rem]">
                 {{ project.description }}
