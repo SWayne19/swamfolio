@@ -11,8 +11,7 @@
     <!-- Header -->
     <header class="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7">
-        <p class="detail-in eyebrow">Project {{ String(index + 1).padStart(2, "0") }} / {{ String(projects.length).padStart(2, "0") }}</p>
-        <h1 class="detail-in mt-4 text-[clamp(3rem,9vw,8rem)] font-medium leading-[0.9] tracking-[-0.05em]">
+        <h1 class="detail-in text-[clamp(3rem,9vw,8rem)] font-medium leading-[0.9] tracking-[-0.05em]">
           {{ project.title }}
         </h1>
       </div>
