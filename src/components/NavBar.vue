@@ -14,7 +14,7 @@
       <!-- Desktop links -->
       <div class="hidden items-center gap-1 md:flex">
         <a v-for="link in links" :key="link.id" :href="`/#${link.id}`" @click.prevent="go(link.id)"
-          class="rounded-full px-3.5 py-2 text-sm transition-colors hover:text-fg"
+          class="rounded-full px-3.5 py-2 text-sm transition-colors"
           :class="activeSection === link.id && isHome ? 'text-fg' : 'text-muted'">
           {{ link.name }}
         </a>
