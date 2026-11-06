@@ -21,22 +21,40 @@
 
 <script setup>
 import { provide, ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavBar from "./components/NavBar.vue";
 import AppFooter from "./components/AppFooter.vue";
 import { projects } from "./data/projects";
-import { useLenis } from "./composables/useLenis";
+import { getLenisInstance, scrollToTarget, useLenis } from "./composables/useLenis";
 
 provide("projects", projects);
 useLenis();
+
+const route = useRoute();
+
+// Scroll to a section requested via the URL hash (e.g. nav link from a project page).
+function scrollToHash() {
+  const id = route.hash?.slice(1);
+  if (!id) return;
+  requestAnimationFrame(() => scrollToTarget(id));
+}
 
 // Mount the footer after the first page resolves so its scroll triggers
 // are measured against the real page height.
 const ready = ref(false);
 useRouter()
   .isReady()
-  .then(() => requestAnimationFrame(() => (ready.value = true)));
+  .then(() =>
+    requestAnimationFrame(() => {
+      ready.value = true;
+      setTimeout(scrollToHash, 100); // direct visits to /#section
+    })
+  );
 
-const onTransitionEnd = () => ScrollTrigger.refresh();
+const onTransitionEnd = () => {
+  getLenisInstance()?.resize();
+  ScrollTrigger.refresh();
+  scrollToHash();
+};
 </script>

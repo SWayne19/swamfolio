@@ -28,7 +28,11 @@ export function scrollToTarget(target) {
   }
   const el = typeof target === "string" ? document.getElementById(target) : target;
   if (!el) return;
-  if (lenis) lenis.scrollTo(el, { duration: 1.2, offset: NAV_OFFSET });
+  if (lenis) {
+    // Page height may have changed since Lenis last measured (route change, lazy content).
+    lenis.resize();
+    lenis.scrollTo(el, { duration: 1.2, offset: NAV_OFFSET });
+  }
   else el.scrollIntoView({ behavior: "smooth" });
 }
 

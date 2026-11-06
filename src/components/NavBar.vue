@@ -84,10 +84,10 @@ const activeSection = ref("");
 
 async function go(id) {
   menuOpen.value = false;
-  if (!isHome.value) {
-    await router.push({ name: "home" });
-    // wait for the page transition to mount Home
-    setTimeout(() => scrollToTarget(id), 450);
+  // The contact footer exists on every page, so scroll in place.
+  if (!isHome.value && id !== "contact") {
+    // App.vue scrolls to the hash once the Home page has finished entering.
+    await router.push({ name: "home", hash: id === "top" ? "" : `#${id}` });
     return;
   }
   await nextTick();
