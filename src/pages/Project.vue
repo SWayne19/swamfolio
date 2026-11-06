@@ -27,7 +27,7 @@
     </header>
 
     <!-- Meta -->
-    <dl class="detail-in mt-12 grid grid-cols-2 gap-6 border-t border-line pt-6 text-sm sm:grid-cols-4">
+    <dl class="detail-in mt-12 grid grid-cols-2 gap-6 border-t border-line pt-6 text-center text-sm sm:grid-cols-4">
       <div>
         <dt class="eyebrow">Type</dt>
         <dd class="mt-2">{{ hasBackend ? "Full stack app" : "Frontend" }}</dd>
@@ -42,7 +42,7 @@
       </div>
       <div>
         <dt class="eyebrow">Status</dt>
-        <dd class="mt-2 flex items-center gap-2">
+        <dd class="mt-2 flex items-center justify-center gap-2">
           <span class="h-1.5 w-1.5 rounded-full" :class="project.url ? 'bg-accent' : 'bg-subtle'"></span>
           {{ project.url ? "Live" : "Private" }}
         </dd>
