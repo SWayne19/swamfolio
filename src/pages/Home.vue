@@ -1,93 +1,100 @@
 <template>
-  <div>
-    <!-- ==================== HERO SECTION ==================== -->
-    <section id="hero" class="relative flex min-h-[calc(100vh-3rem)] items-center">
-      <div class="mx-auto w-full max-w-6xl px-5 pb-4 sm:px-8 sm:pb-6 lg:px-10">
-        <div
-          class="flex flex-col-reverse items-center gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between md:gap-14">
-          <!-- Text content -->
-          <div class="parallax-hero-text flex flex-1 flex-col gap-5 text-center md:text-left">
-            <p ref="heroGreeting" class="text-base font-medium text-gray-800 sm:text-lg dark:text-slate-500">Hi, I'm</p>
-            <h1 ref="heroName"
-              class="text-5xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl dark:text-white">
-              Swam Pyae Paing
-            </h1>
-            <p ref="heroSubtitle" class="text-xl font-medium text-gray-800 sm:text-2xl dark:text-slate-300">
-              Building robust, scalable
-              <span class="font-semibold text-primary-600 dark:text-primary-400">full stack</span>
-              applications.
-            </p>
+  <div ref="root">
+    <!-- ==================== HERO ==================== -->
+    <section class="shell pt-2">
+      <div class="grid gap-3 lg:grid-cols-12">
+        <div class="panel flex min-h-[520px] flex-col justify-between p-6 sm:p-10 lg:col-span-7 lg:min-h-[680px] lg:p-12">
+          <div class="hero-in flex items-center gap-2 text-sm text-muted">
+            <span class="pulse-dot"></span>
+            {{ profile.currentTitle }} at {{ profile.company }}
+          </div>
 
-            <div ref="heroCta" class="flex flex-wrap items-center justify-center gap-3 pt-3 md:justify-start">
-              <a href="#projects"
-                class="inline-flex items-center gap-2 bg-primary-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary-700">
-                View Projects
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+          <div class="py-12">
+            <h1 class="text-balance text-[clamp(2.75rem,6.4vw,6rem)] font-medium leading-[0.95] tracking-[-0.045em]">
+              <span class="hero-line block">Crafted interfaces,</span>
+              <span class="hero-line block text-muted">engineered from</span>
+              <span class="hero-line block text-muted">database to UI.</span>
+            </h1>
+            <p class="hero-in mt-8 max-w-md text-pretty text-base leading-relaxed text-muted sm:text-lg">
+              I'm {{ profile.name }}, a full stack developer building fast, reliable web applications with Vue and
+              Laravel.
+            </p>
+            <div class="hero-in mt-8 flex flex-wrap gap-3">
+              <a href="#contact" @click.prevent="scrollToTarget('contact')" class="btn btn-solid">
+                Get in touch
               </a>
-              <a href="#about"
-                class="glass-card inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-gray-900 dark:text-slate-300">
-                About Me
+              <a href="#work" @click.prevent="scrollToTarget('work')" class="btn btn-ghost">
+                View my work
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6" />
+                </svg>
               </a>
             </div>
           </div>
 
-          <!-- Profile photo -->
-          <div ref="heroPhoto" class="parallax-hero-photo shrink-0">
-            <div class="relative h-40 w-40 rounded-full border-2 border-primary-500/30 p-1 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
-              <img src="/images/profile/profile.jpg" alt="Swam Pyae Paing"
-                class="h-full w-full rounded-full border-4 border-white object-cover dark:border-slate-900" width="256"
-                height="256" loading="eager" decoding="async" />
+          <dl class="hero-in grid grid-cols-3 gap-4 border-t border-line pt-6">
+            <div v-for="stat in stats" :key="stat.label">
+              <dt class="eyebrow">{{ stat.label }}</dt>
+              <dd class="mt-2 text-xl font-medium tracking-tight sm:text-2xl">{{ stat.value }}</dd>
             </div>
+          </dl>
+        </div>
+
+        <div class="hero-photo panel relative min-h-[440px] overflow-hidden lg:col-span-5">
+          <img :src="profile.photo" :alt="profile.name"
+            class="hero-img absolute inset-0 h-full w-full scale-110 object-cover object-top" width="718" height="856"
+            loading="eager" fetchpriority="high" />
+          <div class="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/60 to-transparent"></div>
+          <div class="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-white">
+            <div>
+              <p class="text-sm font-medium">{{ profile.name }}</p>
+              <p class="text-sm text-white/70">{{ profile.role }}</p>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-wider text-white/70">{{ profile.location }}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== ABOUT SECTION ==================== -->
-    <section id="about" class="relative py-24 sm:py-32">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <!-- Stats -->
-        <div ref="statsGrid" class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
-          <div v-for="stat in stats" :key="stat.label" class="glass-card stat-card parallax-card p-4 sm:p-6"
-            :class="{ 'col-span-2 sm:col-span-1': stat.value.length > 5 }">
-            <p class="break-words font-extrabold tracking-tight text-gray-900 dark:text-white"
-              :class="stat.value.length > 5
-                ? 'text-lg sm:text-xl md:text-2xl lg:text-3xl'
-                : 'text-3xl sm:text-4xl md:text-5xl'">
-              {{ stat.value }}
+    <!-- ==================== BENTO ==================== -->
+    <section class="shell mt-3" aria-label="Highlights">
+      <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-12">
+        <!-- Role + clock -->
+        <div data-reveal class="panel flex flex-col justify-between gap-10 p-6 sm:p-8 lg:col-span-3">
+          <div>
+            <p class="eyebrow">Now</p>
+            <p class="mt-4 text-pretty text-lg leading-snug tracking-tight">
+              Full stack developer with hands-on experience taking products from schema to launch.
             </p>
-            <p
-              class="mt-2 text-xs font-semibold uppercase tracking-widest text-gray-800 sm:text-sm dark:text-slate-500">
-              {{ stat.label }}
-            </p>
+            <a :href="profile.linkedin" target="_blank" rel="noreferrer" class="btn btn-ghost btn-sm mt-6">
+              LinkedIn ↗
+            </a>
           </div>
+          <LocalClock :time-zone="profile.timeZone" />
         </div>
 
-        <!-- Bio -->
-        <div ref="bioCard" class="parallax-card mt-10 sm:mt-14">
-          <div class="glass-card p-5 sm:p-7 md:p-8">
-            <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">About</p>
-            <h3
-              class="mt-3 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-              Full Stack Vue &amp; Laravel developer
-            </h3>
-            <div
-              class="mt-6 space-y-4 text-pretty text-base leading-relaxed text-gray-800 sm:text-lg dark:text-slate-400">
-              <p>
-                I build web apps with
-                <span class="font-semibold text-primary-600 dark:text-primary-400">Vue</span> and
-                <span class="font-semibold text-primary-600 dark:text-primary-400">Laravel</span>, focusing on
-                creating seamless, secure, and reliable user experiences from the database to the UI.
-                I also integrate AI-assisted workflows into development -- writing smarter code, shipping faster, and
-                learning continuously.
-              </p>
+        <!-- Rotating experience -->
+        <ExperienceCard data-reveal="0.08" :items="experiences" class="md:col-span-2 lg:col-span-6 lg:order-none md:order-last" />
+
+        <!-- Stack -->
+        <div data-reveal="0.16" class="panel flex flex-col gap-8 p-6 sm:p-8 lg:col-span-3">
+          <div>
+            <p class="eyebrow">Frontend</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted">Responsive, accessible interfaces in Vue 3 and Tailwind.</p>
+            <div class="mt-4 flex gap-2">
+              <span v-for="t in ['Vue', 'Tailwind', 'JavaScript']" :key="t"
+                class="flex h-11 w-11 items-center justify-center rounded-xl bg-raised" :title="t">
+                <img :src="toolIcon(t)" :alt="t" class="h-5 w-5" />
+              </span>
             </div>
-            <div ref="chipsContainer" class="mt-6 flex flex-wrap gap-2">
-              <span v-for="chip in chips" :key="chip"
-                class="chip-tag bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-900 dark:bg-slate-800 dark:text-slate-300">
-                {{ chip }}
+          </div>
+          <div class="border-t border-line pt-8">
+            <p class="eyebrow">Backend</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted">Secure Laravel APIs backed by well-modelled data.</p>
+            <div class="mt-4 flex gap-2">
+              <span v-for="t in ['Laravel', 'PostgreSQL', 'MySQL']" :key="t"
+                class="flex h-11 w-11 items-center justify-center rounded-xl bg-raised" :title="t">
+                <img :src="toolIcon(t)" :alt="t" class="h-5 w-5" />
               </span>
             </div>
           </div>
@@ -95,402 +102,214 @@
       </div>
     </section>
 
-    <!-- ==================== SKILLS SECTION ==================== -->
-    <section id="skills" class="relative py-20 sm:py-28">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div ref="skillsHeading" class="parallax-heading mb-8 flex items-center justify-between">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">Skills</p>
-            <h3
-              class="mt-1.5 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-              Tools I ship with
-            </h3>
-          </div>
-          <span
-            class="bg-gray-100 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-gray-900 dark:bg-slate-800 dark:text-slate-400">
-            Full Stack
-          </span>
-        </div>
+    <!-- ==================== MARQUEE ==================== -->
+    <section class="py-16 sm:py-20" aria-label="Technologies">
+      <TechMarquee :tools="tools" />
+    </section>
 
-        <div ref="skillsTicker" class="parallax-ticker glass-card overflow-hidden p-5 sm:p-6">
-          <div class="ticker-track">
-            <span v-for="(tool, index) in [...tools, ...tools]" :key="tool.name + index"
-              class="mx-3 inline-flex shrink-0 items-center gap-2 bg-gray-100 px-4 py-2 text-base font-semibold tracking-wide text-gray-900 sm:mx-4 sm:px-5 sm:py-2.5 sm:text-lg dark:bg-slate-800 dark:text-slate-300">
-              <img v-if="tool.icon" :src="tool.icon" :alt="tool.name" class="h-5 w-5 sm:h-6 sm:w-6" />
-              {{ tool.name }}
-            </span>
-          </div>
+    <!-- ==================== APPROACH ==================== -->
+    <section id="about" class="shell py-20 sm:py-32">
+      <div class="grid gap-8 lg:grid-cols-12">
+        <p class="eyebrow lg:col-span-3 lg:pt-3">Approach</p>
+        <div ref="approachEl" class="space-y-8 lg:col-span-9">
+          <p v-for="(para, p) in approachWords" :key="p"
+            class="text-[clamp(1.6rem,3.3vw,3rem)] font-medium leading-[1.15] tracking-[-0.03em]">
+            <span v-for="(word, w) in para" :key="w" class="approach-word">{{ word + " " }}</span>
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ==================== EXPERIENCE SECTION ==================== -->
-    <section id="experience" class="relative py-20 sm:py-28">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div ref="experienceHeading" class="parallax-heading mb-8">
-          <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
-            Experience
-          </p>
-          <h3
-            class="mt-1.5 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-            Career Milestones
-          </h3>
-        </div>
-
-        <div class="relative">
-          <!-- Vertical line -->
-          <div
-            class="parallax-timeline-line absolute top-2 bottom-2 left-[11px] w-px bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 md:left-1/2 md:-translate-x-1/2 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700">
-          </div>
-
-          <div ref="timelineContainer" class="flex flex-col gap-8 sm:gap-12">
-            <div v-for="(experience, i) in [...experiences].reverse()" :key="experience.role"
-              :class="[
-                'group relative md:flex timeline-card',
-                i % 2 === 0 ? 'md:justify-start' : 'md:justify-end',
-              ]">
-              <!-- Timeline dot -->
-              <div
-                class="absolute left-[11px] top-1.5 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-primary-500 ring-4 ring-[#f5f5f0] md:left-1/2 dark:ring-[#141418]">
-              </div>
-
-              <!-- Card -->
-              <div class="w-full pl-8 md:w-[calc(50%-2.5rem)] md:pl-0">
-                <span
-                  class="mb-2 inline-block text-sm font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
-                  {{ experience.period }}
-                </span>
-                <div class="glass-card p-5 sm:p-6">
-                  <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
-                    {{ experience.company }}
-                  </p>
-                  <h4
-                    class="mt-2.5 text-lg font-bold text-gray-900 sm:text-xl dark:text-white">
-                    {{ experience.role }}
-                  </h4>
-                  <p class="mt-3 text-pretty text-base leading-relaxed text-gray-900 dark:text-slate-400">
-                    {{ experience.highlights }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- ==================== WORK ==================== -->
+    <section id="work" class="shell py-16 sm:py-24">
+      <div class="mb-10 grid gap-6 sm:mb-14 lg:grid-cols-12">
+        <h2 data-reveal class="text-[clamp(2.5rem,5vw,4.5rem)] font-medium leading-none tracking-[-0.04em] lg:col-span-7">
+          Selected work
+        </h2>
+        <p data-reveal="0.1" class="max-w-md self-end text-pretty text-muted lg:col-span-5 lg:justify-self-end">
+          A selection of {{ projects.length }} projects, from static landing pages to full stack Laravel apps with
+          authentication, roles and dashboards.
+        </p>
       </div>
-    </section>
 
-    <!-- ==================== PROJECTS SECTION ==================== -->
-    <section id="projects" class="relative py-20 sm:py-28">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div ref="projectsHeading" class="parallax-heading mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-widest text-gray-900 dark:text-slate-500">
-              Projects
-            </p>
-            <h3
-              class="mt-1.5 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-              Selected work
-            </h3>
-          </div>
-          <p class="text-base text-gray-800 dark:text-slate-400">
-            {{ projects.length }} projects, full stack to static.
-          </p>
-        </div>
-
-        <!-- Featured carousel -->
-        <div ref="projectsCarousel">
-          <ProjectCarousel :items="projects" />
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CONTACT SECTION ==================== -->
-    <section id="contact" class="relative py-20 sm:py-28">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <!-- Section header -->
-        <div ref="contactHeading" class="parallax-heading mb-10 sm:mb-14">
-          <div class="flex items-center gap-3">
-            <p class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-              Contact
-            </p>
-            <span
-              class="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-              Open to work
-            </span>
-          </div>
-          <h3
-            class="mt-3 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-            Let's build something<br class="hidden sm:block" /> thoughtful together.
-          </h3>
-          <p class="mt-3 max-w-lg text-pretty text-base leading-relaxed text-gray-800 sm:text-lg dark:text-slate-400">
-            I'm always interested in new opportunities, collaborations, and connecting with fellow developers.
-            Feel free to reach out through any channel below.
-          </p>
-        </div>
-
-        <!-- Contact cards grid — non-linear layout -->
-        <div ref="contactCards" class="grid gap-4 sm:grid-cols-3">
-          <!-- Email card — wide -->
-          <a href="mailto:swampyae330@gmail.com"
-            class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
-            <div
-              class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <rect x="4" y="6" width="16" height="12" rx="2" />
-                <path d="m4 6 8 7 8-7" />
-              </svg>
-            </div>
-            <div class="min-w-0">
-              <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">Email</p>
-              <p class="mt-1 truncate text-base font-semibold text-gray-900 dark:text-white">swampyae330@gmail.com</p>
-            </div>
-          </a>
-
-          <!-- Phone card -->
-          <a href="tel:09422150195"
-            class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:p-6">
-            <div
-              class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.9.36 1.76.67 2.6a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.84.31 1.7.54 2.6.67A2 2 0 0 1 22 16.92z" />
-              </svg>
+      <div class="space-y-3">
+        <RouterLink v-for="(project, i) in projects" :key="project.id"
+          :to="{ name: 'project', params: { id: project.id } }"
+          class="project-card panel group grid overflow-hidden md:sticky md:h-[min(560px,calc(100vh-7rem))] md:grid-cols-12"
+          :style="{ top: `calc(5rem + ${i * 0.75}rem)` }">
+          <div class="flex flex-col justify-between gap-8 p-6 sm:p-8 md:col-span-5 lg:p-10">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-medium">{{ project.title }}</p>
+              <p class="eyebrow">{{ String(i + 1).padStart(2, "0") }}</p>
             </div>
             <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">Phone</p>
-              <p class="mt-1 text-base font-semibold text-gray-900 dark:text-white">09422150195</p>
-            </div>
-          </a>
-
-          <!-- Location card -->
-          <div class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:p-6">
-            <div
-              class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0 1 15 0Z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">Location
+              <p class="text-pretty text-xl leading-snug tracking-tight sm:text-2xl lg:text-[1.75rem]">
+                {{ project.description }}
               </p>
-              <p class="mt-1 text-base font-semibold text-gray-900 dark:text-white">Yangon, Myanmar</p>
+              <p class="mt-4 text-sm text-muted">Built with {{ formatList(project.tags) }}.</p>
             </div>
-            <p class="mt-auto text-sm text-gray-800 dark:text-slate-500">UTC +6:30</p>
+            <div class="flex items-center gap-3">
+              <span class="btn btn-solid btn-sm">
+                Open project
+                <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none"
+                  stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+              <span v-if="project.url" class="eyebrow flex items-center gap-1.5">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span> Live
+              </span>
+            </div>
           </div>
+          <div class="order-first p-2 md:order-none md:col-span-7 md:p-3">
+            <div class="relative h-full min-h-[220px] overflow-hidden rounded-[1.1rem] bg-raised sm:min-h-[300px]">
+              <img v-if="project.image" :src="project.image" :alt="`${project.title} screenshot`"
+                class="absolute inset-0 h-full w-full object-cover object-left-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                loading="lazy" />
+            </div>
+          </div>
+        </RouterLink>
+      </div>
+    </section>
 
-          <!-- Response time card — wide -->
-          <div class="parallax-contact glass-card flex flex-col gap-4 p-5 sm:col-span-2 sm:p-6">
-            <div
-              class="flex h-10 w-10 items-center justify-center bg-primary-100/80 text-primary-600 dark:bg-primary-500/15 dark:text-primary-400">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-500">Response
-                Time</p>
-              <p class="mt-1 text-base font-semibold text-gray-900 dark:text-white">Within 24 hours</p>
-            </div>
-            <p class="mt-auto text-sm text-gray-800 dark:text-slate-500">Usually faster</p>
-          </div>
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section id="experience" class="shell py-20 sm:py-32">
+      <div class="grid gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-3">
+          <p class="eyebrow lg:pt-3">Experience</p>
         </div>
-
-        <!-- Social links + CTA row -->
-        <div ref="socialRow" class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <!-- Social icons -->
-          <div class="flex items-center gap-3">
-            <span class="mr-1 text-sm font-semibold uppercase tracking-widest text-gray-800 dark:text-slate-600">Connect</span>
-            <a href="https://www.linkedin.com/in/swam-pyae-88aa96369" target="_blank" rel="noreferrer"
-              class="flex h-10 w-10 items-center justify-center border border-gray-200/60 bg-white/60 text-gray-800 transition-colors hover:bg-[#0A66C2] hover:text-white dark:border-slate-700/60 dark:bg-slate-800/60 dark:text-slate-400">
-              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.23 8.08h4.56V24H.23zM8.59 8.08h4.37v2.16h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 6.99V24h-4.56v-8.22c0-1.96-.03-4.48-2.73-4.48-2.73 0-3.15 2.13-3.15 4.33V24H8.59z" />
-              </svg>
-            </a>
-            <a href="https://github.com/SWayne19" target="_blank" rel="noreferrer"
-              class="flex h-10 w-10 items-center justify-center border border-gray-200/60 bg-white/60 text-gray-800 transition-colors hover:bg-gray-800 hover:text-white dark:border-slate-700/60 dark:bg-slate-800/60 dark:text-slate-400">
-              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 2C6.48 2 2 6.58 2 12.26c0 4.47 2.87 8.26 6.84 9.59.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.36-3.37-1.36-.46-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1.01.07 1.54 1.05 1.54 1.05.9 1.57 2.37 1.12 2.95.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.14 0-1.14.39-2.07 1.03-2.8-.1-.26-.45-1.32.1-2.74 0 0 .84-.27 2.75 1.03A9.25 9.25 0 0 1 12 6.58a9.23 9.23 0 0 1 2.5.34c1.9-1.3 2.74-1.03 2.74-1.03.55 1.42.2 2.48.1 2.74.64.73 1.03 1.66 1.03 2.8 0 4-2.34 4.87-4.57 5.13.36.32.68.95.68 1.92 0 1.39-.01 2.52-.01 2.87 0 .26.18.58.69.48C19.14 20.52 22 16.73 22 12.26 22 6.58 17.52 2 12 2z" />
-              </svg>
-            </a>
-          </div>
-
-          <!-- Email CTA -->
-          <a href="mailto:swampyae330@gmail.com"
-            class="inline-flex items-center gap-2.5 bg-primary-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary-700">
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <rect x="4" y="6" width="16" height="12" rx="2" />
-              <path d="m4 6 8 7 8-7" />
-            </svg>
-            Get in touch
-          </a>
+        <div class="lg:col-span-9">
+          <h2 data-reveal class="max-w-2xl text-balance text-[clamp(2rem,4vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.04em]">
+            Growing from intern to mid-level in under two years.
+          </h2>
+          <ol class="mt-12 border-t border-line">
+            <li v-for="(exp, i) in [...experiences].reverse()" :key="exp.role" data-reveal
+              class="grid gap-3 border-b border-line py-7 sm:grid-cols-12 sm:gap-6">
+              <p class="font-mono text-sm text-muted sm:col-span-3">{{ exp.period }}</p>
+              <div class="sm:col-span-4">
+                <p class="flex items-center gap-2 text-lg font-medium tracking-tight">
+                  {{ exp.role }}
+                  <span v-if="i === 0" class="rounded-full border border-line px-2 py-0.5 text-xs font-normal text-muted">Current</span>
+                </p>
+                <p class="text-sm text-muted">{{ exp.company }}</p>
+              </div>
+              <p class="text-pretty text-muted sm:col-span-5">{{ exp.highlights }}</p>
+            </li>
+          </ol>
         </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section id="faq" class="shell py-16 sm:py-24">
+      <div class="grid gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <p class="eyebrow">FAQ</p>
+          <h2 data-reveal class="mt-4 text-[clamp(2rem,4vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.04em]">
+            Questions, answered.
+          </h2>
+          <p data-reveal="0.1" class="mt-4 max-w-xs text-muted">
+            Something else on your mind?
+            <a :href="`mailto:${profile.email}`" class="text-fg underline underline-offset-4 hover:text-muted">Send me an email.</a>
+          </p>
+        </div>
+        <div data-reveal="0.1" class="lg:col-span-8">
+          <FaqList :items="faqs" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOOLBOX ==================== -->
+    <section class="shell py-16 sm:py-24" aria-labelledby="toolbox-title">
+      <div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <h2 id="toolbox-title" data-reveal class="text-[clamp(2rem,4vw,3.5rem)] font-medium leading-none tracking-[-0.04em]">
+          Toolbox
+        </h2>
+        <p data-reveal="0.1" class="max-w-sm text-muted">The tools I reach for every day, across every layer of the stack.</p>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <article v-for="(box, i) in toolbox" :key="box.title" :data-reveal="i * 0.08" class="panel group p-2">
+          <div class="flex aspect-[4/3] items-center justify-center gap-4 rounded-[1.1rem] bg-raised">
+            <img v-for="src in box.icons" :key="src" :src="src" alt=""
+              class="h-12 w-12 opacity-80 transition duration-500 group-hover:-translate-y-1 group-hover:opacity-100 sm:h-14 sm:w-14"
+              loading="lazy" />
+          </div>
+          <div class="p-4">
+            <h3 class="font-medium">{{ box.title }}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-muted">{{ box.text }}</p>
+          </div>
+        </article>
       </div>
     </section>
   </div>
 </template>
 
 <script setup>
-import { inject, ref, onMounted, nextTick } from "vue";
-import gsap from "gsap";
-import { useScrollReveal } from "../composables/useScrollReveal";
-import ProjectCarousel from "../components/ProjectCarousel.vue";
+import { inject, ref } from "vue";
+import ExperienceCard from "../components/ExperienceCard.vue";
+import FaqList from "../components/FaqList.vue";
+import LocalClock from "../components/LocalClock.vue";
+import TechMarquee from "../components/TechMarquee.vue";
+import { approach, experiences, faqs, profile, toolbox, tools } from "../data/profile";
+import { scrollToTarget } from "../composables/useLenis";
+import { useGsap } from "../composables/useGsap";
 
 const projects = inject("projects");
-const { revealUp, revealLeft, revealRight, revealScale, staggerReveal } = useScrollReveal();
 
-// Hero refs
-const heroPhoto = ref(null);
-const heroGreeting = ref(null);
-const heroName = ref(null);
-const heroSubtitle = ref(null);
-const heroCta = ref(null);
-
-// About refs
-const statsGrid = ref(null);
-const bioCard = ref(null);
-const chipsContainer = ref(null);
-
-// Skills refs
-const skillsHeading = ref(null);
-const skillsTicker = ref(null);
-
-// Experience refs
-const experienceHeading = ref(null);
-const timelineContainer = ref(null);
-
-// Projects refs
-const projectsHeading = ref(null);
-const projectsCarousel = ref(null);
-
-// Contact refs
-const contactHeading = ref(null);
-const contactCards = ref(null);
-const socialRow = ref(null);
-
-onMounted(() => {
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReduced) return;
-
-  nextTick(() => {
-    // Hero entrance timeline (page-load, not scroll-triggered)
-    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    heroTl
-      .from(heroPhoto.value, { scale: 0.9, opacity: 0, duration: 0.8 }, 0.1)
-      .from(heroGreeting.value, { y: 30, opacity: 0, duration: 0.6 }, 0.1)
-      .from(heroName.value, { y: 30, opacity: 0, duration: 0.6 }, 0.2)
-      .from(heroSubtitle.value, { y: 30, opacity: 0, duration: 0.6 }, 0.35)
-      .from(heroCta.value?.children ?? [], { y: 20, opacity: 0, duration: 0.5, stagger: 0.1 }, 0.45);
-
-    // About section — scroll-triggered
-    if (statsGrid.value) {
-      staggerReveal(statsGrid.value.querySelectorAll(".stat-card"), { trigger: statsGrid.value });
-    }
-    if (bioCard.value) {
-      revealUp(bioCard.value, { start: "top 85%" });
-    }
-    if (chipsContainer.value) {
-      staggerReveal(chipsContainer.value.querySelectorAll(".chip-tag"), {
-        trigger: chipsContainer.value,
-        stagger: 0.05,
-        y: 20,
-        start: "top 90%",
-      });
-    }
-
-    // Skills section
-    revealUp(skillsHeading.value);
-    revealUp(skillsTicker.value, { delay: 0.1 });
-
-    // Experience section
-    revealUp(experienceHeading.value);
-    if (timelineContainer.value) {
-      const cards = timelineContainer.value.querySelectorAll(".timeline-card");
-      const isMd = window.matchMedia("(min-width: 768px)").matches;
-      cards.forEach((card, i) => {
-        if (isMd) {
-          if (i % 2 === 0) {
-            revealLeft(card, { delay: i * 0.15 });
-          } else {
-            revealRight(card, { delay: i * 0.15 });
-          }
-        } else {
-          revealUp(card, { delay: i * 0.1 });
-        }
-      });
-    }
-
-    // Projects section
-    revealUp(projectsHeading.value);
-    revealUp(projectsCarousel.value, { delay: 0.1 });
-
-    // Contact section
-    revealUp(contactHeading.value);
-    if (contactCards.value) {
-      staggerReveal(contactCards.value.children, { trigger: contactCards.value });
-    }
-    revealUp(socialRow.value, { delay: 0.3 });
-  });
-});
-
-const chips = ["Vue 3", "Laravel", "Inertia.js", "PostgreSQL", "Tailwind CSS"];
+const root = ref(null);
+const approachEl = ref(null);
 
 const stats = [
-  { label: "Years Experience", value: "1+" },
-  { label: "Projects Delivered", value: "6" },
-  { label: "Current Role", value: "Mid Programmer" },
+  { label: "Experience", value: "1+ yrs" },
+  { label: "Projects", value: String(projects.value.length) },
+  { label: "Focus", value: "Full stack" },
 ];
 
-const experiences = [
-  {
-    role: "Intern Programmer",
-    company: "KMD Group of Company Limited (SoftComm Technology)",
-    period: "Jan -- Feb 2025",
-    highlights:
-      "Assisted with frontend development tasks, participated in team meetings, and supported ongoing project implementations as an intern.",
-  },
-  {
-    role: "Trainee Programmer",
-    company: "KMD Group of Company Limited (SoftComm Technology)",
-    period: "Mar -- Apr 2025",
-    highlights:
-      "Received hands-on training in Vue.js and modern JavaScript, contributed bug fixes, and collaborated with senior developers as a trainee.",
-  },
-  {
-    role: "Junior Programmer",
-    company: "KMD Group of Company Limited (SoftComm Technology)",
-    period: "May 2025 -- May 2026",
-    highlights:
-      "Promoted to Junior Programmer; actively developing and maintaining web applications, building UI components, and optimizing user experiences alongside a cross-functional team.",
-  },
-  {
-    role: "Mid Programmer",
-    company: "KMD Group of Company Limited (SoftComm Technology)",
-    period: "May 2026 -- Present",
-    highlights:
-      "Promoted to Mid Programmer; leading the KMD Inventory Project with finance modules, audit trails, role-based access, and real-time dashboard analytics.",
-  },
-];
+const approachWords = approach.map((p) => p.split(" "));
+const toolIcon = (name) => tools.find((t) => t.name === name)?.icon;
 
-const tools = [
-  { name: "HTML", icon: "/images/tools/html.svg" },
-  { name: "CSS", icon: "/images/tools/css.svg" },
-  { name: "JavaScript", icon: "/images/tools/javascript.svg" },
-  { name: "PHP", icon: "/images/tools/php.svg" },
-  { name: "Tailwind", icon: "/images/tools/tailwind-css.svg" },
-  { name: "Bootstrap", icon: "/images/tools/bootstrap.svg" },
-  { name: "Vue", icon: "/images/tools/vue.svg" },
-  { name: "Inertia", icon: "/images/tools/inertia.svg" },
-  { name: "Laravel", icon: "/images/tools/laravel.svg" },
-  { name: "MySQL", icon: "/images/tools/mysql.svg" },
-  { name: "PostgreSQL", icon: "/images/tools/postgresql.svg" },
-  { name: "Git", icon: "/images/tools/git.svg" },
-];
+const formatList = (items = []) =>
+  items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
 
+useGsap(root, (gsap) => {
+  // Hero entrance
+  gsap
+    .timeline({ defaults: { ease: "power3.out" } })
+    .from(".hero-line", { yPercent: 60, opacity: 0, duration: 1, stagger: 0.08 }, 0.1)
+    .from(".hero-in", { y: 20, opacity: 0, duration: 0.8, stagger: 0.08 }, 0.35)
+    .from(".hero-photo", { opacity: 0, scale: 0.97, duration: 1.1 }, 0.15);
+
+  // Subtle parallax on the portrait
+  gsap.to(".hero-img", {
+    yPercent: 8,
+    ease: "none",
+    scrollTrigger: { trigger: ".hero-photo", start: "top top", end: "bottom top", scrub: true },
+  });
+
+  // Approach: words brighten as you scroll through
+  gsap.fromTo(
+    ".approach-word",
+    { opacity: 0.15 },
+    {
+      opacity: 1,
+      ease: "none",
+      stagger: 0.1,
+      scrollTrigger: { trigger: approachEl.value, start: "top 80%", end: "bottom 45%", scrub: true },
+    }
+  );
+
+  // Stacked project cards dim slightly as the next one covers them (desktop only)
+  const mm = gsap.matchMedia();
+  mm.add("(min-width: 768px)", () => {
+    const cards = gsap.utils.toArray(".project-card");
+    cards.slice(0, -1).forEach((card, i) => {
+      gsap.to(card, {
+        scale: 0.96,
+        opacity: 0.55,
+        ease: "none",
+        scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: "top 30%", scrub: true },
+      });
+    });
+  });
+});
 </script>

@@ -4,6 +4,7 @@ import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { isTabSwitch } from "./composables/useLenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,13 +74,18 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
+  },
 ];
 
 // router instance
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, from) {
+    if (isTabSwitch(to, from)) return false;
     return { top: 0, behavior: "instant" };
   },
 });

@@ -1,197 +1,135 @@
 <template>
-  <nav
-    class="sticky top-0 z-50 border-b border-slate-200/60 bg-[#ebebdf]/70 shadow-sm backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70 dark:shadow-none">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10">
-      <!-- Logo / Name with typing animation -->
-      <a href="#hero" @click.prevent="scrollToSection('hero')" class="mr-2 min-w-0 flex-shrink items-center truncate cursor-pointer">
-        <TypingName />
+  <header class="sticky top-0 z-50 transition-colors duration-300"
+    :class="scrolled ? 'border-b border-line bg-bg/80 backdrop-blur-xl' : 'border-b border-transparent'">
+    <nav class="shell flex h-16 items-center justify-between gap-4" aria-label="Primary">
+      <!-- Brand -->
+      <a href="/" @click.prevent="go('top')" class="group flex min-w-0 items-center gap-3">
+        <img :src="profile.photo" alt="" class="h-8 w-8 shrink-0 rounded-full object-cover" width="32" height="32" />
+        <span class="truncate text-sm font-medium">
+          {{ profile.name }}
+          <span class="hidden text-muted md:inline">/ {{ profile.role }}</span>
+        </span>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <div class="hidden items-center gap-1.5 sm:flex">
-        <template v-for="link in navLinks" :key="link.name">
-          <!-- Section anchor links (home page) -->
-          <a v-if="link.section" :href="`#${link.section}`" @click.prevent="scrollToSection(link.section)"
-            class="relative px-3.5 py-2 text-sm font-medium text-gray-900 transition-colors after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:bg-primary-600 after:transition-transform after:duration-200 dark:text-slate-400 dark:after:bg-primary-400"
-            :class="{ '!text-primary-600 after:scale-x-100 dark:!text-primary-400': activeSection === link.section }">
-            {{ link.name }}
-          </a>
-          <!-- Router links (project detail pages etc) -->
-          <RouterLink v-else :to="{ name: link.route }"
-            class="relative px-3.5 py-2 text-sm font-medium text-gray-900 transition-colors after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:scale-x-0 after:bg-primary-600 after:transition-transform after:duration-200 dark:text-slate-400 dark:after:bg-primary-400"
-            active-class="!text-primary-600 after:scale-x-100 dark:!text-primary-400">
-            {{ link.name }}
-          </RouterLink>
-        </template>
-
+      <!-- Desktop links -->
+      <div class="hidden items-center gap-1 md:flex">
+        <a v-for="link in links" :key="link.id" :href="`/#${link.id}`" @click.prevent="go(link.id)"
+          class="rounded-full px-3.5 py-2 text-sm transition-colors hover:text-fg"
+          :class="activeSection === link.id && isHome ? 'text-fg' : 'text-muted'">
+          {{ link.name }}
+        </a>
         <ThemeToggle class="ml-2" />
+        <a href="/#contact" @click.prevent="go('contact')" class="btn btn-solid btn-sm ml-2">
+          Get in touch
+        </a>
       </div>
 
-      <!-- Mobile: Theme Toggle + Hamburger -->
-      <div class="flex items-center gap-1 sm:hidden">
+      <!-- Mobile controls -->
+      <div class="flex items-center gap-2 md:hidden">
         <ThemeToggle />
-        <button @click="mobileMenuOpen = !mobileMenuOpen"
-          class="flex h-9 w-9 items-center justify-center text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-          aria-label="Toggle menu">
-          <svg v-if="!mobileMenuOpen" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg v-else class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <button type="button" @click="menuOpen = !menuOpen" class="btn btn-ghost btn-sm" :aria-expanded="menuOpen"
+          aria-controls="mobile-menu">
+          {{ menuOpen ? "Close" : "Menu" }}
         </button>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Mobile Menu Backdrop -->
+  <!-- Mobile full-screen menu -->
   <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0"
-    enter-to-class="opacity-100" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100"
-    leave-to-class="opacity-0">
-    <div v-show="mobileMenuOpen"
-      class="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm sm:hidden dark:bg-black/50"
-      @click="mobileMenuOpen = false"></div>
-  </Transition>
-
-  <!-- Mobile Sidebar (slides from right) -->
-  <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="translate-x-full"
-    enter-to-class="translate-x-0" leave-active-class="transition duration-200 ease-in"
-    leave-from-class="translate-x-0" leave-to-class="translate-x-full">
-    <div v-show="mobileMenuOpen"
-      class="fixed top-0 right-0 bottom-0 z-50 flex w-72 flex-col border-l border-slate-200/60 bg-[#ebebdf]/95 shadow-2xl backdrop-blur-xl sm:hidden dark:border-slate-800/60 dark:bg-slate-950/95 dark:shadow-none">
-
-      <!-- Sidebar header with close button -->
-      <div class="flex items-center justify-between border-b border-slate-200/40 px-5 py-4 dark:border-slate-800/40">
-        <span class="text-base font-semibold text-gray-900 dark:text-slate-200">Menu</span>
-        <button @click="mobileMenuOpen = false"
-          class="flex h-8 w-8 items-center justify-center text-gray-800 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-          aria-label="Close menu">
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-
-      <!-- Nav links -->
-      <div class="flex flex-1 flex-col gap-1 px-3 py-4">
-        <template v-for="link in navLinks" :key="link.name">
-          <a v-if="link.section" :href="`#${link.section}`"
-            @click.prevent="scrollToSection(link.section); mobileMenuOpen = false"
-            class="px-4 py-3 text-base font-medium text-gray-900 transition-colors hover:bg-gray-100/60 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-primary-300"
-            :class="{ '!text-primary-600 !bg-primary-50/60 dark:!bg-primary-900/20 dark:!text-primary-400': activeSection === link.section }">
+    leave-active-class="transition duration-200 ease-in" leave-to-class="opacity-0">
+    <div v-if="menuOpen" id="mobile-menu"
+      class="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col justify-between bg-bg px-4 pb-8 pt-6 md:hidden">
+      <ul class="flex flex-col">
+        <li v-for="(link, i) in links" :key="link.id" class="border-b border-line">
+          <a :href="`/#${link.id}`" @click.prevent="go(link.id)"
+            class="flex items-baseline justify-between py-4 text-4xl font-medium tracking-tight">
             {{ link.name }}
+            <span class="eyebrow">0{{ i + 1 }}</span>
           </a>
-          <RouterLink v-else :to="{ name: link.route }"
-            class="px-4 py-3 text-base font-medium text-gray-900 transition-colors hover:bg-gray-100/60 hover:text-primary-700 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-primary-300"
-            active-class="!bg-primary-50/60 !text-primary-600 dark:!bg-primary-900/20 dark:!text-primary-400"
-            @click="mobileMenuOpen = false">
-            {{ link.name }}
-          </RouterLink>
-        </template>
+        </li>
+      </ul>
+      <div class="space-y-4">
+        <a :href="`mailto:${profile.email}`" class="block text-lg font-medium">{{ profile.email }}</a>
+        <div class="flex gap-3">
+          <a :href="profile.linkedin" target="_blank" rel="noreferrer" class="btn btn-ghost btn-sm">LinkedIn</a>
+          <a :href="profile.github" target="_blank" rel="noreferrer" class="btn btn-ghost btn-sm">GitHub</a>
+        </div>
       </div>
-
     </div>
   </Transition>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount } from "vue";
-import { useRouter, useRoute } from "vue-router";
-import TypingName from "./TypingName.vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import ThemeToggle from "./ThemeToggle.vue";
-import { getLenisInstance } from "../composables/useLenis";
+import { profile } from "../data/profile";
+import { scrollToTarget, setScrollLocked } from "../composables/useLenis";
 
-const mobileMenuOpen = ref(false);
-const activeSection = ref("hero");
-
-const router = useRouter();
-const route = useRoute();
-
-router.beforeEach(() => {
-  mobileMenuOpen.value = false;
-});
-
-const navLinks = [
-  { name: "Home", section: "hero" },
-  { name: "About", section: "about" },
-  { name: "Projects", section: "projects" },
-  { name: "Contact", section: "contact" },
+const links = [
+  { name: "Work", id: "work" },
+  { name: "About", id: "about" },
+  { name: "Experience", id: "experience" },
+  { name: "FAQ", id: "faq" },
 ];
 
-const scrollToSection = (sectionId) => {
-  const doScroll = () => {
-    const lenis = getLenisInstance();
-    if (sectionId === "hero") {
-      if (lenis) {
-        lenis.scrollTo(0, { duration: 1.2 });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    } else {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        if (lenis) {
-          lenis.scrollTo(el, { duration: 1.2 });
-        } else {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    }
-  };
+const route = useRoute();
+const router = useRouter();
+const isHome = computed(() => route.name === "home");
 
-  // If not on home page, navigate there first
-  if (route.name !== "home") {
-    router.push({ name: "home" }).then(() => {
-      setTimeout(doScroll, 100);
-    });
+const menuOpen = ref(false);
+const scrolled = ref(false);
+const activeSection = ref("");
+
+async function go(id) {
+  menuOpen.value = false;
+  if (!isHome.value) {
+    await router.push({ name: "home" });
+    // wait for the page transition to mount Home
+    setTimeout(() => scrollToTarget(id), 450);
     return;
   }
+  await nextTick();
+  scrollToTarget(id);
+}
 
-  doScroll();
-};
-
-// Track active section based on scroll position
-const sectionIds = ["hero", "about", "skills", "experience", "projects", "contact"];
+const sectionIds = ["about", "work", "experience", "faq", "contact"];
 let rafId = null;
 
-const updateActiveSection = () => {
-  const scrollY = window.scrollY + 120;
-
-  for (let i = sectionIds.length - 1; i >= 0; i--) {
-    const el = document.getElementById(sectionIds[i]);
-    if (el && el.offsetTop <= scrollY) {
-      // Map skills/experience to "about" for nav highlight
-      const id = sectionIds[i];
-      if (id === "skills" || id === "experience") {
-        activeSection.value = "about";
-      } else {
-        activeSection.value = id;
-      }
-      break;
-    }
+function update() {
+  rafId = null;
+  scrolled.value = window.scrollY > 8;
+  const probe = window.scrollY + window.innerHeight * 0.35;
+  let current = "";
+  for (const id of sectionIds) {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= probe) current = id;
   }
-};
+  activeSection.value = current;
+}
 
-const onScroll = () => {
-  if (rafId) return;
-  rafId = requestAnimationFrame(() => {
-    updateActiveSection();
-    rafId = null;
-  });
-};
+function onScroll() {
+  if (!rafId) rafId = requestAnimationFrame(update);
+}
+
+function onKeydown(e) {
+  if (e.key === "Escape") menuOpen.value = false;
+}
+
+watch(menuOpen, (open) => setScrollLocked(open));
+watch(() => route.fullPath, () => (menuOpen.value = false));
 
 onMounted(() => {
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("keydown", onKeydown);
+  update();
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScroll);
+  window.removeEventListener("keydown", onKeydown);
   if (rafId) cancelAnimationFrame(rafId);
-  document.body.style.overflow = "";
-});
-
-watch(mobileMenuOpen, (open) => {
-  document.body.style.overflow = open ? "hidden" : "";
+  setScrollLocked(false);
 });
 </script>

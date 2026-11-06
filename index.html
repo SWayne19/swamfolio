@@ -3,22 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>swamfolio</title>
+    <title>Swam Pyae Paing · Full Stack Developer</title>
+    <meta name="description" content="Swam Pyae Paing is a full stack developer in Yangon building fast, reliable web applications with Vue and Laravel." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <script>
       (function () {
-        const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'dark' || (saved !== 'light' && prefersDark)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
+        var saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        // Dark by default; light only when explicitly chosen.
+        document.documentElement.classList.toggle('dark', saved !== 'light');
       })();
     </script>
-    <style>html.dark { background-color: #141418; }</style>
+    <style>html { background-color: #0b0b0b; } html:not(.dark) { background-color: #f2f2ef; }</style>
   </head>
   <body>
     <div id="app"></div>

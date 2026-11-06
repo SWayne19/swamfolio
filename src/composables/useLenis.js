@@ -7,56 +7,64 @@ import { useRouter } from "vue-router";
 gsap.registerPlugin(ScrollTrigger);
 
 let lenisInstance = null;
+const NAV_OFFSET = -72;
 
 export function getLenisInstance() {
   return lenisInstance;
 }
 
+// Switching between Overview / FrontEnd / BackEnd tabs of the same project
+// should keep the scroll position.
+export function isTabSwitch(to, from) {
+  return Boolean(to.params?.id && to.params.id === from.params?.id);
+}
+
+export function scrollToTarget(target) {
+  const lenis = lenisInstance;
+  if (target === "top" || target === 0) {
+    if (lenis) lenis.scrollTo(0, { duration: 1.2 });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  const el = typeof target === "string" ? document.getElementById(target) : target;
+  if (!el) return;
+  if (lenis) lenis.scrollTo(el, { duration: 1.2, offset: NAV_OFFSET });
+  else el.scrollIntoView({ behavior: "smooth" });
+}
+
+export function setScrollLocked(locked) {
+  if (lenisInstance) {
+    locked ? lenisInstance.stop() : lenisInstance.start();
+  }
+  document.body.style.overflow = locked ? "hidden" : "";
+}
+
 export function useLenis() {
   const router = useRouter();
+  let tick = null;
+  let removeAfterEach = null;
 
   onMounted(() => {
-    // Respect reduced-motion preference
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    lenisInstance = new Lenis({
-      lerp: 0.1,
-      duration: 1.2,
-      smoothWheel: true,
-    });
-
-    // Sync Lenis scroll with ScrollTrigger
+    lenisInstance = new Lenis({ lerp: 0.1, smoothWheel: true });
     lenisInstance.on("scroll", ScrollTrigger.update);
 
-    // Drive Lenis from GSAP ticker
-    gsap.ticker.add((time) => {
-      lenisInstance.raf(time * 1000);
-    });
+    tick = (time) => lenisInstance?.raf(time * 1000);
+    gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
-    // Scroll to top on route change
-    router.afterEach(() => {
-      if (lenisInstance) {
+    removeAfterEach = router.afterEach((to, from) => {
+      if (lenisInstance && !isTabSwitch(to, from)) {
         lenisInstance.scrollTo(0, { immediate: true });
       }
     });
   });
 
   onUnmounted(() => {
-    if (lenisInstance) {
-      lenisInstance.destroy();
-      lenisInstance = null;
-    }
+    if (tick) gsap.ticker.remove(tick);
+    removeAfterEach?.();
+    lenisInstance?.destroy();
+    lenisInstance = null;
   });
-
-  return {
-    getLenis: () => lenisInstance,
-    scrollTo: (target, options) => {
-      if (lenisInstance) {
-        lenisInstance.scrollTo(target, options);
-      }
-    },
-  };
 }
