@@ -6,7 +6,7 @@ export const profile = {
   currentTitle: "Mid Programmer",
   company: "KMD Group of Company Limited",
   email: "swampyae330@gmail.com",
-  phone: "09422150195",
+  phone: "+95 9 422 150 195",
   location: "Yangon, Myanmar",
   timeZone: "Asia/Yangon",
   utcOffset: "UTC +6:30",

@@ -20,14 +20,10 @@
         </svg>
       </a>
 
-      <dl class="mt-14 grid grid-cols-2 gap-6 border-t border-line pt-8 text-sm lg:grid-cols-4">
-        <div>
+      <dl class="mt-14 grid grid-cols-2 gap-6 border-t border-line pt-8 text-sm sm:grid-cols-3">
+        <div class="col-span-2 sm:col-span-1">
           <dt class="eyebrow">Phone</dt>
-          <dd class="mt-2"><a :href="`tel:${profile.phone}`" class="hover:text-muted">{{ profile.phone }}</a></dd>
-        </div>
-        <div>
-          <dt class="eyebrow">Location</dt>
-          <dd class="mt-2">{{ profile.location }} <span class="text-muted">· {{ profile.utcOffset }}</span></dd>
+          <dd class="mt-2"><a :href="`tel:${profile.phone.replace(/\s/g, '')}`" class="hover:text-muted">{{ profile.phone }}</a></dd>
         </div>
         <div>
           <dt class="eyebrow">LinkedIn</dt>
